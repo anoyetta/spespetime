@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "draft"; }
+  @{ var rev = "rev2"; }
   <rev>@rev</rev>
   <description>
-  UltimateRINGS専用の絶アレキタイムラインです。
+    UltimateRINGS専用の絶アレキタイムラインです。
   </description>
   <author>anoyetta</author>
   <license>CC BY-SA</license>
@@ -17,87 +17,6 @@
   <default target-element="Activity" target-attr="notice-o" value="-6" />
   <default target-element="Activity" target-attr="sync-s" value="-5" />
   <default target-element="Activity" target-attr="sync-e" value="4" />
-
-  <!-- 耐性ダウン -->
-  <t name="水属性圧縮" text="水圧縮" sync="[mex]に「水属性圧縮」の効果。" notice="自分に水圧縮">
-    <v-notice 
-      duration="15" 
-      job-icon="true" />
-  </t>
-
-  <t name="雷属性圧縮" text="雷圧縮" sync="[mex]に「雷属性圧縮」の効果。" notice="自分に雷圧縮">
-    <v-notice 
-      duration="15" 
-      job-icon="true" />
-  </t>
-
-  <t name="水耐性ダウン" text="水DOWN" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="自分に水ダウン">
-    <v-notice 
-      duration="15" 
-      job-icon="true" />
-  </t>
-
-  <t name="雷耐性ダウン" text="雷DOWN" sync="[mex]に「雷属性耐性低下［強］」の効果。" notice="自分に雷ダウン">
-    <v-notice 
-      duration="15" 
-      job-icon="true" />
-  </t>
-
-  <!-- 光性爆雷 -->
-  <t name="光性爆雷" text="光性爆雷" sync="[mex]に「光性爆雷」の効果。" notice="こうせい爆雷。">
-    <v-notice 
-      duration="6" 
-      job-icon="true" />
-  </t>
-
-  <!-- 窒息 -->
-  <t name="窒息" text="窒息\n ➜ ${_pc}" sync="[pc]に「窒息」の効果。" notice="ちっそくー">
-    <v-notice 
-      duration="15" 
-      job-icon="true" />
-  </t>
-
-  <!-- ジェイル（手に捕まるやつ）マーカー -->
-  <t name="自分にジェイル" text="ジェイル\n ➜ ${_mex}" sync="^1B:[id8]:[mex]:0000:0000:0010:0000:0000:0000:" notice="自分にジェイル">
-    <v-notice 
-      duration="6" 
-      duration-visible="false"
-      job-icon="true" />
-  </t>
-
-  <t name="他人にジェイル" text="ジェイル\n ➜ ${_nex}" sync="^1B:[id8]:[nex]:0000:0000:0010:0000:0000:0000:" notice="ジェイル">
-    <v-notice 
-      duration="6" 
-      duration-visible="false"
-      job-icon="true" />
-  </t>
-
-  <!-- ゆびさきマーカー -->
-  <t name="ゆびさき通知" sync="1B:[id8]:[pc]:0000:[id4]:(0025|0022|0024):0000:0000:0000:" notice="ゆびさき" />
-
-  <t name="ゆびさきタンク" text="${_pc}" sync="1B:[id8]:[pc]:0000:[id4]:0025:0000:0000:0000:">
-    <v-notice 
-      duration="6" 
-      duration-visible="false"
-      job-icon="true"
-      order="-3" />
-  </t>
-
-  <t name="ゆびさきヒーラー" text="${_pc}" sync="1B:[id8]:[pc]:0000:[id4]:0022:0000:0000:0000:">
-    <v-notice 
-      duration="6" 
-      duration-visible="false"
-      job-icon="true"
-      order="-2" />
-  </t>
-
-  <t name="ゆびさきDPS" text="${_pc}" sync="1B:[id8]:[pc]:0000:[id4]:0024:0000:0000:0000:">
-    <v-notice 
-      duration="6" 
-      duration-visible="false"
-      job-icon="true"
-      order="-1" />
-  </t>
 
   @{ var origin = 0; }
 
@@ -119,6 +38,28 @@
         duration-visible="false"
         icon="Leave.png"
         order="-1" />
+    </t>
+
+    <!-- 光性爆雷 -->
+    <t name="光性爆雷" text="光性爆雷" sync="[mex]に「光性爆雷」の効果。" notice="こうせい爆雷。">
+      <v-notice 
+        duration="4" 
+        job-icon="true" />
+    </t>
+
+    <!-- ジェイル -->
+    <t name="自分にジェイル" text="ジェイル\n ➜ ${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:0010:" notice="自分にジェイル">
+      <v-notice 
+        duration="6" 
+        duration-visible="false"
+        job-icon="true" />
+    </t>
+
+    <!-- 窒息 -->
+    <t name="窒息" text="窒息" sync="[pc]に「窒息」の効果。" notice="ちっそくー">
+      <v-notice 
+        duration="10" 
+        icon="Timer.png" />
     </t>
 
     <a time="011" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
@@ -147,7 +88,7 @@
 
     <a time="095" text="リキッドジェイル" sync="リキッドレイジの「リキッドジェイル」" notice="次は、ジェイル。" />
 
-    <a time="103" text="ウェイブ１波" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次は、ウェイブ2発" />
+    <a time="103" text="ウェイブ１波" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次は、ウェイブ2回。" />
     <a time="105" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
     <a time="109" text="スルース" notice="" />
     <a time="110" text="ウェイブ２波" />
@@ -167,60 +108,94 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 140; }
 
-    <t text="奇数：１番" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、奇数">
+    <t text="１番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、ソード">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="偶数：２番" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、偶数">
+    <t text="２番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、チャージ">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="奇数：３番" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、奇数">
+    <t text="３番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、ソード">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="偶数：４番" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、偶数">
+    <t text="４番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、チャージ">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="奇数：５番" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、奇数">
+    <t text="５番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、ソード">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="偶数：６番" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、偶数">
+    <t text="６番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、チャージ">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="奇数：７番" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、奇数">
+    <t text="７番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、ソード">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="偶数：８番" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、偶数">
+    <t text="８番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、チャージ">
       <v-notice 
-        duration="6" 
+        duration="30" 
         duration-visible="false"
-        icon="Flag.png" />
+        icon="Flag.png"
+        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
+    </t>
+
+    <t name="水耐性ダウン" text="水ダウン" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="水ダウン">
+      <v-notice 
+        duration="31" 
+        job-icon="true" />
+    </t>
+
+    <t name="雷耐性ダウン" text="雷ダウン" sync="[mex]に「雷属性耐性低下［強］」の効果。" notice="雷ダウン">
+      <v-notice 
+        duration="31" 
+        job-icon="true" />
+    </t>
+
+    <t name="水属性圧縮" text="水圧縮" sync="[mex]に「水属性圧縮」の効果。" notice="みず圧縮">
+      <v-notice 
+        duration="29" 
+        job-icon="true"
+        sync-to-hide="loses the effect of 水属性圧縮 from" />
+    </t>
+
+    <t name="雷属性圧縮" text="雷圧縮" sync="[mex]に「雷属性圧縮」の効果。" notice="かみなり圧縮">
+      <v-notice 
+        duration="29" 
+        job-icon="true"
+        sync-to-hide="loses the effect of 雷属性圧縮 from" />
     </t>
 
     <a time="@(140 - origin)" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />

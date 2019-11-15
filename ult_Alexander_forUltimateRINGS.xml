@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev2"; }
+  @{ var rev = "rev3"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -84,6 +84,7 @@
     <a time="085" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
     <a time="086" text="ドレナージ" sync="リキッドレイジの「ドレナージ」" notice="次は、ドレナージ。" />
     <a time="087" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" notice="次は、カスケード。" />
+    <a time="088" text="均等化" notice="均等化。" notice-o="0" />
     <a time="092" text="窒息" notice="次は、窒息。" />
 
     <a time="095" text="リキッドジェイル" sync="リキッドレイジの「リキッドジェイル」" notice="次は、ジェイル。" />

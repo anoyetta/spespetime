@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev3"; }
+  @{ var rev = "rev4"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
   </description>
   <author>anoyetta</author>
   <license>CC BY-SA</license>
-  <zone>887</zone>
+  <zone>887,The Epic Of Alexander (Ultimate)</zone>
   <locale>JA</locale>
   <start>0039:戦闘開始！</start>
   <entry>PHASE1 LIQUID</entry>
@@ -75,6 +75,15 @@
     <a time="039" text="汚染蒸気１" />
     <a time="049" text="汚染蒸気２" />
 
+    @if (Model.Player.InJob("SCH")) {
+      <a time="050" name="陣" notice-o="-7" notice="陣">
+        <v-notice 
+          text="陣"
+          duration="7" 
+          icon="True.png" />
+      </a>
+    }
+
     <a time="056" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
     <a time="059" text="汚染蒸気３" />
     <a time="066" text="ウェイブ３回" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次は、ウェイブ3回。" />
@@ -85,7 +94,7 @@
     <a time="086" text="ドレナージ" sync="リキッドレイジの「ドレナージ」" notice="次は、ドレナージ。" />
     <a time="087" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" notice="次は、カスケード。" />
     <a time="088" text="均等化" notice="均等化。" notice-o="0" />
-    <a time="092" text="窒息" notice="次は、窒息。" />
+    <a time="092" text="窒息" notice="次は、窒息。" notice-o="-3" />
 
     <a time="095" text="リキッドジェイル" sync="リキッドレイジの「リキッドジェイル」" notice="次は、ジェイル。" />
 
@@ -96,7 +105,7 @@
 
     <a time="119" text="じゃんけん" notice-o="-1" notice="じゃんけん" />
     <a time="124" text="ハンド・オブ・パーティング" sync="リキッドハンドの「ハンド・オブ・パーティング」" />
-    <a time="125" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
+    <a time="125" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" notice-o="-3" notice="リキッドに集中！" />
 
     <a time="127" text="スプラッシュ６回" notice="次は、スプラッシュ6回。" />
     <a time="134" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
@@ -109,7 +118,7 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 140; }
 
-    <t text="１番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、ソード">
+    <t text="１番[北] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、北、ソード">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -117,7 +126,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="２番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、チャージ">
+    <t text="２番[北] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -125,7 +134,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="３番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、ソード">
+    <t text="３番[南] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -133,7 +142,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="４番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、チャージ">
+    <t text="４番[南] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -141,7 +150,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="５番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、ソード">
+    <t text="５番[北] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -149,7 +158,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="６番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、チャージ">
+    <t text="６番[北] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -157,7 +166,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="７番 ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、ソード">
+    <t text="７番[南] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -165,7 +174,7 @@
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="８番 チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、チャージ">
+    <t text="８番[南] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
       <v-notice 
         duration="30" 
         duration-visible="false"
@@ -199,12 +208,24 @@
         sync-to-hide="loses the effect of 雷属性圧縮 from" />
     </t>
 
-    <a time="@(140 - origin)" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
-    <a time="@(153 - origin)" text="アルファソード" sync="クルーズチェイサーの「アルファソード」" notice="次は、アルファソード。" />
-    <a time="@(154 - origin)" text="スーパーブラスティ・チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="次は、スーパーブラスティ・チャージ。" />
-    <a time="@(157 - origin)" text="アルファソード" sync="クルーズチェイサーの「アルファソード」" notice="次は、アルファソード。" />
-    <a time="@(159 - origin)" text="スーパーブラスティ・チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="次は、スーパーブラスティ・チャージ。" />
-    <a time="@(162 - origin)" text="アルファソード" sync="クルーズチェイサーの「アルファソード」" notice="次は、アルファソード。" />
-    <a time="@(164 - origin)" text="スーパーブラスティ・チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="次は、スーパーブラスティ・チャージ。" />
+    <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
+    <a time="@(146 - origin)" text="ブラスター1" sync="^15:[id8]:クルーズチェイサー:4830:ホークブラスター:[id8]:" notice="" sync-s="-3" />
+    <a time="@(148 - origin)" text="ブラスター2" notice="" />
+    <a time="@(150 - origin)" text="ブラスター3" notice="" />
+    <a time="@(150 - origin)" text="ブラスター4" notice="" />
+    <a time="@(153 - origin)" text="(1)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="ひとばん、ふたばんが担当" />
+    <a time="@(154 - origin)" text="(2)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+    <a time="@(155 - origin)" text="ブラスター5" notice="" />
+    <a time="@(155 - origin)" text="ブラスター6" notice="" />
+    <a time="@(157 - origin)" text="(3)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="3番、4番が担当" />
+    <a time="@(158 - origin)" text="(4)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+    <a time="@(159 - origin)" text="ブラスター7" notice="" />
+    <a time="@(161 - origin)" text="ブラスター8" notice="" />
+    <a time="@(162 - origin)" text="(5)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="5番、6番が担当" />
+    <a time="@(163 - origin)" text="(6)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+    <a time="@(163 - origin)" text="ブラスター9" notice="" />
+    <a time="@(166 - origin)" text="ブラスター10" notice="" />
+    <a time="@(166 - origin)" text="(7)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="7番、8番が担当" />
+    <a time="@(167 - origin)" text="(8)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
   </s>
 </timeline>

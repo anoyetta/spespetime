@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev4"; }
+  @{ var rev = "rev5"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -18,6 +18,13 @@
   <default target-element="Activity" target-attr="sync-s" value="-5" />
   <default target-element="Activity" target-attr="sync-e" value="4" />
 
+  @if (Model.Player.InJob("SCH")) {
+    <t
+      name="Marker 1"
+      sync="「絶アレキサンダー討滅戦」の攻略を開始した。"
+      exec="https://localhost:1337/preset/ULT_ALEX1/load" />
+  }
+
   @{ var origin = 0; }
 
   <s name="PHASE1 LIQUID">
@@ -25,16 +32,16 @@
     <a time="000" text="@rev" />
 
     <t text="エンボラス" sync="Added new combatant エンボラス" notice="エンボラス">
-      <v-notice 
-        duration="5" 
+      <v-notice
+        duration="5"
         duration-visible="false"
         icon="Bomb.png"
         order="-1" />
     </t>
 
     <t text="ヤークト" sync="Added new combatant ヤークトドール" notice="ヤークト">
-      <v-notice 
-        duration="5" 
+      <v-notice
+        duration="5"
         duration-visible="false"
         icon="Leave.png"
         order="-1" />
@@ -42,23 +49,23 @@
 
     <!-- 光性爆雷 -->
     <t name="光性爆雷" text="光性爆雷" sync="[mex]に「光性爆雷」の効果。" notice="こうせい爆雷。">
-      <v-notice 
-        duration="4" 
+      <v-notice
+        duration="4"
         job-icon="true" />
     </t>
 
     <!-- ジェイル -->
     <t name="自分にジェイル" text="ジェイル\n ➜ ${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:0010:" notice="自分にジェイル">
-      <v-notice 
-        duration="6" 
+      <v-notice
+        duration="6"
         duration-visible="false"
         job-icon="true" />
     </t>
 
     <!-- 窒息 -->
     <t name="窒息" text="窒息" sync="[pc]に「窒息」の効果。" notice="ちっそくー">
-      <v-notice 
-        duration="10" 
+      <v-notice
+        duration="10"
         icon="Timer.png" />
     </t>
 
@@ -77,9 +84,9 @@
 
     @if (Model.Player.InJob("SCH")) {
       <a time="050" name="陣" notice-o="-7" notice="陣">
-        <v-notice 
+        <v-notice
           text="陣"
-          duration="7" 
+          duration="7"
           icon="True.png" />
       </a>
     }
@@ -118,114 +125,137 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 140; }
 
-    <t text="１番[北] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、北、ソード">
-      <v-notice 
-        duration="30" 
+    <t text="１[北] ソードAOE3" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、北、ソード">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice1.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="２番[北] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
-      <v-notice 
-        duration="30" 
+    <t text="２[北] チャージAOE3" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice2.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="３番[南] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
-      <v-notice 
-        duration="30" 
+    <t text="３[南] ソードAOE4" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice3.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="４番[南] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
-      <v-notice 
-        duration="30" 
+    <t text="４[南] チャージAOE4" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice4.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="５番[北] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
-      <v-notice 
-        duration="30" 
+    <t text="５[北] ソードAOE6" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice5.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="６番[北] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
-      <v-notice 
-        duration="30" 
+    <t text="６[北] チャージAOE6" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice6.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
-    <t text="７番[南] ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
-      <v-notice 
-        duration="30" 
+    <t text="７[南] ソードAOE8" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice7.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
     </t>
 
-    <t text="８番[南] チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
-      <v-notice 
-        duration="30" 
+    <t text="８[南] チャージAOE8" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
+      <v-notice
+        duration="30"
         duration-visible="false"
-        icon="Flag.png"
+        icon="Dice8.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
     </t>
 
     <t name="水耐性ダウン" text="水ダウン" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="水ダウン">
-      <v-notice 
-        duration="31" 
+      <v-notice
+        duration="31"
         job-icon="true" />
     </t>
 
     <t name="雷耐性ダウン" text="雷ダウン" sync="[mex]に「雷属性耐性低下［強］」の効果。" notice="雷ダウン">
-      <v-notice 
-        duration="31" 
+      <v-notice
+        duration="31"
         job-icon="true" />
     </t>
 
     <t name="水属性圧縮" text="水圧縮" sync="[mex]に「水属性圧縮」の効果。" notice="みず圧縮">
-      <v-notice 
-        duration="29" 
+      <v-notice
+        duration="29"
         job-icon="true"
         sync-to-hide="loses the effect of 水属性圧縮 from" />
     </t>
 
     <t name="雷属性圧縮" text="雷圧縮" sync="[mex]に「雷属性圧縮」の効果。" notice="かみなり圧縮">
-      <v-notice 
-        duration="29" 
+      <v-notice
+        duration="29"
         job-icon="true"
         sync-to-hide="loses the effect of 雷属性圧縮 from" />
     </t>
 
     <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
-    <a time="@(146 - origin)" text="ブラスター1" sync="^15:[id8]:クルーズチェイサー:4830:ホークブラスター:[id8]:" notice="" sync-s="-3" />
-    <a time="@(148 - origin)" text="ブラスター2" notice="" />
-    <a time="@(150 - origin)" text="ブラスター3" notice="" />
-    <a time="@(150 - origin)" text="ブラスター4" notice="" />
-    <a time="@(153 - origin)" text="(1)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="ひとばん、ふたばんが担当" />
-    <a time="@(154 - origin)" text="(2)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
-    <a time="@(155 - origin)" text="ブラスター5" notice="" />
-    <a time="@(155 - origin)" text="ブラスター6" notice="" />
-    <a time="@(157 - origin)" text="(3)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="3番、4番が担当" />
-    <a time="@(158 - origin)" text="(4)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
-    <a time="@(159 - origin)" text="ブラスター7" notice="" />
-    <a time="@(161 - origin)" text="ブラスター8" notice="" />
-    <a time="@(162 - origin)" text="(5)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="5番、6番が担当" />
-    <a time="@(163 - origin)" text="(6)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
-    <a time="@(163 - origin)" text="ブラスター9" notice="" />
-    <a time="@(166 - origin)" text="ブラスター10" notice="" />
-    <a time="@(166 - origin)" text="(7)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2.5" notice="7番、8番が担当" />
-    <a time="@(167 - origin)" text="(8)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+
+    <a time="@(154 - origin)" text="(1)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="ひとばん、ふたばんが担当">
+      <v-notice
+        text="１番, ２番が担当"
+        icon="True.png"
+        duration="4"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(155 - origin)" text="(2)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+
+    <a time="@(158 - origin)" text="(3)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="3番、4番が担当">
+      <v-notice
+        text="３番, ４番が担当"
+        icon="True.png"
+        duration="4"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(159 - origin)" text="(4)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+
+    <a time="@(163 - origin)" text="(5)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="5番、6番が担当">
+      <v-notice
+        text="５番, ６番が担当"
+        icon="True.png"
+        duration="4"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(164 - origin)" text="(6)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+
+    <a time="@(167 - origin)" text="(7)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="7番、8番が担当">
+      <v-notice
+        text="７番, ８番が担当"
+        icon="True.png"
+        duration="4"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(168 - origin)" text="(8)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
+
   </s>
 </timeline>

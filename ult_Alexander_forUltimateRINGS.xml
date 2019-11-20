@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev5"; }
+  @{ var rev = "rev6"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -217,7 +217,7 @@
 
     <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
 
-    <a time="@(154 - origin)" text="(1)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="ひとばん、ふたばんが担当">
+    <a time="@(154 - origin)" text="(1)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2" notice="ひとばん、ふたばんが担当">
       <v-notice
         text="１番, ２番が担当"
         icon="True.png"
@@ -227,7 +227,7 @@
     </a>
     <a time="@(155 - origin)" text="(2)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
 
-    <a time="@(158 - origin)" text="(3)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="3番、4番が担当">
+    <a time="@(158 - origin)" text="(3)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2" notice="3番、4番が担当">
       <v-notice
         text="３番, ４番が担当"
         icon="True.png"
@@ -237,7 +237,7 @@
     </a>
     <a time="@(159 - origin)" text="(4)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
 
-    <a time="@(163 - origin)" text="(5)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="5番、6番が担当">
+    <a time="@(163 - origin)" text="(5)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2" notice="5番、6番が担当">
       <v-notice
         text="５番, ６番が担当"
         icon="True.png"
@@ -247,7 +247,7 @@
     </a>
     <a time="@(164 - origin)" text="(6)チャージ" sync="クルーズチェイサーの「スーパーブラスティ・チャージ」" notice="" sync-s="-3" />
 
-    <a time="@(167 - origin)" text="(7)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-3" notice="7番、8番が担当">
+    <a time="@(167 - origin)" text="(7)ソード" sync="クルーズチェイサーの「アルファソード」" sync-s="-3" notice-o="-2" notice="7番、8番が担当">
       <v-notice
         text="７番, ８番が担当"
         icon="True.png"

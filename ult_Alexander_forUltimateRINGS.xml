@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev7"; }
+  @{ var rev = "rev7.1"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -21,8 +21,13 @@
   @if (Model.Player.InJob("SCH")) {
     <t
       name="Marker 1"
-      sync="(「絶アレキサンダー討滅戦」の攻略を開始した。|00:0139:戦闘開始まで)"
+      sync="(「絶アレキサンダー討滅戦」の攻略を開始した。|0139:戦闘開始まで)"
       exec="POST https://localhost:1337/preset/ULT_ALEX1/load" />
+
+    <t
+      name="Marker 2"
+      sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！"
+      exec="POST https://localhost:1337/preset/ULT_ALEX2/load" />
   }
 
   @{ var origin = 0; }
@@ -133,7 +138,6 @@
         duration-visible="false"
         icon="Dice1.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair1" truncate="false" />
     </t>
 
     <t text="２[北] チャージ\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
@@ -142,7 +146,6 @@
         duration-visible="false"
         icon="Dice2.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair1" truncate="false" />
     </t>
 
     <t text="３[南] ソード\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
@@ -151,7 +154,6 @@
         duration-visible="false"
         icon="Dice3.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair2" truncate="false" />
     </t>
 
     <t text="４[南] チャージ\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
@@ -160,7 +162,6 @@
         duration-visible="false"
         icon="Dice4.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair2" truncate="false" />
     </t>
 
     <t text="５[北] ソード\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
@@ -169,7 +170,6 @@
         duration-visible="false"
         icon="Dice5.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair3" truncate="false" />
     </t>
 
     <t text="６[北] チャージ\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
@@ -178,7 +178,6 @@
         duration-visible="false"
         icon="Dice6.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair3" truncate="false" />
     </t>
 
     <t text="７[南] ソード\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
@@ -187,7 +186,6 @@
         duration-visible="false"
         icon="Dice7.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair4" truncate="false" />
     </t>
 
     <t text="８[南] チャージ\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
@@ -196,8 +194,57 @@
         duration-visible="false"
         icon="Dice8.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair4" truncate="false" />
     </t>
+
+    <!-- ブラスター set1 -->
+    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
+    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
+    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3, 前えー">
+      <v-notice
+        text="１, ２前に出る"
+        icon="True.png"
+        duration="2"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4, 前えー">
+      <v-notice
+        text="３, ４前に出る"
+        icon="True.png"
+        duration="2"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
+
+    <!-- ブラスター set2 -->
+    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
+    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
+    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8, 前えー">
+      <v-notice
+        text="５, ６前に出る"
+        icon="True.png"
+        duration="2"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9, 前えー">
+      <v-notice
+        text="７, ８前に出る"
+        icon="True.png"
+        duration="2"
+        duration-visible="true"
+        order="-1" />
+    </a>
+    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
+
+    <a time="@(166 - origin)" text="TO JUSTICE" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" sync-s="-20" goto="PHASE3 JUSTICE" />
+    <a time="@(999 - origin)" text="DUMMY" />
+  </s>
+
+  <s name="PHASE3 JUSTICE">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 169; }
 
     <t name="水耐性ダウン" text="水ダウン" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="水ダウン">
       <v-notice
@@ -225,98 +272,106 @@
         sync-to-hide="loses the effect of 雷属性圧縮 from" />
     </t>
 
-    <a time="@(999 - origin)" text="PHASE2 END" />
-  </s>
-
-  <s name="BLASTER Pair1">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3, 前えー">
+    <!-- カンペ：最初に付与される仮判決デバフの表示を維持するトリガ begin -->
+    <t text="1回目:α" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決α from  for 36.00 Seconds." notice="あるふぁー" sync-count="1" >
+      <expressions>
+        <pre name="debuff_origin" value="false" />
+        <set name="debuff_origin" value="true" />
+      </expressions>
       <v-notice
-        text="前に出る"
-        icon="True.png"
-        duration="2"
-        duration-visible="true"
-        order="-1" />
-    </a>
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
+        order="1"
+        duration="120"
+        icon="A.png"
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
+    </t>
 
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
-  </s>
-
-  <s name="BLASTER Pair2">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4, 前えー">
+    <t text="1回目:β" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決β from  for 36.00 Seconds." notice="べーたー" sync-count="1" >
+      <expressions>
+        <pre name="debuff_origin" value="false" />
+        <set name="debuff_origin" value="true" />
+      </expressions>
       <v-notice
-        text="前に出る"
-        icon="True.png"
-        duration="2"
-        duration-visible="true"
-        order="-1" />
-    </a>
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
+        order="1"
+        duration="120"
+        icon="B.png"
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
+    </t>
 
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
-  </s>
-
-  <s name="BLASTER Pair3">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
-
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7, 前えー">
+    <t text="1回目:γ" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決γ from  for 36.00 Seconds." notice="がんまー" sync-count="1" >
+      <expressions>
+        <pre name="debuff_origin" value="false" />
+        <set name="debuff_origin" value="true" />
+      </expressions>
       <v-notice
-        text="前に出る"
-        icon="True.png"
-        duration="2"
-        duration-visible="true"
-        order="-1" />
-    </a>
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
-  </s>
+        order="1"
+        duration="120"
+        icon="C.png"
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
+    </t>
 
-  <s name="BLASTER Pair4">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
-
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9, 前えー">
+    <t text="1回目:δ" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ from  for 36.00 Seconds." notice="しぐまー" sync-count="1" >
+      <expressions>
+        <pre name="debuff_origin" value="false" />
+        <set name="debuff_origin" value="true" />
+      </expressions>
       <v-notice
-        text="前に出る"
-        icon="True.png"
-        duration="2"
-        duration-visible="true"
-        order="-1" />
+        order="1"
+        duration="120"
+        icon="D.png"
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
+    </t>
+    <!-- 最初に付与される仮判決デバフの表示を維持するトリガ end -->
+
+    <a time="@(169 - origin)" name="phase3 start" sync-s="-10" sync-e="10" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" >
+      <expressions>
+        <set name="debuff_origin" value="false" />
+      </expressions>
     </a>
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
+
+    <!--
+    <a time="32" text="ジャスティスキック" sync="ブルートジャスティスの「ジャスティスキック」" notice="ジャスティスキック。" />
+    <a time="44" text="竜巻" sync="クルーズチェイサーの「竜巻」" notice="竜巻。" />
+    <a time="47" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice="ナイサイ。" />
+    <a time="53" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="システムリンク。" />
+    <a time="55" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice="" />
+    <a time="61" text="照準" sync="クルーズチェイサーの「照準」" notice="" />
+    <a time="61" text="ビームチャクラム" sync="15:[id8]:スチームチャクラム:4855:ビームチャクラム:[id8]:" icon="AOEHorizontal.png" notice="チャクラム。" />
+
+    <a time="68" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="フォトン。" />
+    <a time="79" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="スピンクラッシャー。" />
+
+    <a time="83" text="水・雷着弾" notice="もうすぐ爆発。" icon="Explosion.png" notice-o="-6" />
+    <a time="90" text="ミサイル全弾発射" sync="ブルートジャスティスの「ミサイル全弾発射」" notice="" />
+    <a time="94" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="地雷。" />
+    <a time="95" text="アースミサイル" icon="AOE.png" notice="" />
+    <a time="99" text="カウント" sync="ブルートジャスティスの「カウント」" notice="カウント。" />
+    <a time="99" text="アイスミサイル" icon="Ice.png" notice="" />
+
+    <a time="113" text="水・雷着弾" notice="もうすぐ爆発。" icon="Explosion.png" notice-o="-6" />
+    <a time="115" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice="" />
+
+    <a time="120" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
+    <a time="122" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="火炎放射。" />
+    <a time="134" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="竜巻。" />
+    <a time="143" text="水・雷着弾" notice="もうすぐ爆発。" icon="Explosion.png" notice-o="-6" />
+
+    <a time="160" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="" />
+    <a time="163" text="最後の審判：結審" sync="ブルートジャスティスの「最後の審判：結審」" notice="" />
+
+    <a time="173" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="フォトン。" />
+    <a time="182" text="Wロケットパンチ" sync="ブルートジャスティスの「ダブルロケットパンチ」" notice="ロケットパンチ。" />
+    <a time="184" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice="スーパージャンプ。" />
+    <a time="189" text="スーパージャンプ着弾" sync="" notice="" />
+    <a time="191" text="アポカリプティクレイ" sync="ブルートジャスティスの「アポカリプティクレイ」" notice="" />
+
+    <a time="202" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="竜巻。" />
+    <a time="210" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="竜巻。" />
+
+    <a time="217" text="時間切れ詠唱" sync="ブルートジャスティスは「死刑判決」の構え。" notice="もうすぐ時間切れ。" />
+    <a time="226" text="時間切れ" sync="ブルートジャスティスは「死刑判決」の構え。" icon="Timeout.png" notice="" />
+    <a time="243" text="（移行待機）" />
+    -->
+
+    <a time="@(999 - origin)" text="DUMMY" />
   </s>
 </timeline>

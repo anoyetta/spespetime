@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev7.3"; }
+  @{ var rev = "rev9"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -138,7 +138,6 @@
         duration-visible="false"
         icon="Dice1.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair1" truncate="true" />
     </t>
 
     <t text="２[北] チャージ\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
@@ -147,7 +146,6 @@
         duration-visible="false"
         icon="Dice2.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair1" truncate="true" />
     </t>
 
     <t text="３[南] ソード\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
@@ -156,7 +154,6 @@
         duration-visible="false"
         icon="Dice3.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair2" truncate="true" />
     </t>
 
     <t text="４[南] チャージ\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
@@ -165,7 +162,6 @@
         duration-visible="false"
         icon="Dice4.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair2" truncate="true" />
     </t>
 
     <t text="５[北] ソード\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
@@ -174,7 +170,6 @@
         duration-visible="false"
         icon="Dice5.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair3" truncate="true" />
     </t>
 
     <t text="６[北] チャージ\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
@@ -183,7 +178,6 @@
         duration-visible="false"
         icon="Dice6.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair3" truncate="true" />
     </t>
 
     <t text="７[南] ソード\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
@@ -192,7 +186,6 @@
         duration-visible="false"
         icon="Dice7.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
-      <load target="BLASTER Pair4" truncate="true" />
     </t>
 
     <t text="８[南] チャージ\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
@@ -201,105 +194,43 @@
         duration-visible="false"
         icon="Dice8.png"
         sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
-      <load target="BLASTER Pair4" truncate="true" />
     </t>
 
-    <a time="@(999 - origin)" text="DUMMY" />
-  </s>
-
-  <s name="BLASTER Pair1">
     <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-6" sync-e="0" notice-o="0" notice="1" />
+    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
     <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
     <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3, 前えー">
       <v-notice
-        text="前に出る"
+        text="１, ２前に出る"
         icon="True.png"
         duration="1.5"
         duration-visible="false"
         order="-1" />
     </a>
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
-
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
-
-    <a time="@(166 - origin)" text="TO JUSTICE" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" sync-s="-20" goto="PHASE3 JUSTICE" />
-    <a time="@(999 - origin)" text="DUMMY" />
-  </s>
-
-  <s name="BLASTER Pair2">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-6" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
     <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4, 前えー">
       <v-notice
-        text="前に出る"
+        text="３, ４前に出る"
         icon="True.png"
         duration="1.5"
         duration-visible="false"
         order="-1" />
     </a>
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
+    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5, 中央！" />
 
     <!-- ブラスター set2 -->
     <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
     <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
-
-    <a time="@(166 - origin)" text="TO JUSTICE" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" sync-s="-20" goto="PHASE3 JUSTICE" />
-    <a time="@(999 - origin)" text="DUMMY" />
-  </s>
-
-  <s name="BLASTER Pair3">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-6" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
-
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7, 前えー">
+    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8, 前えー">
       <v-notice
-        text="前に出る"
+        text="５, ６前に出る"
         icon="True.png"
         duration="1.5"
         duration-visible="false"
         order="-1" />
     </a>
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
-    <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
-
-    <a time="@(166 - origin)" text="TO JUSTICE" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" sync-s="-20" goto="PHASE3 JUSTICE" />
-    <a time="@(999 - origin)" text="DUMMY" />
-  </s>
-
-  <s name="BLASTER Pair4">
-    <!-- ブラスター set1 -->
-    <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-6" sync-e="0" notice-o="0" notice="1" />
-    <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5" />
-
-    <!-- ブラスター set2 -->
-    <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
-    <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
     <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9, 前えー">
       <v-notice
-        text="前に出る"
+        text="７, ８前に出る"
         icon="True.png"
         duration="1.5"
         duration-visible="false"

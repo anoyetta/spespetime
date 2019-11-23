@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev10"; }
+  @{ var rev = "rev10.1"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -328,46 +328,46 @@
       </expressions>
     </a>
 
-    <a time="@(167 - origin)" text="ジャスティスキック" sync="ブルートジャスティスの「ジャスティスキック」" />
-    <a time="@(179 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" notice="竜巻。" />
-    <a time="@(182 - origin)" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice="ナイサイ。" />
-    <a time="@(188 - origin)" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="システムリンク。" />
-    <a time="@(190 - origin)" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice="" />
-    <a time="@(196 - origin)" text="照準" sync="クルーズチェイサーの「照準」" notice="" />
-    <a time="@(196 - origin)" text="チャクラム" sync="15:[id8]:スチームチャクラム:4855:ビームチャクラム:[id8]:" icon="AOEHorizontal.png" notice="チャクラム。" />
+    <a time="@(167 - origin)" text="ジャスティスキック" sync="ブルートジャスティスの「ジャスティスキック」" sync-s="-10" />
+    <a time="@(179 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" notice="次は、竜巻。" />
+    <a time="@(182 - origin)" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice-o="-1" notice="ナイサイ。" />
+    <a time="@(188 - origin)" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="次は、システムリンク。" />
+    <a time="@(190 - origin)" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice-o="-1" notice="次は、チャクラム。" />
+    <a time="@(196 - origin)" text="照準" sync="クルーズチェイサーの「照準」" notice-o="-1" notice="照準" />
+    <a time="@(196 - origin)" text="チャクラム" icon="AOEHorizontal.png" sync="^15:[id8]:スチームチャクラム:4855:ビームチャクラム:[id8]:" />
 
-    <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="フォトン。" />
-    <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="スピンクラッシャー。" />
+    <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />
+    <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次は、スピンクラッシャー。" />
 
-    <a time="@(218 - origin)" text="水・雷着弾" notice="もうすぐ爆発。" icon="Explosion.png" notice-o="-6" />
+    <a time="@(218 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
     <a time="@(225 - origin)" text="ミサイル全弾発射" sync="ブルートジャスティスの「ミサイル全弾発射」" notice="" />
-    <a time="@(229 - origin)" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="地雷。" />
+    <a time="@(229 - origin)" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="次は、地雷。" />
     <a time="@(230 - origin)" text="アースミサイル" icon="AOE.png" notice="" />
-    <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="カウント。" />
+    <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="次は、カウント。" />
     <a time="@(234 - origin)" text="アイスミサイル" icon="Ice.png" notice="" />
 
-    <a time="@(248 - origin)" text="水・雷着弾" notice="もうすぐ爆発。" icon="Explosion.png" notice-o="-6" />
+    <a time="@(248 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
     <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice="" />
 
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
-    <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="火炎放射。" />
-    <a time="@(269 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="竜巻。" />
-    <a time="@(278 - origin)" text="水・雷着弾" notice="もうすぐ爆発。" icon="Explosion.png" notice-o="-6" />
+    <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
+    <a time="@(269 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。" />
+    <a time="@(278 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
 
-    <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="" />
+    <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次は、プロペラ。" />
     <a time="@(298 - origin)" text="最後の審判：結審" sync="ブルートジャスティスの「最後の審判：結審」" notice="" />
 
-    <a time="@(308 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="フォトン。" />
-    <a time="@(317 - origin)" text="Wロケットパンチ" sync="ブルートジャスティスの「ダブルロケットパンチ」" notice="ロケットパンチ。" />
-    <a time="@(319 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice="スーパージャンプ。" />
+    <a time="@(308 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />
+    <a time="@(317 - origin)" text="Ｗロケパン" sync="ブルートジャスティスの「ダブルロケットパンチ」" notice="次は、ロケパン。" />
+    <a time="@(319 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice-o="-3" notice="次は、スーパージャンプ。" />
     <a time="@(324 - origin)" text="スーパージャンプ着弾" sync="" notice="" />
-    <a time="@(326 - origin)" text="アポカリプティクレイ" sync="ブルートジャスティスの「アポカリプティクレイ」" notice="" />
+    <a time="@(326 - origin)" text="アポカリプティクレイ" sync="ブルートジャスティスの「アポカリプティクレイ」" notice="次は、アポカリ。" />
 
-    <a time="@(337 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="竜巻。" />
-    <a time="@(345 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="竜巻。" />
+    <a time="@(337 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻2回。" />
+    <a time="@(345 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="" />
 
     <a time="@(352 - origin)" text="時間切れ詠唱" sync="ブルートジャスティスは「死刑判決」の構え。" notice="もうすぐ時間切れ。" />
-    <a time="@(361 - origin)" text="時間切れ" sync="ブルートジャスティスは「死刑判決」の構え。" icon="Timeout.png" notice="" />
+    <a time="@(361 - origin)" text="時間切れ" sync="ブルートジャスティスの「死刑判決」" icon="Timeout.png" notice="" />
 
     <a time="@(999 - origin)" text="DUMMY" />
   </s>

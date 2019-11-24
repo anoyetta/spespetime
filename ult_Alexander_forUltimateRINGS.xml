@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev10.1"; }
+  @{ var rev = "rev10.2"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -24,10 +24,12 @@
       sync="(「絶アレキサンダー討滅戦」の攻略を開始した。|0139:戦闘開始まで)"
       exec="http://localhost:1337/preset/ULT_ALEX1/load" />
 
+    <!--
     <t
       name="Marker 2"
       sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！"
       exec="http://localhost:1337/preset/ULT_ALEX2/load" />
+    -->
   }
 
   @{ var origin = 0; }
@@ -249,27 +251,29 @@
     <t name="水耐性ダウン" text="水ダウン" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="水ダウン">
       <v-notice
         duration="31"
-        job-icon="true" />
+        job-icon="true"
+        sync-to-hide="[mex] loses the effect of 水属性耐性低下［強］ from" />
     </t>
 
     <t name="雷耐性ダウン" text="雷ダウン" sync="[mex]に「雷属性耐性低下［強］」の効果。" notice="雷ダウン">
       <v-notice
         duration="31"
-        job-icon="true" />
+        job-icon="true"
+        sync-to-hide="[mex] loses the effect of 雷属性耐性低下［強］ from" />
     </t>
 
     <t name="水属性圧縮" text="水圧縮" sync="[mex]に「水属性圧縮」の効果。" notice="みず圧縮">
       <v-notice
         duration="29"
         job-icon="true"
-        sync-to-hide="loses the effect of 水属性圧縮 from" />
+        sync-to-hide="[mex] loses the effect of 水属性圧縮 from" />
     </t>
 
     <t name="雷属性圧縮" text="雷圧縮" sync="[mex]に「雷属性圧縮」の効果。" notice="かみなり圧縮">
       <v-notice
         duration="29"
         job-icon="true"
-        sync-to-hide="loses the effect of 雷属性圧縮 from" />
+        sync-to-hide="[mex] loses the effect of 雷属性圧縮 from" />
     </t>
 
     <!-- カンペ：最初に付与される仮判決デバフの表示を維持するトリガ begin -->
@@ -279,7 +283,7 @@
         <set name="debuff_origin" value="true" />
       </expressions>
       <v-notice
-        order="1"
+        order="-1"
         duration="120"
         icon="A.png"
         sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
@@ -291,7 +295,7 @@
         <set name="debuff_origin" value="true" />
       </expressions>
       <v-notice
-        order="1"
+        order="-1"
         duration="120"
         icon="B.png"
         sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
@@ -303,19 +307,19 @@
         <set name="debuff_origin" value="true" />
       </expressions>
       <v-notice
-        order="1"
+        order="-1"
         duration="120"
         icon="C.png"
         sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="1回目:δ" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ from  for 36.00 Seconds." notice="しぐまー" sync-count="1" >
+    <t text="1回目:δ" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ from  for 36.00 Seconds." notice="でるたー" sync-count="1" >
       <expressions>
         <pre name="debuff_origin" value="false" />
         <set name="debuff_origin" value="true" />
       </expressions>
       <v-notice
-        order="1"
+        order="-1"
         duration="120"
         icon="D.png"
         sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
@@ -337,6 +341,7 @@
     <a time="@(196 - origin)" text="チャクラム" icon="AOEHorizontal.png" sync="^15:[id8]:スチームチャクラム:4855:ビームチャクラム:[id8]:" />
 
     <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />
+    <a time="@(204 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
     <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次は、スピンクラッシャー。" />
 
     <a time="@(218 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
@@ -345,6 +350,7 @@
     <a time="@(230 - origin)" text="アースミサイル" icon="AOE.png" notice="" />
     <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="次は、カウント。" />
     <a time="@(234 - origin)" text="アイスミサイル" icon="Ice.png" notice="" />
+    <a time="@(235 - origin)" text="★受渡し２" icon="True.png" notice-o="0" notice="受渡し" />
 
     <a time="@(248 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
     <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice="" />
@@ -352,9 +358,11 @@
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
     <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
     <a time="@(269 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。" />
+    <a time="@(270 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
     <a time="@(278 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
 
     <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次は、プロペラ。" />
+    <a time="@(296 - origin)" text="★受渡し４" icon="True.png" notice-o="0" notice="受渡し" />
     <a time="@(298 - origin)" text="最後の審判：結審" sync="ブルートジャスティスの「最後の審判：結審」" notice="" />
 
     <a time="@(308 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />

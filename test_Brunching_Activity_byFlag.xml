@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>アクティビティの分岐テスト</name>
+  <rev>rev1</rev>
+  <description>
+    フラグによってアクティビティを分岐させるテスト
+  </description>
+  <author>anoyetta</author>
+  <zone>TEST</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+  @{ var origin = 0; }
+
+  <s name="ENTRY">
+    @* このフェーズの基点秒数 0 *@
+    @{ origin = 0; }
+
+    <a time="@(001 - origin)" text="パターンAへ切替">
+      <expressions>
+        <set name="pattern" value="A" />
+      </expressions>
+    </a>
+
+    <a time="@(011 - origin)" text="パターンBへ切替">
+      <expressions>
+        <set name="pattern" value="B" />
+      </expressions>
+    </a>
+
+    <a time="@(021 - origin)" text="パターンCへ切替">
+      <expressions>
+        <set name="pattern" value="C" />
+      </expressions>
+    </a>
+
+    <a time="@(030 - origin)" text="パターンA" notice="パターンAに従って行動せよ">
+      <expressions>
+        <pre name="pattern" value="A" />
+      </expressions>
+    </a>
+
+    <a time="@(030 - origin)" text="パターンB" notice="パターンBに従って行動せよ">
+      <expressions>
+        <pre name="pattern" value="B" />
+      </expressions>
+    </a>
+
+    <a time="@(030 - origin)" text="パターンC" notice="パターンCに従って行動せよ">
+      <expressions>
+        <pre name="pattern" value="C" />
+      </expressions>
+    </a>
+
+    <a time="@(999 - origin)" text="DUMMY" />
+  </s>
+</timeline>

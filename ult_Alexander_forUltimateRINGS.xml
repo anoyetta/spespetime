@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev10.2"; }
+  @{ var rev = "rev11.2"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -135,6 +135,9 @@
     <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
 
     <t text="１[北] ソード\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、北、ソード">
+      <expressions>
+        <set name="dice_group" value="1" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -143,6 +146,9 @@
     </t>
 
     <t text="２[北] チャージ\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
+      <expressions>
+        <set name="dice_group" value="1" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -151,6 +157,9 @@
     </t>
 
     <t text="３[南] ソード\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
+      <expressions>
+        <set name="dice_group" value="2" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -159,6 +168,9 @@
     </t>
 
     <t text="４[南] チャージ\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
+      <expressions>
+        <set name="dice_group" value="2" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -167,6 +179,9 @@
     </t>
 
     <t text="５[北] ソード\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
+      <expressions>
+        <set name="dice_group" value="3" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -175,6 +190,9 @@
     </t>
 
     <t text="６[北] チャージ\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
+      <expressions>
+        <set name="dice_group" value="3" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -183,6 +201,9 @@
     </t>
 
     <t text="７[南] ソード\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
+      <expressions>
+        <set name="dice_group" value="4" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -191,6 +212,9 @@
     </t>
 
     <t text="８[南] チャージ\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
+      <expressions>
+        <set name="dice_group" value="4" />
+      </expressions>
       <v-notice
         duration="30"
         duration-visible="false"
@@ -201,7 +225,12 @@
     <!-- ブラスター set1 -->
     <a time="@(145 + (2.2 * 0) - origin)" text="ブラスター壱" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-5" sync-e="0" notice-o="0" notice="1" />
     <a time="@(145 + (2.2 * 1) - origin)" text="ブラスター弐" notice-o="0" notice="2" />
-    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3, 前えー">
+
+    <a time="@(145 + (2.2 * 2) - origin)" text="ブラスター参" notice-o="0" notice="3" />
+    <a time="@(145 + (2.2 * 2) - origin)" text="ソード＆チャージ" notice-o="0.1" notice="前えー">
+      <expressions>
+        <pre name="dice_group" value="1" />
+      </expressions>
       <v-notice
         text="１, ２前に出る"
         icon="True.png"
@@ -209,7 +238,12 @@
         duration-visible="false"
         order="-1" />
     </a>
-    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4, 前えー">
+
+    <a time="@(145 + (2.2 * 3) - origin)" text="ブラスター四" notice-o="0" notice="4" />
+    <a time="@(145 + (2.2 * 3) - origin)" text="ソード＆チャージ" notice-o="0.1" notice="前えー">
+      <expressions>
+        <pre name="dice_group" value="2" />
+      </expressions>
       <v-notice
         text="３, ４前に出る"
         icon="True.png"
@@ -217,12 +251,24 @@
         duration-visible="false"
         order="-1" />
     </a>
-    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0" notice="5, 中央！" />
+
+    <a time="@(145 + (2.2 * 4) - origin)" text="ブラスター五 (内)" sync="クルーズチェイサー:4830:ホークブラスター" sync-s="-1.8" sync-e="0" notice-o="0.5" notice="5, 停止！">
+      <v-notice
+        text="停止"
+        icon="DontAction.png"
+        duration="1.5"
+        duration-visible="false"
+        order="-1" />
+    </a>
 
     <!-- ブラスター set2 -->
     <a time="@(145 + (2.2 * 5) - origin)" text="ブラスター六" notice-o="0" notice="6" />
+
     <a time="@(145 + (2.2 * 6) - origin)" text="ブラスター七" notice-o="0" notice="7" />
-    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8, 前えー">
+    <a time="@(145 + (2.2 * 6) - origin)" text="ソード＆チャージ" notice-o="0.1" notice="前えー">
+      <expressions>
+        <pre name="dice_group" value="3" />
+      </expressions>
       <v-notice
         text="５, ６前に出る"
         icon="True.png"
@@ -230,7 +276,14 @@
         duration-visible="false"
         order="-1" />
     </a>
-    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9, 前えー">
+
+    <a time="@(145 + (2.2 * 7) - origin)" text="ブラスター八" notice-o="0" notice="8" />
+
+    <a time="@(145 + (2.2 * 8) - origin)" text="ブラスター九" notice-o="0" notice="9" />
+    <a time="@(145 + (2.2 * 8) - origin)" text="ソード＆チャージ" notice-o="0.1" notice="前えー">
+      <expressions>
+        <pre name="dice_group" value="4" />
+      </expressions>
       <v-notice
         text="７, ８前に出る"
         icon="True.png"
@@ -249,102 +302,265 @@
     @{ origin = 167; }
 
     <t name="水耐性ダウン" text="水ダウン" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="水ダウン">
+      <expressions>
+        <set name="water_down" value="true" />
+      </expressions>
       <v-notice
         duration="31"
-        job-icon="true"
+        icon="Water.png"
         sync-to-hide="[mex] loses the effect of 水属性耐性低下［強］ from" />
     </t>
 
     <t name="雷耐性ダウン" text="雷ダウン" sync="[mex]に「雷属性耐性低下［強］」の効果。" notice="雷ダウン">
+      <expressions>
+        <set name="thunder_down" value="true" />
+      </expressions>
       <v-notice
         duration="31"
-        job-icon="true"
+        icon="Lightning.png"
         sync-to-hide="[mex] loses the effect of 雷属性耐性低下［強］ from" />
     </t>
 
     <t name="水属性圧縮" text="水圧縮" sync="[mex]に「水属性圧縮」の効果。" notice="みず圧縮">
+      <expressions>
+        <set name="water_bomb" value="true" />
+      </expressions>
       <v-notice
         duration="29"
-        job-icon="true"
+        icon="Water.png"
         sync-to-hide="[mex] loses the effect of 水属性圧縮 from" />
     </t>
 
     <t name="雷属性圧縮" text="雷圧縮" sync="[mex]に「雷属性圧縮」の効果。" notice="かみなり圧縮">
+      <expressions>
+        <set name="thunder_bomb" value="true" />
+      </expressions>
       <v-notice
         duration="29"
-        job-icon="true"
+        icon="Lightning.png"
         sync-to-hide="[mex] loses the effect of 雷属性圧縮 from" />
     </t>
 
-    <!-- カンペ：最初に付与される仮判決デバフの表示を維持するトリガ begin -->
-    <t text="1回目:α" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決α from  for 36.00 Seconds." notice="あるふぁー" sync-count="1" >
+    <t name="水ダウン解除" sync="[mex] loses the effect of 水属性耐性低下［強］">
       <expressions>
-        <pre name="debuff_origin" value="false" />
-        <set name="debuff_origin" value="true" />
+        <set name="water_down" value="false" />
       </expressions>
-      <v-notice
-        order="-1"
-        duration="120"
-        icon="A.png"
-        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="1回目:β" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決β from  for 36.00 Seconds." notice="べーたー" sync-count="1" >
+    <t name="雷ダウン解除" sync="[mex] loses the effect of 雷属性耐性低下［強］">
       <expressions>
-        <pre name="debuff_origin" value="false" />
-        <set name="debuff_origin" value="true" />
+        <set name="thunder_down" value="false" />
       </expressions>
-      <v-notice
-        order="-1"
-        duration="120"
-        icon="B.png"
-        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="1回目:γ" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決γ from  for 36.00 Seconds." notice="がんまー" sync-count="1" >
+    <t name="水圧縮解除" sync="[mex] loses the effect of 水属性圧縮">
       <expressions>
-        <pre name="debuff_origin" value="false" />
-        <set name="debuff_origin" value="true" />
+        <set name="water_bomb" value="false" />
       </expressions>
-      <v-notice
-        order="-1"
-        duration="120"
-        icon="C.png"
-        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="1回目:δ" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ from  for 36.00 Seconds." notice="でるたー" sync-count="1" >
+    <t name="雷圧縮解除" sync="[mex] loses the effect of 雷属性圧縮">
       <expressions>
-        <pre name="debuff_origin" value="false" />
-        <set name="debuff_origin" value="true" />
+        <set name="thunder_bomb" value="false" />
+      </expressions>
+    </t>
+
+    <!-- 仮判決1 -->
+    <t text="α１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決α" notice="あるふぁー1">
+      <expressions>
+        <pre name="judge_done" value="false" />
       </expressions>
       <v-notice
-        order="-1"
-        duration="120"
-        icon="D.png"
-        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
+        order="-5"
+        duration="36.1"
+        icon="Alpha.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の仮判決α" />
     </t>
-    <!-- 最初に付与される仮判決デバフの表示を維持するトリガ end -->
+
+    <t text="β１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決β" notice="べーたー1">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-5"
+        duration="36.1"
+        icon="Beta.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の仮判決β" />
+    </t>
+
+    <t text="γ１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決γ" notice="がんまー1">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-5"
+        duration="36.1"
+        icon="Gamma.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の仮判決γ" />
+    </t>
+
+    <t text="δ１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ" notice="でるたー1">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-5"
+        duration="36.1"
+        icon="Delta.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の仮判決δ" />
+    </t>
+    <!-- 仮判決1 end -->
+
+    <!-- 仮判決2 -->
+    <t text="α２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決α" notice="あるふぁー2">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-4"
+        duration="45.1"
+        icon="Alpha2.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の審判：仮判決α" />
+    </t>
+
+    <t text="β２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決β" notice="べーたー2">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-4"
+        duration="45.1"
+        icon="Beta2.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の審判：仮判決β" />
+    </t>
+
+    <t text="γ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決γ" notice="がんまー2">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-4"
+        duration="45.1"
+        icon="Gamma2.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の審判：仮判決γ" />
+    </t>
+
+    <t text="δ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決δ" notice="でるたー2">
+      <expressions>
+        <pre name="judge_done" value="false" />
+      </expressions>
+      <v-notice
+        order="-4"
+        duration="45.1"
+        icon="Delta2.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 最後の審判：仮判決δ" />
+    </t>
+    <!-- 仮判決2 end -->
 
     <a time="@(167 - origin)" name="phase3 start" sync-s="-10" sync-e="10" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" >
       <expressions>
-        <set name="debuff_origin" value="false" />
+        <set name="judge_done" value="false" />
+        <set name="water_bomb" value="false" />
+        <set name="thunder_bomb" value="false" />
+        <set name="water_down" value="false" />
+        <set name="thunder_down" value="false" />
       </expressions>
     </a>
 
-    <a time="@(167 - origin)" text="ジャスティスキック" sync="ブルートジャスティスの「ジャスティスキック」" sync-s="-10" />
+    <a time="@(167 - origin)" text="ジャスティスキック" sync="ブルートジャスティスの「ジャスティスキック」" sync-s="-10">
+    @if (Model.Player.InJob("SCH")) {
+      <v-notice
+        text="陣"
+        duration="5"
+        duration-visible="false"
+        icon="True.png" />
+    }
+    </a>
     <a time="@(179 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" notice="次は、竜巻。" />
-    <a time="@(182 - origin)" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice-o="-1" notice="ナイサイ。" />
+    <a time="@(182 - origin)" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice-o="-1" notice="ナイサイ。">
+    @if (Model.Player.InJob("SCH")) {
+      <v-notice
+        text="囁き"
+        duration="5"
+        duration-visible="false"
+        icon="True.png" />
+    }
+    </a>
     <a time="@(188 - origin)" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="次は、システムリンク。" />
     <a time="@(190 - origin)" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice-o="-1" notice="次は、チャクラム。" />
     <a time="@(196 - origin)" text="照準" sync="クルーズチェイサーの「照準」" notice-o="-1" notice="照準" />
     <a time="@(196 - origin)" text="チャクラム" icon="AOEHorizontal.png" sync="^15:[id8]:スチームチャクラム:4855:ビームチャクラム:[id8]:" />
 
-    <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />
+    <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。">
+    @if (Model.Player.InJob("SCH")) {
+      <v-notice
+        text="イルミ, 士気"
+        duration="5"
+        duration-visible="false"
+        icon="True.png" />
+    }
+    </a>
     <a time="@(204 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
     <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次は、スピンクラッシャー。" />
 
-    <a time="@(218 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
+    <!-- 水・雷 1回目 -->
+    @if (Model.Player.InRole("TANK")) {
+      <a time="@(218 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
+    }
+
+    @if (Model.Player.InRole("HEALER")) {
+      <a time="@(218 - origin)" text="担当なし" icon="Arrow8.png" notice-o="-10" notice="左上えー。">
+        <expressions>
+          <pre name="water_bomb" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ 左上へ (担当なし)"
+          duration="10"
+          duration-visible="false"
+          icon="Arrow8.png"
+          order="-10" />
+      </a>
+
+      <a time="@(218 - origin)" text="水爆発" icon="D.png" notice-o="-10" notice="デルタえー。">
+        <expressions>
+          <pre name="water_bomb" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ Dへ (水圧縮)"
+          duration="10"
+          duration-visible="false"
+          icon="D.png"
+          order="-10" />
+      </a>
+    }
+
+    @if (Model.Player.InRole("DPS")) {
+      <a time="@(218 - origin)" text="水頭割り" icon="D.png" notice-o="-10" notice="デルタえー。">
+        <expressions>
+          <pre name="thunder_bomb" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ Dへ (水頭割り)"
+          duration="10"
+          duration-visible="false"
+          icon="D.png"
+          order="-10" />
+      </a>
+
+      <a time="@(218 - origin)" text="雷爆発" icon="A.png" notice-o="-10" notice="アルファえー。">
+        <expressions>
+          <pre name="thunder_bomb" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ Aへ (雷爆発)"
+          duration="10"
+          duration-visible="false"
+          icon="A.png"
+          order="-10" />
+      </a>
+    }
+    <!-- 水・雷 1回目 end -->
+
     <a time="@(225 - origin)" text="ミサイル全弾発射" sync="ブルートジャスティスの「ミサイル全弾発射」" notice="" />
     <a time="@(229 - origin)" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="次は、地雷。" />
     <a time="@(230 - origin)" text="アースミサイル" icon="AOE.png" notice="" />
@@ -352,17 +568,196 @@
     <a time="@(234 - origin)" text="アイスミサイル" icon="Ice.png" notice="" />
     <a time="@(235 - origin)" text="★受渡し２" icon="True.png" notice-o="0" notice="受渡し" />
 
-    <a time="@(248 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
+    <!-- 水・雷 2回目 -->
+    @if (Model.Player.InRole("TANK")) {
+      <a time="@(248 - origin)" text="水頭割り" icon="B.png" notice-o="-10" notice="ブラボーえー。">
+        <expressions>
+          <pre name="thunder_bomb" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ Bへ (水頭割り)"
+          duration="10"
+          duration-visible="false"
+          icon="B.png"
+          order="-10" />
+      </a>
+
+      <a time="@(248 - origin)" text="雷爆発" icon="A.png" notice-o="-10" notice="アルファえー。">
+        <expressions>
+          <pre name="thunder_bomb" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ Aへ (雷爆発)"
+          duration="10"
+          duration-visible="false"
+          icon="A.png"
+          order="-10" />
+      </a>
+    }
+
+    @if (Model.Player.InRole("HEALER")) {
+      <a time="@(248 - origin)" text="雷もらう" icon="A.png" notice-o="-10" notice="アルファえー。">
+        <expressions>
+          <pre name="thunder_down" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ Aへ (雷くらう)"
+          duration="10"
+          duration-visible="false"
+          icon="A.png"
+          order="-10" />
+      </a>
+
+      <a time="@(248 - origin)" text="担当なし" icon="D.png" notice-o="-10" notice="デルタえー。">
+        <expressions>
+          <pre name="thunder_down" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ Dへ (担当なし)"
+          duration="10"
+          duration-visible="false"
+          icon="D.png"
+          order="-10" />
+      </a>
+    }
+
+    @if (Model.Player.InRole("DPS")) {
+      <a time="@(248 - origin)" text="水爆発" icon="B.png" notice-o="-10" notice="ブラボーえー。">
+        <expressions>
+          <pre name="water_bomb" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ Bへ (水爆発)"
+          duration="10"
+          duration-visible="false"
+          icon="B.png"
+          order="-10" />
+      </a>
+
+      if (Model.Player.InRole("RangeDPS")) {
+        <a time="@(248 - origin)" text="担当なし" icon="D.png" notice-o="-10" notice="デルタえー。">
+          <expressions>
+            <pre name="thunder_down" value="true" />
+          </expressions>
+          <v-notice
+            text="➜ Dへ (担当なし)"
+            duration="10"
+            duration-visible="false"
+            icon="D.png"
+            order="-10" />
+        </a>
+      } else {
+        <a time="@(248 - origin)" text="水頭割り" icon="B.png" notice-o="-10" notice="ブラボーえー。">
+          <expressions>
+            <pre name="water_bomb" value="false" />
+          </expressions>
+          <v-notice
+            text="➜ Bへ (水頭割り)"
+            duration="10"
+            duration-visible="false"
+            icon="B.png"
+            order="-10" />
+        </a>
+      }
+    }
+    <!-- 水・雷 2回目 end -->
+
     <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice="" />
 
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
     <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
     <a time="@(269 - origin)" text="竜巻" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。" />
     <a time="@(270 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
-    <a time="@(278 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
+
+    <!-- 水・雷 3回目 -->
+    @if (Model.Player.InRole("TANK", "DPS")) {
+      <a time="@(278 - origin)" text="水爆発" icon="Marker.png" notice-o="-7" notice="中央えー。">
+        <expressions>
+          <pre name="water_bomb" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ 中央へ (水爆発)"
+          duration="7"
+          duration-visible="false"
+          icon="Marker.png"
+          order="-10" />
+      </a>
+
+      <a time="@(278 - origin)" text="水頭割り" icon="Marker.png" notice-o="-7" notice="中央えー。">
+        <expressions>
+          <pre name="water_bomb" value="false" />
+          <pre name="water_down" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ 中央へ (水頭割り)"
+          duration="7"
+          duration-visible="false"
+          icon="Marker.png"
+          order="-10" />
+      </a>
+
+      if (Model.Player.InRole("RangeDPS")) {
+        <a time="@(278 - origin)" text="雷もらう" icon="B.png" notice-o="-7" notice="ブラボーえー。">
+          <expressions>
+            <pre name="thunder_bomb" value="true" />
+          </expressions>
+          <v-notice
+            text="➜ Bへ (雷くらう)"
+            duration="7"
+            duration-visible="false"
+            icon="B.png"
+            order="-10" />
+        </a>
+      } else {
+        <a time="@(278 - origin)" text="担当なし" icon="Arrow6.png" notice-o="-7" notice="左下えー。">
+          <expressions>
+            <pre name="water_bomb" value="false" />
+            <pre name="water_down" value="true" />
+          </expressions>
+          <v-notice
+            text="➜ 左下へ (担当なし)"
+            duration="7"
+            duration-visible="false"
+            icon="Arrow6.png"
+            order="-10" />
+        </a>
+      }
+    }
+
+    @if (Model.Player.InRole("HEALER")) {
+      <a time="@(278 - origin)" text="雷爆発" icon="B.png" notice-o="-7" notice="ブラボーえー。">
+        <expressions>
+          <pre name="thunder_bomb" value="true" />
+        </expressions>
+        <v-notice
+          text="➜ Bへ (雷爆発)"
+          duration="7"
+          duration-visible="false"
+          icon="B.png"
+          order="-10" />
+      </a>
+
+      <a time="@(278 - origin)" text="担当なし" icon="Arrow6.png" notice-o="-7" notice="左下えー。">
+        <expressions>
+          <pre name="thunder_bomb" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ 左下へ (担当なし)"
+          duration="7"
+          duration-visible="false"
+          icon="Arrow6.png"
+          order="-10" />
+      </a>
+    }
+    <!-- 水・雷 3回目 end -->
 
     <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次は、プロペラ。" />
-    <a time="@(296 - origin)" text="★受渡し４" icon="True.png" notice-o="0" notice="受渡し" />
+    <a time="@(296 - origin)" text="★受渡し４" icon="True.png" notice-o="0" notice="受渡し">
+      <expressions>
+        <set name="judge_done" value="true" />
+      </expressions>
+    </a>
+
     <a time="@(298 - origin)" text="最後の審判：結審" sync="ブルートジャスティスの「最後の審判：結審」" notice="" />
 
     <a time="@(308 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev11.4"; }
+  @{ var rev = "rev11.5"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -340,13 +340,13 @@
     <!-- ブラスター 中央 -->
     <a time="@(145 + (2.2 * 9) - origin)" text="ブラスター拾 (内)" notice-o="0" notice="10" />
 
-    <a time="@(165 - origin)" text="TO JUSTICE" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" sync-s="-20" goto="PHASE3 JUSTICE" />
+    <a time="@(164 - origin)" text="TO JUSTICE" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" sync-s="-20" goto="PHASE3 JUSTICE" />
     <a time="@(999 - origin)" text="DUMMY" />
   </s>
 
   <s name="PHASE3 JUSTICE">
     @* このフェーズの基点秒数 *@
-    @{ origin = 167; }
+    @{ origin = 164; }
 
     <t name="水耐性ダウン" text="水ダウン" sync="[mex]に「水属性耐性低下［強］」の効果。" notice="水ダウン">
       <expressions>
@@ -522,11 +522,6 @@
     }
     <a time="@(179 - origin)" text="竜巻1" sync="クルーズチェイサーの「竜巻」" notice="次は、竜巻。" />
     <a time="@(182 - origin)" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice-o="-1" notice="ナイサイ。" />
-    @if (Model.Player.InJob("SCH")) {
-      <a time="@(182 - origin)" name="学カンペ" notice="/wait 1,囁き">
-        <v-notice text="囁き" duration="4.5" duration-visible="false" icon="True.png" />
-      </a>
-    }
     <a time="@(188 - origin)" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="次は、システムリンク。" />
     <a time="@(190 - origin)" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice-o="-1" notice="次は、チャクラム。" />
     <a time="@(196 - origin)" text="照準" sync="クルーズチェイサーの「照準」" notice-o="-1" notice="照準" />
@@ -603,8 +598,8 @@
     <a time="@(229 - origin)" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="次は、地雷。" />
     <a time="@(230 - origin)" text="アースミサイル" icon="AOE.png" notice="" />
     @if (Model.Player.InJob("SCH")) {
-      <a time="@(230 - origin)" name="学カンペ" notice="/wait 1,囁き">
-        <v-notice text="囁き" duration="4.5" duration-visible="false" icon="True.png" />
+      <a time="@(230 - origin)" name="学カンペ" notice="/wait 1,囁き、深謀、パクト">
+        <v-notice text="囁き, 深謀, パクト" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
     <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="次は、カウント。" />

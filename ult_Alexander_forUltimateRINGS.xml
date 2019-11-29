@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev11.6"; }
+  @{ var rev = "rev11.7"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -142,6 +142,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice1.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -153,6 +154,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice2.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -164,6 +166,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice3.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -175,6 +178,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice4.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -186,6 +190,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice5.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -197,6 +202,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice6.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -208,6 +214,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice7.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
@@ -219,6 +226,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice8.png"
+        order="-2"
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 

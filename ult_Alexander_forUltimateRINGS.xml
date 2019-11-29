@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev11.5"; }
+  @{ var rev = "rev11.6"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -142,7 +142,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice1.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="２[北] チャージ\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
@@ -153,7 +153,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice2.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="３[南] ソード\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
@@ -164,7 +164,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice3.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="４[南] チャージ\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
@@ -175,7 +175,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice4.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="５[北] ソード\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
@@ -186,7 +186,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice5.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="６[北] チャージ\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
@@ -197,7 +197,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice6.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="７[南] ソード\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
@@ -208,7 +208,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice7.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4834:アルファソード:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <t text="８[南] チャージ\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
@@ -219,7 +219,7 @@
         duration="30"
         duration-visible="false"
         icon="Dice8.png"
-        sync-to-hide="^15:[id8]:クルーズチェイサー:4B4F:スーパーブラスティ・チャージ:[id8]:[mex]" />
+        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <!-- ブラスター set1 -->

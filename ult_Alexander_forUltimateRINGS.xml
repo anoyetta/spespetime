@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev11.7"; }
+  @{ var rev = "rev12"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -550,15 +550,15 @@
     }
 
     @if (Model.Player.InRole("HEALER")) {
-      <a time="@(218 - origin)" text="担当なし" icon="Arrow8.png" notice-o="-10" notice="左上えー。">
+      <a time="@(218 - origin)" text="担当なし" icon="Circle.png" notice-o="-10" notice="中央えー。">
         <expressions>
           <pre name="water_bomb" value="false" />
         </expressions>
         <v-notice
-          text="➜ 左上へ (担当なし)"
+          text="➜ 中央へ (担当なし)"
           duration="10"
           duration-visible="false"
-          icon="Arrow8.png"
+          icon="Circle.png"
           order="-10" />
       </a>
 
@@ -616,15 +616,15 @@
 
     <!-- 水・雷 2回目 -->
     @if (Model.Player.InRole("TANK")) {
-      <a time="@(248 - origin)" text="水頭割り" icon="B.png" notice-o="-10" notice="ブラボーえー。">
+      <a time="@(248 - origin)" text="担当なし" icon="True.png" notice-o="-10" notice="担当なし。">
         <expressions>
           <pre name="thunder_bomb" value="false" />
         </expressions>
         <v-notice
-          text="➜ Bへ (水頭割り)"
+          text="➜ 担当なし"
           duration="10"
           duration-visible="false"
-          icon="B.png"
+          icon="True.png"
           order="-10" />
       </a>
 
@@ -654,15 +654,15 @@
           order="-10" />
       </a>
 
-      <a time="@(248 - origin)" text="担当なし" icon="D.png" notice-o="-10" notice="デルタえー。">
+      <a time="@(248 - origin)" text="担当なし" icon="Circle.png" notice-o="-10" notice="中央えー。">
         <expressions>
           <pre name="thunder_down" value="true" />
         </expressions>
         <v-notice
-          text="➜ Dへ (担当なし)"
+          text="➜ 中央へ (担当なし)"
           duration="10"
           duration-visible="false"
-          icon="D.png"
+          icon="Circle.png"
           order="-10" />
       </a>
     }
@@ -680,31 +680,17 @@
           order="-10" />
       </a>
 
-      if (Model.Player.InRole("RangeDPS")) {
-        <a time="@(248 - origin)" text="担当なし" icon="D.png" notice-o="-10" notice="デルタえー。">
-          <expressions>
-            <pre name="thunder_down" value="true" />
-          </expressions>
-          <v-notice
-            text="➜ Dへ (担当なし)"
-            duration="10"
-            duration-visible="false"
-            icon="D.png"
-            order="-10" />
-        </a>
-      } else {
-        <a time="@(248 - origin)" text="水頭割り" icon="B.png" notice-o="-10" notice="ブラボーえー。">
-          <expressions>
-            <pre name="water_bomb" value="false" />
-          </expressions>
-          <v-notice
-            text="➜ Bへ (水頭割り)"
-            duration="10"
-            duration-visible="false"
-            icon="B.png"
-            order="-10" />
-        </a>
-      }
+      <a time="@(248 - origin)" text="水頭割り" icon="B.png" notice-o="-10" notice="ブラボーえー。">
+        <expressions>
+          <pre name="water_bomb" value="false" />
+        </expressions>
+        <v-notice
+          text="➜ Bへ (水頭割り)"
+          duration="10"
+          duration-visible="false"
+          icon="B.png"
+          order="-10" />
+      </a>
     }
     <!-- 水・雷 2回目 end -->
 
@@ -721,7 +707,18 @@
     <a time="@(270 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 3回目 -->
-    @if (Model.Player.InRole("TANK", "DPS")) {
+    @if (Model.Player.InRole("DPS")) {
+      <a time="@(278 - origin)" text="担当なし" icon="True.png" notice-o="-7" notice="担当なし。">
+        <v-notice
+          text="➜ 担当なし"
+          duration="7"
+          duration-visible="false"
+          icon="True.png"
+          order="-10" />
+      </a>
+    }
+
+    @if (Model.Player.InRole("DPS")) {
       <a time="@(278 - origin)" text="水爆発" icon="Marker.png" notice-o="-7" notice="中央えー。">
         <expressions>
           <pre name="water_bomb" value="true" />
@@ -746,45 +743,18 @@
           icon="Marker.png"
           order="-10" />
       </a>
-
-      if (Model.Player.InRole("RangeDPS")) {
-        <a time="@(278 - origin)" text="雷もらう" icon="B.png" notice-o="-7" notice="ブラボーえー。">
-          <expressions>
-            <pre name="thunder_bomb" value="true" />
-          </expressions>
-          <v-notice
-            text="➜ Bへ (雷くらう)"
-            duration="7"
-            duration-visible="false"
-            icon="B.png"
-            order="-10" />
-        </a>
-      } else {
-        <a time="@(278 - origin)" text="担当なし" icon="Arrow6.png" notice-o="-7" notice="氷の裏えー。">
-          <expressions>
-            <pre name="water_bomb" value="false" />
-            <pre name="water_down" value="true" />
-          </expressions>
-          <v-notice
-            text="➜ 氷の裏へ (担当なし)"
-            duration="7"
-            duration-visible="false"
-            icon="Arrow8.png"
-            order="-10" />
-        </a>
-      }
     }
 
     @if (Model.Player.InRole("HEALER")) {
-      <a time="@(278 - origin)" text="雷爆発" icon="B.png" notice-o="-7" notice="ブラボーえー。">
+      <a time="@(278 - origin)" text="雷爆発" icon="B.png" notice-o="-7" notice="STえー。">
         <expressions>
           <pre name="thunder_bomb" value="true" />
         </expressions>
         <v-notice
-          text="➜ Bへ (雷爆発)"
+          text="➜ Cへ (雷爆発)"
           duration="7"
           duration-visible="false"
-          icon="B.png"
+          icon="C.png"
           order="-10" />
       </a>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev12"; }
+  @{ var rev = "rev13"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -512,6 +512,40 @@
     </t>
     <!-- 仮判決2 end -->
 
+    <!-- カウント -->
+    @if (Model.Player.InRole("DPS")) {
+      <t text="カウント➜ 竜" sync="^1B:[id8]:[DRG]:0000:[id4]:0041:">
+        <v-notice
+          order="-29"
+          duration="5"
+          icon="DRG.png" />
+      </t>
+
+      <t text="カウント➜ 忍" sync="^1B:[id8]:[NIN]:0000:[id4]:0041:">
+        <v-notice
+          order="-28"
+          duration="5"
+          icon="NIN.png" />
+      </t>
+
+      <t text="カウント➜ 詩" sync="^1B:[id8]:[BRD]:0000:[id4]:0041:">
+        <v-notice
+          order="-27"
+          duration="5"
+          icon="BRD.png" />
+      </t>
+
+      <t text="カウント➜ 召" sync="^1B:[id8]:[SMN]:0000:[id4]:0041:">
+        <v-notice
+          order="-26"
+          duration="5"
+          icon="SMN.png" />
+      </t>
+
+      <t name="カウント" sync="^1B:[id8]:[pc]:0000:[id4]:0041:" notice="カウント" />
+    }
+    <!-- カウント end -->
+
     <a time="@(167 - origin)" name="phase3 start" sync-s="-10" sync-e="10" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" >
       <expressions>
         <set name="judge_done" value="false" />
@@ -541,7 +575,7 @@
         <v-notice text="士気" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(204 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
+    <a time="@(214 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
     <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次は、スピンクラッシャー。" />
 
     <!-- 水・雷 1回目 -->

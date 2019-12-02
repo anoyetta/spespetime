@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev13"; }
+  @{ var rev = "rev13.1"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -575,8 +575,9 @@
         <v-notice text="士気" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(214 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
+
     <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次は、スピンクラッシャー。" />
+    <a time="@(214.5 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 1回目 -->
     @if (Model.Player.InRole("TANK")) {
@@ -646,7 +647,7 @@
     }
     <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="次は、カウント。" />
     <a time="@(234 - origin)" text="アイスミサイル" icon="Ice.png" notice="" />
-    <a time="@(235 - origin)" text="★受渡し２" icon="True.png" notice-o="0" notice="受渡し" />
+    <a time="@(238.5 - origin)" text="★受渡し２" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 2回目 -->
     @if (Model.Player.InRole("TANK")) {
@@ -738,7 +739,7 @@
         <v-notice text="イルミ, セラフ" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(270 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
+    <a time="@(269.5 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 3回目 -->
     @if (Model.Player.InRole("DPS")) {
@@ -806,8 +807,8 @@
     }
     <!-- 水・雷 3回目 end -->
 
-    <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次は、プロペラ。" />
-    <a time="@(296 - origin)" text="★受渡し４" icon="True.png" notice-o="0" notice="受渡し">
+    <a time="@(279 - origin)" text="★受渡し４" icon="True.png" notice-o="0" notice="受渡し" />
+    <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次は、プロペラ。">
       <expressions>
         <set name="judge_done" value="true" />
       </expressions>

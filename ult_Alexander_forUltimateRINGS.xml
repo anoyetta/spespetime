@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev14.0"; }
+  @{ var rev = "rev14.2"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -545,48 +545,44 @@
     <!-- 仮判決2 end -->
 
     <!-- 自分のペア表示 -->
-    <t text="α２" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" notice="${_nex}えー。">
+    <t text="α２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="A" />
       </expressions>
       <v-notice
-        text="α２\n➜ ${_nex}"
         order="-4"
         duration="22"
         duration-visible="false"
         job-icon="true" />
     </t>
 
-    <t text="β２" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" notice="${_nex}えー。">
+    <t text="β２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="B" />
       </expressions>
       <v-notice
-        text="β２\n➜ ${_nex}"
         order="-4"
         duration="22"
         duration-visible="false"
         job-icon="true" />
     </t>
 
-    <t text="γ２" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" notice="${_nex}えー。">
+    <t text="γ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="C" />
       </expressions>
       <v-notice
-        text="γ２\n➜ ${_nex}"
         order="-4"
         duration="22"
         duration-visible="false"
         job-icon="true" />
     </t>
 
-    <t text="δ２" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" notice="${_nex}えー。">
+    <t text="δ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="D" />
       </expressions>
       <v-notice
-        text="δ２\n➜ ${_nex}"
         order="-4"
         duration="22"
         duration-visible="false"

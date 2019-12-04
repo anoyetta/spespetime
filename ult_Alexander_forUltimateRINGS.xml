@@ -424,7 +424,7 @@
     <t text="α１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決α" notice="あるふぁー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judement1" value="A" />
+        <set name="judgement1" value="A" />
       </expressions>
       <v-notice
         order="-5"
@@ -436,7 +436,7 @@
     <t text="β１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決β" notice="べーたー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judement1" value="B" />
+        <set name="judgement1" value="B" />
       </expressions>
       <v-notice
         order="-5"
@@ -448,7 +448,7 @@
     <t text="γ１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決γ" notice="がんまー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judement1" value="C" />
+        <set name="judgement1" value="C" />
       </expressions>
       <v-notice
         order="-5"
@@ -460,7 +460,7 @@
     <t text="δ１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ" notice="でるたー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judement1" value="D" />
+        <set name="judgement1" value="D" />
       </expressions>
       <v-notice
         order="-5"
@@ -471,29 +471,29 @@
 
     <t name="A1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決α">
       <expressions>
-        <pre name="judement1" value="A" />
-        <set name="judement1" value="X" />
+        <pre name="judgement1" value="A" />
+        <set name="judgement1" value="X" />
       </expressions>
     </t>
 
     <t name="B1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決β">
       <expressions>
-        <pre name="judement1" value="B" />
-        <set name="judement1" value="X" />
+        <pre name="judgement1" value="B" />
+        <set name="judgement1" value="X" />
       </expressions>
     </t>
 
     <t name="C1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決γ">
       <expressions>
-        <pre name="judement1" value="C" />
-        <set name="judement1" value="X" />
+        <pre name="judgement1" value="C" />
+        <set name="judgement1" value="X" />
       </expressions>
     </t>
 
     <t name="D1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決δ">
       <expressions>
-        <pre name="judement1" value="D" />
-        <set name="judement1" value="X" />
+        <pre name="judgement1" value="D" />
+        <set name="judgement1" value="X" />
       </expressions>
     </t>
     <!-- 仮判決1 end -->

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>テーブル変数の取扱に関するテスト</name>
+  <rev>rev1</rev>
+  <description>
+    テーブル変数の代表的な操作のテスト
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>TEST</zone>
+  <locale>JA</locale>
+  <start>0039:戦闘開始！</start>
+
+  <a time="10" text="テーブルセット1">
+    <expressions>
+      <table>
+      {
+          "method" : "Insert",
+          "table" : "TEST",
+          "cols" : [
+              {
+                  "name" : "id",
+                  "val" : "0002",
+                  "key" : "true"
+              },
+              {
+                  "name" : "job",
+                  "val" : "SCH",
+              }
+          ]
+      }
+      </table>
+      <table>
+      {
+          "method" : "Insert",
+          "table" : "TEST",
+          "cols" : [
+              {
+                  "name" : "id",
+                  "val" : "0001",
+                  "key" : "true"
+              },
+              {
+                  "name" : "job",
+                  "val" : "WHM",
+              }
+          ]
+      }
+      </table>
+    </expressions>
+  </a>
+
+  <a time="15" text="1行目が白魔道士です" notice-o="0">
+    <expressions>
+      <pre name="TABLE['TEST'][0]['job']" value="WHM" />
+    </expressions>
+    <v-notice
+      text="テーブル変数は TABLE['TEST'][0]['job'] です。"
+      duration="2"
+      duration-visible="false" />
+  </a>
+
+  <a time="18" text="2行目が学者です" notice-o="0">
+    <expressions>
+      <pre name="TABLE['TEST'][1]['job']" value="SCH" />
+    </expressions>
+    <v-notice
+      text="テーブル変数は TABLE['TEST'][1]['job'] です。"
+      duration="2"
+      duration-visible="false" />
+  </a>
+
+  <a time="60" text="終了" />
+</timeline>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev14.7"; }
+  @{ var rev = "rev14.8"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -814,6 +814,7 @@
 
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
     <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
+    <a time="@(258 - origin)" text="●シールド" sync="Added new combatant プラズマシールド" notice-o="-1" notice="シールド！" />
     @if (Model.Player.InJob("SCH")) {
       <a time="@(257 - origin)" name="学カンペ" notice-o="0" notice="/wait 1,イルミ、セラフ">
         <v-notice text="イルミ, セラフ" duration="4.5" duration-visible="false" icon="True.png" />

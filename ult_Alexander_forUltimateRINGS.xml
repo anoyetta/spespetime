@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev14.6"; }
+  @{ var rev = "rev14.7"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -662,11 +662,11 @@
 
     <!-- 水・雷 1回目 -->
     @if (Model.Player.InRole("TANK")) {
-      <a time="@(218 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-6" notice="もうすぐ爆発。" />
+      <a time="@(218 - origin)" text="水・雷着弾" icon="Explosion.png" notice-o="-2" notice="もうすぐ爆発。" />
     }
 
     @if (Model.Player.InRole("HEALER")) {
-      <a time="@(218 - origin)" text="担当なし" icon="Circle.png" notice-o="-10" notice="中央えー。">
+      <a time="@(218 - origin)" text="担当なし" icon="Circle.png" notice-o="-2" notice="中央えー。">
         <expressions>
           <pre name="water_bomb" value="false" />
         </expressions>
@@ -678,7 +678,7 @@
           order="-10" />
       </a>
 
-      <a time="@(218 - origin)" text="水爆発" icon="D.png" notice-o="-10" notice="デルタえー。">
+      <a time="@(218 - origin)" text="水爆発" icon="D.png" notice-o="-2" notice="デルタえー。">
         <expressions>
           <pre name="water_bomb" value="true" />
         </expressions>
@@ -692,7 +692,7 @@
     }
 
     @if (Model.Player.InRole("DPS")) {
-      <a time="@(218 - origin)" text="水頭割り" icon="D.png" notice-o="-10" notice="デルタえー。">
+      <a time="@(218 - origin)" text="水頭割り" icon="D.png" notice-o="-2" notice="デルタえー。">
         <expressions>
           <pre name="thunder_bomb" value="false" />
         </expressions>
@@ -704,7 +704,7 @@
           order="-10" />
       </a>
 
-      <a time="@(218 - origin)" text="雷爆発" icon="A.png" notice-o="-10" notice="アルファえー。">
+      <a time="@(218 - origin)" text="雷爆発" icon="A.png" notice-o="-2" notice="アルファえー。">
         <expressions>
           <pre name="thunder_bomb" value="true" />
         </expressions>
@@ -814,12 +814,12 @@
 
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
     <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
-    <a time="@(269 - origin)" text="竜巻2" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。" />
     @if (Model.Player.InJob("SCH")) {
-      <a time="@(269 - origin)" name="学カンペ" notice="/wait 1,イルミ、セラフ">
+      <a time="@(257 - origin)" name="学カンペ" notice-o="0" notice="/wait 1,イルミ、セラフ">
         <v-notice text="イルミ, セラフ" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
+    <a time="@(269 - origin)" text="竜巻2" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。" />
     <a time="@(269.5 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 3回目 -->

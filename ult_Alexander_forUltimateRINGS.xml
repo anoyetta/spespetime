@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev14.2"; }
+  @{ var rev = "rev14.5"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -146,7 +146,7 @@
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="２[北] チャージ\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
+    <t text="２[北] チャージ(背側)\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
       <expressions>
         <set name="dice_group" value="1" />
       </expressions>
@@ -170,7 +170,7 @@
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="４[南] チャージ\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
+    <t text="４[南] チャージ(背側)\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
       <expressions>
         <set name="dice_group" value="2" />
       </expressions>
@@ -194,7 +194,7 @@
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="６[北] チャージ\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
+    <t text="６[北] チャージ(背側)\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
       <expressions>
         <set name="dice_group" value="3" />
       </expressions>
@@ -218,7 +218,7 @@
         sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="８[南] チャージ\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
+    <t text="８[南] チャージ(背側)\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
       <expressions>
         <set name="dice_group" value="4" />
       </expressions>
@@ -499,7 +499,7 @@
     <!-- 仮判決1 end -->
 
     <!-- 仮判決2 -->
-    <t text="α２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決α" notice="あるふぁー2">
+    <t text="α２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決α" sync-count="1" notice="あるふぁー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
@@ -510,7 +510,7 @@
         sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" />
     </t>
 
-    <t text="β２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決β" notice="べーたー2">
+    <t text="β２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決β" sync-count="1" notice="べーたー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
@@ -521,7 +521,7 @@
         sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" />
     </t>
 
-    <t text="γ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決γ" notice="がんまー2">
+    <t text="γ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決γ" sync-count="1" notice="がんまー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
@@ -532,7 +532,7 @@
         sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" />
     </t>
 
-    <t text="δ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決δ" notice="でるたー2">
+    <t text="δ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決δ" sync-count="1" notice="でるたー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
@@ -545,7 +545,7 @@
     <!-- 仮判決2 end -->
 
     <!-- 自分のペア表示 -->
-    <t text="α２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" notice="${_nex}えー。">
+    <t text="α２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" sync-count="1" notice="あるふぁー2、${_nex}">
       <expressions>
         <pre name="judgement1" value="A" />
       </expressions>
@@ -556,7 +556,7 @@
         job-icon="true" />
     </t>
 
-    <t text="β２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" notice="${_nex}えー。">
+    <t text="β２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" sync-count="1" notice="べーた2、${_nex}">
       <expressions>
         <pre name="judgement1" value="B" />
       </expressions>
@@ -567,7 +567,7 @@
         job-icon="true" />
     </t>
 
-    <t text="γ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" notice="${_nex}えー。">
+    <t text="γ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" sync-count="1" notice="がんまー2、${_nex}。">
       <expressions>
         <pre name="judgement1" value="C" />
       </expressions>
@@ -578,7 +578,7 @@
         job-icon="true" />
     </t>
 
-    <t text="δ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" notice="${_nex}えー。">
+    <t text="δ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" sync-count="1" notice="でるたー2、${_nex}。">
       <expressions>
         <pre name="judgement1" value="D" />
       </expressions>
@@ -626,6 +626,7 @@
 
     <a time="@(167 - origin)" name="phase3 start" sync-s="-10" sync-e="10" sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！" >
       <expressions>
+        <set name="judgement1" value="X" />
         <set name="judge_done" value="false" />
         <set name="water_bomb" value="false" />
         <set name="thunder_bomb" value="false" />

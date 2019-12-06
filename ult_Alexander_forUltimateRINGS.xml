@@ -545,7 +545,7 @@
     <!-- 仮判決2 end -->
 
     <!-- 自分のペア表示 -->
-    <t text="α２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" sync-count="1" notice="あるふぁー2、${_nex}">
+    <t text="α２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="A" />
       </expressions>
@@ -556,7 +556,7 @@
         job-icon="true" />
     </t>
 
-    <t text="β２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" sync-count="1" notice="べーた2、${_nex}">
+    <t text="β２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="B" />
       </expressions>
@@ -567,7 +567,7 @@
         job-icon="true" />
     </t>
 
-    <t text="γ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" sync-count="1" notice="がんまー2、${_nex}。">
+    <t text="γ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="C" />
       </expressions>
@@ -578,7 +578,7 @@
         job-icon="true" />
     </t>
 
-    <t text="δ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" sync-count="1" notice="でるたー2、${_nex}。">
+    <t text="δ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" notice="${_nex}えー。">
       <expressions>
         <pre name="judgement1" value="D" />
       </expressions>

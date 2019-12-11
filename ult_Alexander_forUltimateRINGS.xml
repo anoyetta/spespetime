@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev14.9"; }
+  @{ var rev = "rev15.0"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -840,6 +840,142 @@
     <a time="@(352 - origin)" text="時間切れ詠唱" sync="ブルートジャスティスは「死刑判決」の構え。" notice="もうすぐ時間切れ。" />
     <a time="@(361 - origin)" text="時間切れ" sync="ブルートジャスティスの「死刑判決」" icon="Timeout.png" notice="" />
 
+    <a time="@(352 - origin)" name="TO PHASE4" sync="00:0044:アレキサンダー・プライム:我はアレキサンダー……機械仕掛けの神なり……。 理想郷に到る道を導くため……我が審判を受けよ……。" sync-s="-20" sync-e="15" goto="PHASE4 PRIME" />
     <a time="@(999 - origin)" text="DUMMY" />
+  </s>
+
+  <s name="PHASE4 PRIME">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 352; }
+
+    <a time="@(352 - origin)" sync="00:0044:アレキサンダー・プライム:我はアレキサンダー……機械仕掛けの神なり……。 理想郷に到る道を導くため……我が審判を受けよ……。" />
+    <a time="@(356 - origin)" text="時間停止（詠唱）" sync="アレキサンダー・プライムは「時間停止」の構え。" />
+    <a time="@(365 - origin)" text="時間停止" sync="アレキサンダー・プライムの「時間停止」" />
+    <a time="@(368 - origin)" text="神判（罰着弾）" sync="アレキサンダー・プライムの「誓約の神判」" />
+    <a time="@(370 - origin)" text="ソード＋火炎放射1" sync="クルーズチェイサーの「アルファソード」" />
+    <a time="@(371 - origin)" text="ソード＋火炎放射2" />
+    <a time="@(372 - origin)" text="ソード＋火炎放射3" />
+    <a time="@(386 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice="プライムがポップ" />
+    <a time="@(390 - origin)" text="聖なる炎1" sync="00:282b:アレキサンダー・プライムの「聖なる炎」" notice="" />
+    <a time="@(392 - origin)" text="聖なる炎2" sync="00:302b:アレキサンダー・プライムの「聖なる炎」" notice="" />
+    <a time="@(394 - origin)" text="聖なる炎3" />
+    <a time="@(403 - origin)" text="時空潜行のマーチ" sync="アレキサンダー・プライムの「時空潜行のマーチ」" notice="線と結晶を確認" />
+    <a time="@(417 - origin)" text="審判の結晶" sync="アレキサンダー・プライムの「審判の結晶」" notice="" />
+    <a time="@(423 - origin)" text="おうえん" sync="00:302b:シャノアの「おうえん」" notice="まごころ射出。" />
+    <a time="@(435 - origin)" text="火炎放射1" sync="ブルートジャスティスの「大火炎放射」" notice="ジャスティス正面に向かう" />
+    <a time="@(437 - origin)" text="火炎放射2" />
+    <a time="@(439 - origin)" text="火炎放射3" />
+    <a time="@(446 - origin)" text="時空潜行" sync="アレキサンダー・プライムの「時空潜行」" />
+    <a time="@(452 - origin)" text="結晶破裂" sync="審判の結晶の「結晶破裂」" />
+    <a time="@(454 - origin)" text="神判（罰着弾）" sync="00:302b:アレキサンダー・プライムの「誓約の神判」" notice="" />
+    <a time="@(455 - origin)" text="十字の秘蹟" sync="00:282b:アレキサンダー・プライムの「十字の秘蹟」" notice="あたまわり" />
+    <a time="@(459 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice="ジャスティス対角えー" />
+    <a time="@(460 - origin)" text="ソード1" sync="00:282b:クルーズチェイサーの「アルファソード」" />
+    <a time="@(461 - origin)" text="ソード2" />
+    <a time="@(462 - origin)" text="ソード3" />
+    <a time="@(464 - origin)" text="スーパージャンプ着弾" />
+    <a time="@(476 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice="スイッチしてバフとホルム" />
+    <a time="@(481 - origin)" text="聖なる炎1" sync="00:282b:アレキサンダー・プライムの「聖なる炎」" notice="" />
+    <a time="@(483 - origin)" text="聖なる炎2" sync="00:302b:アレキサンダー・プライムの「聖なる炎」" notice="" />
+    <a time="@(485 - origin)" text="聖なる炎3" />
+    <a time="@(494 - origin)" text="次元断絶のマーチ" sync="アレキサンダー・プライムの「次元断絶のマーチ」" notice="" />
+    <a time="@(503 - origin)" text="リミッターカット" />
+    <a time="@(506 - origin)" text="システムリンク" />
+    <a time="@(506 - origin)" text="懺悔の間" />
+    <a time="@(515 - origin)" text="チャクラム突進" />
+    <a time="@(516 - origin)" text="アルファソード1" />
+    <a time="@(517 - origin)" text="スーパージャンプ着弾" />
+    <a time="@(519 - origin)" text="アポカリプティクレイ" />
+    <a time="@(520 - origin)" text="アルファソード2" />
+    <a time="@(520 - origin)" text="罪の意識1" />
+    <a time="@(522 - origin)" text="Sブラスティ・チャージ1" />
+    <a time="@(523 - origin)" text="十字の秘蹟" />
+    <a time="@(525 - origin)" text="罪の意識2" />
+    <a time="@(526 - origin)" text="Sブラスティ・チャージ2" />
+    <a time="@(532 - origin)" text="ミサイル全弾発射" />
+    <a time="@(535 - origin)" text="浄化の熱線" sync="00:302b:アレキサンダー・プライムの「浄化の熱線」" />
+    <a time="@(540 - origin)" text="カウント" />
+    <a time="@(548 - origin)" text="メガホーリー1" sync="アレキサンダー・プライムの「メガホーリー」" notice="" />
+    <a time="@(555 - origin)" text="メガホーリー2" sync="アレキサンダー・プライムの「メガホーリー」" />
+    <a time="@(565 - origin)" text="アレキサンダー召喚" sync="アレキサンダー・プライムの「アレキサンダー召喚」" />
+    <a time="@(572 - origin)" text="ジャスティスストーム" sync="ブルートジャスティスの「ジャスティスストーム」" />
+    <a time="@(576 - origin)" text="ショックウェーブ1" notice="" />
+    <a time="@(579 - origin)" text="ショックウェーブ2" notice="" />
+    <a time="@(582 - origin)" text="ショックウェーブ3" notice="" />
+    <a time="@(585 - origin)" text="ショックウェーブ4" notice="" />
+    <a time="@(588 - origin)" text="ショックウェーブ5" notice="" />
+    <a time="@(591 - origin)" text="ショックウェーブ6" notice="" />
+    <a time="@(594 - origin)" text="ショックウェーブ7" notice="" />
+    <a time="@(597 - origin)" text="ショックウェーブ8" notice="" />
+    <a time="@(600 - origin)" text="ショックウェーブ9" notice="" />
+    <a time="@(603 - origin)" text="ショックウェーブ10" notice="" />
+    <a time="@(606 - origin)" text="ショックウェーブ11" notice="" />
+    <a time="@(609 - origin)" text="ショックウェーブ12" notice="" />
+    <a time="@(612 - origin)" text="ショックウェーブ13" notice="" />
+    <a time="@(615 - origin)" text="ショックウェーブ14" notice="" />
+    <a time="@(647 - origin)" text="聖なる審判" />
+    <a time="@(662 - origin)" text="フェーズ移行" sync="16:[id8]:アレキサンダー:487A:聖なる審判:[id8]:[pc]:" sync-count="1" goto="P4 FINAL" />
+
+    <!-- 以下トリガー -->
+
+    <!-- 時間停止時の確定判決の識別トリガ begin -->
+    <t text="接近強制 ジャス北側" sync="[me] gains the effect of 確定判決：接近強制命令 from  for 9999.00 Seconds." notice="ジャスティスの北側" >
+      <v-notice
+        order="-1"
+        icon="Stack.png"
+        duration="10"
+        duration-visible="false" />
+    </t>
+
+    <t text="雷 ジャス側外周ギリギリ" sync="[me] gains the effect of 確定判決：加重罰 from  for 9999.00 Seconds." notice="ジャス側・外周ギリ" >
+      <v-notice
+        order="-1"
+        icon="StackAOE.png"
+        duration="10"
+        duration-visible="false" />
+    </t>
+
+    <t text="接近禁止 ジャス側外周ギリ" sync="[me] gains the effect of 確定判決：接近禁止命令 from  for 9999.00 Seconds." notice="ジャス側・外周ギリ" >
+      <v-notice
+        order="-1"
+        icon="Pair.png"
+        duration="10"
+        duration-visible="false" />
+    </t>
+
+    <!-- 自分以外の6人にデバフ付与＝自分には何もなし -->
+    <t text="無職・チェイサー北側" sync="[nex] gains the effect of 確定判決：" notice="チェイサー北がわ" sync-count="6" >
+      <v-notice
+        order="-1"
+        icon="DontAction.png"
+        duration="10"
+        duration-visible="false" />
+    </t>
+    <!-- 時間停止時の確定判決の識別トリガ end -->
+
+    <!-- 頭上マーカ識別用トリガ begin -->
+    <t text="マーカー1番" sync="1B:[id8]:[mex]:0000:[id4]:004F:0000:0000:0000:" notice="いちばん" />
+    <t text="マーカー2番" sync="1B:[id8]:[mex]:0000:[id4]:0050:0000:0000:0000:" notice="にばん" />
+    <t text="マーカー3番" sync="1B:[id8]:[mex]:0000:[id4]:0051:0000:0000:0000:" notice="さんばん" />
+    <t text="マーカー4番" sync="1B:[id8]:[mex]:0000:[id4]:0052:0000:0000:0000:" notice="よんばん" />
+    <t text="マーカー5番" sync="1B:[id8]:[mex]:0000:[id4]:0053:0000:0000:0000:" notice="ごばん" />
+    <t text="マーカー6番" sync="1B:[id8]:[mex]:0000:[id4]:0054:0000:0000:0000:" notice="ろくばん" />
+    <t text="マーカー7番" sync="1B:[id8]:[mex]:0000:[id4]:0055:0000:0000:0000:" notice="ななばん" />
+    <t text="マーカー8番" sync="1B:[id8]:[mex]:0000:[id4]:0056:0000:0000:0000:" notice="はちばん" />
+    <!-- 頭上マーカ識別用トリガ end -->
+
+    <!-- カウント対象者通知 begin -->
+    <t text="カウント" sync="1B:[id8]:[nex]:0000:[id4]:0041:0000:0000:0000:" notice="" sync-count="0" >
+      <v-notice
+        job-icon="true"
+        duration="6" />
+    </t>
+
+    <t text="自分にカウント" sync="1B:[id8]:[mex]:0000:[id4]:0041:0000:0000:0000:" notice="自分にカウント。" >
+      <v-notice
+        job-icon="true"
+        duration="6" />
+    </t>
+    <!-- カウント対象者通知 end -->
   </s>
 </timeline>

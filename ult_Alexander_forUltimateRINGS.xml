@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev14.8"; }
+  @{ var rev = "rev14.9"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -421,176 +421,96 @@
     </t>
 
     <!-- 仮判決1 -->
-    <t text="α１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決α" notice="あるふぁー1">
+    <t text="α１" sync="[mex]に「最後の仮判決α」の効果。$" notice="あるふぁー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judgement1" value="A" />
       </expressions>
       <v-notice
         order="-5"
         duration="36"
         icon="Alpha.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の仮判決α" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="β１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決β" notice="べーたー1">
+    <t text="β１" sync="[mex]に「最後の仮判決β」の効果。$" notice="べーたー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judgement1" value="B" />
       </expressions>
       <v-notice
         order="-5"
         duration="36"
         icon="Beta.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の仮判決β" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="γ１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決γ" notice="がんまー1">
+    <t text="γ１" sync="[mex]に「最後の仮判決γ」の効果。$" notice="がんまー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judgement1" value="C" />
       </expressions>
       <v-notice
         order="-5"
         duration="36"
         icon="Gamma.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の仮判決γ" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="δ１" sync="^1A:[id8]:[mex] gains the effect of 最後の仮判決δ" notice="でるたー1">
+    <t text="δ１" sync="[mex]に「最後の仮判決δ」の効果。$" notice="でるたー1">
       <expressions>
         <pre name="judge_done" value="false" />
-        <set name="judgement1" value="D" />
       </expressions>
       <v-notice
         order="-5"
         duration="36"
         icon="Delta.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の仮判決δ" />
-    </t>
-
-    <t name="A1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決α">
-      <expressions>
-        <pre name="judgement1" value="A" />
-        <set name="judgement1" value="X" />
-      </expressions>
-    </t>
-
-    <t name="B1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決β">
-      <expressions>
-        <pre name="judgement1" value="B" />
-        <set name="judgement1" value="X" />
-      </expressions>
-    </t>
-
-    <t name="C1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決γ">
-      <expressions>
-        <pre name="judgement1" value="C" />
-        <set name="judgement1" value="X" />
-      </expressions>
-    </t>
-
-    <t name="D1 OFF" sync="^1A:[id8]:[nex] gains the effect of 最後の仮判決δ">
-      <expressions>
-        <pre name="judgement1" value="D" />
-        <set name="judgement1" value="X" />
-      </expressions>
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
     <!-- 仮判決1 end -->
 
     <!-- 仮判決2 -->
-    <!--
-    <t text="α２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決α" sync-count="1" notice="あるふぁー2">
+    <t text="α２" sync="[mex]に「最後の審判：仮判決α」の効果。$" notice="あるふぁー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
       <v-notice
         order="-4"
-        duration="36"
+        duration="45"
         icon="Alpha2.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="β２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決β" sync-count="1" notice="べーたー2">
+    <t text="β２" sync="[mex]に「最後の審判：仮判決β」の効果。$" notice="べーたー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
       <v-notice
         order="-4"
-        duration="36"
+        duration="45"
         icon="Beta2.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="γ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決γ" sync-count="1" notice="がんまー2">
+    <t text="γ２" sync="[mex]に「最後の審判：仮判決γ」の効果。$" notice="がんまー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
       <v-notice
         order="-4"
-        duration="36"
+        duration="45"
         icon="Gamma2.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
 
-    <t text="δ２" sync="^1A:[id8]:[mex] gains the effect of 最後の審判：仮判決δ" sync-count="1" notice="でるたー2">
+    <t text="δ２" sync="[mex]に「最後の審判：仮判決δ」の効果。$" notice="でるたー2">
       <expressions>
         <pre name="judge_done" value="false" />
       </expressions>
       <v-notice
         order="-4"
-        duration="36"
+        duration="45"
         icon="Delta2.png"
-        sync-to-hide="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" />
+        sync-to-hide="ブルートジャスティスの「最後の審判：結審」" />
     </t>
-    -->
     <!-- 仮判決2 end -->
-
-    <!-- 自分のペア表示 -->
-    <t text="α２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決α" sync-count="1" notice="あるふぁー2、${_nex}">
-      <expressions>
-        <pre name="judgement1" value="A" />
-      </expressions>
-      <v-notice
-        order="-4"
-        duration="22"
-        duration-visible="false"
-        job-icon="true" />
-    </t>
-
-    <t text="β２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決β" sync-count="1" notice="べーた2、${_nex}">
-      <expressions>
-        <pre name="judgement1" value="B" />
-      </expressions>
-      <v-notice
-        order="-4"
-        duration="22"
-        duration-visible="false"
-        job-icon="true" />
-    </t>
-
-    <t text="γ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決γ" sync-count="1" notice="がんまー2、${_nex}。">
-      <expressions>
-        <pre name="judgement1" value="C" />
-      </expressions>
-      <v-notice
-        order="-4"
-        duration="22"
-        duration-visible="false"
-        job-icon="true" />
-    </t>
-
-    <t text="δ２\n➜ ${_nex}" sync="^1A:[id8]:[nex] gains the effect of 最後の審判：仮判決δ" sync-count="1" notice="でるたー2、${_nex}。">
-      <expressions>
-        <pre name="judgement1" value="D" />
-      </expressions>
-      <v-notice
-        order="-4"
-        duration="22"
-        duration-visible="false"
-        job-icon="true" />
-    </t>
-    <!-- 自分のペア表示 end -->
 
     <!-- カウント -->
     @if (Model.Player.InRole("DPS")) {

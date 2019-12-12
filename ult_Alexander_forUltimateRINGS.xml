@@ -925,15 +925,15 @@
         </p-sync>
       </t>
 
-      <t name="時空潜行ジャスティスN" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_N/load">
+      <t name="時空潜行プライムN" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_N/load">
         <p-sync interval="120">
-          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+          <combatant name="アレキサンダー・プライム" X="00.00" Y="00.00" />
         </p-sync>
       </t>
 
-      <t name="時空潜行ジャスティスS" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_S/load">
+      <t name="時空潜行プライムS" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_S/load">
         <p-sync interval="120">
-          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+          <combatant name="アレキサンダー・プライム" X="00.00" Y="00.00" />
         </p-sync>
       </t>
     }

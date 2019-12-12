@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev15.2"; }
+  @{ var rev = "rev15.3"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -21,15 +21,13 @@
   @if (Model.Player.InJob("SCH")) {
     <t
       name="Marker 1"
-      sync="(「絶アレキサンダー討滅戦」の攻略を開始した。|0139:戦闘開始まで)"
+      sync="(「絶アレキサンダー討滅戦」の攻略を開始した。|0139:戦闘開始まで|/mark 0)"
       exec="http://localhost:1337/preset/ULT_ALEX1/load" />
 
-    <!--
-    <t
-      name="Marker 2"
-      sync="ブルートジャスティス:コードネーム「ブルートジャスティス」！ 想定外ノ時空改変者ヲ発見……鉄槌ヲ下ス！"
-      exec="http://localhost:1337/preset/ULT_ALEX2/load" />
-    -->
+      <t name="時間停止ジャスティスE" sync="/mark 1" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_E/load" />
+      <t name="時間停止ジャスティスW" sync="/mark 2" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_W/load" />
+      <t name="時空潜行プライムN" sync="/mark 3" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_N/load" />
+      <t name="時空潜行プライムS" sync="/mark 4" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_S/load" />
   }
 
   @{ var origin = 0; }
@@ -690,7 +688,7 @@
     }
     <!-- 水・雷 2回目 end -->
 
-    <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice-o="-3" notice="次は、デバフ2。" />
+    <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice-o="-3" notice="次は、開廷。" />
 
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
     <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
@@ -700,7 +698,7 @@
         <v-notice text="イルミ, セラフ" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(269 - origin)" text="竜巻2" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。" />
+    <a time="@(269 - origin)" text="竜巻2" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。デバフをチェックするー" />
     <a time="@(269.5 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 3回目 -->
@@ -820,7 +818,7 @@
 
     <!-- 時間停止時の確定判決の識別トリガ begin -->
     @if (Model.Player.InRole("TANK", "HEALER")) {
-      <t text="接近禁止\n➜ ジャス側外周" sync="[mex] gains the effect of 確定判決：接近禁止命令" notice="ジャス側の外周" >
+      <t text="接近禁止\n➜ ジャス側外周" sync="[mex] gains the effect of 確定判決：接近禁止命令" sync-count="1" notice="ジャス側の外周">
         <v-notice
           order="-1"
           icon="DontApproach.png"
@@ -828,7 +826,7 @@
           duration-visible="false" />
       </t>
 
-      <t text="接近強制\n➜ ジャス北" sync="[mex] gains the effect of 確定判決：接近強制命令" notice="ジャスティスの北" >
+      <t text="接近強制\n➜ ジャス北" sync="[mex] gains the effect of 確定判決：接近強制命令" sync-count="1" notice="ジャスティスの北" >
         <v-notice
           order="-1"
           icon="Approach.png"
@@ -836,7 +834,7 @@
           duration-visible="false" />
       </t>
 
-      <t text="加重罰\n➜ ジャス側外周" sync="[mex] gains the effect of 確定判決：加重罰" notice="ジャス側の外周" >
+      <t text="加重罰\n➜ ジャス側外周" sync="[mex] gains the effect of 確定判決：加重罰" sync-count="1" notice="ジャス側の外周" >
         <v-notice
           order="-1"
           icon="PunishmentHevy.png"
@@ -852,7 +850,7 @@
           duration-visible="false" />
       </t>
     } else {
-      <t text="接近禁止\n➜ Ｄへ" sync="[mex] gains the effect of 確定判決：接近禁止命令" notice="デルタえー" >
+      <t text="接近禁止\n➜ Ｄへ" sync="[mex] gains the effect of 確定判決：接近禁止命令" sync-count="1" notice="デルタえー" >
         <v-notice
           order="-1"
           icon="DontApproach.png"
@@ -860,7 +858,7 @@
           duration-visible="false" />
       </t>
 
-      <t text="接近強制\n➜ ジャス南" sync="[mex] gains the effect of 確定判決：接近強制命令" notice="ジャスティスの南" >
+      <t text="接近強制\n➜ ジャス南" sync="[mex] gains the effect of 確定判決：接近強制命令" sync-count="1" notice="ジャスティスの南" >
         <v-notice
           order="-1"
           icon="Approach.png"
@@ -868,7 +866,7 @@
           duration-visible="false" />
       </t>
 
-      <t text="加重罰\n➜ ジャス側外周" sync="[mex] gains the effect of 確定判決：加重罰" notice="ジャス側の外周" >
+      <t text="加重罰\n➜ ジャス側外周" sync="[mex] gains the effect of 確定判決：加重罰" sync-count="1" notice="ジャス側の外周" >
         <v-notice
           order="-1"
           icon="PunishmentHevy.png"
@@ -915,25 +913,25 @@
     @if (Model.Player.InJob("SCH")) {
       <t name="時間停止ジャスティスE" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_E/load">
         <p-sync interval="120">
-          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+          <combatant name="ブルートジャスティス" X="23.62" Y="23.50" />
         </p-sync>
       </t>
 
       <t name="時間停止ジャスティスW" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_W/load">
         <p-sync interval="120">
-          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+          <combatant name="ブルートジャスティス" X="23.38" Y="23.50" />
         </p-sync>
       </t>
 
       <t name="時空潜行プライムN" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_N/load">
         <p-sync interval="120">
-          <combatant name="アレキサンダー・プライム" X="00.00" Y="00.00" />
+          <combatant name="アレキサンダー・プライム" X="23.50" Y="23.07" />
         </p-sync>
       </t>
 
       <t name="時空潜行プライムS" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_S/load">
         <p-sync interval="120">
-          <combatant name="アレキサンダー・プライム" X="00.00" Y="00.00" />
+          <combatant name="アレキサンダー・プライム" X="23.50" Y="23.93" />
         </p-sync>
       </t>
     }
@@ -951,7 +949,7 @@
     <a time="@(392 - origin)" text="聖なる炎2" notice="" />
     <a time="@(394 - origin)" text="聖なる炎3" />
     <a time="@(403 - origin)" text="時空潜行のマーチ" sync="アレキサンダー・プライムの「時空潜行のマーチ」" notice="線と結晶を確認" />
-    <a time="@(405 - origin)" name="DumpPos2">
+    <a time="@(411 - origin)" name="DumpPos2">
       <dump target="Position" />
     </a>
     <a time="@(417 - origin)" text="審判の結晶" sync="アレキサンダー・プライムの「審判の結晶」" notice="" />

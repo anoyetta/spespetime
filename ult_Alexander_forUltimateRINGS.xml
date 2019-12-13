@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev15.4"; }
+  @{ var rev = "rev15.5"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -28,6 +28,8 @@
       <t name="時間停止ジャスティスW" sync="/mark 2" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_W/load" />
       <t name="時空潜行プライムN" sync="/mark 3" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_N/load" />
       <t name="時空潜行プライムS" sync="/mark 4" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_S/load" />
+      <t name="時空潜行ジャスティスE" sync="/mark 5" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_E/load" />
+      <t name="時空潜行ジャスティスW" sync="/mark 5" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_W/load" />
   }
 
   @{ var origin = 0; }
@@ -929,28 +931,34 @@
         </p-sync>
       </t>
 
-      <t name="時空潜行プライムN" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_N/load">
+      <t name="時空潜行プライムN" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_N/load" notice="プライム北">
         <p-sync interval="120">
           <combatant name="アレキサンダー・プライム" X="23.50" Y="23.07" />
         </p-sync>
       </t>
 
-      <t name="時空潜行プライムS" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_S/load">
+      <t name="時空潜行プライムS" exec="http://localhost:1337/preset/ULT_ALEX_PRIME_S/load" notice="プライム南">
         <p-sync interval="120">
           <combatant name="アレキサンダー・プライム" X="23.50" Y="23.93" />
         </p-sync>
       </t>
 
-      <t name="スパジャンジャスティスE" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_E/load">
+      <t name="スパジャンジャスティスE">
         <p-sync interval="120">
-          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+          <combatant name="ブルートジャスティス" X="23.93" Y="23.50" />
         </p-sync>
+        <expressions>
+          <set name="jump_justice_from" value="E" />
+        </expressions>
       </t>
 
-      <t name="スパジャンジャスティスW" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_W/load">
+      <t name="スパジャンジャスティスW">
         <p-sync interval="120">
-          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+          <combatant name="ブルートジャスティス" X="23.07" Y="23.50" />
         </p-sync>
+        <expressions>
+          <set name="jump_justice_from" value="W" />
+        </expressions>
       </t>
     }
     <!-- マーカ置き換え end -->
@@ -985,6 +993,16 @@
     <a time="@(439 - origin)" text="火炎放射3" />
     <a time="@(446 - origin)" text="時空潜行" sync="アレキサンダー・プライムの「時空潜行」" />
     <a time="@(452 - origin)" text="結晶破裂" sync="審判の結晶の「結晶破裂」" />
+    <a time="@(452 - origin)" name="マーカチェンジ1" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_E/load">
+      <expressions>
+        <pre name="jump_justice_from" value="E" />
+      </expressions>
+    </a>
+    <a time="@(452 - origin)" name="マーカチェンジ2" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_W/load">
+      <expressions>
+        <pre name="jump_justice_from" value="W" />
+      </expressions>
+    </a>
     <a time="@(454 - origin)" text="神判（罰着弾）" sync="アレキサンダー・プライムの「誓約の神判」" notice="" />
     <a time="@(455 - origin)" text="十字の秘蹟" sync="アレキサンダー・プライムの「十字の秘蹟」" notice-o="-3" notice="次は左右に散開" />
     <a time="@(459 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice-o="-3" notice="次はスパジャン" />

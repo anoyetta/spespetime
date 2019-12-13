@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev15.3"; }
+  @{ var rev = "rev15.4"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -843,6 +843,9 @@
       </t>
 
       <t text="無罪\n➜ チェイサー北" sync="[nex] gains the effect of 確定判決：" sync-count="6" notice="チェイサーの北">
+        <expressions>
+          <pre name="stop_time" value="true" />
+        </expressions>
         <v-notice
           order="-1"
           icon="Free.png"
@@ -875,6 +878,9 @@
       </t>
 
       <t text="無罪\n➜ チェイサー南" sync="[nex] gains the effect of 確定判決：" sync-count="6" notice="チェイサーの南">
+        <expressions>
+          <pre name="stop_time" value="true" />
+        </expressions>
         <v-notice
           order="-1"
           icon="Free.png"
@@ -934,39 +940,59 @@
           <combatant name="アレキサンダー・プライム" X="23.50" Y="23.93" />
         </p-sync>
       </t>
+
+      <t name="スパジャンジャスティスE" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_E/load">
+        <p-sync interval="120">
+          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+        </p-sync>
+      </t>
+
+      <t name="スパジャンジャスティスW" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_W/load">
+        <p-sync interval="120">
+          <combatant name="ブルートジャスティス" X="00.00" Y="00.00" />
+        </p-sync>
+      </t>
     }
     <!-- マーカ置き換え end -->
 
-    <a time="@(352 - origin)" sync="アレキサンダー・プライム:我はアレキサンダー……機械仕掛けの神なり……。 理想郷に到る道を導くため……我が審判を受けよ……。" />
+    <a time="@(352 - origin)" sync="アレキサンダー・プライム:我はアレキサンダー……機械仕掛けの神なり……。 理想郷に到る道を導くため……我が審判を受けよ……。">
+      <expressions>
+        <set name="stop_time" value="true" />
+      </expressions>
+    </a>
     <a time="@(356 - origin)" text="時間停止（詠唱）" sync="アレキサンダー・プライムは「時間停止」の構え。" />
     <a time="@(365 - origin)" text="時間停止" sync="アレキサンダー・プライムの「時間停止」" />
     <a time="@(368 - origin)" text="神判（罰着弾）" sync="アレキサンダー・プライムの「誓約の神判」" />
     <a time="@(370 - origin)" text="ソード＋火炎放射1" sync="クルーズチェイサーの「アルファソード」" />
     <a time="@(371 - origin)" text="ソード＋火炎放射2" />
     <a time="@(372 - origin)" text="ソード＋火炎放射3" />
-    <a time="@(386 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice="プライムがポップ" />
+    <a time="@(386 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice-o="-3" notice="熱線！">
+      <expressions>
+        <set name="stop_time" value="false" />
+      </expressions>
+    </a>
     <a time="@(390 - origin)" text="聖なる炎1" sync="アレキサンダー・プライムの「聖なる炎」" notice="" />
     <a time="@(392 - origin)" text="聖なる炎2" notice="" />
     <a time="@(394 - origin)" text="聖なる炎3" />
-    <a time="@(403 - origin)" text="時空潜行のマーチ" sync="アレキサンダー・プライムの「時空潜行のマーチ」" notice="線と結晶を確認" />
+    <a time="@(403 - origin)" text="時空潜行のマーチ" sync="アレキサンダー・プライムの「時空潜行のマーチ」" notice-o="-1" notice="時空潜行" />
     <a time="@(411 - origin)" name="DumpPos2">
       <dump target="Position" />
     </a>
     <a time="@(417 - origin)" text="審判の結晶" sync="アレキサンダー・プライムの「審判の結晶」" notice="" />
-    <a time="@(423 - origin)" text="おうえん" sync="シャノアの「おうえん」" notice="まごころ射出。" />
-    <a time="@(435 - origin)" text="火炎放射1" sync="ブルートジャスティスの「大火炎放射」" notice="ジャスティス正面に向かう" />
+    <a time="@(423 - origin)" text="おうえん" sync="シャノアの「おうえん」" notice-o="-1" notice="まごころ。" />
+    <a time="@(435 - origin)" text="火炎放射1" sync="ブルートジャスティスの「大火炎放射」" notice-o="-3" notice="ジャスティスえー" />
     <a time="@(437 - origin)" text="火炎放射2" />
     <a time="@(439 - origin)" text="火炎放射3" />
     <a time="@(446 - origin)" text="時空潜行" sync="アレキサンダー・プライムの「時空潜行」" />
     <a time="@(452 - origin)" text="結晶破裂" sync="審判の結晶の「結晶破裂」" />
     <a time="@(454 - origin)" text="神判（罰着弾）" sync="アレキサンダー・プライムの「誓約の神判」" notice="" />
-    <a time="@(455 - origin)" text="十字の秘蹟" sync="アレキサンダー・プライムの「十字の秘蹟」" notice="あたまわり" />
-    <a time="@(459 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice="ジャスティス対角えー" />
+    <a time="@(455 - origin)" text="十字の秘蹟" sync="アレキサンダー・プライムの「十字の秘蹟」" notice-o="-3" notice="次は左右に散開" />
+    <a time="@(459 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice-o="-3" notice="次はスパジャン" />
     <a time="@(460 - origin)" text="ソード1" sync="クルーズチェイサーの「アルファソード」" />
     <a time="@(461 - origin)" text="ソード2" />
     <a time="@(462 - origin)" text="ソード3" />
     <a time="@(464 - origin)" text="スーパージャンプ着弾" />
-    <a time="@(476 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice="スイッチしてバフとホルム" />
+    <a time="@(476 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice-o="-3" notice="熱線！" />
     <a time="@(481 - origin)" text="聖なる炎1" sync="アレキサンダー・プライムの「聖なる炎」" notice="" />
     <a time="@(483 - origin)" text="聖なる炎2" notice="" />
     <a time="@(485 - origin)" text="聖なる炎3" />

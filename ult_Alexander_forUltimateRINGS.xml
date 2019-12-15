@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev15.6"; }
+  @{ var rev = "rev16.0"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -949,30 +949,39 @@
     </t>
     <!-- スーパージャンプのときのデバフ識別 end -->
 
-    <!-- 頭上マーカ識別用トリガ begin -->
-    <t text="マーカー1番" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="いちばん" />
-    <t text="マーカー2番" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="にばん" />
-    <t text="マーカー3番" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん" />
-    <t text="マーカー4番" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん" />
-    <t text="マーカー5番" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごばん" />
-    <t text="マーカー6番" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん" />
-    <t text="マーカー7番" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん" />
-    <t text="マーカー8番" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん" />
-    <!-- 頭上マーカ識別用トリガ end -->
+    <!-- カウント -->
+    @if (Model.Player.InRole("DPS")) {
+      <t text="カウント➜ 竜" sync="^1B:[id8]:[DRG]:0000:[id4]:0041:">
+        <v-notice
+          order="-29"
+          duration="5"
+          icon="DRG.png" />
+      </t>
 
-    <!-- カウント対象者通知 begin -->
-    <t text="カウント" sync="^1B:[id8]:[nex]:0000:[id4]:0041:" notice="" >
-      <v-notice
-        job-icon="true"
-        duration="6" />
-    </t>
+      <t text="カウント➜ 忍" sync="^1B:[id8]:[NIN]:0000:[id4]:0041:">
+        <v-notice
+          order="-28"
+          duration="5"
+          icon="NIN.png" />
+      </t>
 
-    <t text="自分にカウント" sync="^1B:[id8]:[mex]:0000:[id4]:0041:" notice="自分にカウント。" >
-      <v-notice
-        job-icon="true"
-        duration="6" />
-    </t>
-    <!-- カウント対象者通知 end -->
+      <t text="カウント➜ 詩" sync="^1B:[id8]:[BRD]:0000:[id4]:0041:">
+        <v-notice
+          order="-27"
+          duration="5"
+          icon="BRD.png" />
+      </t>
+
+      <t text="カウント➜ 召" sync="^1B:[id8]:[SMN]:0000:[id4]:0041:">
+        <v-notice
+          order="-26"
+          duration="5"
+          icon="SMN.png" />
+      </t>
+
+      <t name="カウント" sync="^1B:[id8]:[pc]:0000:[id4]:0041:" notice="カウント" />
+    }
+    <!-- カウント end -->
 
     <!-- マーカ置き換え -->
     @if (Model.Player.InJob("SCH")) {
@@ -1025,6 +1034,104 @@
       </t>
     }
     <!-- マーカ置き換え end -->
+
+    <!-- 次元断絶のマーチトリガ -->
+    <t text="１番\n➜ 東（堅実）\n➜ ★ソード\n➜ 懺悔（待機）\n➜ 懺悔縮むx2 ➜ 懺悔IN" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="1番">
+      <expressions>
+        <set name="dice" value="1" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice1.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="２番\n➜ 西（堅実）\n➜ ★チャージ\n➜ 懺悔（待機）\n➜ 懺悔縮むx2 ➜ 懺悔IN" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="2番">
+      <expressions>
+        <set name="dice" value="2" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice2.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="３番\n➜ 北\n➜ ジャンプ（堅実）\n➜ ★ソード\n➜ 懺悔（待機）" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="3番">
+      <expressions>
+        <set name="dice" value="3" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice3.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="４番\n➜ 南\n➜ ジャンプ\n➜ 西にずれる\n➜ ★アポカリ＆チャージ\n➜ 懺悔（待機）" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="4番">
+      <expressions>
+        <set name="dice" value="4" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice4.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="５番\n➜ 中央待機\n➜ 東の懺悔IN\n➜ 懺悔縮む➜ 懺悔OUT（堅実）\n➜ ★ソード\n➜ 懺悔（待機）" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="5番">
+      <expressions>
+        <set name="dice" value="5" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice5.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="６番\n➜ 中央待機\n➜ 西の懺悔IN\n➜ 懺悔縮む➜ 懺悔OUT（堅実）\n➜ ★チャージ\n➜ 懺悔（待機）" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="6番">
+      <expressions>
+        <set name="dice" value="6" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice6.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="７番\n➜ 中央待機\n➜ 東の懺悔IN\n➜ ﾁｬｸﾗﾑ➜ 懺悔OUT\n➜ 懺悔縮む➜ 懺悔IN\n➜ 懺悔縮む➜ 北へ（堅実）\n➜ ★ソード" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="7番">
+      <expressions>
+        <set name="dice" value="7" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice7.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+
+    <t text="８番\n➜ 中央待機\n➜ 西の懺悔IN\n➜ ﾁｬｸﾗﾑ➜ 懺悔OUT\n➜ 懺悔縮む➜ 懺悔IN\n➜ 懺悔縮む➜ 南へ（堅実）\n➜ ★チャージ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="8番">
+      <expressions>
+        <set name="dice" value="8" />
+      </expressions>
+      <v-notice
+        duration="40"
+        duration-visible="false"
+        icon="Dice8.png"
+        order="-2"
+        sync-to-hide="アレキサンダー・プライムの「浄化の熱線」" />
+    </t>
+    <!-- 次元断絶のマーチトリガ end -->
 
     <a time="@(352 - origin)" sync="アレキサンダー・プライム:我はアレキサンダー……機械仕掛けの神なり……。 理想郷に到る道を導くため……我が審判を受けよ……。">
       <expressions>
@@ -1098,6 +1205,7 @@
     <a time="@(481 - origin)" text="聖なる炎1" sync="アレキサンダー・プライムの「聖なる炎」" notice="" />
     <a time="@(483 - origin)" text="聖なる炎2" notice="" />
     <a time="@(485 - origin)" text="聖なる炎3" />
+
     <a time="@(494 - origin)" text="次元断絶のマーチ" sync="アレキサンダー・プライムの「次元断絶のマーチ」" notice="" />
     <a time="@(503 - origin)" text="リミッターカット" />
     <a time="@(506 - origin)" text="システムリンク" />

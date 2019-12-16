@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev16.0"; }
+  @{ var rev = "rev16.1"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -1171,24 +1171,28 @@
 
     <a time="@(452 - origin)" name="マーカチェンジ1" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_NE/load">
       <expressions>
+        <set name="danzetsu" value="false" />
         <pre name="jump_prime" value="N" />
         <pre name="jump_justice" value="E" />
       </expressions>
     </a>
     <a time="@(452 - origin)" name="マーカチェンジ2" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_NW/load">
       <expressions>
+        <set name="danzetsu" value="false" />
         <pre name="jump_prime" value="N" />
         <pre name="jump_justice" value="W" />
       </expressions>
     </a>
     <a time="@(452 - origin)" name="マーカチェンジ3" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_SW/load">
       <expressions>
+        <set name="danzetsu" value="false" />
         <pre name="jump_prime" value="S" />
         <pre name="jump_justice" value="E" />
       </expressions>
     </a>
     <a time="@(452 - origin)" name="マーカチェンジ4" exec="http://localhost:1337/preset/ULT_ALEX_JUSTICE_JUMP_SW/load">
       <expressions>
+        <set name="danzetsu" value="false" />
         <pre name="jump_prime" value="S" />
         <pre name="jump_justice" value="W" />
       </expressions>
@@ -1201,12 +1205,22 @@
     <a time="@(461 - origin)" text="ソード2" />
     <a time="@(462 - origin)" text="ソード3" />
     <a time="@(464 - origin)" text="スーパージャンプ着弾" />
-    <a time="@(476 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice-o="-3" notice="熱線！" />
+    <a time="@(476 - origin)" text="神罰の熱線" sync="アレキサンダー・プライムの「神罰の熱線」" notice-o="-3" notice="熱線！">
+      <expressions>
+        <set name="danzetsu" value="true" />
+      </expressions>
+    </a>
+    @if (Model.Player.InJob("SCH")) {
+      <a time="@(476 - origin)" note="マーカ初期化" exec="http://localhost:1337/preset/ULT_ALEX1/load" />
+    }
     <a time="@(481 - origin)" text="聖なる炎1" sync="アレキサンダー・プライムの「聖なる炎」" notice="" />
     <a time="@(483 - origin)" text="聖なる炎2" notice="" />
     <a time="@(485 - origin)" text="聖なる炎3" />
 
     <a time="@(494 - origin)" text="次元断絶のマーチ" sync="アレキサンダー・プライムの「次元断絶のマーチ」" notice="" />
+    <a time="@(501 - origin)" name="DumpDanzetsu">
+      <dump target="Position" />
+    </a>
     <a time="@(503 - origin)" text="リミッターカット" />
     <a time="@(506 - origin)" text="システムリンク" />
     <a time="@(506 - origin)" text="懺悔の間" />

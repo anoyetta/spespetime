@@ -56,7 +56,7 @@
       order="-1" />
   </t>
 
-  <t text="ダイブ" sync="^1B:[id8]:[mex]:0000:0000:00E0:0000:0000:0000:" notice="自分にダイブ">
+  <t text="ダイブ" sync="^1B:[id8]:[mex]:0000:[id4]:00E0:0000:0000:0000:" notice="自分にダイブ">
     <v-notice
       duration="5"
       duration-visible="false"

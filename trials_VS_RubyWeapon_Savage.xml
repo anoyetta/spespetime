@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>VS 極ルビーウェポン</name>
+  <rev>rev1</rev>
+  <description>
+  極ルビーウェポン破壊作戦のタイムラインです。トリガーのみ定義しています。
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>Cinder Drift (Extreme)</zone>
+  <locale>JA</locale>
+  <start>0039:戦闘開始！</start>
+
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+  <default target-element="Activity" target-attr="notice-o" value="-6" />
+  <default target-element="Activity" target-attr="sync-s" value="-5" />
+  <default target-element="Activity" target-attr="sync-e" value="4" />
+
+  <t text="ストンピング" sync="ルビーウェポンは「ストンピング」の構え。" notice="ストンピング">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="HardAttack.png"
+      order="-1" />
+  </t>
+
+  <t text="線の上" sync="ルビーウェポンは「リクェファクション」の構え。" notice="線の上">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="Arrow1.png"
+      order="-1" />
+  </t>
+
+  <t text="線から降りる" sync="ルビーウェポンは「クローマイン」の構え。" notice="線から降りる">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="Arrow6.png"
+      order="-1" />
+  </t>
+
+  <t text="青を殴る" sync="^1A:[id8]:[mex] gains the effect of 憤怒" notice="青を殴るー">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="Arrow3.png"
+      order="-1" />
+  </t>
+
+  <t text="赤を殴る" sync="^1A:[id8]:[mex] gains the effect of 悲嘆" notice="赤を殴るー">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="Arrow7.png"
+      order="-1" />
+  </t>
+
+  <t text="ダイブ" sync="^1B:[id8]:[mex]:0000:0000:00E0:0000:0000:0000:" notice="自分にダイブ">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="True.png"
+      order="-1" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CA:0000:0000:0000:" notice="自分に1番">
+    <v-notice icon="Dice1.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CB:0000:0000:0000:" notice="自分に2番">
+    <v-notice icon="Dice2.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CC:0000:0000:0000:" notice="自分に3番">
+    <v-notice icon="Dice3.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CD:0000:0000:0000:" notice="自分に4番">
+    <v-notice icon="Dice4.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CE:0000:0000:0000:" notice="自分に5番">
+    <v-notice icon="Dice5.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CF:0000:0000:0000:" notice="自分に6番">
+    <v-notice icon="Dice6.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D0:0000:0000:0000:" notice="自分に7番">
+    <v-notice icon="Dice7.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D1:0000:0000:0000:" notice="自分に8番">
+    <v-notice icon="Dice8.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="${_nex}" sync="^1B:[id8]:[nex]:0000:[id4]:00D1:0000:0000:0000:">
+    <v-notice icon="Dice8.png" duration="10" duration-visible="false" order="0" />
+  </t>
+</timeline>

@@ -64,39 +64,45 @@
       order="-1" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CA:0000:0000:0000:" notice="自分に1番">
-    <v-notice icon="Dice1.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CA:0000:0000:0000:" notice="1番、北えー">
+    <v-notice icon="Arrow1.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CB:0000:0000:0000:" notice="自分に2番">
-    <v-notice icon="Dice2.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CB:0000:0000:0000:" notice="2番、北東えー">
+    <v-notice icon="Arrow2.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CC:0000:0000:0000:" notice="自分に3番">
-    <v-notice icon="Dice3.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CC:0000:0000:0000:" notice="3番、東えー">
+    <v-notice icon="Arrow3.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CD:0000:0000:0000:" notice="自分に4番">
-    <v-notice icon="Dice4.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CD:0000:0000:0000:" notice="4番、南東えー">
+    <v-notice icon="Arrow4.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CE:0000:0000:0000:" notice="自分に5番">
-    <v-notice icon="Dice5.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CE:0000:0000:0000:" notice="5番、南えー">
+    <v-notice icon="Arrow5.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CF:0000:0000:0000:" notice="自分に6番">
-    <v-notice icon="Dice6.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CF:0000:0000:0000:" notice="6番、南西えー">
+    <v-notice icon="Arrow6.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D0:0000:0000:0000:" notice="自分に7番">
-    <v-notice icon="Dice7.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D0:0000:0000:0000:" notice="7番、西えー">
+    <v-notice icon="Arrow7.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
-  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D1:0000:0000:0000:" notice="自分に8番">
-    <v-notice icon="Dice8.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+  <t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D1:0000:0000:0000:" notice="8番、北西えー">
+    <v-notice icon="Arrow8.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
   </t>
 
+  <!--
   <t text="${_nex}" sync="^1B:[id8]:[nex]:0000:[id4]:00D1:0000:0000:0000:">
     <v-notice icon="Dice8.png" duration="10" duration-visible="false" order="0" />
+  </t>
+  -->
+
+  <t text="自分にビーム" sync="^1B:[id8]:[mex]:0000:[id4]:0017:0000:0000:0000:" notice="自分にビーム">
+    <v-notice icon="True.png" duration="5" duration-visible="false" order="-1" />
   </t>
 </timeline>

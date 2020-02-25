@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編1</name>
-  <rev>rev1</rev>
+  <rev>rev1.1</rev>
   <description>
     希望の園エデン零式： 共鳴編1 スペスペたいむ用タイムラインです。
   </description>
@@ -67,12 +67,21 @@
   </t>
 
   <t text="チャージボルト" sync="^1A:[id8]:ラムウ gains the effect of チャージボルト from ラムウ" notice="チャージボルト">
+    <expressions>
+      <set name="is_charge" value="true" />
+    </expressions>
     <v-notice
       icon="Thunder.png"
       duration="120"
       duration-visible="false"
       order="-1"
       sync-to-hide="^1E:[id8]:ラムウ loses the effect of チャージボルト from ラムウ" />
+  </t>
+
+  <t name="チャージボルト解除" sync="^1E:[id8]:ラムウ loses the effect of チャージボルト from ラムウ">
+    <expressions>
+      <set name="is_charge" value="false" />
+    </expressions>
   </t>
 
   <s name="PHASE1">
@@ -88,12 +97,12 @@
     <a time="068.0" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
 
     <a time="077.0" text="雷雲生成" sync="ラムウは「雷雲生成」の構え。" notice="次は、雷雲生成。" />
-    <a time="091.0" text="ライトニングフォース" sync="ラムウは「ライトニングフォース」の構え。" notice="次は、ノックバック。" />
-    <a time="107.0" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。">
+    <a time="091.0" text="ライトニングフォース" sync="ラムウは「ライトニングフォース」の構え。" notice="次は、ノックバック。">
       <expressions>
-        <set name="is_charge" value="true" />
+        <set name="is_charge" value="false" />
       </expressions>
     </a>
+    <a time="107.0" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" />
 
     <a time="114.0" text="思念体生成" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、実線えー。">
       <expressions>
@@ -107,12 +116,6 @@
     </a>
 
     <a time="125.0" text="ギャロップ" sync="イクシオン・ミラージュは「ギャロップ」の構え。" />
-
-    <a time="126.0" name="クリア">
-      <expressions>
-        <set name="is_charge" value="false" />
-      </expressions>
-    </a>
 
     <a time="133.0" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
     <a time="142.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
@@ -165,13 +168,13 @@
     <a time="@(481.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。" />
     <a time="@(497.0 - origin)" text="チェインライトニング" sync="ラムウは「チェインライトニング」の構え。" notice="次は、チェインライトニング。" />
     <a time="@(505.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、痛打。" />
-    <a time="@(517.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。" />
-
-    <a time="@(527.0 - origin)" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" sync-s="-9">
+    <a time="@(517.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。">
       <expressions>
-        <set name="is_charge" value="true" />
+        <set name="is_charge" value="false" />
       </expressions>
     </a>
+
+    <a time="@(527.0 - origin)" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" sync-s="-9" />
 
     <a time="@(534.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。">
       <expressions>
@@ -181,12 +184,6 @@
     <a time="@(534.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。">
       <expressions>
         <pre name="is_charge" value="false" />
-      </expressions>
-    </a>
-
-    <a time="@(536.0 - origin)" name="クリア">
-      <expressions>
-        <set name="is_charge" value="false" />
       </expressions>
     </a>
 

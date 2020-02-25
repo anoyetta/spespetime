@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編2</name>
-  <rev>rev1</rev>
+  <rev>rev1.1</rev>
   <description>
     希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
   </description>
@@ -44,9 +44,9 @@
     <a time="@(138.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
     <a time="@(145.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="" />
     <a time="@(154.0 - origin)" text="灼熱の咆哮" sync="イフリートは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
-    <a time="@(164.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り" />
+    <a time="@(164.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り、ヒーラー、遠隔" />
     <a time="@(182.0 - origin)" text="ファイアスパーク" sync="イフリートは「ファイアスパーク」の構え。" notice="次は、サッカー" />
-    <a time="@(207.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り" />
+    <a time="@(207.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り、ヒーラー、遠隔" />
     <a time="@(219.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
     <a time="@(228.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
     <a time="@(234.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="次は、背面集合" />

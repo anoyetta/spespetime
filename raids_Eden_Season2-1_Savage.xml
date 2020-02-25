@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：共鳴編1</name>
+  <rev>rev1</rev>
+  <description>
+    希望の園エデン零式： 共鳴編1 スペスペたいむ用タイムラインです。
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>Eden's Verse: Fulmination (Savage)</zone>
+  <locale>JA</locale>
+  <entry>PHASE1</entry>
+  <start>0039:戦闘開始！</start>
+
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+  <default target-element="Activity" target-attr="notice-o" value="-4" />
+  <default target-element="Activity" target-attr="sync-s" value="-6" />
+  <default target-element="Activity" target-attr="sync-e" value="6" />
+
+  @{ var origin = 0.0; }
+
+  <t text="避雷" sync="^1A:[id8]:[mex] gains the effect of 避雷 from  for [_duration] Seconds.">
+    <v-notice
+      icon="Lightning.png"
+      order="1"
+      sync-to-hide="^1E:[id8]:[mex] loses the effect of 避雷" />
+  </t>
+
+  <t text="雷雲" sync="^1B:[id8]:[mex]:0000:[id4]:006E:0000:0000:0000:" notice="自分に雷雲">
+    <v-notice
+      icon="True.png"
+      duration="5"
+      duration-visible="false"
+      order="-1" />
+  </t>
+
+  <t text="カオス" sync="^1B:[id8]:[mex]:0000:[id4]:00D2:0000:0000:0000:" notice="自分にカオス">
+    <v-notice
+      icon="True.png"
+      duration="5"
+      duration-visible="false"
+      order="-1" />
+  </t>
+
+  <t text="痛打" sync="は「痛打」の構え。" notice="痛打">
+    <v-notice
+      icon="HardAttack.png"
+      duration="4"
+      duration-visible="false"
+      order="-1" />
+  </t>
+
+  <t text="ショックブラスト" sync="は「ショックブラスト」の構え。" notice="ショックブラスト">
+    <v-notice
+      icon="HardAttack.png"
+      duration="4"
+      duration-visible="false"
+      order="-1" />
+  </t>
+
+  <t text="電気ショック" sync="^1A:[id8]:[mex] gains the effect of 電気ショック from ラムウ for 9.00" notice="自分に電気ショック">
+    <v-notice
+      icon="Thunder.png"
+      duration="9"
+      order="-2"
+      sync-to-hide="^1E:[id8]:[mex] loses the effect of 電気ショック" />
+  </t>
+
+  <t text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" notice="チャージボルト">
+    <v-notice
+      icon="Thunder.png"
+      duration="16"
+      duration-visible="false"
+      order="-1" />
+  </t>
+
+  <s name="PHASE1">
+    <a time="000.0" sync="ラムウ:我が名はラムウ…… そなたらが、新たな世界を拓くに足るか試させてもらおう……。" />
+    <a time="006.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
+    <a time="018.0" text="武具生成" sync="ラムウは「武具生成」の構え。" notice="次は、短い槍えー。" />
+    <a time="029.0" text="裁きの界雷" sync="ラムウは「裁きの界雷」の構え。" notice="次は、槍から雷。" />
+
+    <a time="043.0" text="分離体生成" sync="ラムウの「分離体生成」" notice="次は、鳥POP。" />
+    <a time="049.0" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="057.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
+    <a time="065.0" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />
+    <a time="068.0" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
+
+    <a time="077.0" text="雷雲生成" sync="ラムウは「雷雲生成」の構え。" notice="次は、雷雲生成。" />
+    <a time="091.0" text="ライトニングフォース" sync="ラムウは「ライトニングフォース」の構え。" notice="次は、ノックバック。" />
+    <a time="107.0" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。">
+      <expressions>
+        <set name="is_charge" value="true" />
+      </expressions>
+    </a>
+
+    <a time="114.0" text="思念体生成" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、実線えー。">
+      <expressions>
+        <pre name="is_charge" value="true" />
+      </expressions>
+    </a>
+    <a time="114.0" text="思念体生成" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、破線えー。">
+      <expressions>
+        <pre name="is_charge" value="false" />
+      </expressions>
+    </a>
+
+    <a time="125.0" text="ギャロップ" sync="イクシオン・ミラージュは「ギャロップ」の構え。" />
+
+    <a time="126.0" name="クリア">
+      <expressions>
+        <set name="is_charge" value="false" />
+      </expressions>
+    </a>
+
+    <a time="133.0" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
+    <a time="142.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
+
+    <a time="152.0" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="159.0" text="サンダーストーム" sync="ラムウは「サンダーストーム」の構え。" notice="次は、AOEばら撒き。" />
+    <a time="194.0" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
+
+    <a time="205.0" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。" />
+    <a time="212.0" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />
+    <a time="215.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
+    <a time="217.0" text="ショックブラスト" sync="ライデンの「ショックブラスト」" />
+
+    <a time="225.0" text="NEXT" goto="PHASE2" />
+  </s>
+
+  <s name="PHASE2">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 225.0; }
+
+    <a time="@(227.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン。" />
+
+    <a time="@(276.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="@(283.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。" />
+    <a time="@(293.0 - origin)" text="チェインライトニング" sync="ラムウは「チェインライトニング」の構え。" notice="次は、チェイン、配置えー。" />
+    <a time="@(300.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
+
+    <a time="@(311.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
+    <a time="@(325.0 - origin)" text="分離体生成" sync="ラムウは「分離体生成」の構え。" notice="次は、鳥POP。" />
+    <a time="@(334.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="@(341.0 - origin)" text="サンダーストーム" sync="ラムウは「サンダーストーム」の構え。" notice="次は、AOEばら撒き。" />
+    <a time="@(352.0 - origin)" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />
+    <a time="@(362.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。" />
+    <a time="@(375.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
+    <a time="@(382.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
+
+    <a time="389.0" text="NEXT" goto="PHASE3" />
+  </s>
+
+  <s name="PHASE3">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 389.0; }
+
+    <a time="@(393.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン。" />
+
+    <a time="@(438.1 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="@(445.2 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。" />
+    <a time="@(457.0 - origin)" text="雷雲生成" sync="ラムウは「雷雲生成」の構え。" notice="次は、雷雲生成。" />
+    <a time="@(472.0 - origin)" text="ライトニングフォース" sync="ラムウは「ライトニングフォース」の構え。" notice="次は、ライトニングフォース。" />
+    <a time="@(481.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。" />
+    <a time="@(497.0 - origin)" text="チェインライトニング" sync="ラムウは「チェインライトニング」の構え。" notice="次は、チェインライトニング。" />
+    <a time="@(505.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、痛打。" />
+    <a time="@(517.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。" />
+
+    <a time="@(527.0 - origin)" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" sync-s="-9">
+      <expressions>
+        <set name="is_charge" value="true" />
+      </expressions>
+    </a>
+
+    <a time="@(534.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。">
+      <expressions>
+        <pre name="is_charge" value="true" />
+      </expressions>
+    </a>
+    <a time="@(534.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。">
+      <expressions>
+        <pre name="is_charge" value="false" />
+      </expressions>
+    </a>
+
+    <a time="@(536.0 - origin)" name="クリア">
+      <expressions>
+        <set name="is_charge" value="false" />
+      </expressions>
+    </a>
+
+    <a time="@(543.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="@(549.0 - origin)" text="裁きの熱雷1" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃、2回" />
+    <a time="@(560.0 - origin)" text="裁きの熱雷2" sync="ラムウは「裁きの熱雷」の構え。" notice="" />
+    <a time="@(571.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
+    <a time="@(577.0 - origin)" text="裁きの熱雷1" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃、3回" />
+    <a time="@(588.0 - origin)" text="裁きの熱雷2" sync="ラムウは「裁きの熱雷」の構え。" notice="" />
+    <a time="@(600.0 - origin)" text="裁きの熱雷3" sync="ラムウは「裁きの熱雷」の構え。" notice="" />
+
+    <a time="@(609.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン。" />
+  </s>
+</timeline>

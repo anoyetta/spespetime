@@ -104,12 +104,12 @@
     </a>
     <a time="107.0" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" />
 
-    <a time="114.0" text="思念体生成" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、実線えー。">
+    <a time="114.0" text="吹き飛ばし（実線から）" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、実線えー。">
       <expressions>
         <pre name="is_charge" value="true" />
       </expressions>
     </a>
-    <a time="114.0" text="思念体生成" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、破線えー。">
+    <a time="114.0" text="吹き飛ばし（破線から）" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、破線えー。">
       <expressions>
         <pre name="is_charge" value="false" />
       </expressions>
@@ -124,7 +124,7 @@
     <a time="159.0" text="サンダーストーム" sync="ラムウは「サンダーストーム」の構え。" notice="次は、AOEばら撒き。" />
     <a time="194.0" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
 
-    <a time="205.0" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。" />
+    <a time="205.0" text="たけのこ" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。" />
     <a time="212.0" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />
     <a time="215.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
     <a time="217.0" text="ショックブラスト" sync="ライデンの「ショックブラスト」" />
@@ -139,7 +139,7 @@
     <a time="@(227.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン。" />
 
     <a time="@(276.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
-    <a time="@(283.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。" />
+    <a time="@(283.0 - origin)" text="ドーナツ" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。" />
     <a time="@(293.0 - origin)" text="チェインライトニング" sync="ラムウは「チェインライトニング」の構え。" notice="次は、チェイン、配置えー。" />
     <a time="@(300.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
 
@@ -148,7 +148,7 @@
     <a time="@(334.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
     <a time="@(341.0 - origin)" text="サンダーストーム" sync="ラムウは「サンダーストーム」の構え。" notice="次は、AOEばら撒き。" />
     <a time="@(352.0 - origin)" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />
-    <a time="@(362.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。" />
+    <a time="@(362.0 - origin)" text="たけのこ" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。" />
     <a time="@(375.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
     <a time="@(382.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
 
@@ -176,12 +176,12 @@
 
     <a time="@(527.0 - origin)" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" sync-s="-9" />
 
-    <a time="@(534.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。">
+    <a time="@(534.0 - origin)" text="ドーナツ" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。">
       <expressions>
         <pre name="is_charge" value="true" />
       </expressions>
     </a>
-    <a time="@(534.0 - origin)" text="ステップトリーダー" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。">
+    <a time="@(534.0 - origin)" text="たけのこ" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、たけのこ。">
       <expressions>
         <pre name="is_charge" value="false" />
       </expressions>

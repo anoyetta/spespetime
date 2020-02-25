@@ -66,12 +66,13 @@
       sync-to-hide="^1E:[id8]:[mex] loses the effect of 電気ショック" />
   </t>
 
-  <t text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" notice="チャージボルト">
+  <t text="チャージボルト" sync="^1A:[id8]:ラムウ gains the effect of チャージボルト from ラムウ" notice="チャージボルト">
     <v-notice
       icon="Thunder.png"
-      duration="16"
+      duration="120"
       duration-visible="false"
-      order="-1" />
+      order="-1"
+      sync-to-hide="^1E:[id8]:ラムウ loses the effect of チャージボルト from ラムウ" />
   </t>
 
   <s name="PHASE1">

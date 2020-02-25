@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：共鳴編2</name>
+  <rev>rev1</rev>
+  <description>
+    希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>Eden's Verse: Furor (Savage)</zone>
+  <locale>JA</locale>
+  <entry>PHASE1 Garuda</entry>
+  <start>0039:戦闘開始！</start>
+
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+  <default target-element="Activity" target-attr="notice-o" value="-4" />
+  <default target-element="Activity" target-attr="sync-s" value="-6" />
+  <default target-element="Activity" target-attr="sync-e" value="6" />
+
+  @{ var origin = 0.0; }
+
+  <s name="PHASE1 Garuda">
+    <a time="012.0" text="スーパーストーム" sync="ガルーダは「スーパーストーム」の構え。" notice="次は、全体攻撃。" />
+    <a time="023.0" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="032.0" text="フューリア" sync="ガルーダは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
+    <a time="046.8" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="058.0" text="フィアス" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+    <a time="069.7" text="ダウンバースト" notice="次は、ノックバックとペア処理" />
+    <a time="083.0" text="バキュームスラッシュ" sync="ガルーダは「バキュームスラッシュ」の構え。" notice="次は、ギロチン" />
+    <a time="091.0" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="次は、安置に移動" />
+    <a time="096.0" text="フューリア" sync="ガルーダは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
+    <a time="105.0" text="フィアス" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+
+    <a time="112.0" text="NEXT" sync="ガルーダ:おのれ……ちょこまかとッ……！" goto="PHASE2 Ifrit" />
+  </s>
+
+  <s name="PHASE2 Ifrit">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 112.0; }
+
+    <a time="@(117.0 - origin)" sync="イフリート:神色自若……下がるがいい……！" />
+    <a time="@(117.7 - origin)" text="タッチダウン" sync="イフリート starts using タッチダウン on Unknown." notice="次は、タッチダウン。" />
+    <a time="@(130.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(138.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(145.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="" />
+    <a time="@(154.0 - origin)" text="灼熱の咆哮" sync="イフリートは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+    <a time="@(164.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り" />
+    <a time="@(182.0 - origin)" text="ファイアスパーク" sync="イフリートは「ファイアスパーク」の構え。" notice="次は、サッカー" />
+    <a time="@(207.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り" />
+    <a time="@(219.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(228.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(234.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="次は、背面集合" />
+
+    <a time="@(240.0 - origin)" text="NEXT" sync="イフリート:才気煥発……認めよう、その力……！ だがしかしッ！" goto="PHASE3 Pair" />
+  </s>
+
+  <s name="PHASE3 Pair">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 240.0; }
+
+    <a time="@(246.0 - origin)" sync="ガルーダ:火と風を喚びしこと、 その愚行を後悔させてくれる……！" />
+    <a time="@(246.0 - origin)" text="焔神の呪い" sync="イフリートは「焔神の呪い」の構え。" notice="次は、呪い。" />
+    <a time="@(251.0 - origin)" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(260.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="" />
+    <a time="@(268.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、ST無敵受け。" />
+    <a time="@(273.0 - origin)" text="バキュームスラッシュ" sync="ガルーダは「バキュームスラッシュ」の構え。" notice="次は、ギロチン" />
+    <a time="@(282.0 - origin)" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(290.0 - origin)" text="エラプション" sync="イフリートは「エラプション」の構え。" notice="次は、エラプ" />
+    <a time="@(294.0 - origin)" text="フィアスストーム" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、DPSに線" />
+
+    <a time="@(300.0 - origin)" text="NEXT" goto="PHASE4 Fusion" />
+  </s>
+
+  <s name="PHASE4 Fusion">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 300.0; }
+
+    <a time="@(301.0 - origin)" sync="イフリート:魂飛魄散……まだ抗おうとは……！" />
+    <a time="@(306.0 - origin)" sync="ガルーダ:ならば、わたくしの風の力…… 燃え上がる焔神の炎に注ぐまで！" />
+    <a time="@(317.0 - origin)" sync="？？？？:ウオォォォォォッ！！" />
+    <a time="@(327.0 - origin)" sync="ラクタパクシャ:我が名はラクタパクシャ…… 「赤き翼」を持つ者なり……！" />
+
+    <a time="@(336.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、タンクとヒーラー" />
+    <a time="@(354.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、DPS" />
+    <a time="@(372.0 - origin)" text="灼熱の咆哮" sync="ラクタパクシャは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+    <a time="@(380.3 - origin)" text="ペア処理＋フィアス" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="@(393.0 - origin)" text="ファイアスパーク" sync="ラクタパクシャは「ファイアスパーク」の構え。" notice="次は、サッカー" />
+    <a time="@(406.0 - origin)" text="火炎拳" sync="ラクタパクシャは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(415.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(421.0 - origin)" text="メテオストライク" sync="ラクタパクシャは「メテオストライク」の構え。" notice="次は、背面集合" />
+
+    <a time="@(427.0 - origin)" text="NEXT" goto="PHASE5 Sword" />
+  </s>
+
+  <s name="PHASE5 Sword">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 427.0; }
+
+    <a time="@(442.0 - origin)" sync="ラクタパクシャ:風を得て、猛る炎よ、渦を巻け！" />
+
+    <a time="@(442.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャは「コンフラグレーションストライク」の構え。" notice="次は、コンフラ、左右に散開" />
+    <a time="@(468.8 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="@(477.0 - origin)" sync="ラクタパクシャ:大火の一撃、灰燼に帰せッ！" />
+    <a time="@(478.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャの「コンフラグレーションストライク」" notice="次は、背面集合" />
+
+    <a time="@(488.0 - origin)" text="オクルーデッドフロント" sync="ラクタパクシャは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(490.8 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="@(497.0 - origin)" text="フューリア" sync="ラクタパクシャは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
+    <a time="@(505.0 - origin)" text="灼熱の咆哮" sync="ラクタパクシャは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+    <a time="@(518.0 - origin)" text="オクルーデッドフロント" sync="ラクタパクシャは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(523.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、タンクとヒーラー" />
+    <a time="@(541.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、DPS" />
+    <a time="@(542.9 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="@(553.0 - origin)" text="火炎拳" sync="ラクタパクシャは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(561.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(567.0 - origin)" text="メテオストライク" sync="ラクタパクシャは「メテオストライク」の構え。" notice="次は、背面集合" />
+    <a time="@(581.0 - origin)" text="フィアス" sync="ラクタパクシャは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+    <a time="@(589.0 - origin)" text="フィアス" sync="ラクタパクシャは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+
+    <a time="@(608.0 - origin)" sync="ラクタパクシャ:地をうごめく者どもよ……！ 燃え尽き灰となりて、風に散れッ！" />
+    <a time="@(608.0 - origin)" text="ワイプ攻撃" sync="ラクタパクシャは「コンフラグレーションストライク」の構え。" notice="次は、時間切れ" />
+  </s>
+</timeline>

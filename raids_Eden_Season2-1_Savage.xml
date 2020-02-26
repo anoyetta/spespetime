@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編1</name>
-  <rev>rev1.1</rev>
+  <rev>rev1.2</rev>
   <description>
     希望の園エデン零式： 共鳴編1 スペスペたいむ用タイムラインです。
   </description>
@@ -136,7 +136,7 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 225.0; }
 
-    <a time="@(227.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン。" />
+    <a time="@(227.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン、ST踏ん張る。" />
 
     <a time="@(276.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
     <a time="@(283.0 - origin)" text="ドーナツ" sync="ラムウは「ステップトリーダー」の構え。" notice="次は、ドーナツ。" />
@@ -152,14 +152,14 @@
     <a time="@(375.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
     <a time="@(382.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
 
-    <a time="389.0" text="NEXT" goto="PHASE3" />
+    <a time="@(389.0 - origin)" text="NEXT" goto="PHASE3" />
   </s>
 
   <s name="PHASE3">
     @* このフェーズの基点秒数 *@
     @{ origin = 389.0; }
 
-    <a time="@(393.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン。" />
+    <a time="@(393.0 - origin)" text="フォーティーン・チャージボルト" sync="ラムウは「フォーティーン・チャージボルト」の構え。" notice="次は、フォーティーン、MT踏ん張る。" />
 
     <a time="@(438.1 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
     <a time="@(445.2 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、裁きの熱雷。" />

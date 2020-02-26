@@ -17,6 +17,10 @@
   <default target-element="Activity" target-attr="sync-s" value="-6" />
   <default target-element="Activity" target-attr="sync-e" value="6" />
 
+  <t text="火炎拳" sync="は「火炎拳」の構え。" notice="火炎ケン" />
+  <t text="爆裂炎" sync="は「爆裂炎」の構え。" notice="爆裂エン" />
+  <t text="メテオ" sync="は「メテオストライク」の構え。" notice="メテオ" />
+
   @{ var origin = 0.0; }
 
   <s name="PHASE1 Garuda">
@@ -41,14 +45,14 @@
     <a time="@(117.0 - origin)" sync="イフリート:神色自若……下がるがいい……！" />
     <a time="@(117.7 - origin)" text="タッチダウン" sync="イフリート starts using タッチダウン on Unknown." notice="次は、タッチダウン。" />
     <a time="@(130.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
-    <a time="@(138.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(138.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
     <a time="@(145.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="" />
     <a time="@(154.0 - origin)" text="灼熱の咆哮" sync="イフリートは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
     <a time="@(164.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り、ヒーラー、遠隔" />
     <a time="@(182.0 - origin)" text="ファイアスパーク" sync="イフリートは「ファイアスパーク」の構え。" notice="次は、サッカー" />
     <a time="@(207.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り、ヒーラー、遠隔" />
     <a time="@(219.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
-    <a time="@(228.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(228.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
     <a time="@(234.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="次は、背面集合" />
 
     <a time="@(240.0 - origin)" text="NEXT" sync="イフリート:才気煥発……認めよう、その力……！ だがしかしッ！" goto="PHASE3 Pair" />
@@ -61,8 +65,8 @@
     <a time="@(246.0 - origin)" sync="ガルーダ:火と風を喚びしこと、 その愚行を後悔させてくれる……！" />
     <a time="@(246.0 - origin)" text="焔神の呪い" sync="イフリートは「焔神の呪い」の構え。" notice="次は、呪い。" />
     <a time="@(251.0 - origin)" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
-    <a time="@(260.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="" />
-    <a time="@(268.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="次は、ST無敵受け。" />
+    <a time="@(260.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、ST無敵受け。" />
+    <a time="@(268.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
     <a time="@(273.0 - origin)" text="バキュームスラッシュ" sync="ガルーダは「バキュームスラッシュ」の構え。" notice="次は、ギロチン" />
     <a time="@(282.0 - origin)" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
     <a time="@(290.0 - origin)" text="エラプション" sync="イフリートは「エラプション」の構え。" notice="次は、エラプ" />
@@ -86,7 +90,7 @@
     <a time="@(380.3 - origin)" text="ペア処理＋フィアス" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
     <a time="@(393.0 - origin)" text="ファイアスパーク" sync="ラクタパクシャは「ファイアスパーク」の構え。" notice="次は、サッカー" />
     <a time="@(406.0 - origin)" text="火炎拳" sync="ラクタパクシャは「火炎拳」の構え。" notice="次は、スイッチ" />
-    <a time="@(415.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(415.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="" />
     <a time="@(421.0 - origin)" text="メテオストライク" sync="ラクタパクシャは「メテオストライク」の構え。" notice="次は、背面集合" />
 
     <a time="@(427.0 - origin)" text="NEXT" goto="PHASE5 Sword" />
@@ -112,7 +116,7 @@
     <a time="@(541.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、DPS" />
     <a time="@(542.9 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
     <a time="@(553.0 - origin)" text="火炎拳" sync="ラクタパクシャは「火炎拳」の構え。" notice="次は、スイッチ" />
-    <a time="@(561.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="次は、MT大ダメージ" />
+    <a time="@(561.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="" />
     <a time="@(567.0 - origin)" text="メテオストライク" sync="ラクタパクシャは「メテオストライク」の構え。" notice="次は、背面集合" />
     <a time="@(581.0 - origin)" text="フィアス" sync="ラクタパクシャは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
     <a time="@(589.0 - origin)" text="フィアス" sync="ラクタパクシャは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />

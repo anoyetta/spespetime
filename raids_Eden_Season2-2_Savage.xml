@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編2</name>
-  <rev>rev1.1</rev>
+  <rev>rev2.0</rev>
   <description>
     希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
   </description>
@@ -17,7 +17,13 @@
   <default target-element="Activity" target-attr="sync-s" value="-6" />
   <default target-element="Activity" target-attr="sync-e" value="6" />
 
-  <t text="火炎拳" sync="は「火炎拳」の構え。" notice="火炎ケン" />
+  <t text="火炎拳" sync="は「火炎拳」の構え。" notice="火炎ケン">
+    <v-notice
+      icon="Fire.png"
+      duration="4"
+      duration-visible="false"
+      order="-1" />
+  </t>
   <t text="爆裂炎" sync="は「爆裂炎」の構え。" notice="爆裂エン" />
   <t text="メテオ" sync="は「メテオストライク」の構え。" notice="メテオ" />
 
@@ -35,7 +41,7 @@
     <a time="096.0" text="フューリア" sync="ガルーダは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
     <a time="105.0" text="フィアス" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
 
-    <a time="112.0" text="NEXT" sync="ガルーダ:おのれ……ちょこまかとッ……！" goto="PHASE2 Ifrit" />
+    <a time="112.0" text="NEXT" sync="ガルーダ:おのれ……ちょこまかとッ……！" goto="PHASE2 Ifrit" notice="スタンス忘れない" />
   </s>
 
   <s name="PHASE2 Ifrit">
@@ -100,17 +106,62 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 427.0; }
 
+    @{
+      // コンフラのときのDPSのエアーバンプの東西優先順位を表示する
+
+      // 優先順位の定義
+      // 若いほうがより東に陣取る
+      var bumps = new[] { "DRG", "MCH", "BRD", "SMN" };
+
+      foreach (var job in bumps) {
+      <text>
+        <t text="${_@(job)}" sync="^1B:[id8]:[@(job)]:0000:[id4]:00D3:0000:0000:0000:">
+          <expressions>
+            <set name="bump_@(job)" value="➔ AOE" />
+          </expressions>
+        </t>
+      </text>
+      }
+    }
+
     <a time="@(442.0 - origin)" sync="ラクタパクシャ:風を得て、猛る炎よ、渦を巻け！" />
 
-    <a time="@(442.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャは「コンフラグレーションストライク」の構え。" notice="次は、コンフラ、左右に散開" />
-    <a time="@(468.8 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="@(442.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャは「コンフラグレーションストライク」の構え。" notice="次は、コンフラ、左右に散開">
+      <expressions>
+        @foreach (var job in bumps) {
+        <text>
+          <set name="bump_@(job)" value="　" />
+        </text>
+        }
+      </expressions>
+    </a>
+    <a time="@(469.0 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
+    <a time="@(470.5 - origin)" name="BUMP表示">
+      @{
+        var i = 0;
+        foreach (var job in bumps) {
+          <text>
+            <v-notice icon="@(job).png" text="VAR['bump_@(job)']" duration="6" duration-visible="false" order="@(i)" />
+          </text>
+          i++;
+        }
+      }
+    </a>
+
     <a time="@(477.0 - origin)" sync="ラクタパクシャ:大火の一撃、灰燼に帰せッ！" />
-    <a time="@(478.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャの「コンフラグレーションストライク」" notice="次は、背面集合" />
+    <a time="@(478.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャの「コンフラグレーションストライク」" notice-o="-6" notice="次は、北側に集合">
+      <v-notice
+        icon="Arrow1.png"
+        duration="6"
+        duration-visible="false"
+        order="-1" />
+    </a>
 
     <a time="@(488.0 - origin)" text="オクルーデッドフロント" sync="ラクタパクシャは「オクルーデッドフロント」の構え。" notice="" />
     <a time="@(490.8 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
     <a time="@(497.0 - origin)" text="フューリア" sync="ラクタパクシャは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
     <a time="@(505.0 - origin)" text="灼熱の咆哮" sync="ラクタパクシャは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+
     <a time="@(518.0 - origin)" text="オクルーデッドフロント" sync="ラクタパクシャは「オクルーデッドフロント」の構え。" notice="" />
     <a time="@(523.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、タンクとヒーラー" />
     <a time="@(541.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、DPS" />

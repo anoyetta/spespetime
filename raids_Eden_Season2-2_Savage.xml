@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編2</name>
-  <rev>rev2.0</rev>
+  <rev>rev2.1</rev>
   <description>
     希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
   </description>
@@ -136,7 +136,7 @@
       </expressions>
     </a>
     <a time="@(469.0 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、ペア処理" />
-    <a time="@(470.5 - origin)" name="BUMP表示">
+    <a time="@(471.0 - origin)" name="BUMP表示" notice-o="0">
       @{
         var i = 0;
         foreach (var job in bumps) {

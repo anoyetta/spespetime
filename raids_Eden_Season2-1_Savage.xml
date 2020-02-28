@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編1</name>
-  <rev>rev1.3</rev>
+  <rev>rev1.4</rev>
   <description>
     希望の園エデン零式： 共鳴編1 スペスペたいむ用タイムラインです。
   </description>
@@ -105,6 +105,19 @@
   <t text="南東" notice="デルタ側にー">
     <p-sync interval="60">
       <combatant name="^イクシオン・ミラージュ$" X="23.55" Y="23.90" tolerance="0.00"/>
+    </p-sync>
+  </t>
+
+  <!-- ラムウ南北判定 by suzu -->
+  <t text="北" notice-o="4" notice="ラムウはアルファー">
+    <p-sync interval="60">
+      <combatant name="^ラムウ・ミラージュ$" X="23.50" Y="23.88" tolerance="0.00"/>
+    </p-sync>
+  </t>
+
+  <t text="南" notice-o="4" notice="ラムウはチャーリー">
+    <p-sync interval="60">
+      <combatant name="^ラムウ・ミラージュ$" X="23.50" Y="23.12" tolerance="0.00"/>
     </p-sync>
   </t>
 

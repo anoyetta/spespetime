@@ -12,7 +12,6 @@
   <entry>PHASE1 Garuda</entry>
   <start>0039:戦闘開始！</start>
 
-  <default target-element="Activity" target-attr="notice-d" value="Both" />
   <default target-element="Activity" target-attr="notice-o" value="-4" />
   <default target-element="Activity" target-attr="sync-s" value="-6" />
   <default target-element="Activity" target-attr="sync-e" value="6" />

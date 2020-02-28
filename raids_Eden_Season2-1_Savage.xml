@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編1</name>
-  <rev>rev1.2</rev>
+  <rev>rev1.3</rev>
   <description>
     希望の園エデン零式： 共鳴編1 スペスペたいむ用タイムラインです。
   </description>
-  <author>anoyetta</author>
+  <author>anoyetta, suzu</author>
   <license>CC BY-SA</license>
   <zone>Eden's Verse: Fulmination (Savage)</zone>
   <locale>JA</locale>
@@ -82,6 +82,31 @@
     <expressions>
       <set name="is_charge" value="false" />
     </expressions>
+  </t>
+
+  <!-- イクシオンPOP位置判定 by suzu -->
+  <t text="北西" notice="ブラボー側にー">
+    <p-sync interval="60">
+      <combatant name="^イクシオン・ミラージュ$" X="23.15" Y="23.10" tolerance="0.00"/>
+    </p-sync>
+  </t>
+
+  <t text="南西" notice="ブラボー側にー">
+    <p-sync interval="60">
+      <combatant name="^イクシオン・ミラージュ$" X="23.15" Y="23.90" tolerance="0.00"/>
+    </p-sync>
+  </t>
+
+  <t text="北東" notice="デルタ側にー">
+    <p-sync interval="60">
+      <combatant name="^イクシオン・ミラージュ$" X="23.55" Y="23.10" tolerance="0.00"/>
+    </p-sync>
+  </t>
+
+  <t text="南東" notice="デルタ側にー">
+    <p-sync interval="60">
+      <combatant name="^イクシオン・ミラージュ$" X="23.55" Y="23.90" tolerance="0.00"/>
+    </p-sync>
   </t>
 
   <s name="PHASE1">

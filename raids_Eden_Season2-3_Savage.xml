@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編3層</name>
-  <rev>rev1.0</rev>
+  <rev>rev1.1</rev>
   <description>
     希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
   </description>
@@ -15,6 +15,56 @@
   <default target-element="Activity" target-attr="notice-o" value="-4" />
   <default target-element="Activity" target-attr="sync-s" value="-5" />
   <default target-element="Activity" target-attr="sync-e" value="5" />
+
+  @if (Model.Player.InRole("TANK")) {
+    <t no="0" name="set_notice1" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F">
+      <expressions>
+        <pre name="previous_tareget" value="me" />
+        <set name="additional_notice" value="、カバー呼ぶー" />
+      </expressions>
+    </t>
+
+    <t no="0" name="set_notice2" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F">
+      <expressions>
+        <pre name="previous_tareget" value="partner" />
+        <set name="additional_notice" value="" />
+      </expressions>
+    </t>
+
+    <t no="0" name="set_notice3" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F">
+      <expressions>
+        <pre name="previous_tareget" value="me" />
+        <set name="additional_notice" value="" />
+      </expressions>
+    </t>
+
+    <t no="0" name="set_notice4" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F">
+      <expressions>
+        <pre name="previous_tareget" value="partner" />
+        <set name="additional_notice" value="、カバー入るー" />
+      </expressions>
+    </t>
+
+    <t no="1" text="自分に釘" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F" notice="自分に釘！VAR['additional_notice']">
+      <expressions>
+        <set name="previous_tareget" value="me" />
+      </expressions>
+      <v-notice
+        duration="4.7"
+        duration-visible="false"
+        icon="HardAttack.png" />
+    </t>
+
+    <t no="1" text="相方に釘" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F" notice="相方に釘！VAR['additional_notice']">
+      <expressions>
+        <set name="previous_tareget" value="partner" />
+      </expressions>
+      <v-notice
+        duration="4.7"
+        duration-visible="false"
+        icon="HardAttack.png" />
+    </t>
+  }
 
   @{ var origin = 0.0; }
 
@@ -35,21 +85,12 @@
       <v-notice duration="10" icon="Arrow7.png" />
     </t>
 
-    @if (Model.Player.InRole("TANK")) {
-      <t text="自分に釘" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F" notice="自分に釘！">
-        <v-notice
-          duration="4.7"
-          duration-visible="false"
-          icon="HardAttack.png" />
-      </t>
-
-      <t text="相方に釘" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F" notice="相方に釘！">
-        <v-notice
-          duration="4.7"
-          duration-visible="false"
-          icon="HardAttack.png" />
-      </t>
-    }
+    <a time="000.0" name="clear">
+      <expressions>
+        <set name="previous_tareget" value="empty" />
+        <set name="additional_notice" value="" />
+      </expressions>
+    </a>
 
     <a time="008.0" text="虚無の波動" sync="ダークアイドルは「虚無の波動」の構え。" notice="次は、全体攻撃。" />
     <a time="020.0" text="闇光の釘" sync="ダークアイドルは「闇光の釘」の構え。" notice="次は、釘。" />
@@ -115,22 +156,6 @@
   <s name="PHASE3 Light＆Dark">
     @* このフェーズの基点秒数 *@
     @{ origin = 340.0; }
-
-    @if (Model.Player.InRole("TANK")) {
-      <t text="自分に釘" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F" notice="自分に釘！">
-        <v-notice
-          duration="4.7"
-          duration-visible="false"
-          icon="HardAttack.png" />
-      </t>
-
-      <t text="相方に釘" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F" notice="相方に釘！">
-        <v-notice
-          duration="4.7"
-          duration-visible="false"
-          icon="HardAttack.png" />
-      </t>
-    }
 
     <t text="偏属性：光" sync="^1A:[id8]:[mex] gains the effect of 偏属性：光 from" >
       <expressions>

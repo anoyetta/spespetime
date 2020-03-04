@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編3層</name>
-  <rev>rev1.1</rev>
+  <rev>rev1.2</rev>
   <description>
     希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
   </description>
@@ -17,6 +17,7 @@
   <default target-element="Activity" target-attr="sync-e" value="5" />
 
   @if (Model.Player.InRole("TANK")) {
+    <!--
     <t no="0" name="set_notice1" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F">
       <expressions>
         <pre name="previous_tareget" value="me" />
@@ -44,8 +45,9 @@
         <set name="additional_notice" value="、カバー入るー" />
       </expressions>
     </t>
+    -->
 
-    <t no="1" text="自分に釘" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F" notice="自分に釘！VAR['additional_notice']">
+    <t no="1" text="自分に釘" sync="^23:[id8]:ダークアイドル:[id8]:[mex]:0000:0000:0025:[id8]:000F" notice="自分に釘！">
       <expressions>
         <set name="previous_tareget" value="me" />
       </expressions>
@@ -55,7 +57,7 @@
         icon="HardAttack.png" />
     </t>
 
-    <t no="1" text="相方に釘" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F" notice="相方に釘！VAR['additional_notice']">
+    <t no="1" text="相方に釘" sync="^23:[id8]:ダークアイドル:[id8]:[nex]:0000:0000:0025:[id8]:000F" notice="相方に釘！">
       <expressions>
         <set name="previous_tareget" value="partner" />
       </expressions>
@@ -66,25 +68,25 @@
     </t>
   }
 
+  <t text="強制転移：前" sync="^1A:[id8]:[mex] gains the effect of 強制転移：前 from  for 10.00 Seconds." notice="強制転移、前ー。" >
+    <v-notice duration="10" icon="Arrow1.png" />
+  </t>
+
+  <t text="強制転移：後" sync="^1A:[id8]:[mex] gains the effect of 強制転移：後 from  for 10.00 Seconds." notice="強制転移、後ろー。" >
+    <v-notice duration="10" icon="Arrow5.png" />
+  </t>
+
+  <t text="強制転移：右" sync="^1A:[id8]:[mex] gains the effect of 強制転移：右 from  for 10.00 Seconds." notice="強制転移、右ー。" >
+    <v-notice duration="10" icon="Arrow3.png" />
+  </t>
+
+  <t text="強制転移：左" sync="^1A:[id8]:[mex] gains the effect of 強制転移：左 from  for 10.00 Seconds." notice="強制転移、左ー。" >
+    <v-notice duration="10" icon="Arrow7.png" />
+  </t>
+
   @{ var origin = 0.0; }
 
   <s name="PHASE1">
-    <t text="強制転移：前" sync="^1A:[id8]:[mex] gains the effect of 強制転移：前 from  for 10.00 Seconds." notice="強制転移、前ー。" >
-      <v-notice duration="10" icon="Arrow1.png" />
-    </t>
-
-    <t text="強制転移：後" sync="^1A:[id8]:[mex] gains the effect of 強制転移：後 from  for 10.00 Seconds." notice="強制転移、後ろー。" >
-      <v-notice duration="10" icon="Arrow5.png" />
-    </t>
-
-    <t text="強制転移：右" sync="^1A:[id8]:[mex] gains the effect of 強制転移：右 from  for 10.00 Seconds." notice="強制転移、右ー。" >
-      <v-notice duration="10" icon="Arrow3.png" />
-    </t>
-
-    <t text="強制転移：左" sync="^1A:[id8]:[mex] gains the effect of 強制転移：左 from  for 10.00 Seconds." notice="強制転移、左ー。" >
-      <v-notice duration="10" icon="Arrow7.png" />
-    </t>
-
     <a time="000.0" name="clear">
       <expressions>
         <set name="previous_tareget" value="empty" />
@@ -123,7 +125,11 @@
     <a time="174.0" text="強制転移" sync="ダークアイドルは「強制転移」の構え。" notice="次は、頭割りと散開。" />
     <a time="180.0" text="極夜の機動" sync="ダークアイドルは「極夜の機動」の構え。" notice="" />
 
-    <a time="200.0" text="NEXT" goto="PHASE2 vs雑魚" notice="次は、雑魚フェーズえー" />
+    @if (Model.Player.InRole("TANK")) {
+      <a time="200.0" text="NEXT" goto="PHASE2 vs雑魚" notice="次は、雑魚フェーズえー、スタンス忘れないー" />
+    } else {
+      <a time="200.0" text="NEXT" goto="PHASE2 vs雑魚" notice="次は、雑魚フェーズえー" />
+    }
   </s>
 
   <s name="PHASE2 vs雑魚">
@@ -291,7 +297,7 @@
     <a time="@(429.0 - origin)" text="次元孔" sync="ダークアイドルの「次元孔」" />
     <a time="@(434.0 - origin)" text="夜襲の号令" sync="ダークアイドルの「夜襲の号令」" />
 
-    <a time="@(444.5 - origin)" text="奔流１回目" notice="右なら前、左は後ろ。">
+    <a time="@(444.0 - origin)" text="奔流１回目" notice="右なら前、左は後ろ。">
       <v-notice
         text="右 → 前へ"
         duration="5"
@@ -304,7 +310,7 @@
         order="1" />
     </a>
 
-    <a time="@(443.2 - origin)" text="奔流２回目" notice="左上が赤ならチェンジ、青ならそのまま">
+    <a time="@(452.0 - origin)" text="奔流２回目" notice="赤ならチェンジ、青ならそのまま">
       <v-notice
         text="左上：赤 → チェンジ"
         duration="5"
@@ -317,14 +323,14 @@
         order="1" />
     </a>
 
-    <a time="@(448.0 - origin)" text="黎明の機動" sync="ダークアイドルの「黎明の機動」" notice="内側えー。" />
+    <a time="@(457.0 - origin)" text="黎明の機動" sync="ダークアイドルの「黎明の機動」" notice="内側えー。" />
 
     <a time="@(462.3 - origin)" text="奔流３回目" />
     <a time="@(465.0 - origin)" text="AoE着弾" />
     <a time="@(470.4 - origin)" text="奔流４回目" />
     <a time="@(474.0 - origin)" name="虚無の波動" text="虚無の波動" sync="ダークアイドルの「虚無の波動」" notice="次は、全体攻撃。" />
 
-    <a time="@(491.0 - origin)" text="闇光の釘" sync="ダークアイドルの「闇光の釘」" notice="次は、釘"  />
+    <a time="@(491.0 - origin)" text="闇光の釘" sync="ダークアイドルの「闇光の釘」" sync-s="-15" sync-e="15" notice="次は、釘" />
 
     <a time="@(511.0 - origin)" sync="リーンの声:周囲の罪喰いたちが、 全部集まってきているようです……！" notice="次は、全体攻撃。中央からノックバック。" />
     <a time="@(516.0 - origin)" text="群体突進" sync="ダークアイドルの「群体突進」" />

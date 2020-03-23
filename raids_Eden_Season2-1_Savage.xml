@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編1</name>
-  <rev>rev1.4</rev>
+  <rev>rev1.5</rev>
   <description>
     希望の園エデン零式： 共鳴編1 スペスペたいむ用タイムラインです。
   </description>
@@ -127,7 +127,7 @@
     <a time="018.0" text="武具生成" sync="ラムウは「武具生成」の構え。" notice="次は、短い槍えー。" />
     <a time="029.0" text="裁きの界雷" sync="ラムウは「裁きの界雷」の構え。" notice="次は、槍から雷。" />
 
-    <a time="043.0" text="分離体生成" sync="ラムウの「分離体生成」" notice="次は、鳥POP。" />
+    <a time="043.0" text="分離体生成1" sync="ラムウの「分離体生成」" notice="次は、鳥POP。" />
     <a time="049.0" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
     <a time="057.0" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
     <a time="065.0" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />
@@ -141,15 +141,27 @@
     </a>
     <a time="107.0" text="チャージボルト？" sync="ラムウは「チャージボルト」の構え。" />
 
-    <a time="114.0" text="吹き飛ばし（実線から）" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、実線えー。">
+    <a time="114.0" text="吹き飛ばし（実線から）" notice="次は、吹っ飛ぶ、実線えー。" notice-o="-1">
       <expressions>
         <pre name="is_charge" value="true" />
       </expressions>
+      <v-notice
+        text="実線から"
+        icon="True.png"
+        duration="4"
+        duration-visible="false"
+        order="-1" />
     </a>
-    <a time="114.0" text="吹き飛ばし（破線から）" sync="ラムウは「思念体生成」の構え。" notice="次は、吹っ飛ぶ、破線えー。">
+    <a time="114.0" text="吹き飛ばし（破線から）" notice="次は、吹っ飛ぶ、破線えー。" notice-o="-1">
       <expressions>
         <pre name="is_charge" value="false" />
       </expressions>
+      <v-notice
+        text="破線から"
+        icon="True.png"
+        duration="4"
+        duration-visible="false"
+        order="-1" />
     </a>
 
     <a time="125.0" text="ギャロップ" sync="イクシオン・ミラージュは「ギャロップ」の構え。" />
@@ -181,7 +193,7 @@
     <a time="@(300.0 - origin)" text="痛打" sync="ラムウは「痛打」の構え。" notice="次は、MT大ダメージ。" />
 
     <a time="@(311.0 - origin)" text="裁きの熱雷" sync="ラムウは「裁きの熱雷」の構え。" notice="次は、全体攻撃。" />
-    <a time="@(325.0 - origin)" text="分離体生成" sync="ラムウは「分離体生成」の構え。" notice="次は、鳥POP。" />
+    <a time="@(325.0 - origin)" text="分離体生成2" sync="ラムウは「分離体生成」の構え。" notice="次は、鳥POP。" />
     <a time="@(334.0 - origin)" text="チャージボルト" sync="ラムウは「チャージボルト」の構え。" />
     <a time="@(341.0 - origin)" text="サンダーストーム" sync="ラムウは「サンダーストーム」の構え。" notice="次は、AOEばら撒き。" />
     <a time="@(352.0 - origin)" text="ショックブラスト" sync="ライデンは「ショックブラスト」の構え。" notice="次は、ST大ダメージ。" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev16.2"; }
+  @{ var rev = "rev17.0"; }
   <rev>@rev</rev>
   <description>
     UltimateRINGS専用の絶アレキタイムラインです。
@@ -136,100 +136,90 @@
 
     <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
 
-    <t text="１[北] ソード\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:004F:" notice="ひとばん、北、ソード">
+    <t no="1" name="InsertDiceMarker" sync="^1B:[id8]:[pc]:0000:[id4]:(?&lt;mark_code&gt;[0-9a-fA-F]{4}):">
       <expressions>
+        <set name="dice_mark_count" count="+1" />
+        <table>
+        {
+            "method":"Insert", "table":"DiceTable",
+            "cols" : [
+              { "name":"marker", "val":"${mark_code}", "key":"true" },
+              { "name":"target", "val":"${_pc}" },
+            ]
+        }
+      </expressions>
+    </t>
+
+    <t no="2" text="１[北] ソード" notice="ひとばん、北、ソード" sync="^1B:">
+      <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][0]['target']" count="[mex]" />
         <set name="dice_group" value="1" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice1.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice1.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="２[北] チャージ(背側)\n ➜ブラスター参へ" sync="^1B:[id8]:[mex]:0000:[id4]:0050:" notice="ふたばん、北、チャージ">
+    <t no="2" text="２[北] チャージ" notice="ふたばん、北、チャージ" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][1]['target']" count="[mex]" />
         <set name="dice_group" value="1" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice2.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice2.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="３[南] ソード\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0051:" notice="さんばん、南、ソード">
+    <t no="2" text="３[南] ソード" notice="さんばん、南、ソード" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][2]['target']" count="[mex]" />
         <set name="dice_group" value="2" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice3.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice3.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="４[南] チャージ(背側)\n ➜ブラスター四へ" sync="^1B:[id8]:[mex]:0000:[id4]:0052:" notice="よんばん、南、チャージ">
+    <t no="2" text="４[南] チャージ" notice="よんばん、南、チャージ" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][3]['target']" count="[mex]" />
         <set name="dice_group" value="2" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice4.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice4.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="５[北] ソード\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0053:" notice="ごーばん、北、ソード">
+    <t no="2" text="５[北] ソード" notice="ごーばん、北、ソード" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][4]['target']" count="[mex]" />
         <set name="dice_group" value="3" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice5.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice5.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="６[北] チャージ(背側)\n ➜ブラスター七へ" sync="^1B:[id8]:[mex]:0000:[id4]:0054:" notice="ろくばん、北、チャージ">
+    <t no="2" text="６[北] チャージ" notice="ろくばん、北、チャージ" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][5]['target']" count="[mex]" />
         <set name="dice_group" value="3" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice6.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice6.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="７[南] ソード\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0055:" notice="ななばん、南、ソード">
+    <t no="2" text="７[北] チャージ" notice="ななばん、南、ソード" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][6]['target']" count="[mex]" />
         <set name="dice_group" value="4" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice7.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice7.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t text="８[南] チャージ(背側)\n ➜ブラスター九へ" sync="^1B:[id8]:[mex]:0000:[id4]:0056:" notice="はちばん、南、チャージ">
+    <t no="2" text="８[北] チャージ" notice="はちばん、南、チャージ" sync="^1B:">
       <expressions>
+        <pre name="dice_mark_count" count="8" />
+        <pre name="TABLE['DiceTable'][7]['target']" count="[mex]" />
         <set name="dice_group" value="4" />
       </expressions>
-      <v-notice
-        duration="30"
-        duration-visible="false"
-        icon="Dice8.png"
-        order="-2"
-        sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
+      <v-notice icon="Dice8.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
     <!-- ブラスター set1 -->

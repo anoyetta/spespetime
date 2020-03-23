@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編2</name>
-  <rev>rev3.0</rev>
+  <rev>rev3.1</rev>
   <description>
     希望の園エデン零式： 共鳴編2 スペスペたいむ用タイムラインです。
   </description>
@@ -16,109 +16,86 @@
   <default target-element="Activity" target-attr="sync-s" value="-6" />
   <default target-element="Activity" target-attr="sync-e" value="6" />
 
-  <!-- サッカー判定 by suzu -->
-  <t text="北（西から北西）" notice="西、西、西">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.50" Y="23.20" tolerance="0.00"/><!--北-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.20" Y="23.28" tolerance="0.00"/><!--北西-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.58" tolerance="0.00"/><!--西-->
+  <!-- ファイアスパークフラグ -->
+  <t sync="(イフリート|ラクタパクシャ)は「ファイアスパーク」の構え。" >
+    <expressions>
+      <set name="flag_fs" value="true" ttl="60" />
+    </expressions>
+  </t>
+
+  <!-- サッカー判定 -->
+  <t text="北" notice="あるふぁー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.28" Y="23.20" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="北（東から北東）" notice="東、東、東">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.50" Y="23.20" tolerance="0.00"/><!--北-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.80" Y="23.28" tolerance="0.00"/><!--北東-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.58" tolerance="0.00"/><!--東-->
+  <t text="東" notice="ぶらぼー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.72" Y="23.42" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="東（北から北東）" notice="北、北、北">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.80" Y="23.50" tolerance="0.00"/><!--東-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.20" tolerance="0.00"/><!--北東-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.42" Y="23.28" tolerance="0.00"/><!--北-->
+  <t text="南" notice="ちゃーりー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.58" Y="23.72" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="東（南から南東）" notice="南、南、南">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.80" Y="23.50" tolerance="0.00"/><!--東-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.80" tolerance="0.00"/><!--南東-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.42" Y="23.72" tolerance="0.00"/><!--南-->
+  <t text="西" notice="でるた" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.28" Y="23.58" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="南（東から南東）" notice="東、東、東">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.50" Y="23.80" tolerance="0.00"/><!--南-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.80" Y="23.72" tolerance="0.00"/><!--南東-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.42" tolerance="0.00"/><!--東-->
+  <t text="北東" notice="あるふぁぶらぼー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.72" Y="23.20" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="南（西から南西）" notice="西、西、西">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.50" Y="23.80" tolerance="0.00"/><!--南-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.20" Y="23.72" tolerance="0.00"/><!--南西-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.42" tolerance="0.00"/><!--西-->
+  <t text="南東" notice="ぶらぼーちゃーりー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.72" Y="23.80" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="西（南から南西）" notice="南、南、南">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.20" Y="23.50" tolerance="0.00"/><!--西-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.80" tolerance="0.00"/><!--南西-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.58" Y="23.72" tolerance="0.00"/><!--南-->
+  <t text="南西" notice="ちゃーりーでるた" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.50" Y="23.80" tolerance="0.00" />
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.80" Y="23.28" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
   </t>
 
-  <t text="西（北から北西）" notice="北、北、北">
-    <p-sync interval="60">
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.20" Y="23.50" tolerance="0.00"/><!--西-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.20" tolerance="0.00"/><!--北西-->
-      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.58" Y="23.28" tolerance="0.00"/><!--北-->
+  <t text="北西" notice="あるふぁでるた" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="30">
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.20" Y="23.28" tolerance="0.00" />
+      <combatant name="(イフリート|ラクタパクシャ)" X="23.28" Y="23.80" tolerance="0.00" />
     </p-sync>
-    <expressions>
-      <set name="is_cross" value="true" ttl="10"/>
-    </expressions>
-  </t>
-
-  <!-- 飛び火の判定 -->
-  <!-- ななめ方向は厳密な位置を検知できないため「ななめ」とだけ通知する -->
-  <t sync="(イフリート|ラクタパクシャ) starts using 飛び火" notice="ななめ安置、ななめ安置" sync-interval="10">
-    <expressions>
-      <pre name="is_cross" value="false"/>
-      <pre name="is_firespark" value="true"/>
-    </expressions>
-  </t>
-
-  <!-- ファイアスパークを使ったかどうか -->
-  <t sync="((イフリート|ラクタパクシャ)は「ファイアスパーク」の構え。)|((イフリート|ラクタパクシャ) starts using ファイアスパーク)">
-    <expressions>
-      <set name="is_firespark" value="true" ttl="20"/>
-    </expressions>
   </t>
 
   <t text="火炎拳" sync="は「火炎拳」の構え。" notice="火炎ケン">
@@ -152,7 +129,11 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 112.0; }
 
-    <a time="@(117.0 - origin)" sync="イフリート:神色自若……下がるがいい……！" />
+    <a time="@(117.0 - origin)" sync="イフリート:神色自若……下がるがいい……！">
+      <expressions>
+        <set name="flag_fs" value="false" />
+      </expressions>
+    </a>
     <a time="@(117.7 - origin)" text="タッチダウン" sync="イフリート starts using タッチダウン on Unknown." notice="次は、タッチダウン。" />
     <a time="@(130.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
     <a time="@(138.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
@@ -189,7 +170,11 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 300.0; }
 
-    <a time="@(301.0 - origin)" sync="イフリート:魂飛魄散……まだ抗おうとは……！" />
+    <a time="@(301.0 - origin)" sync="イフリート:魂飛魄散……まだ抗おうとは……！">
+      <expressions>
+        <set name="flag_fs" value="false" />
+      </expressions>
+    </a>
     <a time="@(306.0 - origin)" sync="ガルーダ:ならば、わたくしの風の力…… 燃え上がる焔神の炎に注ぐまで！" />
     <a time="@(317.0 - origin)" sync="？？？？:ウオォォォォォッ！！" />
     <a time="@(327.0 - origin)" sync="ラクタパクシャ:我が名はラクタパクシャ…… 「赤き翼」を持つ者なり……！" />

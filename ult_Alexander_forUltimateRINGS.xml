@@ -134,7 +134,16 @@
     @* このフェーズの基点秒数 *@
     @{ origin = 140; }
 
-    <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
+    <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！">
+      <expressions>
+        <set name="dice_mark_count" count="0" />
+        <table>
+        {
+            "method":"Truncate", "table":"DiceTable"
+        }
+        </table>
+      </expressions>
+    </a>
 
     <t no="1" name="InsertDiceMarker" sync="^1B:[id8]:[pc]:0000:[id4]:(?&lt;mark_code&gt;[0-9a-fA-F]{4}):">
       <expressions>

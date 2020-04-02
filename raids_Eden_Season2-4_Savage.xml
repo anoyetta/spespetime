@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：共鳴編4層</name>
-  <rev>rev2.2</rev>
+  <rev>rev2.4</rev>
   <description>
     希望の園エデン零式： 共鳴編4 スペスペたいむ用タイムラインです。
   </description>
@@ -66,13 +66,13 @@
 
     <t name="フラグ：サイスキック" sync="^14:4D6E:シヴァ starts using サイスキック on シヴァ." notice="近寄るー。">
       <expressions>
-        <set name="NEXT_KICK_NOTICE" count="次は、離れるー。" />
+        <set name="NEXT_KICK_NOTICE" value="次は、離れるー。" />
       </expressions>
     </t>
 
     <t name="フラグ：アクスキック" sync="^14:4D6D:シヴァ starts using アクスキック on シヴァ." notice="離れるー。">
       <expressions>
-        <set name="NEXT_KICK_NOTICE" count="次は、近寄るー。" />
+        <set name="NEXT_KICK_NOTICE" value="次は、近寄るー。" />
       </expressions>
     </t>
 
@@ -306,7 +306,7 @@
         duration="3.9"
         icon="Arrow5.png" />
     </a>
-    <a time="212" text="アク・ラーイ" sync="14:4D99:シヴァ starts using アク・ラーイ" icon="StackAOE.png" notice-o="-0.7" notice="正面えー">
+    <a time="212" text="アク・ラーイ" sync="14:4D99:シヴァ starts using アク・ラーイ" icon="StackAOE.png" notice-o="-1" notice="正面えー">
       <v-notice
         text="正面へ"
         duration="3"
@@ -337,14 +337,14 @@
         duration="3.9"
         icon="Arrow5.png" />
     </a>
-    <a time="316.6" text="アク・ラーイ1" icon="StackAOE.png" notice-o="-0.7" notice="正面えー。">
+    <a time="316.6" text="アク・ラーイ1" icon="StackAOE.png" notice-o="-1" notice="正面えー。">
       <v-notice
         text="正面へ"
         duration="3"
         duration-visible="false"
         icon="Arrow1.png" />
     </a>
-    <a time="326.6" text="アク・ラーイ2" icon="StackAOE.png" notice-o="-0.7" notice="左右えー。">
+    <a time="326.6" text="アク・ラーイ2" icon="StackAOE.png" notice-o="-1" notice="左右えー。">
       <v-notice
         text="左右へ"
         duration="3"
@@ -378,12 +378,12 @@
 
     <a time="382" text="アイスエラプション" notice="@NOTICE_ICE_ERUPTION" notice-o="-1" icon="Targetaoe01.png" />
 
-    <a time="386" name="デバフ判定タイミング" notice-o="0" notice="塔に入るー" >
+    <a time="385" name="デバフ判定タイミング" notice-o="0" notice="塔に入るー" >
       <expressions>
         <pre name="light_debuff" count="2" />
       </expressions>
     </a>
-    <a time="386" name="デバフ判定タイミング" notice-o="0" notice="塔から出るー" >
+    <a time="385" name="デバフ判定タイミング" notice-o="0" notice="塔から出るー" >
       <expressions>
         <pre name="light_debuff" count="3" />
       </expressions>
@@ -395,9 +395,9 @@
     <a time="406" text="鏡の国" sync="^00:282b:シヴァの「鏡の国」" notice="次は、北に集合。" icon="Dialog.png" />
     <a time="417" text="氷床２回" notice="" icon="DontMove.png" />
 
-    <a time="425" sync="^00:0044:シヴァ:聖竜よ、来たれ……！" notice-o="4.3" notice="南えー">
+    <a time="425" sync="^00:0044:シヴァ:聖竜よ、来たれ……！" notice-o="4.4" notice="南えー">
       <v-notice
-        text="南へ\n➔ その後動かない"
+        text="南へ"
         duration="3"
         duration-visible="false"
         icon="Arrow5.png" />

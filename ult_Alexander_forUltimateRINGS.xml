@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
-  <name>絶アレキサンダー討滅戦 for UltimateRINGS</name>
-  @{ var rev = "rev17.2"; }
+  <name>絶アレキサンダー討滅戦</name>
+  @{ var rev = "rev18.4"; }
   <rev>@rev</rev>
   <description>
-    UltimateRINGS専用の絶アレキタイムラインです。
+    anoyetta 専用の絶アレキタイムラインです。
   </description>
   <author>anoyetta</author>
   <license>CC BY-SA</license>
@@ -13,8 +13,8 @@
   <start>0039:戦闘開始！</start>
   <entry>PHASE1 LIQUID</entry>
 
-  <default target-element="Activity" target-attr="notice-d" value="Both" />
-  <default target-element="Activity" target-attr="notice-o" value="-6" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
   <default target-element="Activity" target-attr="sync-s" value="-5" />
   <default target-element="Activity" target-attr="sync-e" value="4" />
 
@@ -57,11 +57,13 @@
     </t>
 
     <!-- 光性爆雷 -->
+    <!--
     <t name="光性爆雷" text="光性爆雷" sync="[mex]に「光性爆雷」の効果。" notice="こうせい爆雷。">
       <v-notice
         duration="4"
         job-icon="true" />
     </t>
+    -->
 
     <!-- ジェイル -->
     <t name="自分にジェイル" text="ジェイル\n ➜ ${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:0010:" notice="自分にジェイル">
@@ -78,17 +80,18 @@
         icon="Timer.png" />
     </t>
 
-    <a time="011" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
-    <a time="014" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" notice="次は、カスケード。" />
-    <a time="020" text="リキッドPOP" notice="次は、リキッドポップ。" />
+    <a time="011" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次、フルイド。" />
+    <a time="014" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" notice="次、カスケード。" />
+    <a time="020" text="リキッドPOP" notice="次、リキッドポップ。" />
 
     <a time="030" text="じゃんけん" notice-o="-1" notice="じゃんけん" />
     <a time="033" text="竜巻ウェイブ" sync="リキッドレイジ starts using プロティアンウェイブ on リキッドレイジ." />
     <a time="034" text="ヤークトPOP" />
     <a time="035" text="ハンド・オブ・パーティング" sync="リキッドハンドの「ハンド・オブ・パーティング」" />
-    <a time="037" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
+    <a time="037" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次、フルイド。" />
     <a time="039" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
     <a time="039" text="汚染蒸気１" />
+    <a time="041" text="エンボラス" />
     <a time="049" text="汚染蒸気２" />
 
     @if (Model.Player.InJob("SCH")) {
@@ -100,49 +103,42 @@
       </a>
     }
 
-    <a time="056" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
+    <a time="056" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次、フルイド。" />
     <a time="059" text="汚染蒸気３" />
-    <a time="066" text="ウェイブ３回" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次は、ウェイブ3回。" />
-    <a time="072" text="スルース" notice="次は、スルース。" />
+    <a time="066" text="ウェイブ３回" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次、ウェイブ3回。" />
+    <a time="072" text="スルース" notice="次、スルース。" />
 
-    <a time="080" text="スプラッシュ６回" sync="リビングリキッドの「スプラッシュ」" notice="次は、スプラッシュ6回。" />
+    <a time="080" text="スプラッシュ６回" sync="リビングリキッドの「スプラッシュ」" notice="次、スプラッシュ6回。" />
     <a time="085" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
-    <a time="086" text="ドレナージ" sync="リキッドレイジの「ドレナージ」" notice="次は、ドレナージ。" />
-    <a time="087" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" notice="次は、カスケード。" />
+    <a time="086" text="ドレナージ" sync="リキッドレイジの「ドレナージ」" notice="次、ドレナージ。" />
+    <a time="087" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" notice="次、カスケード。" />
     <a time="088" text="均等化" notice="均等化。" notice-o="0" />
-    <a time="092" text="窒息" notice="次は、窒息。" notice-o="-3" />
+    <a time="092" text="窒息" notice="次、窒息。" notice-o="-3" />
 
-    <a time="095" text="リキッドジェイル" sync="リキッドレイジの「リキッドジェイル」" notice="次は、ジェイル。" />
+    <a time="095" text="リキッドジェイル" sync="リキッドレイジの「リキッドジェイル」" notice="次、ジェイル。" />
 
-    <a time="103" text="ウェイブ１波" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次は、ウェイブ2回。" />
+    <a time="103" text="ウェイブ１波" sync="リビングリキッドは「プロティアンウェイブ」の構え。" notice="次、ウェイブ2回。" />
     <a time="105" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
     <a time="109" text="スルース" notice="" />
     <a time="110" text="ウェイブ２波" />
 
     <a time="119" text="じゃんけん" notice-o="-1" notice="じゃんけん" />
+    <a time="121" text="エンボラス" />
     <a time="124" text="ハンド・オブ・パーティング" sync="リキッドハンドの「ハンド・オブ・パーティング」" />
     <a time="125" sync="リキッドハンドは「ハンド・オブ・ペイン」の構え。" />
 
-    <a time="127" text="スプラッシュ６回" notice="次は、スプラッシュ6回。" />
-    <a time="134" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次は、フルイド。" />
+    <a time="127" text="スプラッシュ６回" notice="次、スプラッシュ6回。" />
+    <a time="134" text="フルイドスイング" sync="リビングリキッドの「フルイドスイング」" notice="次、フルイド。" />
     <a time="136" text="カスケード" sync="リビングリキッドは「カスケード」の構え。" />
 
-    <a time="138.5" text="PHASE2へ" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" sync-s="-20" notice="次は、チェイサー" goto="PHASE2 CHASER" />
+    <a time="138.5" text="PHASE2へ" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" sync-s="-20" notice="次、チェイサー" goto="PHASE2 CHASER" />
   </s>
 
   <s name="PHASE2 CHASER">
     @* このフェーズの基点秒数 *@
     @{ origin = 140; }
 
-    <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！">
-      <expressions>
-        <table>
-        {
-            "method":"Truncate", "table":"DiceTable", "cols":[]
-        }
-        </table>
-      </expressions>
-    </a>
+    <a time="@(140 - origin)" name="phase1 origin" sync="クルーズチェイサー:コードネーム「ブラスティー」！ 階差閉宇宙ヲ、脅カス敵ヲ発見……撃滅スル！" />
 
     <t no="1" name="InsertDiceMarker" sync="^1B:[id8]:[pc]:0000:[id4]:(?&lt;mark_code&gt;[0-9a-fA-F]{4}):">
       <expressions>
@@ -158,72 +154,64 @@
       </expressions>
     </t>
 
-    <t no="2" text="１[北] ソード" notice="ひとばん、北、ソード" sync="^1B:">
+    <t no="2" sync="^1B:" sync-count="8" text="１[北] ソード" notice="ひとばん、北、ソード">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][0]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="1" />
       </expressions>
       <v-notice icon="Dice1.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="２[北] チャージ" notice="ふたばん、北、チャージ" sync="^1B:">
+    <t no="3" sync="^1B:" sync-count="8" text="２[北] チャージ" notice="ふたばん、北、チャージ">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][1]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="1" />
       </expressions>
       <v-notice icon="Dice2.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="３[南] ソード" notice="さんばん、南、ソード" sync="^1B:">
+    <t no="4" sync="^1B:" sync-count="8" text="３[南] ソード" notice="さんばん、南、ソード">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][2]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="2" />
       </expressions>
       <v-notice icon="Dice3.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="４[南] チャージ" notice="よんばん、南、チャージ" sync="^1B:">
+    <t no="5" sync="^1B:" sync-count="8" text="４[南] チャージ" notice="よんばん、南、チャージ">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][3]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="2" />
       </expressions>
       <v-notice icon="Dice4.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="５[北] ソード" notice="ごーばん、北、ソード" sync="^1B:">
+    <t no="6" sync="^1B:" sync-count="8" text="５[北] ソード" notice="ごーばん、北、ソード">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][4]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="3" />
       </expressions>
       <v-notice icon="Dice5.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="６[北] チャージ" notice="ろくばん、北、チャージ" sync="^1B:">
+    <t no="7" sync="^1B:" sync-count="8" text="６[北] チャージ" notice="ろくばん、北、チャージ">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][5]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="3" />
       </expressions>
       <v-notice icon="Dice6.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="７[南] ソード" notice="ななばん、南、ソード" sync="^1B:">
+    <t no="8" sync="^1B:" sync-count="8" text="７[南] ソード" notice="ななばん、南、ソード">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][6]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="4" />
       </expressions>
       <v-notice icon="Dice7.png" duration="30" duration-visible="false" order="-2" sync-to-hide="ブルートジャスティス:コードネーム「ブルートジャスティス」" />
     </t>
 
-    <t no="2" text="８[南] チャージ" notice="はちばん、南、チャージ" sync="^1B:">
+    <t no="9" sync="^1B:" sync-count="8" text="８[南] チャージ" notice="はちばん、南、チャージ">
       <expressions>
-        <pre name="COUNT('DiceTable')" value="8" />
         <pre name="TABLE['DiceTable'][7]['target']" value="@Model.Player.Name" />
         <set name="dice_group" value="4" />
       </expressions>
@@ -481,11 +469,11 @@
           icon="DRG.png" />
       </t>
 
-      <t text="カウント➜ 忍" sync="^1B:[id8]:[NIN]:0000:[id4]:0041:">
+      <t text="カウント➜ 侍" sync="^1B:[id8]:[SAM]:0000:[id4]:0041:">
         <v-notice
           order="-28"
           duration="5"
-          icon="NIN.png" />
+          icon="SAM.png" />
       </t>
 
       <t text="カウント➜ 詩" sync="^1B:[id8]:[BRD]:0000:[id4]:0041:">
@@ -523,21 +511,21 @@
         <v-notice text="陣" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(179 - origin)" text="竜巻1" sync="クルーズチェイサーの「竜巻」" notice="次は、竜巻。" />
+    <a time="@(179 - origin)" text="竜巻1" sync="クルーズチェイサーの「竜巻」" notice="次、竜巻。" />
     <a time="@(182 - origin)" text="ジャッジメントナイサイ" sync="ブルートジャスティスの「ジャッジメントナイサイ」" notice-o="-1" notice="ナイサイ。" />
-    <a time="@(188 - origin)" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="次は、システムリンク。" />
-    <a time="@(190 - origin)" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice-o="-1" notice="次は、チャクラム。" />
+    <a time="@(188 - origin)" text="システムリンク" sync="ブルートジャスティスの「システムリンク」" notice="次、システムリンク。" />
+    <a time="@(190 - origin)" text="チャクラム出現" sync="スチームチャクラムは「ビームチャクラム」の構え。" notice-o="-1" notice="次、チャクラム。" />
     <a time="@(196 - origin)" text="照準" sync="クルーズチェイサーの「照準」" notice-o="-1" notice="照準" />
     <a time="@(196 - origin)" text="チャクラム" icon="AOEHorizontal.png" sync="^15:[id8]:スチームチャクラム:4855:ビームチャクラム:[id8]:" />
 
-    <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、フォトン。" />
+    <a time="@(203 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次、フォトン。" />
     @if (Model.Player.InJob("SCH")) {
       <a time="@(203 - origin)" name="学カンペ" notice="/wait 1,士気">
         <v-notice text="士気" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
 
-    <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次は、スピンクラッシャー。" />
+    <a time="@(214 - origin)" text="スピンクラッシャー" sync="クルーズチェイサーは「スピンクラッシャー」の構え。" notice="次、スピンクラッシャー。" />
     <a time="@(214.5 - origin)" text="★受渡し１" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 1回目 -->
@@ -599,14 +587,14 @@
     <!-- 水・雷 1回目 end -->
 
     <a time="@(225 - origin)" text="ミサイル全弾発射" sync="ブルートジャスティスの「ミサイル全弾発射」" notice="" />
-    <a time="@(229 - origin)" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="次は、地雷。" />
+    <a time="@(229 - origin)" text="ステルス地雷散布" sync="ブルートジャスティスの「ステルス地雷散布」" notice="次、地雷。" />
     <a time="@(230 - origin)" text="アースミサイル" icon="AOE.png" notice="" />
     @if (Model.Player.InJob("SCH")) {
       <a time="@(230 - origin)" name="学カンペ" notice="/wait 1,囁き、深謀、パクト">
         <v-notice text="囁き, 深謀, パクト" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="次は、カウント。" />
+    <a time="@(234 - origin)" text="カウント" sync="ブルートジャスティスの「カウント」" notice="次、カウント。" />
     <a time="@(234 - origin)" text="アイスミサイル" icon="Ice.png" notice="" />
     <a time="@(238.5 - origin)" text="★受渡し２" icon="True.png" notice-o="0" notice="受渡し" />
 
@@ -690,17 +678,17 @@
     }
     <!-- 水・雷 2回目 end -->
 
-    <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice-o="-3" notice="次は、開廷。" />
+    <a time="@(250 - origin)" text="最後の審判：開廷" sync="ブルートジャスティスの「最後の審判：開廷」" notice-o="-3" notice="次、開廷。" />
 
     <a time="@(255 - origin)" text="リミッターカット" sync="クルーズチェイサーの「リミッターカット」" notice="" />
-    <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次は、火炎放射。" />
+    <a time="@(257 - origin)" text="大火炎放射" sync="ブルートジャスティスの「大火炎放射」" notice="次、火炎放射。" />
     <a time="@(258 - origin)" text="●シールド" sync="Added new combatant プラズマシールド" notice-o="-1" notice="シールド！" />
     @if (Model.Player.InJob("SCH")) {
       <a time="@(257 - origin)" name="学カンペ" notice-o="0" notice="/wait 1,イルミ、セラフ">
         <v-notice text="イルミ, セラフ" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(269 - origin)" text="竜巻2" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻。デバフをチェックするー" />
+    <a time="@(269 - origin)" text="竜巻2" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次、竜巻。デバフをチェックするー" />
     <a time="@(269.5 - origin)" text="★受渡し３" icon="True.png" notice-o="0" notice="受渡し" />
 
     <!-- 水・雷 3回目 -->
@@ -770,7 +758,7 @@
     <!-- 水・雷 3回目 end -->
 
     <a time="@(279 - origin)" text="★受渡し４" icon="True.png" notice-o="0" notice="受渡し" />
-    <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次は、プロペラ。">
+    <a time="@(295 - origin)" text="プロペラウィンド" sync="クルーズチェイサーの「プロペラウィンド」" notice="次、プロペラ。">
       <expressions>
         <set name="judge_done" value="true" />
       </expressions>
@@ -778,18 +766,18 @@
 
     <a time="@(298 - origin)" text="最後の審判：結審" sync="ブルートジャスティスの「最後の審判：結審」" notice="" />
 
-    <a time="@(308 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次は、タンクHP1。" />
+    <a time="@(308 - origin)" text="フォトン" sync="クルーズチェイサーの「フォトン」" icon="ForceHP1.png" notice="次、タンクHP1。" />
     @if (Model.Player.InJob("SCH")) {
       <a time="@(308 - origin)" name="学カンペ" notice="/wait 1,囁き">
         <v-notice text="囁き" duration="4.5" duration-visible="false" icon="True.png" />
       </a>
     }
-    <a time="@(317 - origin)" text="Ｗロケパン" sync="ブルートジャスティスの「ダブルロケットパンチ」" notice="次は、ロケパン。" />
-    <a time="@(319 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice-o="-3" notice="次は、スーパージャンプ。" />
+    <a time="@(317 - origin)" text="Ｗロケパン" sync="ブルートジャスティスの「ダブルロケットパンチ」" notice="次、ロケパン。" />
+    <a time="@(319 - origin)" text="スーパージャンプ" sync="ブルートジャスティスは「スーパージャンプ」の構え。" notice-o="-3" notice="次、スーパージャンプ。" />
     <a time="@(324 - origin)" text="スーパージャンプ着弾" sync="" notice="" />
-    <a time="@(326 - origin)" text="アポカリプティクレイ" sync="ブルートジャスティスの「アポカリプティクレイ」" notice="次は、アポカリ。" />
+    <a time="@(326 - origin)" text="アポカリプティクレイ" sync="ブルートジャスティスの「アポカリプティクレイ」" notice="次、アポカリ。" />
 
-    <a time="@(337 - origin)" text="竜巻3-1" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次は、竜巻2回。" />
+    <a time="@(337 - origin)" text="竜巻3-1" sync="クルーズチェイサーの「竜巻」" icon="Twister.png" notice="次、竜巻2回。" />
     @if (Model.Player.InJob("SCH")) {
       <a time="@(337 - origin)" name="学カンペ" notice="/wait 1,陣">
         <v-notice text="陣" duration="4.5" duration-visible="false" icon="True.png" />
@@ -1155,6 +1143,11 @@
 
     <a time="@(352 - origin)" sync="アレキサンダー・プライム:我はアレキサンダー……機械仕掛けの神なり……。 理想郷に到る道を導くため……我が審判を受けよ……。">
       <expressions>
+        <table>
+        {
+            "method":"Truncate", "table":"DiceTable", "cols":[]
+        }
+        </table>
         <set name="stop_time" value="true" />
         <set name="magokoro" value="false" />
       </expressions>

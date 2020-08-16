@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦</name>
-  @{ var rev = "rev FINAL6"; }
+  @{ var rev = "rev FINAL8.3"; }
   <rev>@rev</rev>
   <description>
     anoyetta 専用の絶アレキタイムラインです。
@@ -1389,11 +1389,11 @@
   </s>
 
   <s name="PHASE6 THE PERFECT">
-    <t text="静止命令！" sync="は「静止命令」の構え。" notice="静止命令。">
+    <t text="静止命令！" sync="は「静止命令」の構え。$" notice="静止命令。">
       <v-notice order="-1" duration="3.8" duration-visible="true" icon="DontAction.png" />
     </t>
 
-    <t text="行動命令！" sync="は「行動命令」の構え。" notice="行動命令。">
+    <t text="行動命令！" sync="は「行動命令」の構え。$" notice="行動命令。">
       <v-notice order="-1" duration="3.8" duration-visible="true" icon="Avoid.png" />
     </t>
 
@@ -1413,15 +1413,15 @@
       <v-notice order="0" duration="5" icon="B.png" />
     </t>
 
-    <t text="散開！" sync="^14:488A: starts using 照準 on" notice="散開ー。">
+    <t text="散開！" sync="^14:488A:パーフェクト・アレキサンダー starts using 照準 on" notice="散開ー。">
       <v-notice order="0" duration="5" icon="SpreadB.png" />
     </t>
 
-    <t text="頭割り！" sync="^14:488B: starts using 照準 on" notice="頭割りー。">
+    <t text="頭割り！" sync="^14:488B:パーフェクト・アレキサンダー starts using 照準 on" notice="頭割りー。">
       <v-notice order="0" duration="5" icon="DamageShare.png" />
     </t>
 
-    <t no="3" name="加重誅罰1" sync="パーフェクト・アレキサンダーは「加重誅罰」の構え。" notice="ふたり受けー。">
+    <t no="3" name="加重誅罰1" sync="パーフェクト・アレキサンダーは「加重誅罰」の構え。$" notice="ふたり受けー。">
       <expressions>
         <pre name="chubatsu" count="0" />
         <set name="chubatsu" count="1" />
@@ -1433,7 +1433,7 @@
         duration-visible="false" />
     </t>
 
-    <t no="2" name="加重誅罰2" sync="パーフェクト・アレキサンダーは「加重誅罰」の構え。" notice="リビデ。">
+    <t no="2" name="加重誅罰2" sync="パーフェクト・アレキサンダーは「加重誅罰」の構え。$" notice="リビデ。">
       <expressions>
         <pre name="chubatsu" count="1" />
         <set name="chubatsu" count="2" />
@@ -1445,7 +1445,7 @@
         duration-visible="false" />
     </t>
 
-    <t no="1" name="加重誅罰3" sync="パーフェクト・アレキサンダーは「加重誅罰」の構え。" notice="ボーライド。">
+    <t no="1" name="加重誅罰3" sync="パーフェクト・アレキサンダーは「加重誅罰」の構え。$" notice="ボーライド。">
       <expressions>
         <pre name="chubatsu" count="2" />
         <set name="chubatsu" count="3" />
@@ -1457,7 +1457,7 @@
         duration-visible="false" />
     </t>
 
-    <t name="誅罰" sync="パーフェクト・アレキサンダーは「誅罰」の構え。" notice="スイッチー！">
+    <t name="誅罰" sync="パーフェクト・アレキサンダーは「誅罰」の構え。$" notice="スイッチー！">
       <v-notice
         text="スイッチ！"
         icon="Switch.png"
@@ -1465,10 +1465,19 @@
         duration-visible="false" />
     </t>
 
+    <t name="連帯刑" sync="パーフェクト・アレキサンダーは「連帯刑」の構え。$" notice="れんたいけい">
+      <v-notice
+        text="連帯刑！"
+        icon="DamageShare.png"
+        duration="3"
+        duration-visible="false" />
+    </t>
+
     <!-- 大審判の初期化とカウント begin -->
+    <!--
     <t
       name="聖なる大審判の本体の詠唱"
-      sync="^14:488E: starts using 聖なる大審判 on">
+      sync="^14:488E:">
       <expressions>
         <set name="shinpan_count" count="0" />
         <set name="shinpan_first_pos" count="NOTHING" />
@@ -1477,16 +1486,25 @@
 
     <t
       name="聖なる大審判の予兆のダミー詠唱"
-      sync="^14:488F: starts using 聖なる大審判 on">
+      sync="^14:488F:">
       <expressions>
         <set name="shinpan_count" count="+1" />
       </expressions>
     </t>
+    -->
     <!-- 大審判の初期化とカウント end -->
 
     <!-- 大審判の予兆に対する単純通知 begin -->
-    <t name="聖なる大審判 予兆1" sync="^14:488E: starts using 聖なる大審判 on" notice="" />
-    <t name="聖なる大審判 予兆2" sync="^14:488E: starts using 聖なる大審判 on" notice="/wait 9, 2、動くな">
+    <t name="聖なる大審判 予兆1" sync="^14:488E:" notice="/wait 7, 1、移動">
+      <v-notice
+        text="１：移動！"
+        icon="True.png"
+        delay="7"
+        duration="1.5"
+        duration-visible="false" />
+    </t>
+
+    <t name="聖なる大審判 予兆2" sync="^14:488E:" notice="/wait 9, 2、動くな">
       <v-notice
         text="２：動くな！"
         icon="DontMove.png"
@@ -1495,9 +1513,16 @@
         duration-visible="false" />
     </t>
 
-    <t name="聖なる大審判 予兆3" sync="^14:488E: starts using 聖なる大審判 on" notice-o="11" notice="" />
+    <t name="聖なる大審判 予兆3" sync="^14:488E:" notice="/wait 11, 3、移動">
+      <v-notice
+        text="３：移動！"
+        icon="True.png"
+        delay="11"
+        duration="1.5"
+        duration-visible="false" />
+    </t>
 
-    <t name="聖なる大審判 本番1" sync="^14:488E: starts using 聖なる大審判 on" notice="/wait 14, 1に戻るー">
+    <t name="聖なる大審判 本番1" sync="^14:488E:" notice="/wait 14, 1に戻るー">
       <v-notice
         text="本１：戻る！"
         icon="True.png"
@@ -1508,16 +1533,17 @@
     <!-- 大審判の予兆に対する単純通知 end -->
 
     <!-- 大審判 予兆1発目 3パターン begin -->
+    <!--
     <t name="聖なる大審判 予兆1A" notice="1、南えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.18" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.66" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.66" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="1" />
@@ -1532,15 +1558,15 @@
 
     <t name="聖なる大審判 予兆1B" notice="1、そのまま">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.82" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.82" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.82" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="1" />
@@ -1555,14 +1581,14 @@
 
     <t name="聖なる大審判 予兆1C" notice="1、北えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.66" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.66" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.66" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="1" />
@@ -1574,19 +1600,21 @@
         duration="1.5"
         duration-visible="false" />
     </t>
+    -->
     <!-- 大審判 予兆1発目 3パターン end -->
 
     <!-- 大審判 予兆3発目 パターンA 南/北西 begin -->
+    <!--
     <t name="聖なる大審判 予兆3A-1" notice="3、南えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.18" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.66" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.66" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="3" />
@@ -1601,14 +1629,14 @@
 
     <t name="聖なる大審判 予兆3A-2" notice="3、北西えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.18" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.66" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.66" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="3" />
@@ -1620,20 +1648,22 @@
         duration="1.5"
         duration-visible="false" />
     </t>
+    -->
     <!-- 大審判 予兆3発目 パターンA 南/北西 end -->
 
     <!-- 大審判 予兆3発目 パターンB 南西/北東 begin -->
+    <!--
     <t name="聖なる大審判 予兆3B-1" notice="3、南西えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.82" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.82" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.82" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="3" />
@@ -1648,15 +1678,15 @@
 
     <t name="聖なる大審判 予兆3B-2" notice="3、北東えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.82" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.82" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.82" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="3" />
@@ -1668,19 +1698,21 @@
         duration="1.5"
         duration-visible="false" />
     </t>
+    -->
     <!-- 大審判 予兆3発目 パターンB 南西/北東 end -->
 
     <!-- 大審判 予兆3発目 パターンC 北/南東 begin -->
+    <!--
     <t name="聖なる大審判 予兆3C-1" notice="3、南東えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.66" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.66" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.66" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="3" />
@@ -1695,14 +1727,14 @@
 
     <t name="聖なる大審判 予兆3C-2" notice="3、北えー">
       <p-sync interval="20">
-        <combatant action="聖なる大審判" X="23.66" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.34" Y="23.18" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.34" />
-        <combatant action="聖なる大審判" X="23.50" Y="23.82" />
-        <combatant action="聖なる大審判" X="23.18" Y="23.50" />
-        <combatant action="聖なる大審判" X="23.82" Y="23.66" />
-        <combatant action="聖なる大審判" X="23.66" Y="23.66" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.34" Y="23.18" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.34" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.50" Y="23.82" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.18" Y="23.50" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.82" Y="23.66" tolerance="0" />
+        <combatant name="パーフェクト・アレキサンダー" action="聖なる大審判" X="23.66" Y="23.66" tolerance="0" />
       </p-sync>
       <expressions>
         <pre name="shinpan_count" count="3" />
@@ -1714,10 +1746,11 @@
         duration="1.5"
         duration-visible="false" />
     </t>
+    -->
     <!-- 大審判 予兆3発目 パターンC 北/南東 end -->
 
-    <t name="goto Alpha" sync="starts using 未来観測α" goto="MIRAI-Alpha" />
-    <t name="goto Beta" sync="starts using 未来観測β" goto="MIRAI-Beta" />
+    <t name="goto Alpha" sync="^14:487B:パーフェクト・アレキサンダー starts using 未来観測α on" goto="MIRAI-Alpha" />
+    <t name="goto Beta" sync="^14:4B13:パーフェクト・アレキサンダー starts using 未来観測β on" goto="MIRAI-Beta" />
 
     <a time="00:30" text="00:30" />
     <a time="01:00" text="01:00" />
@@ -1741,7 +1774,7 @@
     <a time="046" text="未来観測α終了" goto="PHASE6 THE PERFECT" />
     <a time="999" text="DUMMY" />
 
-    <t text="1:行動命令から" sync="^15:[id8]::480D" notice="最初は、動くー">
+    <t text="1:行動命令から" sync="^15:[id8]:パーフェクト・アレキサンダー:480D" notice="最初は、動くー">
       <v-notice
         icon="Avoid.png"
         order="-2"
@@ -1749,7 +1782,7 @@
         duration-visible="false" />
     </t>
 
-    <t text="1:静止命令から" sync="^15:[id8]::4B0E" notice="最初は、止まるー">
+    <t text="1:静止命令から" sync="^15:[id8]:パーフェクト・アレキサンダー:4B0E" notice="最初は、止まるー">
       <v-notice
         icon="DontAction.png"
         order="-2"
@@ -1757,7 +1790,7 @@
         duration-visible="false" />
     </t>
 
-    <t text="2:行動命令" sync="^15:[id8]::4899" notice="次は、動くー">
+    <t text="2:行動命令" sync="^15:[id8]:パーフェクト・アレキサンダー:4899" notice="次は、動くー">
       <v-notice
         icon="Avoid.png"
         order="-1"
@@ -1765,7 +1798,7 @@
         duration-visible="false" />
     </t>
 
-    <t text="2:静止命令" sync="^15:[id8]::489A" notice="次は、止まるー">
+    <t text="2:静止命令" sync="^15:[id8]:パーフェクト・アレキサンダー:489A" notice="次は、止まるー">
       <v-notice
         icon="DontAction.png"
         order="-1"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦</name>
-  @{ var rev = "rev FINAL8.3"; }
+  @{ var rev = "rev FINAL8.7"; }
   <rev>@rev</rev>
   <description>
     anoyetta 専用の絶アレキタイムラインです。
@@ -11,6 +11,7 @@
   <zone>887,The Epic Of Alexander (Ultimate)</zone>
   <locale>JA</locale>
   <start>0039:戦闘開始！</start>
+  <end>パーフェクト・アレキサンダーの「時の牢獄」$|パーフェクト・アレキサンダーを倒した。</end>
   <entry>PHASE1 LIQUID</entry>
 
   <default target-element="Activity" target-attr="notice-d" value="Main" />
@@ -939,7 +940,7 @@
 
     <!-- スーパージャンプのときのデバフ識別 -->
     @if (Model.Player.InRole("DPS")) {
-      <t text="接近禁止\n➜ 後でＢへ" sync="[mex] gains the effect of 確定判決：接近禁止命令" sync-count="1" notice="接近禁止、あとでブラボーえー" >
+      <t text="接近禁止\n➜ ソード誘導" sync="[mex] gains the effect of 確定判決：接近禁止命令" sync-count="1" notice="接近禁止、このあとソード" >
         <expressions>
           <pre name="magokoro" value="true" />
         </expressions>
@@ -1774,7 +1775,7 @@
     <a time="046" text="未来観測α終了" goto="PHASE6 THE PERFECT" />
     <a time="999" text="DUMMY" />
 
-    <t text="1:行動命令から" sync="^15:[id8]:パーフェクト・アレキサンダー:480D" notice="最初は、動くー">
+    <t text="1:行動命令から" sync=":パーフェクト・アレキサンダー:4B0D:" notice="最初は、動くー">
       <v-notice
         icon="Avoid.png"
         order="-2"
@@ -1782,7 +1783,7 @@
         duration-visible="false" />
     </t>
 
-    <t text="1:静止命令から" sync="^15:[id8]:パーフェクト・アレキサンダー:4B0E" notice="最初は、止まるー">
+    <t text="1:静止命令から" sync=":パーフェクト・アレキサンダー:4B0E:" notice="最初は、止まるー">
       <v-notice
         icon="DontAction.png"
         order="-2"
@@ -1790,7 +1791,7 @@
         duration-visible="false" />
     </t>
 
-    <t text="2:行動命令" sync="^15:[id8]:パーフェクト・アレキサンダー:4899" notice="次は、動くー">
+    <t text="2:行動命令" sync=":パーフェクト・アレキサンダー:4899:" notice="次は、動くー">
       <v-notice
         icon="Avoid.png"
         order="-1"
@@ -1798,7 +1799,7 @@
         duration-visible="false" />
     </t>
 
-    <t text="2:静止命令" sync="^15:[id8]:パーフェクト・アレキサンダー:489A" notice="次は、止まるー">
+    <t text="2:静止命令" sync=":パーフェクト・アレキサンダー:489A:" notice="次は、止まるー">
       <v-notice
         icon="DontAction.png"
         order="-1"

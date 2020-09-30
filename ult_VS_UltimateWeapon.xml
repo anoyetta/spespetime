@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
+  @{ var rev = "rev1"; }
+  <rev>@rev</rev>
+  <description>
+    2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
+    今回は単独ファイルでの運用モデルとして制作しています。
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>The Weapon's Refrain (Ultimate)</zone>
+  <locale>JA</locale>
+  <entry>ガルーダフェーズ</entry>
+  <start>0039:戦闘開始！</start>
+
+  <!--
+    2020.09.29 rev1
+    * イフの四連突進に関連するカンペを追加した
+  -->
+
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-9" />
+  <default target-element="Activity" target-attr="sync-e" value="9" />
+
+  <!-- 各フェーズ移行用 -->
+  <t text="イフリートへ" sync="お、おのれ……クソ虫がぁぁぁぁぁッ！！！" goto="イフリートフェーズ" />
+  <t text="タイタンへ" sync="不倶戴天……その祝福……もしや光の" goto="タイタンフェーズ" notice="外周えー！">
+    <v-notice duration="6" duration-visible="false" text="外周へ！" icon="Leave.png" />
+  </t>
+
+  <t text="LBフェーズへ" sync="愛しき子らの悲嘆" goto="中継フェーズ" />
+  <t text="追撃フェーズへ" sync="アルテマウェポンは「追撃の究極幻想」の構え。" goto="追撃の究極幻想" notice="" />
+  <t text="爆撃フェーズへ" sync="アルテマウェポンは「爆撃の究極幻想」の構え。" goto="爆撃の究極幻想" notice="" />
+  <t text="乱撃フェーズへ" sync="アルテマウェポンは「乱撃の究極幻想」の構え。" goto="乱撃の究極幻想" notice="" />
+
+  <!-- 灼熱トリガー -->
+  @if (Model.Player.InJob("WHM", "SCH", "AST")) {
+    <t text="灼熱➙ $1" sync="イフリート starts using 灼熱の咆吼 on [mex]" notice="自分に灼熱">
+      <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="灼熱➙ $1" sync="イフリート starts using 灼熱の咆吼 on [nex]" notice="相方に灼熱">
+      <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+  }
+
+  <!-- ガルーダフェーズ -->
+  <s name="ガルーダフェーズ">
+    <!-- 汎用マーカー start -->
+    <t text="自分にマーカー" sync="^1B:[id8]:[mex]:|[mex]に「マーキング」の効果。" notice="自分にマーカー">
+      <v-notice
+        duration="5"
+        duration-visible="false"
+        order="-1"
+        job-icon="true" />
+    </t>
+
+    <t text="マーカー\n ➜ ${_nex}" sync="^1B:[id8]:[nex]:|[nex]に「マーキング」の効果。">
+      <v-notice
+        duration="5"
+        duration-visible="false"
+        order="10"
+        style="NOTICE_NORMAL_SMALL"
+        job-icon="true" />
+    </t>
+    <!-- 汎用マーカー end -->
+
+    <t name="ドームタイマ" sync="スパイニープルームは「ギガストーム」の構え。">
+      <v-notice
+        text="高気圧ドーム"
+        icon="Circle"
+        duration="30"
+        duration-visible="true" />
+    </t>
+
+    <a time="0"  text="VS UltWeapon 2nd KILL" />
+    <a time="0"  text="@rev" />
+
+    <a time="5"  text="スリップストリーム"      icon="Targetaoe02.png"    sync="「スリップストリーム」の構え"    notice="次、MT大ダメージ" />
+    <a time="6"  text="マーカー1名付与"         icon="Marker.png"         sync=""                                notice="" />
+    <a time="11" text="ミストラルソング"        icon="Targetaoe.png"      sync="ガルーダの「ミストラルソング」"  notice="" />
+    <a time="15" text="大旋風"                  icon="AOE.png"            sync=""                                notice="" />
+    <a time="19" text="雑魚沸き"                icon=""                   sync=""                                notice="次、MT大ダメージ" />
+    <a time="21" text="大旋風"                  icon="AOE.png"            sync=""                                notice="" />
+    <a time="21" text="スリップストリーム"      icon="Targetaoe.png"      sync="「スリップストリーム」の構え"    notice="次、スリップ" />
+    <a time="27" text="大旋風"                  icon="AOE.png"            sync=""                                notice="" />
+    <a time="27" text="サイクロン(スパイニー)"  icon=""                   sync="プルームの「サイクロン」"        notice="" />
+    <a time="27" text="ダウンバースト"          icon="HardAttack.png"     sync="ガルーダの「ダウンバースト」"    notice="次、MT大ダメージ" />
+    <a time="36" text="フェザーレイン"          icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
+    <a time="36" text="サイクロン(スパイニー)"  icon=""                   sync=""                                notice="" />
+    <a time="38" text="ミストラルシュリーク"    icon="AllRngAtk.png"      sync="「ミストラルシュリーク」の構え"  notice="" />
+    <a time="47" text="ウィンドブレード"        icon="Targetaoe02.png"    sync="「ウィンドブレード」の構え"      notice="" />
+    <a time="47" name="ウィンドブレード発動"                              sync="の「ウィンドブレード」$"         notice="ブレード1回目" notice-o="0" sync-e="3" />
+    <a time="52" text="ウィンドブレード"        icon="Targetaoe02.png"    sync=""                                notice="" />
+    <a time="52" name="ウィンドブレード発動"                              sync="の「ウィンドブレード」$"         notice="ブレード2回目" notice-o="0" sync-e="3" />
+    <a time="71" text="フェザーレイン"          icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
+    <a time="72" text="エリアルブラスト"        icon="HardAllRngAtk.png"  sync="は「エリアルブラスト」の構え。"  notice="次、エリアル" notice-o="-6" />
+    <a time="83" name="セリフ"                  icon="Dialog.png"         sync="もはや殺すのでは足りぬッ！ "     notice="" />
+    <a time="91" text="フェザーレイン"          icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
+    <a time="93" text="マーカー2名付与"         icon="Marker.png"         sync=""                                notice="次、タンクは壁に" />
+    <a time="95" text="ウィケッドホイール"      icon="Leave.png"          sync=""                                notice="" />
+    <a time="101" text="大旋風"                 icon="AOE.png"            sync=""                                notice="" />
+    <a time="102" text="フェザーレイン"         icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
+    <a time="109" text="雑魚沸き"               icon=""                   sync=""                                notice="次、雑魚ポップ" />
+    <a time="117" text="スリップストリーム"     icon="Targetaoe02.png"    sync="「スリップストリーム」の構え。"  notice="次、MT大ダメージ" />
+    <a time="117" text="線処理"                 icon="Targetaoe01.png"    sync=""                                notice="次、MT、黒は線取り" notice-o="-5" />
+    <a time="121" text="ダウンバースト"         icon="HardAttack.png"     sync=""                                notice="次、MT大ダメージ" />
+    <a time="127" text="フェザーレイン"         icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
+    <a time="137" text="スリップストリーム"     icon="Targetaoe02.png"    sync="「スリップストリーム」の構え。"  notice="次、MT大ダメージ" notice-o="-2" />
+    <a time="145" text="覚醒ウィケッド→外へ"   icon="Leave.png"          sync=""                                notice="離れるー" />
+    <a time="148" text="覚醒ウィケッド→内へ"   icon="Stack.png"          sync=""                                notice="近寄るー" notice-o="-2" />
+    <a time="153" text="覚醒ダウンバースト"     icon="DamageShare.png"    sync="ガルーダの「ダウンバースト」"    notice="頭割りー" />
+    <a time="158" text="スリップストリーム"     icon="Targetaoe02.png"    sync="「スリップストリーム」の構え。"  notice="次、MT大ダメージ" notice-o="-2" />
+    <a time="170" text="時間切れ"               icon="Timeout.png"                                               notice="" notice-o="0" />
+  </s>
+
+  <s name="イフリートフェーズ">
+    <!-- 炎獄の鎖を表示するトリガ -->
+    <!--
+    <t text="炎獄の鎖\n ➜${_DPS}" sync="^1A:[DPS] gains the effect of 炎獄の鎖">
+      <v-notice
+        order="5"
+        duration="21"
+        duration-visible="false"
+        job-icon="true"
+        style="NOTICE_NORMAL_SMALL" />
+    </t>
+    -->
+
+    <!-- p-sync 楔トリガ start -->
+    <!-- パターン1 短辺1時 -->
+    <t text="楔POPパターン1" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.50" Y="23.30" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.64" Y="23.36" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.64" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.30" Y="23.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="1" />
+      </expressions>
+    </t>
+
+    <!-- パターン2 短辺2時 -->
+    <t text="楔POPパターン2" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.64" Y="23.36" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.70" Y="23.50" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.50" Y="23.70" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.36" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="2" />
+      </expressions>
+    </t>
+
+    <!-- パターン3 短辺4時 -->
+    <t text="楔POPパターン3" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.50" Y="23.30" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.70" Y="23.50" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.64" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.64" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="3" />
+      </expressions>
+    </t>
+
+    <!-- パターン4 短辺5時 -->
+    <t text="楔POPパターン4" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.64" Y="23.36" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.64" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.50" Y="23.70" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.30" Y="23.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="4" />
+      </expressions>
+    </t>
+
+    <!-- パターン5 短辺7時 -->
+    <t text="楔POPパターン5" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.70" Y="23.50" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.50" Y="23.70" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.36" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="5" />
+      </expressions>
+    </t>
+
+    <!-- パターン6 短辺8時 -->
+    <t text="楔POPパターン6" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.50" Y="23.30" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.64" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.30" Y="23.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="6" />
+      </expressions>
+    </t>
+
+    <!-- パターン7 短辺10時 -->
+    <t text="楔POPパターン7" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.64" Y="23.36" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.50" Y="23.70" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.30" Y="23.50" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.36" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="7" />
+      </expressions>
+    </t>
+
+    <!-- パターン8 短辺11時 -->
+    <t text="楔POPパターン8" sync-count="1" notice="">
+      <p-sync interval="30">
+        <combatant name="炎獄の楔" X="23.50" Y="23.30" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.70" Y="23.50" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.64" Z="0.00" tolerance="0.01" />
+        <combatant name="炎獄の楔" X="23.36" Y="23.36" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="pattern" value="8" />
+      </expressions>
+    </t>
+    <!-- p-sync 楔トリガ end -->
+
+    <t text="灼熱➜自分" sync="[mex]に「灼熱」の効果。">
+      <expressions>
+        <set name="heat" value="true" />
+      </expressions>
+    </t>
+
+    <t text="灼熱➜相方" sync="[nex]に「灼熱」の効果。">
+      <expressions>
+        <pre name="heat" value="false" />
+      </expressions>
+    </t>
+
+    <t text="灼熱クリア" sync="[mex]の「灼熱」が切れた。">
+      <expressions>
+        <set name="heat" value="false" />
+      </expressions>
+    </t>
+
+    <a time="000" name="初期化">
+      <expressions>
+        <set name="heat" value="false" />
+      </expressions>
+    </a>
+
+    @if (Model.Player.InRole("HEALER")) {
+    <!-- 十字突進の待機位置の表示（灼熱ヒーラー版） start -->
+    <!-- パターン1 -->
+    <t name="Pattern1" sync="イフリートの「フレイムクラッ" sync-count="1" notice="デルタ、チャーリーえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="1" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＤＣ" />
+    </t>
+
+    <!-- パターン2 -->
+    <t name="Pattern2" sync="イフリートの「フレイムクラッ" sync-count="1" notice="デルタえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="2" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ Ｄ" />
+    </t>
+
+    <!-- パターン3 -->
+    <t name="Pattern3" sync="イフリートの「フレイムクラッ" sync-count="1" notice="アルファ、デルタえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="3" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
+    </t>
+
+    <!-- パターン4 -->
+    <t name="Pattern4" sync="イフリートの「フレイムクラッ" sync-count="1" notice="アルファえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="4" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ Ａ" />
+    </t>
+
+    <!-- パターン5 -->
+    <t name="Pattern5" sync="イフリートの「フレイムクラッ" sync-count="1" notice="アルファ、ブラボーえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="5" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
+    </t>
+
+    <!-- パターン6 -->
+    <t name="Pattern6" sync="イフリートの「フレイムクラッ" sync-count="1" notice="ブラボーえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="6" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ Ｂ" />
+    </t>
+
+    <!-- パターン7 -->
+    <t name="Pattern7" sync="イフリートの「フレイムクラッ" sync-count="1" notice="ブラボー、チャーリーえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="7" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
+    </t>
+
+    <!-- パターン8 -->
+    <t name="Pattern8" sync="イフリートの「フレイムクラッ" sync-count="1" notice="チャーリーえー">
+      <expressions>
+        <pre name="heat" value="true" />
+        <pre name="pattern" value="8" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ Ｃ" />
+    </t>
+
+    <!-- 灼熱なし -->
+    <t name="Pattern9" sync="イフリートの「フレイムクラッ" sync-count="1" notice="合流するー">
+      <expressions>
+        <pre name="heat" value="false" />
+      </expressions>
+      <v-notice order="-1" duration="6" duration-visible="false" icon="Avoid.png" text="➜ 合流" />
+    </t>
+    <!-- 十字突進の待機位置の表示（灼熱ヒーラー版） end -->
+    } else {
+    <!-- 十字突進の待機位置の表示（ヒーラー以外版） -->
+    <!-- 奇数パターン -->
+    <t name="PatternOther1" sync="イフリートの「フレイムクラッ" sync-count="1" notice="そのまま">
+      <expressions><pre name="pattern" value="1" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="DontMove.png" text="そのまま" />
+    </t>
+
+    <t name="PatternOther3" sync="イフリートの「フレイムクラッ" sync-count="1" notice="そのまま">
+      <expressions><pre name="pattern" value="3" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="DontMove.png" text="そのまま" />
+    </t>
+
+    <t name="PatternOther5" sync="イフリートの「フレイムクラッ" sync-count="1" notice="そのまま">
+      <expressions><pre name="pattern" value="5" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="DontMove.png" text="そのまま" />
+    </t>
+
+    <t name="PatternOther7" sync="イフリートの「フレイムクラッ" sync-count="1" notice="そのまま">
+      <expressions><pre name="pattern" value="7" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="DontMove.png" text="そのまま" />
+    </t>
+
+    <!-- 偶数パターン -->
+    <t name="PatternOther2" sync="イフリートの「フレイムクラッ" sync-count="1" notice="ブラボーえー">
+      <expressions><pre name="pattern" value="2" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="B.png" text="ブラボーへ" />
+    </t>
+
+    <t name="PatternOther4" sync="イフリートの「フレイムクラッ" sync-count="1" notice="チャーリーえー">
+      <expressions><pre name="pattern" value="4" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="C.png" text="チャーリーへ" />
+    </t>
+
+    <t name="PatternOther6" sync="イフリートの「フレイムクラッ" sync-count="1" notice="デルタえー">
+      <expressions><pre name="pattern" value="6" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="D.png" text="デルタへ" />
+    </t>
+
+    <t name="PatternOther8" sync="イフリートの「フレイムクラッ" sync-count="1" notice="アルファえー">
+      <expressions><pre name="pattern" value="8" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="A.png" text="アルファへ" />
+    </t>
+    }
+
+    <a time="000" text="覚醒確認"              icon="覚醒.png"           sync=""                                notice="" />
+    <a time="007" text="光輝の炎柱"            icon="Avoid.png"          sync="Added new combatant イフリート"  notice="" />
+    <a time="011" text="クリサイ突進"          icon="Avoid.png"          sync=""                                notice="" />
+    <a time="013" text="セリフ"                icon="Dialog.png"         sync="永遠偉大……我が「地獄の火炎」"  notice=""/>
+    <a time="019" text="地獄の火炎１"          icon="AllRangeAtk.png"    sync="イフリートの「地獄の火炎」"      notice="" notice-o="-6" />
+
+    <a time="021" text="セリフ"                icon="Dialog.png"         sync="勇猛無比……我が力を"            notice="" />
+    <a time="025" text="バルカンバースト"      icon="KnockBack.png"      sync="イフリートの「バルカン"          notice="次、バルカン"/>
+    <a time="028" text="インシネレート"        icon="Targetaoe03.png"    sync=""                                notice="次、インシネ" />
+    <a time="031" text="インシネレート"        icon="Targetaoe03.png"    sync=""                                notice="" />
+    <a time="035" text="インシネレート"        icon="Targetaoe03.png"    sync=""                                notice="" />
+    <a time="037" text="セリフ"                icon="Dialog.png"         sync="兵貴神速……「炎獄の楔」にて"    notice="" />
+    <a time="041" text="●楔POP"               icon=""                   sync="Added new combatant 炎獄の楔"    notice="次、楔ポップ" />
+    <a time="046" text="★灼熱の咆吼"          icon="Fire.png"           sync="イフリートは「灼熱の咆吼」の"    notice="灼熱注意ー"/>
+    <a time="051" text="エラプション"          icon="AOE.png"            sync="イフリートは「エラプション」の"  notice="" />
+    <a time="055" text="灼熱爆発"              icon="Explosion.png"      sync=""                                notice="" notice-o="-2" />
+    <a time="061" text="灼熱爆発"              icon="Explosion.png"      sync=""                                notice="" notice-o="-2" />
+    <a time="070" text="セリフ"                icon="Dialog.png"         sync="因果応報……我が炎は"            notice="" />
+    <a time="075" text="地獄の火炎２"          icon="AllRangeAtk.png"    sync="イフリートは「地獄の火炎」の"    notice=""/>
+
+    <a time="078" text="次の誘導1" icon="" sync="" notice="次、アルファ、ブラボーえー">
+      <expressions><pre name="pattern" value="1" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
+    </a>
+
+    <a time="078" text="次の誘導2" icon="" sync="" notice="次、アルファ、ブラボーえー">
+      <expressions><pre name="pattern" value="2" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
+    </a>
+
+    <a time="078" text="次の誘導3" icon="" sync="" notice="次、ブラボー、チャーリーえー">
+      <expressions><pre name="pattern" value="3" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
+    </a>
+
+    <a time="078" text="次の誘導4" icon="" sync="" notice="次、ブラボー、チャーリーえー">
+      <expressions><pre name="pattern" value="4" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
+    </a>
+
+    <a time="078" text="次の誘導5" icon="" sync="" notice="次、チャーリー、デルタえー">
+      <expressions><pre name="pattern" value="5" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＣＤ" />
+    </a>
+
+    <a time="078" text="次の誘導6" icon="" sync="" notice="次、チャーリー、デルタえー">
+      <expressions><pre name="pattern" value="6" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＣＤ" />
+    </a>
+
+    <a time="078" text="次の誘導7" icon="" sync="" notice="次、アルファ、デルタえー">
+      <expressions><pre name="pattern" value="7" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
+    </a>
+
+    <a time="078" text="次の誘導8" icon="" sync="" notice="次、アルファ、デルタえー">
+      <expressions><pre name="pattern" value="8" /></expressions>
+      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
+    </a>
+
+    <a time="084" text="★灼熱の咆吼"          icon="Fire.png"           sync="イフリートは「灼熱の咆吼」の"    notice="灼熱注意ー"/>
+
+    <a time="084" text="セットアップ"          icon="SpreadB.png"        sync=""                                notice="" />
+    <a time="090" text="エラプション"          icon="AOE.png"            sync="イフリートは「エラプション」の"  notice="" />
+    <a time="097" text="十字クリサイ"          icon="Avoid.png"          sync="using クリムゾンサイクロン"      notice="次、十字突進" />
+
+    <a time="103" text="★灼熱の咆吼"          icon="Fire.png"           sync="イフリートは「灼熱の咆吼」の"    notice="次、ヒーラーY字" >
+      <v-notice text="➜ Ｙ字"     order="-1" icon="Arrow5" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
+    </a>
+
+    <a time="109" text="灼熱爆発"              icon="Explosion.png"      sync=""                                notice="" notice-o="-2" />
+    <a time="115" text="フレイムクラッシュ"    icon="DamageShare.png"    sync="イフリートの「フレイムクラッ"    notice="次、正面で頭割り"/>
+
+    <a time="115" name="移動のカンペ" icon="" sync="" notice="" notice-o="0">
+      <expressions>
+        <pre name="heat" value="false" />
+      </expressions>
+      <v-notice order="1" duration="7" duration-visible="false" icon="TurnR.png" text="近くが青➙ ２コマ" />
+      <v-notice order="2" duration="7" duration-visible="false" icon="TurnR.png" text="遠くが青➙ １コマ" />
+    </a>
+
+    <a time="123" text="四連クリサイ"          icon="Avoid.png"          sync="イフリートは「クリムゾンサイク"  notice="スプリント準備" notice-o="-6" />
+
+    <a time="130" text="灼熱注意"              icon=""                   sync=""                                notice="" />
+    <a time="137" text="インシネレート"        icon="Targetaoe03.png"    sync="イフリートの「インシネレート」"  notice="次、インシネ" notice-o="-6" />
+    <a time="140" text="インシネレート"        icon="Targetaoe03.png"    sync=""                                notice="" />
+    <a time="143" text="インシネレート"        icon="Targetaoe03.png"    sync=""                                notice="" />
+    <a time="152" text="エラプション"          icon="AOE.png"            sync="イフリートは「エラプション」の"  notice="" />
+    <a time="165" text="フレイムクラッシュ"    icon="DamageShare.png"    sync="イフリートの「フレイムクラ"      notice="次、正面で頭割り" />
+
+    <a time="168" text="時間切れ"              icon="Timeout.png"        sync=""                                notice="" notice-o="0" />
+  </s>
+
+  <s name="タイタンフェーズ">
+    <!-- 優先度ジェイル トリガ start -->
+    @{
+      var jail_order = new string[] { "[DRK]", "[PLD]", "[SAM]", "[SMN]", "[BRD]", "[BLM]", "[AST]", "[SCH]" };
+    }
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[0]:">
+      <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[1]:">
+      <v-notice order="2" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[2]:">
+      <v-notice order="3" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[3]:">
+      <v-notice order="4" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[4]:">
+      <v-notice order="5" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[5]:">
+      <v-notice order="6" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[6]:">
+      <v-notice order="7" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[7]:">
+      <v-notice order="8" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t name="自分にジェイル" sync=":グラナイト・ジェイル:........:[mex]:" notice="自分にジェイル" />
+    <t name="ジェイルなし"   sync=":グラナイト・ジェイル:........:[nex]:" sync-count="3" notice="ジェイルなし" />
+    <!-- 優先度ジェイル トリガ end -->
+
+    <!-- psync ボムトリガー start -->
+    <t text="ボム1➜ 左へ" sync-count="1" notice="左えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.40" Y="23.26" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.28" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.28" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow6" />
+    </t>
+
+    <t text="ボム2➜ 右へ" sync-count="1" notice="右えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.60" Y="23.26" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.28" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.28" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow4" />
+    </t>
+
+    <t text="ボム3➜ 左へ" sync-count="1" notice="左えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.74" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.28" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.72" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow6" />
+    </t>
+
+    <t text="ボム4➜ 右へ" sync-count="1" notice="右えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.74" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.28" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.72" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow4" />
+    </t>
+
+    <t text="ボム5➜ 左へ" sync-count="1" notice="左えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.60" Y="23.74" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.72" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.60" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow6" />
+    </t>
+
+    <t text="ボム6➜ 右へ" sync-count="1" notice="右えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.40" Y="23.74" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.72" Y="23.72" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.60" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.60" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow4" />
+    </t>
+
+    <t text="ボム7➜ 左へ" sync-count="1" notice="左えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.26" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.28" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow6" />
+    </t>
+
+    <t text="ボム8➜ 右へ" sync-count="1" notice="右えー。">
+      <p-sync interval="10">
+        <combatant name="ボムボルダー" X="23.26" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.40" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.40" Y="23.60" Z="0.00" tolerance="0.01" />
+        <combatant name="ボムボルダー" X="23.28" Y="23.28" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice duration="5" duration-visible="false" icon="Arrow4" />
+    </t>
+    <!-- psync ボムトリガー end -->
+
+    <a time="003" text="ジオクラッシュ1"       icon=""                   sync="starts using ジオクラッシュ"     notice="" />
+    <a time="005" text="覚醒確認"              icon="覚醒.png"           sync=""                                notice="" />
+    <a time="008" text="セリフ"                icon="Dialog.png"         sync="「大地の怒り」に砕け散れぇぇ"    notice="" />
+    <a time="009" text="大地の怒り"            icon="HardAllRngAtk.png"  sync="「大地の怒り」の構え"            notice="次、大地の怒り" />
+    <a time="016" text="セリフ"                icon="Dialog.png"         sync="横暴なるヒトの子よ…… お主を屠" notice="" />
+    <a time="020" text="ロックバスター"        icon="HardAttack.png"     sync="タイタンの「ロックバスター」"    notice="次、MT大ダメージ" />
+    <a time="023" text="マウンテンバスター"    icon="Targetaoe03.png"    sync="タイタンの「マウンテンバスタ"    notice="">
+      <v-notice text="マウンテン" icon="HardAttack.png" duration="5" duration-visible="false" />
+    </a>
+    <a time="024" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、右、左" />
+
+    <a time="033" text="ジオクラッシュ2"       icon="AllRangeAtk.png"    sync="タイタンの「ジオクラッシュ」"    notice="次、ジオクラ" />
+    <a time="040" text="大激震"                icon="KnockBack.png"      sync="タイタンは「大激震」の構え"      notice="次、ホールインワン" />
+    <a time="042" text="ボムボルダー"          icon="Bomb.png"           sync=""                                notice="" />
+    <a time="047" text="大爆発"                icon="Explosion.png"      sync=""                                notice="爆発したら中心線えー">
+      <v-notice text="中心線へ" icon="Arrow1.png" duration="3" duration-visible="false" />
+    </a>
+    <a time="047" text="グラナイト・ジェイル"  icon=""                   sync="タイタンの「グラナイト・"        notice="次、三連ジェイル" />
+    <a time="051" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="" />
+    <a time="054" text="ランドスライド(2)"     icon="Avoin.png"          sync=""                                notice="" />
+    <a time="057" text="激震x8"                icon="AllRangeAtk.png"    sync=""                                notice="次、激震" />
+    <a time="069" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、右、左" />
+    <a time="076" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
+    <a time="079" text="ランドスライド(2)"     icon="Avoid.png"          sync=""                                notice="" notice-o="" />
+
+    <a time="087" text="ジオクラッシュ3"       icon="AllRangeAtk.png"    sync=""                                notice="次、ジオクラ" />
+    <a time="093" text="グラナイト・ジェイル"  icon=""                   sync="タイタンの「グラナイト・"        notice="次、ヒーラージェイル" />
+    <a time="105" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
+    <a time="108" text="ランドスライド(2)"     icon="Avoid.png"          sync=""                                notice="次、ST大ダメージ" />
+    <a time="111" text="激震x6"                icon="AllRangeAtk.png"    sync=""                                notice="次、激震"/>
+    <a time="123" text="マウンテンバスター"    icon="Targetaoe03.png"    sync="タイタンの「マウンテンバスタ"    notice="">
+      <v-notice text="マウンテン" icon="HardAttack.png" duration="5" duration-visible="false" />
+    </a>
+    <a time="127" text="大地の重みx3"          icon="StackAOE.png"       sync=""                                notice="次、3連重み、右、左、右" />
+    <a time="133" text="ランドスライドx2"      icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
+    <a time="140" text="ロックバスター"        icon="HardAttack.png"     sync="タイタンの「ロックバスター"      notice="次、MT大ダメージ" />
+    <a time="144" text="マウンテンバスター"    icon="Targetaoe03.png"    sync="タイタンの「マウンテンバスタ"    notice="">
+      <v-notice text="マウンテン" icon="HardAttack.png" duration="5" duration-visible="false" />
+    </a>
+    <a time="145" text="大地の重みx3"          icon="StackAOE.png"       sync=""                                notice="次、3連重み、右、左、右" />
+    <a time="156" text="激震x8"                icon="AllRangeAtk.png"    sync=""                                notice="次、激震"/>
+    <a time="171" text="時間切れ"              icon="Timeout.png"        sync=""                                notice="" notice-o="0" />
+  </s>
+
+  <s name="中継フェーズ">
+    <a time="002" text="覚醒確認"              icon="覚醒.png"           sync=""                                 notice=""/>
+    <a time="011" text="自爆"                  icon="Distance.png"       sync="魔導ビットは「自爆」の構え。"                                            notice="" />
+    <a time="024" text="死の宣告"              icon=""                   sync="光の使徒よ、消え去るがいい！"                                            notice="" />
+    <a time="034" text="ダージャ"              icon=""                   sync="starts using ダージャ"                                                   notice="" />
+    <a time="046" text="捨て台詞"              icon="Dialog.png"         sync="やってくれる…… だが、アルテマウェポンの真の力、見くびってくれるなよ！" notice="" />
+    <a time="051" text="アルテマ"              icon="AllRangeAtk.png"    sync="渦なす生命の色、七つの扉開き、力の塔の天に至らん！ ……アルテマッ！"     notice="" />
+    <a time="061" text="アルテマフェーズ開始"  icon=""                   sync="フハハハハハハ！ 絶望の暗き底へと沈むがいい！"                           notice="" />
+    <a time="085" text="タゲ可能まで10"        icon=""                   sync=""                                 notice="10秒前！" notice-o="0">
+      <v-notice text="１０秒前" icon="True.png" duration="9.6" />
+    </a>
+    <a time="095" text="魔導フレア"            icon="HardAllRngAtk.png"  sync="ウェポンの「魔導フレア」"         notice="" notice-o="0" />
+    <a time="097" text="吸着式エーテル爆雷"    icon="Targetaoe01.png"    sync="ウェポンの「吸着式エーテル"       notice="" />
+    <a time="098" text="誘導レーザー"          icon="Targetaoe01.png"    sync="ウェポンは「誘導レーザー」"       notice="" notice-o="0" />
+  </s>
+
+  <s name="追撃の究極幻想">
+    <a time="001" text="追撃の究極幻想"        icon=""                   sync="starts using 追撃の究極幻想"      notice="" notice-o="0" />
+    <a time="015" text="[イフ]突進+[ガル]嵐"   icon=""                   sync="starts using クリムゾンサイク"    notice="" />
+    <a time="016" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
+    <a time="018" text="不可視ランドスライド"  icon=""                   sync=""                                 notice="" />
+    <a time="020" text="セルレアムベント"      icon=""                   sync=""                                 notice="動くな" />
+    <a time="023" text="フェザーレイン"        icon=""                   sync="starts using フェザーレイン"      notice="フェザー！" notice-o="-2" />
+    <a time="036" text="エラプション"          icon=""                   sync=""                                 notice="" />
+    <a time="046" text="光輝の炎柱"            icon=""                   sync="ポンは「光輝の炎柱」の構え。"     notice="" />
+    <a time="051" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
+    <a time="053" text="不可視ランスラ"        icon=""                   sync=""                                 notice="" />
+    <a time="058" text="激震"                  icon=""                   sync=""                                 notice="" />
+    <a time="060" text="吸着式エーテル爆雷"    icon=""                   sync="ウェポンの「吸着式エーテル爆雷」" notice="次、MT大ダメージ" />
+    <a time="065" text="ミストラルシュリーク"  icon=""                   sync="start using ミストラルシュリーク" notice="次、全体攻撃" />
+    <a time="069" text="フェザーレイン"        icon=""                   sync=""                                 notice="" />
+    <a time="070" text="誘導レーザー"          icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="" />
+    <a time="073" text="フェザーレイン"        icon=""                   sync=""                                 notice="" />
+  </s>
+
+
+  <s name="爆撃の究極幻想">
+    <t name="爆撃フラグ" sync="starts using 大地の重み">
+      <expressions>
+        <set name="in_bakugeki" value="true" />
+      </expressions>
+    </t>
+
+    <t text="タイタンB" notice="タイタン、ブラボー">
+      <expressions>
+        <pre name="in_bakugeki" value="true" />
+      </expressions>
+      <p-sync interval="60">
+        <combatant name="タイタン" X="23.77" Y="23.77" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice
+        order="10"
+        text="タイタンＢ"
+        duration="20"
+        duration-visible="false"
+        icon="B.png" />
+    </t>
+
+    <t text="タイタンD" notice="タイタン、デルタ">
+      <expressions>
+        <pre name="in_bakugeki" value="true" />
+      </expressions>
+      <p-sync interval="60">
+        <combatant name="タイタン" X="23.23" Y="23.77" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <v-notice
+        order="10"
+        text="タイタンＤ"
+        duration="20"
+        duration-visible="false"
+        icon="D.png" />
+    </t>
+
+    <a time="001" text="爆撃の究極幻想"        icon=""                   sync="starts using 爆撃の究極幻想" />
+    <a time="012" text="大地の重み1"           icon=""                   sync=""                                 notice="次、重み、右、左" />
+    <a time="015" text="大地の重み2"           icon=""                   sync=""                                 notice="" />
+    <a time="016" text="フレイムクラッシュ"    icon=""                   sync=""                                 notice="" />
+    <a time="017" text="緑線"                  icon=""                   sync=""                                 notice="" />
+    <a time="017" text="緑玉1"                 icon=""                   sync=""                                 notice="" />
+    <a time="018" text="大地の重み3"           icon=""                   sync=""                                 notice="" />
+    <a time="019" text="灼熱"                  icon=""                   sync=""                                 notice="" />
+    <a time="023" text="緑玉2"                 icon=""                   sync=""                                 notice="" />
+    <a time="024" text="フェザーレイン"        icon=""                   sync=""                                 notice="フェザー！" />
+    <a time="026" text="クリムゾンサイクロン"  icon=""                   sync="starts using クリムゾンサイク"    notice="" />
+    <a time="028" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
+    <a time="029" text="[イフ]突進"            icon=""                   sync=""                                 notice="" />
+    <a time="029" text="緑玉3"                 icon=""                   sync=""                                 notice="" />
+    <a time="030" text="炎＋嵐＋ランスラ"      icon=""                   sync=""                                 notice="" />
+    <a time="036" text="緑玉4"                 icon=""                   sync=""                                 notice="" />
+    <a time="036" text="魔導フレア"            icon="HardAllRngAtk.png"  sync="アルテマウェポンの「魔導フレア」" notice="" notice-o="-6" />
+    <a time="041" text="フェザーレイン"        icon=""                   sync="starts using フェザーレイン"      notice="フェザー！" />
+    <a time="054" text="誘導レーザー1"         icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="" notice-o="-4" />
+    <a time="064" text="光輝の炎柱"            icon=""                   sync="starts using 光輝の炎柱"          notice="" />
+    <a time="069" text="拡散レーザー"          icon=""                   sync="ウェポンの「拡散レーザー」"       notice="" />
+
+    <a time="072" text="バルカンバースト1"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" sync-s="-5" sync-e="5">
+      <v-notice text="バルカン" order="2" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
+    </a>
+
+    <a time="073" text="バースト" icon="Check.png" notice="ここでバースト" notice-o="-1">
+      <v-notice text="バースト！" icon="True" duration="4" duration-visible="true" style="NOTICE_NORMAL_SMALL" />
+    </a>
+
+    <a time="077" text="誘導レーザー2"         icon=""          sync="ポンは「誘導レーザー」の構え。"   notice="" sync-s="-5" sync-e="5" notice-o="-5"/>
+
+    <a time="082" text="バルカンバースト2"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" sync-s="-5" sync-e="5">
+      <v-notice text="バルカン" order="2" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
+    </a>
+
+    <a time="087" text="拡散レーザー"          icon=""                   sync="ウェポンの「拡散レーザー」"       notice="" sync-s="-5" sync-e="5" />
+  </s>
+
+  <s name="乱撃の究極幻想">
+    <!-- ジェイル担当 -->
+    <t text="ジェイル➜ Ａ" sync=":グラナイト・ジェイル:[id8]:[mex]:0:" notice="自分にジェイル">
+      <v-notice
+        duration="4"
+        duration-visible="false"
+        order="1"
+        icon="A.png" />
+    </t>
+
+    <t text="ジェイルなし" sync=":グラナイト・ジェイル:[id8]:[nex]:0:" notice="ジェイルなし">
+      <v-notice
+        duration="4"
+        duration-visible="false"
+        order="1"
+        style="NOTICE_NORMAL"
+        icon="Check.png" />
+    </t>
+
+    <!-- 乱撃タイムライン -->
+    <a time="000" text="乱撃の究極幻想"        icon=""                   sync="starts using 乱撃の究極幻想"                     notice="" notice-o="0" />
+    <a time="006" text="乱撃の究極幻想"        icon=""                   sync="ウェポンの「乱撃の究極幻想」"                    notice="" notice-o="-3" />
+    <a time="012" text="エラプション1"         icon=""                   sync=""                                                notice="" />
+    <a time="014" text="エラプション2"         icon=""                   sync=""                                                notice="" />
+    <a time="016" text="エラプション3"         icon=""                   sync=""                                                notice="" />
+    <a time="018" text="リヒト1"               icon=""                   sync=""                                                notice="" />
+    <a time="018" text="エラプ4+リヒト2"       icon=""                   sync=""                                                notice="" />
+    <a time="019" text="ミストラルソング"      icon=""                   sync="starts using ミストラルソング on ガルーダ."      notice="" notice-o="0" />
+    <a time="021" text="ジェイル化"            icon=""                   sync="Added new combatant. name=グラナイト・ジェイル"  notice="" notice-o="0" />
+    <a time="023" text="フェザーレイン"        icon=""                   sync=""                                                notice="" />
+    <a time="025" text="フェザーレイン"        icon=""                   sync=""                                                notice="" />
+    <a time="028" text="リヒト最後"            icon=""                   sync=""                                                notice="" />
+    <a time="030" text="ランスラ＋メソハイ"    icon=""                   sync=""                                                notice="" />
+    <a time="033" text="ランスラ＋頭割り"      icon=""                   sync=""                                                notice="" />
+    <a time="040" text="フェザーレイン"        icon=""                   sync=""                                                notice="フェザー！" />
+    <a time="041" text="魔導フレア"            icon=""                   sync="アルテマウェポンの「魔導フレア」"                notice="" />
+    <a time="054" text="アルテマ開始"          icon=""                   sync="アルテマウェポンは「アルテマ」の構え。"          notice="" notice-o="-6" />
+    <a time="058" text="エーテル波動"          icon=""                   sync=""                                                notice="次、フルバリア">
+      <v-notice text="フルバリア" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
+    </a>
+
+    @if (Model.Player.InJob("DRK")) {
+      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="右下えー">
+        <v-notice text="右下へ" icon="Arrow4" duration="5" duration-visible="false" />
+      </a>
+    }
+
+    @if (Model.Player.InJob("PLD")) {
+      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="右上えー">
+        <v-notice text="右上へ" icon="Arrow2" duration="5" duration-visible="false" />
+      </a>
+    }
+
+    @if (Model.Player.InJob("SAM", "SMN", "BRD")) {
+      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="左上えー">
+        <v-notice text="左上へ" icon="Arrow8" duration="5" duration-visible="false" />
+      </a>
+    }
+
+    @if (Model.Player.InJob("BLM", "AST", "SCH")) {
+      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="左下えー">
+        <v-notice text="左下へ" icon="Arrow6" duration="5" duration-visible="false" />
+      </a>
+    }
+
+    <a time="064" text="アルテマ爆雷出現"      icon=""                   sync=""                                                notice="" />
+    <a time="077" text="12時集合"              icon=""                   sync=""                                                notice="12時えー">
+      <v-notice text="12時へ" order="1" icon="Arrow1" duration="5" duration-visible="false" />
+    </a>
+
+    <a time="083" text="吸着爆雷"              icon=""                   sync="ウェポンの「吸着爆雷」"                          notice="次、MT大ダメージ" />
+
+    <t text="ガルーダ"    sync="アルテマウェポン starts using Unknown_2Cd3 on アルテマウェポン" notice="次、ガルーダ"    goto="ラストガルーダ"/>
+    <t text="イフリート"  sync="アルテマウェポン starts using Unknown_2Cd4 on アルテマウェポン" notice="次、イフリート"  goto="ラストイフリート"/>
+    <t text="タイタン"    sync="アルテマウェポン starts using Unknown_2Cd5 on アルテマウェポン" notice="次、タイタン"    goto="ラストタイタン"/>
+  </s>
+
+  <!-- ラストガルーダ -->
+  <s name="ラストガルーダ">
+    <a time="000" name="Flag">
+      <expressions>
+        <set name="done_Garuda" value="true" />
+      </expressions>
+    </a>
+
+    <a time="006" text="ウィケッドホイール"    icon="Leave.png"          sync=""                                                    notice="待機、その後アルファえー">
+      <v-notice icon="Arrow8.png" text="待機→Ａ" duration-visible="false" duration="4" />
+    </a>
+    <a time="009" text="吸着爆雷起爆"          icon="DamageShare.png"    sync="の「吸着爆雷」が切れた。"                            notice="次、全体攻撃" notice-o="-3" />
+    <a time="013" text="エリアルブラスト"      icon="HardAllRngAtk.png"  sync="ガルーダ starts using エリアルブラスト on ガルーダ"  notice="終わったら12時に戻る、フェザー注意" notice-o="-1">
+      <v-notice icon="Avoid.png" text="12時に戻る" duration-visible="false" duration="5" />
+    </a>
+
+    <a time="026" text="最終フェーズへ"        icon="Check.png"          goto="最終フェーズ" notice="" />
+
+    <t text="イフリート"  sync="アルテマウェポン starts using Unknown_2Cd4 on アルテマウェポン" notice="次、イフリート"  goto="ラストイフリート"/>
+    <t text="タイタン"    sync="アルテマウェポン starts using Unknown_2Cd5 on アルテマウェポン" notice="次、タイタン"    goto="ラストタイタン"/>
+  </s>
+
+  <!-- ラストイフリート -->
+  <s name="ラストイフリート">
+    <a time="000" name="Flag">
+      <expressions>
+        <set name="done_Ifrit" value="true" />
+      </expressions>
+    </a>
+
+    <a time="006" text="エラプション"          icon="AOE.png"            sync=""                                                    notice="右斜め前えー">
+      <v-notice icon="Arrow2.png" text="右斜め前へ" duration-visible="false" duration="4" />
+    </a>
+    <a time="009" text="吸着爆雷起爆"          icon="DamageShare.png"    sync="の「吸着爆雷」が切れた。"                            notice="次、全体攻撃" notice-o="-3"/>
+    <a time="013" text="地獄の火炎"            icon="HardAllRngAtk.png"  sync="イフリート starts using 地獄の火炎 on イフリート"    notice="そのままの位置でー" notice-o="-1">
+      <v-notice icon="Avoid.png" text="そのまま" duration-visible="false" duration="5" />
+    </a>
+
+    <a time="026" text="最終フェーズへ"        icon="Check.png"          goto="最終フェーズ" notice="" />
+
+    <t text="ガルーダ"    sync="アルテマウェポン starts using Unknown_2Cd3 on アルテマウェポン" notice="次、ガルーダ"    goto="ラストガルーダ"/>
+    <t text="タイタン"    sync="アルテマウェポン starts using Unknown_2Cd5 on アルテマウェポン" notice="次、タイタン"    goto="ラストタイタン"/>
+  </s>
+
+  <!-- ラストタイタン -->
+  <s name="ラストタイタン">
+    <a time="000" name="Flag">
+      <expressions>
+        <set name="done_Titan" value="true" />
+      </expressions>
+    </a>
+
+    <a time="004" text="大地の重み1"           icon="StackAOE.png"       sync=""                                                    notice="重み、右、左、右">
+      <v-notice icon="Arrow3.png" text="右➜左➜右" duration-visible="false" duration="4" />
+    </a>
+    <a time="007" text="大地の重み2"           icon="StackAOE.png"       sync=""                                                    notice="" />
+    <a time="009" text="吸着爆雷起爆"          icon="DamageShare.png"    sync="の「吸着爆雷」が切れた。"                            notice="次、全体攻撃" notice-o="-3" />
+    <a time="010" text="大地の重み3"           icon="StackAOE.png"       sync=""                                                    notice="" />
+    <a time="013" text="大地の怒り"            icon="HardAllRngAtk.png"  sync="starts using 大地の怒り on タイタン"                 notice="そのままの位置でー" notice-o="-1" />
+
+    <a time="026" text="最終フェーズへ"        icon="Check.png"          goto="最終フェーズ" notice="" />
+
+    <!-- イフリートが終わっている？ -->
+    <t name="移動1" sync="starts using 大地の怒り on タイタン" notice="そのまま">
+      <expressions>
+        <pre name="done_Ifrit" value="true" />
+      </expressions>
+      <v-notice icon="Avoid.png" text="そのまま" duration-visible="false" duration="5" />
+    </t>
+
+    <!-- イフリートが終わっていない？ -->
+    <t name="移動2" sync="starts using 大地の怒り on タイタン" notice="終わったら12時えー">
+      <expressions>
+        <pre name="done_Ifrit" value="false" />
+      </expressions>
+      <v-notice icon="Avoid.png" text="12時に戻る" duration-visible="false" duration="5" />
+    </t>
+
+    <t text="ガルーダ"    sync="アルテマウェポン starts using Unknown_2Cd3 on アルテマウェポン" notice="次はガルーダ"    goto="ラストガルーダ" />
+    <t text="イフリート"  sync="アルテマウェポン starts using Unknown_2Cd4 on アルテマウェポン" notice="次はイフリート"  goto="ラストイフリート" />
+  </s>
+
+  <s name="最終フェーズ">
+    <a time="001" text="さあ決着をつけようか" />
+
+    <a time="004" text="薬" icon="Buff.png" notice-o="-3" notice="薬、使え">
+      <!-- アルテマエーテル58 -->
+      <v-notice duration="2.9" duration-visible="false" order="30" icon="True.png"   text="エーテル５８で" />
+      <v-notice duration="2.9" duration-visible="false" order="31" icon="Potion.png" text="薬" style="NOTICE_NORMAL" />
+    </a>
+
+    <a time="030" text="拉致1" icon="Leave.png" sync-s="-30" sync-count="1" sync="「スタン」の効果" notice-o="0" notice="ひとり！" />
+    <a time="033" text="拉致2" icon="Leave.png" sync="" notice-o="0" notice="ふたり！" />
+    <a time="036" text="拉致3" icon="Leave.png" sync="" notice-o="0" notice="さんにん！" />
+    <a time="039" text="拉致4" icon="Leave.png" sync="" notice-o="0" notice="よにん！" />
+    <a time="042" text="拉致5" icon="Leave.png" sync="" notice-o="0" notice="後３人！" />
+    <a time="045" text="拉致6" icon="Leave.png" sync="" notice-o="0" notice="後２人！" />
+    <a time="048" text="拉致7" icon="Leave.png" sync="" notice-o="0" notice="最後！" />
+    <a time="051" text="拉致8" icon="Leave.png" sync="" notice-o="0" notice="" />
+
+    <t name="幻想敗れたり" sync="は、アルテマウェポンを倒した。" notice="完全論破！">
+      <v-notice
+        icon="True.png"
+        text="完　全　論　破"
+        duration-visible="false"
+        duration="20" />
+    </t>
+  </s>
+</timeline>

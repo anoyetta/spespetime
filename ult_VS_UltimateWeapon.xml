@@ -15,6 +15,9 @@
   <start>0039:戦闘開始！</start>
 
   <!--
+    戦術はみんとっとさんの絶アルテマシリーズを採用する。
+    戦術の理解をシンプルにするため部分的に戦術を入れ替えることは原則としてしない。
+
     2020.09.29 rev1
     * イフの四連突進に関連するカンペを追加した
   -->
@@ -35,7 +38,7 @@
   <t text="乱撃フェーズへ" sync="アルテマウェポンは「乱撃の究極幻想」の構え。" goto="乱撃の究極幻想" notice="" />
 
   <!-- 灼熱トリガー -->
-  @if (Model.Player.InJob("WHM", "SCH", "AST")) {
+  @if (Model.Player.InRole("HEALER")) {
     <t text="灼熱➙ $1" sync="イフリート starts using 灼熱の咆吼 on [mex]" notice="自分に灼熱">
       <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
     </t>

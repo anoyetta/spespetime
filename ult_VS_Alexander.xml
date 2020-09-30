@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アレキサンダー討滅戦</name>
-  @{ var rev = "rev FINAL8.7"; }
+  @{ var rev = "rev FINAL8.8"; }
   <rev>@rev</rev>
   <description>
     anoyetta 専用の絶アレキタイムラインです。
@@ -1332,28 +1332,28 @@
     <a time="@(535 - origin)" text="浄化の熱線" sync="アレキサンダー・プライムの「浄化の熱線」" />
 
     <!-- カウント start -->
-    <t text="カウント➜ 召" sync="^1B:[id8]:[DRG]:0000:[id4]:">
+    <t text="カウント➜ 召" sync="^1B:[id8]:[SMN]:0000:[id4]:">
       <v-notice
         order="-29"
         duration="5"
         icon="SMN.png" />
     </t>
 
-    <t text="カウント➜ 詩" sync="^1B:[id8]:[SAM]:0000:[id4]:">
+    <t text="カウント➜ 詩" sync="^1B:[id8]:[BRD]:0000:[id4]:">
       <v-notice
         order="-28"
         duration="5"
         icon="BRD.png" />
     </t>
 
-    <t text="カウント➜ 侍" sync="^1B:[id8]:[BRD]:0000:[id4]:">
+    <t text="カウント➜ 侍" sync="^1B:[id8]:[SAM]:0000:[id4]:">
       <v-notice
         order="-27"
         duration="5"
         icon="SAM.png" />
     </t>
 
-    <t text="カウント➜ 竜" sync="^1B:[id8]:[SMN]:0000:[id4]:">
+    <t text="カウント➜ 竜" sync="^1B:[id8]:[DRG]:0000:[id4]:">
       <v-notice
         order="-26"
         duration="5"

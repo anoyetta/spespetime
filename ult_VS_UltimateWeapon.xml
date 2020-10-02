@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev1"; }
+  @{ var rev = "rev3.0"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -20,6 +20,12 @@
 
     2020.09.29 rev1
     * イフの四連突進に関連するカンペを追加した
+
+    2020.10.02 rev2.1
+    * ガルーダ・エギとガルーダ本人を誤検知してしまう不具合を修正した
+
+    2020.10.02 rev3
+    * テザー（線）を通知するトリガを追加した
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -47,6 +53,11 @@
       <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
     </t>
   }
+
+  <!-- テザー（線） -->
+  <t text="$1 ➙ $2" sync="^23:........:(.+):........:(.+):" notice="ライン発生">
+    <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+  </t>
 
   <!-- ガルーダフェーズ -->
   <s name="ガルーダフェーズ">
@@ -77,45 +88,48 @@
         duration-visible="true" />
     </t>
 
+    <t name="ウィンドブレード1" sync="ガルーダは「ウィンドブレード」の構え" sync-count="1" notice="ブレード1回目" />
+    <t name="ウィンドブレード2" sync="ガルーダは「ウィンドブレード」の構え" sync-count="2" notice="ブレード2回目" />
+
     <a time="0"  text="VS UltWeapon 2nd KILL" />
     <a time="0"  text="@rev" />
 
-    <a time="5"  text="スリップストリーム"      icon="Targetaoe02.png"    sync="「スリップストリーム」の構え"    notice="次、MT大ダメージ" />
-    <a time="6"  text="マーカー1名付与"         icon="Marker.png"         sync=""                                notice="" />
-    <a time="11" text="ミストラルソング"        icon="Targetaoe.png"      sync="ガルーダの「ミストラルソング」"  notice="" />
-    <a time="15" text="大旋風"                  icon="AOE.png"            sync=""                                notice="" />
-    <a time="19" text="雑魚沸き"                icon=""                   sync=""                                notice="次、MT大ダメージ" />
-    <a time="21" text="大旋風"                  icon="AOE.png"            sync=""                                notice="" />
-    <a time="21" text="スリップストリーム"      icon="Targetaoe.png"      sync="「スリップストリーム」の構え"    notice="次、スリップ" />
-    <a time="27" text="大旋風"                  icon="AOE.png"            sync=""                                notice="" />
-    <a time="27" text="サイクロン(スパイニー)"  icon=""                   sync="プルームの「サイクロン」"        notice="" />
-    <a time="27" text="ダウンバースト"          icon="HardAttack.png"     sync="ガルーダの「ダウンバースト」"    notice="次、MT大ダメージ" />
-    <a time="36" text="フェザーレイン"          icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
-    <a time="36" text="サイクロン(スパイニー)"  icon=""                   sync=""                                notice="" />
-    <a time="38" text="ミストラルシュリーク"    icon="AllRngAtk.png"      sync="「ミストラルシュリーク」の構え"  notice="" />
-    <a time="47" text="ウィンドブレード"        icon="Targetaoe02.png"    sync="「ウィンドブレード」の構え"      notice="" />
-    <a time="47" name="ウィンドブレード発動"                              sync="の「ウィンドブレード」$"         notice="ブレード1回目" notice-o="0" sync-e="3" />
-    <a time="52" text="ウィンドブレード"        icon="Targetaoe02.png"    sync=""                                notice="" />
-    <a time="52" name="ウィンドブレード発動"                              sync="の「ウィンドブレード」$"         notice="ブレード2回目" notice-o="0" sync-e="3" />
-    <a time="71" text="フェザーレイン"          icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
-    <a time="72" text="エリアルブラスト"        icon="HardAllRngAtk.png"  sync="は「エリアルブラスト」の構え。"  notice="次、エリアル" notice-o="-6" />
-    <a time="83" name="セリフ"                  icon="Dialog.png"         sync="もはや殺すのでは足りぬッ！ "     notice="" />
-    <a time="91" text="フェザーレイン"          icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
-    <a time="93" text="マーカー2名付与"         icon="Marker.png"         sync=""                                notice="次、タンクは壁に" />
-    <a time="95" text="ウィケッドホイール"      icon="Leave.png"          sync=""                                notice="" />
-    <a time="101" text="大旋風"                 icon="AOE.png"            sync=""                                notice="" />
-    <a time="102" text="フェザーレイン"         icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
-    <a time="109" text="雑魚沸き"               icon=""                   sync=""                                notice="次、雑魚ポップ" />
-    <a time="117" text="スリップストリーム"     icon="Targetaoe02.png"    sync="「スリップストリーム」の構え。"  notice="次、MT大ダメージ" />
-    <a time="117" text="線処理"                 icon="Targetaoe01.png"    sync=""                                notice="次、MT、黒は線取り" notice-o="-5" />
-    <a time="121" text="ダウンバースト"         icon="HardAttack.png"     sync=""                                notice="次、MT大ダメージ" />
-    <a time="127" text="フェザーレイン"         icon="Avoid.png"          sync=""                                notice="フェザー注意！" notice-o="-5" />
-    <a time="137" text="スリップストリーム"     icon="Targetaoe02.png"    sync="「スリップストリーム」の構え。"  notice="次、MT大ダメージ" notice-o="-2" />
-    <a time="145" text="覚醒ウィケッド→外へ"   icon="Leave.png"          sync=""                                notice="離れるー" />
-    <a time="148" text="覚醒ウィケッド→内へ"   icon="Stack.png"          sync=""                                notice="近寄るー" notice-o="-2" />
-    <a time="153" text="覚醒ダウンバースト"     icon="DamageShare.png"    sync="ガルーダの「ダウンバースト」"    notice="頭割りー" />
-    <a time="158" text="スリップストリーム"     icon="Targetaoe02.png"    sync="「スリップストリーム」の構え。"  notice="次、MT大ダメージ" notice-o="-2" />
-    <a time="170" text="時間切れ"               icon="Timeout.png"                                               notice="" notice-o="0" />
+    <a time="5"  text="スリップストリーム"      icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え"     notice="次、MT大ダメージ" />
+    <a time="6"  text="マーカー1名付与"         icon="Marker.png"         sync=""                                           notice="" />
+    <a time="11" text="ミストラルソング"        icon="Targetaoe.png"      sync="ガルーダの「ミストラルソング」"             notice="" />
+    <a time="15" text="大旋風"                  icon="AOE.png"            sync=""                                           notice="" />
+    <a time="19" text="雑魚沸き"                icon=""                   sync=""                                           notice="次、MT大ダメージ" />
+    <a time="21" text="大旋風"                  icon="AOE.png"            sync=""                                           notice="" />
+    <a time="21" text="スリップストリーム"      icon="Targetaoe.png"      sync="ガルーダは「スリップストリーム」の構え"     notice="次、スリップ" />
+    <a time="27" text="大旋風"                  icon="AOE.png"            sync=""                                           notice="" />
+    <a time="27" text="サイクロン(スパイニー)"  icon=""                   sync="プルームの「サイクロン」"                   notice="" />
+    <a time="27" text="ダウンバースト"          icon="HardAttack.png"     sync="ガルーダの「ダウンバースト」"               notice="次、MT大ダメージ" />
+    <a time="36" text="フェザーレイン"          icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
+    <a time="36" text="サイクロン(スパイニー)"  icon=""                   sync=""                                           notice="" />
+    <a time="38" text="ミストラルシュリーク"    icon="AllRngAtk.png"      sync="ガルーダは「ミストラルシュリーク」の構え"   notice="" />
+    <a time="47" text="ウィンドブレード"        icon="Targetaoe02.png"    sync="ガルーダは「ウィンドブレード」の構え"       notice="" />
+    <a time="47" name="ウィンドブレード発動"                              sync="ガルーダの「ウィンドブレード」$"            notice="" notice-o="0" sync-e="3" />
+    <a time="52" text="ウィンドブレード"        icon="Targetaoe02.png"    sync=""                                           notice="" />
+    <a time="52" name="ウィンドブレード発動"                              sync="ガルーダの「ウィンドブレード」$"            notice="" notice-o="0" sync-e="3" />
+    <a time="71" text="フェザーレイン"          icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
+    <a time="72" text="エリアルブラスト"        icon="HardAllRngAtk.png"  sync="ガルーダは「エリアルブラスト」の構え。"     notice="次、エリアル" notice-o="-6" />
+    <a time="83" name="セリフ"                  icon="Dialog.png"         sync="もはや殺すのでは足りぬッ！ "                notice="" />
+    <a time="91" text="フェザーレイン"          icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
+    <a time="93" text="マーカー2名付与"         icon="Marker.png"         sync=""                                           notice="次、タンクは壁に" />
+    <a time="95" text="ウィケッドホイール"      icon="Leave.png"          sync=""                                           notice="" />
+    <a time="101" text="大旋風"                 icon="AOE.png"            sync=""                                           notice="" />
+    <a time="102" text="フェザーレイン"         icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
+    <a time="109" text="雑魚沸き"               icon=""                   sync=""                                           notice="次、雑魚ポップ" />
+    <a time="117" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、MT大ダメージ" />
+    <a time="117" text="線処理"                 icon="Targetaoe01.png"    sync=""                                           notice="次、MT、黒は線取り" notice-o="-5" />
+    <a time="121" text="ダウンバースト"         icon="HardAttack.png"     sync=""                                           notice="次、MT大ダメージ" />
+    <a time="127" text="フェザーレイン"         icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
+    <a time="137" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、MT大ダメージ" notice-o="-2" />
+    <a time="145" text="覚醒ウィケッド→外へ"   icon="Leave.png"          sync=""                                           notice="離れるー" />
+    <a time="148" text="覚醒ウィケッド→内へ"   icon="Stack.png"          sync=""                                           notice="近寄るー" notice-o="-2" />
+    <a time="153" text="覚醒ダウンバースト"     icon="DamageShare.png"    sync="ガルーダの「ダウンバースト」"               notice="頭割りー" />
+    <a time="158" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、MT大ダメージ" notice-o="-2" />
+    <a time="170" text="時間切れ"               icon="Timeout.png"                                                          notice="" notice-o="0" />
   </s>
 
   <s name="イフリートフェーズ">

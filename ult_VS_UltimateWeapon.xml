@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev3.0"; }
+  @{ var rev = "rev3.3"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -45,18 +45,18 @@
 
   <!-- 灼熱トリガー -->
   @if (Model.Player.InRole("HEALER")) {
-    <t text="灼熱➙ $1" sync="イフリート starts using 灼熱の咆吼 on [mex]" notice="自分に灼熱">
+    <t text="$1\n← 灼熱" sync="イフリート starts using 灼熱の咆吼 on [mex]" notice="自分に灼熱">
       <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="灼熱➙ $1" sync="イフリート starts using 灼熱の咆吼 on [nex]" notice="相方に灼熱">
+    <t text="$1\n← 灼熱" sync="イフリート starts using 灼熱の咆吼 on [nex]" notice="相方に灼熱">
       <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
     </t>
   }
 
   <!-- テザー（線） -->
-  <t text="$1 ➙ $2" sync="^23:........:(.+):........:(.+):" notice="ライン発生">
-    <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+  <t text="${_pc}\n← ${enemy}" sync="^23:[id8]:(?&lt;enemy&gt;.+):[id8]:[pc]:" notice="ライン発生">
+    <v-notice order="1" duration="5" duration-visible="false" job-icon="true" font-scale="0.8" />
   </t>
 
   <!-- ガルーダフェーズ -->
@@ -424,42 +424,42 @@
 
     <a time="078" text="次の誘導1" icon="" sync="" notice="次、アルファ、ブラボーえー">
       <expressions><pre name="pattern" value="1" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
     </a>
 
     <a time="078" text="次の誘導2" icon="" sync="" notice="次、アルファ、ブラボーえー">
       <expressions><pre name="pattern" value="2" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＡＢ" />
     </a>
 
     <a time="078" text="次の誘導3" icon="" sync="" notice="次、ブラボー、チャーリーえー">
       <expressions><pre name="pattern" value="3" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
     </a>
 
     <a time="078" text="次の誘導4" icon="" sync="" notice="次、ブラボー、チャーリーえー">
       <expressions><pre name="pattern" value="4" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＢＣ" />
     </a>
 
     <a time="078" text="次の誘導5" icon="" sync="" notice="次、チャーリー、デルタえー">
       <expressions><pre name="pattern" value="5" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＣＤ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＣＤ" />
     </a>
 
     <a time="078" text="次の誘導6" icon="" sync="" notice="次、チャーリー、デルタえー">
       <expressions><pre name="pattern" value="6" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＣＤ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＣＤ" />
     </a>
 
     <a time="078" text="次の誘導7" icon="" sync="" notice="次、アルファ、デルタえー">
       <expressions><pre name="pattern" value="7" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
     </a>
 
     <a time="078" text="次の誘導8" icon="" sync="" notice="次、アルファ、デルタえー">
       <expressions><pre name="pattern" value="8" /></expressions>
-      <v-notice duration="6" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
+      <v-notice duration="9" duration-visible="false" icon="Avoid.png" text="➜ ＡＤ" />
     </a>
 
     <a time="084" text="★灼熱の咆吼"          icon="Fire.png"           sync="イフリートは「灼熱の咆吼」の"    notice="灼熱注意ー"/>

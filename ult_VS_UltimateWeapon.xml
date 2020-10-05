@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev3.3"; }
+  @{ var rev = "rev3.4"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -26,6 +26,9 @@
 
     2020.10.02 rev3
     * テザー（線）を通知するトリガを追加した
+
+    2020.10.05 rev3.4
+    * 3連ジェイルの優先順位を変更した
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -479,8 +482,8 @@
       <expressions>
         <pre name="heat" value="false" />
       </expressions>
-      <v-notice order="1" duration="7" duration-visible="false" icon="TurnR.png" text="近くが青➙ ２コマ" />
-      <v-notice order="2" duration="7" duration-visible="false" icon="TurnR.png" text="遠くが青➙ １コマ" />
+      <v-notice order="1" duration="20" duration-visible="false" icon="TurnR.png" text="近くが青➙ ２コマ" />
+      <v-notice order="2" duration="20" duration-visible="false" icon="TurnR.png" text="遠くが青➙ １コマ" />
     </a>
 
     <a time="123" text="四連クリサイ"          icon="Avoid.png"          sync="イフリートは「クリムゾンサイク"  notice="スプリント準備" notice-o="-6" />
@@ -498,7 +501,7 @@
   <s name="タイタンフェーズ">
     <!-- 優先度ジェイル トリガ start -->
     @{
-      var jail_order = new string[] { "[DRK]", "[PLD]", "[SAM]", "[SMN]", "[BRD]", "[BLM]", "[AST]", "[SCH]" };
+      var jail_order = new string[] { "[DRK]", "[PLD]", "[SAM]", "[SCH]", "[AST]", "[SMN]", "[BLM]", "[BRD]" };
     }
     <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[0]:">
       <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
@@ -538,6 +541,10 @@
 
     <!-- psync ボムトリガー start -->
     <t text="ボム1➜ 左へ" sync-count="1" notice="左えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.40" Y="23.26" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.40" Y="23.40" Z="0.00" tolerance="0.01" />
@@ -549,6 +556,10 @@
     </t>
 
     <t text="ボム2➜ 右へ" sync-count="1" notice="右えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.60" Y="23.26" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.40" Y="23.40" Z="0.00" tolerance="0.01" />
@@ -560,6 +571,10 @@
     </t>
 
     <t text="ボム3➜ 左へ" sync-count="1" notice="左えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.74" Y="23.40" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.72" Y="23.28" Z="0.00" tolerance="0.01" />
@@ -571,6 +586,10 @@
     </t>
 
     <t text="ボム4➜ 右へ" sync-count="1" notice="右えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.74" Y="23.60" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.72" Y="23.28" Z="0.00" tolerance="0.01" />
@@ -582,6 +601,10 @@
     </t>
 
     <t text="ボム5➜ 左へ" sync-count="1" notice="左えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.60" Y="23.74" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
@@ -593,6 +616,10 @@
     </t>
 
     <t text="ボム6➜ 右へ" sync-count="1" notice="右えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.40" Y="23.74" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
@@ -604,6 +631,10 @@
     </t>
 
     <t text="ボム7➜ 左へ" sync-count="1" notice="左えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.26" Y="23.60" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
@@ -615,6 +646,10 @@
     </t>
 
     <t text="ボム8➜ 右へ" sync-count="1" notice="右えー。">
+      <expressions>
+        <pre name="sorted_jail" value="false" />
+        <set name="sorted_jail" value="true" />
+      </expressions>
       <p-sync interval="10">
         <combatant name="ボムボルダー" X="23.26" Y="23.40" Z="0.00" tolerance="0.01" />
         <combatant name="ボムボルダー" X="23.28" Y="23.72" Z="0.00" tolerance="0.01" />
@@ -637,17 +672,17 @@
     </a>
     <a time="024" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、右、左" />
 
-    <a time="033" text="ジオクラッシュ2"       icon="AllRangeAtk.png"    sync="タイタンの「ジオクラッシュ」"    notice="次、ジオクラ" />
-    <a time="040" text="大激震"                icon="KnockBack.png"      sync="タイタンは「大激震」の構え"      notice="次、ホールインワン" />
+    <a time="033" text="ジオクラッシュ2"       icon="AllRangeAtk.png"    sync="タイタンの「ジオクラッシュ」"    notice="次、ジオクラからホールインワン" />
+    <a time="040" text="大激震"                icon="KnockBack.png"      sync="タイタンは「大激震」の構え"      notice="" />
     <a time="042" text="ボムボルダー"          icon="Bomb.png"           sync=""                                notice="" />
-    <a time="047" text="大爆発"                icon="Explosion.png"      sync=""                                notice="爆発したら中心線えー">
-      <v-notice text="中心線へ" icon="Arrow1.png" duration="3" duration-visible="false" />
+    <a time="047" text="大爆発"                icon="Explosion.png"      sync=""                                notice="爆発したら中心えー" notice-o="-4">
+      <v-notice text="中心線へ" icon="Arrow1.png" duration="3" duration-visible="false" order="20" />
     </a>
-    <a time="047" text="グラナイト・ジェイル"  icon=""                   sync="タイタンの「グラナイト・"        notice="次、三連ジェイル" />
+    <a time="047" text="グラナイト・ジェイル"  icon=""                   sync="タイタンの「グラナイト・"        notice="" />
     <a time="051" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="" />
     <a time="054" text="ランドスライド(2)"     icon="Avoin.png"          sync=""                                notice="" />
     <a time="057" text="激震x8"                icon="AllRangeAtk.png"    sync=""                                notice="次、激震" />
-    <a time="069" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、右、左" />
+    <a time="069" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、前、後ろ" />
     <a time="076" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
     <a time="079" text="ランドスライド(2)"     icon="Avoid.png"          sync=""                                notice="" notice-o="" />
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev3.4"; }
+  @{ var rev = "rev3.5"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -29,6 +29,10 @@
 
     2020.10.05 rev3.4
     * 3連ジェイルの優先順位を変更した
+
+    2020.10.05 rev3.5
+    * 3連ジェイルをさらに整備した
+    * ミンネの通知を追加した
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -49,11 +53,11 @@
   <!-- 灼熱トリガー -->
   @if (Model.Player.InRole("HEALER")) {
     <t text="$1\n← 灼熱" sync="イフリート starts using 灼熱の咆吼 on [mex]" notice="自分に灼熱">
-      <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+      <v-notice order="-1" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
     <t text="$1\n← 灼熱" sync="イフリート starts using 灼熱の咆吼 on [nex]" notice="相方に灼熱">
-      <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
+      <v-notice order="-1" duration="5" duration-visible="false" job-icon="true" />
     </t>
   }
 
@@ -87,7 +91,7 @@
       <v-notice
         text="高気圧ドーム"
         icon="Circle"
-        duration="30"
+        duration="28"
         duration-visible="true" />
     </t>
 
@@ -256,7 +260,7 @@
 
     <t text="灼熱➜自分" sync="[mex]に「灼熱」の効果。">
       <expressions>
-        <set name="heat" value="true" />
+        <set name="heat" value="true" ttl="15" />
       </expressions>
     </t>
 
@@ -478,7 +482,7 @@
     <a time="109" text="灼熱爆発"              icon="Explosion.png"      sync=""                                notice="" notice-o="-2" />
     <a time="115" text="フレイムクラッシュ"    icon="DamageShare.png"    sync="イフリートの「フレイムクラッ"    notice="次、正面で頭割り"/>
 
-    <a time="115" name="移動のカンペ" icon="" sync="" notice="" notice-o="0">
+    <a time="115" name="移動のカンペ" icon="" sync="" notice="" notice-o="1">
       <expressions>
         <pre name="heat" value="false" />
       </expressions>
@@ -501,42 +505,43 @@
   <s name="タイタンフェーズ">
     <!-- 優先度ジェイル トリガ start -->
     @{
-      var jail_order = new string[] { "[DRK]", "[PLD]", "[SAM]", "[SCH]", "[AST]", "[SMN]", "[BLM]", "[BRD]" };
+      var jail_order      = new string[] { "[DRK]", "[PLD]", "[SAM]", "[SCH]", "[AST]",    "[SMN]",  "[BLM]", "[BRD]" };
+      var jail_order_call = new string[] { "あん",  "なー",  "さむ",  "がく",  "せんせー", "しょう", "くろ",  "しじん" };
     }
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[0]:">
+    <t no="1" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[0]:" notice-sync="true" notice="@jail_order_call[0]">
       <v-notice order="1" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[1]:">
+    <t no="2" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[1]:" notice-sync="true" notice="@jail_order_call[1]">
       <v-notice order="2" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[2]:">
+    <t no="3" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[2]:" notice-sync="true" notice="@jail_order_call[2]">
       <v-notice order="3" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[3]:">
+    <t no="4" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[3]:" notice-sync="true" notice="@jail_order_call[3]">
       <v-notice order="4" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[4]:">
+    <t no="5" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[4]:" notice-sync="true" notice="@jail_order_call[4]">
       <v-notice order="5" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[5]:">
+    <t no="6" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[5]:" notice-sync="true" notice="@jail_order_call[5]">
       <v-notice order="6" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[6]:">
+    <t no="7" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[6]:" notice-sync="true" notice="@jail_order_call[6]">
       <v-notice order="7" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t text="$1" sync=":グラナイト・ジェイル:........:@jail_order[7]:">
+    <t no="8" text="$1" sync=":グラナイト・ジェイル:........:@jail_order[7]:" notice-sync="true" notice="@jail_order_call[7]">
       <v-notice order="8" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
-    <t name="自分にジェイル" sync=":グラナイト・ジェイル:........:[mex]:" notice="自分にジェイル" />
-    <t name="ジェイルなし"   sync=":グラナイト・ジェイル:........:[nex]:" sync-count="3" notice="ジェイルなし" />
+    <t no="11" name="自分にジェイル" sync=":グラナイト・ジェイル:........:[mex]:" notice-sync="true" notice="自分にジェイル" />
+    <t no="12" name="ジェイルなし"   sync=":グラナイト・ジェイル:........:[nex]:" sync-count="3" notice-sync="true" notice="ジェイルなし" />
     <!-- 優先度ジェイル トリガ end -->
 
     <!-- psync ボムトリガー start -->
@@ -689,12 +694,12 @@
     <a time="087" text="ジオクラッシュ3"       icon="AllRangeAtk.png"    sync=""                                notice="次、ジオクラ" />
     <a time="093" text="グラナイト・ジェイル"  icon=""                   sync="タイタンの「グラナイト・"        notice="次、ヒーラージェイル" />
     <a time="105" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
-    <a time="108" text="ランドスライド(2)"     icon="Avoid.png"          sync=""                                notice="次、ST大ダメージ" />
+    <a time="108" text="ランドスライド(2)"     icon="Avoid.png"          sync=""                                notice="" />
     <a time="111" text="激震x6"                icon="AllRangeAtk.png"    sync=""                                notice="次、激震"/>
-    <a time="123" text="マウンテンバスター"    icon="Targetaoe03.png"    sync="タイタンの「マウンテンバスタ"    notice="">
+    <a time="123" text="マウンテンバスター"    icon="Targetaoe03.png"    sync="タイタンの「マウンテンバスタ"    notice="次、ST大ダメージ">
       <v-notice text="マウンテン" icon="HardAttack.png" duration="5" duration-visible="false" />
     </a>
-    <a time="127" text="大地の重みx3"          icon="StackAOE.png"       sync=""                                notice="次、3連重み、右、左、右" />
+    <a time="127" text="大地の重みx3"          icon="StackAOE.png"       sync=""                                notice="次、3連重み" />
     <a time="133" text="ランドスライドx2"      icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
     <a time="140" text="ロックバスター"        icon="HardAttack.png"     sync="タイタンの「ロックバスター"      notice="次、MT大ダメージ" />
     <a time="144" text="マウンテンバスター"    icon="Targetaoe03.png"    sync="タイタンの「マウンテンバスタ"    notice="">
@@ -722,6 +727,10 @@
   </s>
 
   <s name="追撃の究極幻想">
+    <t text="${_pc}\n← ミンネ" sync="^1A:[id8]:[pc] gains the effect of 地神のミンネ" notice="ミンネ">
+      <v-notice order="-1" duration="5" duration-visible="false" job-icon="true" />
+    </t>
+
     <a time="001" text="追撃の究極幻想"        icon=""                   sync="starts using 追撃の究極幻想"      notice="" notice-o="0" />
     <a time="015" text="[イフ]突進+[ガル]嵐"   icon=""                   sync="starts using クリムゾンサイク"    notice="" />
     <a time="016" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
@@ -736,10 +745,9 @@
     <a time="060" text="吸着式エーテル爆雷"    icon=""                   sync="ウェポンの「吸着式エーテル爆雷」" notice="次、MT大ダメージ" />
     <a time="065" text="ミストラルシュリーク"  icon=""                   sync="start using ミストラルシュリーク" notice="次、全体攻撃" />
     <a time="069" text="フェザーレイン"        icon=""                   sync=""                                 notice="" />
-    <a time="070" text="誘導レーザー"          icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="" />
+    <a time="070" text="誘導レーザー"          icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="次、ST大ダメージ" />
     <a time="073" text="フェザーレイン"        icon=""                   sync=""                                 notice="" />
   </s>
-
 
   <s name="爆撃の究極幻想">
     <t name="爆撃フラグ" sync="starts using 大地の重み">
@@ -800,7 +808,7 @@
     <a time="064" text="光輝の炎柱"            icon=""                   sync="starts using 光輝の炎柱"          notice="" />
     <a time="069" text="拡散レーザー"          icon=""                   sync="ウェポンの「拡散レーザー」"       notice="" />
 
-    <a time="072" text="バルカンバースト1"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" sync-s="-5" sync-e="5">
+    <a time="072" text="バルカンバースト1"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" notice-o="-5" sync-s="-5" sync-e="5">
       <v-notice text="バルカン" order="2" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
     </a>
 
@@ -834,6 +842,10 @@
         order="1"
         style="NOTICE_NORMAL"
         icon="Check.png" />
+    </t>
+
+    <t text="${_pc}\n← ミンネ" sync="^1A:[id8]:[pc] gains the effect of 地神のミンネ" notice="ミンネ">
+      <v-notice order="-1" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
     <!-- 乱撃タイムライン -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev3.5"; }
+  @{ var rev = "rev4.0"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -33,6 +33,9 @@
     2020.10.05 rev3.5
     * 3連ジェイルをさらに整備した
     * ミンネの通知を追加した
+
+    2020.10.06 rev4.0
+    * 爆雷の通知を追加した
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -64,6 +67,11 @@
   <!-- テザー（線） -->
   <t text="${_pc}\n← ${enemy}" sync="^23:[id8]:(?&lt;enemy&gt;.+):[id8]:[pc]:" notice="ライン発生">
     <v-notice order="1" duration="5" duration-visible="false" job-icon="true" font-scale="0.8" />
+  </t>
+
+  <!-- 吸着爆雷 -->
+  <t text="${_pc}\n← 爆雷" sync="^1A:[pc] gains the effect of 吸着爆雷 from アルテマウェポン for [_duration] Seconds" notice="爆雷ついた">
+    <v-notice order="1" duration="5" job-icon="true" />
   </t>
 
   <!-- ガルーダフェーズ -->
@@ -687,7 +695,7 @@
     <a time="051" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="" />
     <a time="054" text="ランドスライド(2)"     icon="Avoin.png"          sync=""                                notice="" />
     <a time="057" text="激震x8"                icon="AllRangeAtk.png"    sync=""                                notice="次、激震" />
-    <a time="069" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、前、後ろ" />
+    <a time="069" text="大地の重みx2"          icon="StackAOE.png"       sync=""                                notice="次、2連重み、前、右" />
     <a time="076" text="ランドスライド(1)"     icon="Avoid.png"          sync=""                                notice="次、見えないランスラ" />
     <a time="079" text="ランドスライド(2)"     icon="Avoid.png"          sync=""                                notice="" notice-o="" />
 
@@ -712,10 +720,10 @@
 
   <s name="中継フェーズ">
     <a time="002" text="覚醒確認"              icon="覚醒.png"           sync=""                                 notice=""/>
-    <a time="011" text="自爆"                  icon="Distance.png"       sync="魔導ビットは「自爆」の構え。"                                            notice="" />
-    <a time="024" text="死の宣告"              icon=""                   sync="光の使徒よ、消え去るがいい！"                                            notice="" />
-    <a time="034" text="ダージャ"              icon=""                   sync="starts using ダージャ"                                                   notice="" />
-    <a time="046" text="捨て台詞"              icon="Dialog.png"         sync="やってくれる…… だが、アルテマウェポンの真の力、見くびってくれるなよ！" notice="" />
+    <a time="011" text="自爆"                  icon="Distance.png"       sync="魔導ビットは「自爆」の構え。"                                            notice="次、キャスLB" />
+    <a time="024" text="死の宣告"              icon=""                   sync="光の使徒よ、消え去るがいい！"                                            notice="次、ヒーラーLB" />
+    <a time="034" text="ダージャ"              icon=""                   sync="starts using ダージャ"                                                   notice="次、近接LB" />
+    <a time="046" text="捨て台詞"              icon="Dialog.png"         sync="やってくれる…… だが、アルテマウェポンの真の力、見くびってくれるなよ！" notice="次、タンクLB" />
     <a time="051" text="アルテマ"              icon="AllRangeAtk.png"    sync="渦なす生命の色、七つの扉開き、力の塔の天に至らん！ ……アルテマッ！"     notice="" />
     <a time="061" text="アルテマフェーズ開始"  icon=""                   sync="フハハハハハハ！ 絶望の暗き底へと沈むがいい！"                           notice="" />
     <a time="085" text="タゲ可能まで10"        icon=""                   sync=""                                 notice="10秒前！" notice-o="0">
@@ -742,7 +750,7 @@
     <a time="051" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
     <a time="053" text="不可視ランスラ"        icon=""                   sync=""                                 notice="" />
     <a time="058" text="激震"                  icon=""                   sync=""                                 notice="" />
-    <a time="060" text="吸着式エーテル爆雷"    icon=""                   sync="ウェポンの「吸着式エーテル爆雷」" notice="次、MT大ダメージ" />
+    <a time="060" text="吸着式エーテル爆雷"    icon=""                   sync="ウェポンの「吸着式エーテル爆雷」" notice="次、爆雷" />
     <a time="065" text="ミストラルシュリーク"  icon=""                   sync="start using ミストラルシュリーク" notice="次、全体攻撃" />
     <a time="069" text="フェザーレイン"        icon=""                   sync=""                                 notice="" />
     <a time="070" text="誘導レーザー"          icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="次、ST大ダメージ" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev4.0"; }
+  @{ var rev = "rev5.0"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -36,6 +36,9 @@
 
     2020.10.06 rev4.0
     * 爆雷の通知を追加した
+
+    2020.10.08 rev5.0
+    * 追撃のガルーダの位置の検知を追加した
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -49,9 +52,9 @@
   </t>
 
   <t text="LBフェーズへ" sync="愛しき子らの悲嘆" goto="中継フェーズ" />
-  <t text="追撃フェーズへ" sync="アルテマウェポンは「追撃の究極幻想」の構え。" goto="追撃の究極幻想" notice="" />
-  <t text="爆撃フェーズへ" sync="アルテマウェポンは「爆撃の究極幻想」の構え。" goto="爆撃の究極幻想" notice="" />
-  <t text="乱撃フェーズへ" sync="アルテマウェポンは「乱撃の究極幻想」の構え。" goto="乱撃の究極幻想" notice="" />
+  <t text="追撃フェーズへ" sync="アルテマウェポンは「追撃の究極幻想」の構え。" sync-count="1" goto="追撃の究極幻想" notice="" />
+  <t text="爆撃フェーズへ" sync="アルテマウェポンは「爆撃の究極幻想」の構え。" sync-count="1" goto="爆撃の究極幻想" notice="" />
+  <t text="乱撃フェーズへ" sync="アルテマウェポンは「乱撃の究極幻想」の構え。" sync-count="1" goto="乱撃の究極幻想" notice="" />
 
   <!-- 灼熱トリガー -->
   @if (Model.Player.InRole("HEALER")) {
@@ -109,11 +112,11 @@
     <a time="0"  text="VS UltWeapon 2nd KILL" />
     <a time="0"  text="@rev" />
 
-    <a time="5"  text="スリップストリーム"      icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え"     notice="次、MT大ダメージ" />
+    <a time="5"  text="スリップストリーム"      icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え"     notice="次、スリップ" />
     <a time="6"  text="マーカー1名付与"         icon="Marker.png"         sync=""                                           notice="" />
     <a time="11" text="ミストラルソング"        icon="Targetaoe.png"      sync="ガルーダの「ミストラルソング」"             notice="" />
     <a time="15" text="大旋風"                  icon="AOE.png"            sync=""                                           notice="" />
-    <a time="19" text="雑魚沸き"                icon=""                   sync=""                                           notice="次、MT大ダメージ" />
+    <a time="19" text="雑魚沸き"                icon=""                   sync=""                                           notice="" />
     <a time="21" text="大旋風"                  icon="AOE.png"            sync=""                                           notice="" />
     <a time="21" text="スリップストリーム"      icon="Targetaoe.png"      sync="ガルーダは「スリップストリーム」の構え"     notice="次、スリップ" />
     <a time="27" text="大旋風"                  icon="AOE.png"            sync=""                                           notice="" />
@@ -135,15 +138,15 @@
     <a time="101" text="大旋風"                 icon="AOE.png"            sync=""                                           notice="" />
     <a time="102" text="フェザーレイン"         icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
     <a time="109" text="雑魚沸き"               icon=""                   sync=""                                           notice="次、雑魚ポップ" />
-    <a time="117" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、MT大ダメージ" />
+    <a time="117" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、スリップ" />
     <a time="117" text="線処理"                 icon="Targetaoe01.png"    sync=""                                           notice="次、MT、黒は線取り" notice-o="-5" />
     <a time="121" text="ダウンバースト"         icon="HardAttack.png"     sync=""                                           notice="次、MT大ダメージ" />
     <a time="127" text="フェザーレイン"         icon="Avoid.png"          sync=""                                           notice="フェザー注意！" notice-o="-5" />
-    <a time="137" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、MT大ダメージ" notice-o="-2" />
+    <a time="137" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、スリップ" notice-o="-2" />
     <a time="145" text="覚醒ウィケッド→外へ"   icon="Leave.png"          sync=""                                           notice="離れるー" />
     <a time="148" text="覚醒ウィケッド→内へ"   icon="Stack.png"          sync=""                                           notice="近寄るー" notice-o="-2" />
     <a time="153" text="覚醒ダウンバースト"     icon="DamageShare.png"    sync="ガルーダの「ダウンバースト」"               notice="頭割りー" />
-    <a time="158" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、MT大ダメージ" notice-o="-2" />
+    <a time="158" text="スリップストリーム"     icon="Targetaoe02.png"    sync="ガルーダは「スリップストリーム」の構え。"   notice="次、スリップ" notice-o="-2" />
     <a time="170" text="時間切れ"               icon="Timeout.png"                                                          notice="" notice-o="0" />
   </s>
 
@@ -723,8 +726,8 @@
     <a time="011" text="自爆"                  icon="Distance.png"       sync="魔導ビットは「自爆」の構え。"                                            notice="次、キャスLB" />
     <a time="024" text="死の宣告"              icon=""                   sync="光の使徒よ、消え去るがいい！"                                            notice="次、ヒーラーLB" />
     <a time="034" text="ダージャ"              icon=""                   sync="starts using ダージャ"                                                   notice="次、近接LB" />
-    <a time="046" text="捨て台詞"              icon="Dialog.png"         sync="やってくれる…… だが、アルテマウェポンの真の力、見くびってくれるなよ！" notice="次、タンクLB" />
-    <a time="051" text="アルテマ"              icon="AllRangeAtk.png"    sync="渦なす生命の色、七つの扉開き、力の塔の天に至らん！ ……アルテマッ！"     notice="" />
+    <a time="046" text="捨て台詞"              icon="Dialog.png"         sync="やってくれる…… だが、アルテマウェポンの真の力、見くびってくれるなよ！" notice="" />
+    <a time="051" text="アルテマ"              icon="AllRangeAtk.png"    sync="渦なす生命の色、七つの扉開き、力の塔の天に至らん！ ……アルテマッ！"     notice="次、タンクLB" />
     <a time="061" text="アルテマフェーズ開始"  icon=""                   sync="フハハハハハハ！ 絶望の暗き底へと沈むがいい！"                           notice="" />
     <a time="085" text="タゲ可能まで10"        icon=""                   sync=""                                 notice="10秒前！" notice-o="0">
       <v-notice text="１０秒前" icon="True.png" duration="9.6" />
@@ -739,14 +742,66 @@
       <v-notice order="-1" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
+    <!-- ガル北東 -->
+    <t name="toC/D" sync-count="1">
+      <p-sync><combatant name="ガルーダ" X="23.56" Y="23.44" Z="0.00" tolerance="0.01" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="3" icon="C" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <v-notice duration="30" duration-visible="false" order="4" icon="D" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- ガル南東 -->
+    <t text="toA/D" sync-count="1">
+      <p-sync><combatant name="ガルーダ" X="23.56" Y="23.56" Z="0.00" tolerance="0.01" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <v-notice duration="30" duration-visible="false" order="4" icon="D" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- ガル南西 -->
+    <t text="toA/B" sync-count="1">
+      <p-sync><combatant name="ガルーダ" X="23.44" Y="23.56" Z="0.00" tolerance="0.01" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <v-notice duration="30" duration-visible="false" order="2" icon="B" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- ガル北西 -->
+    <t text="toB/C" sync-count="1">
+      <p-sync><combatant name="ガルーダ" X="23.44" Y="23.44" Z="0.00" tolerance="0.01" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="2" icon="B" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <v-notice duration="30" duration-visible="false" order="3" icon="C" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- タイタンA -->
+    <t text="toC" sync-count="1">
+      <p-sync><combatant name="タイタン" X="23.50" Y="23.16" Z="0.00" tolerance="0.06" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="3" icon="C" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- タイタンB -->
+    <t text="toD" sync-count="1">
+      <p-sync><combatant name="タイタン" X="23.84" Y="23.50" Z="0.00" tolerance="0.06" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="4" icon="D" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- タイタンC -->
+    <t text="toA" sync-count="1">
+      <p-sync><combatant name="タイタン" X="23.50" Y="23.84" Z="0.00" tolerance="0.06" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- タイタンD -->
+    <t text="toB" sync-count="1">
+      <p-sync><combatant name="タイタン" X="23.16" Y="23.50" Z="0.00" tolerance="0.06" /></p-sync>
+      <v-notice duration="30" duration-visible="false" order="2" icon="B" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
     <a time="001" text="追撃の究極幻想"        icon=""                   sync="starts using 追撃の究極幻想"      notice="" notice-o="0" />
     <a time="015" text="[イフ]突進+[ガル]嵐"   icon=""                   sync="starts using クリムゾンサイク"    notice="" />
     <a time="016" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
     <a time="018" text="不可視ランドスライド"  icon=""                   sync=""                                 notice="" />
-    <a time="020" text="セルレアムベント"      icon=""                   sync=""                                 notice="動くな" />
-    <a time="023" text="フェザーレイン"        icon=""                   sync="starts using フェザーレイン"      notice="フェザー！" notice-o="-2" />
+    <a time="020" text="セルレアムベント"      icon=""                   sync=":アルテマウェポン:2B7C:セルレアムベント:" notice="フェザー注意、動くな" notice-o="0" />
+    <a time="023" text="フェザーレイン"        icon=""                   sync="starts using フェザーレイン"              notice="次、エラプ誘導、他はアルファえ" notice-o="1" />
     <a time="036" text="エラプション"          icon=""                   sync=""                                 notice="" />
-    <a time="046" text="光輝の炎柱"            icon=""                   sync="ポンは「光輝の炎柱」の構え。"     notice="" />
+    <a time="046" text="光輝の炎柱"            icon=""                   sync="ポンは「光輝の炎柱」の構え。"     notice="次、サラミの際えー" />
     <a time="051" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
     <a time="053" text="不可視ランスラ"        icon=""                   sync=""                                 notice="" />
     <a time="058" text="激震"                  icon=""                   sync=""                                 notice="" />
@@ -909,9 +964,9 @@
 
     <a time="083" text="吸着爆雷"              icon=""                   sync="ウェポンの「吸着爆雷」"                          notice="次、MT大ダメージ" />
 
-    <t text="ガルーダ"    sync="アルテマウェポン starts using Unknown_2Cd3 on アルテマウェポン" notice="次、ガルーダ"    goto="ラストガルーダ"/>
-    <t text="イフリート"  sync="アルテマウェポン starts using Unknown_2Cd4 on アルテマウェポン" notice="次、イフリート"  goto="ラストイフリート"/>
-    <t text="タイタン"    sync="アルテマウェポン starts using Unknown_2Cd5 on アルテマウェポン" notice="次、タイタン"    goto="ラストタイタン"/>
+    <t text="ガルーダ"    sync="^14:2CD3:アルテマウェポン starts using" notice="次、ガルーダ"    goto="ラストガルーダ"/>
+    <t text="イフリート"  sync="^14:2CD4:アルテマウェポン starts using" notice="次、イフリート"  goto="ラストイフリート"/>
+    <t text="タイタン"    sync="^14:2CD5:アルテマウェポン starts using" notice="次、タイタン"    goto="ラストタイタン"/>
   </s>
 
   <!-- ラストガルーダ -->
@@ -932,8 +987,8 @@
 
     <a time="026" text="最終フェーズへ"        icon="Check.png"          goto="最終フェーズ" notice="" />
 
-    <t text="イフリート"  sync="アルテマウェポン starts using Unknown_2Cd4 on アルテマウェポン" notice="次、イフリート"  goto="ラストイフリート"/>
-    <t text="タイタン"    sync="アルテマウェポン starts using Unknown_2Cd5 on アルテマウェポン" notice="次、タイタン"    goto="ラストタイタン"/>
+    <t text="イフリート"  sync="^14:2CD4:アルテマウェポン starts using" notice="次、イフリート"  goto="ラストイフリート"/>
+    <t text="タイタン"    sync="^14:2CD5:アルテマウェポン starts using" notice="次、タイタン"    goto="ラストタイタン"/>
   </s>
 
   <!-- ラストイフリート -->
@@ -954,8 +1009,8 @@
 
     <a time="026" text="最終フェーズへ"        icon="Check.png"          goto="最終フェーズ" notice="" />
 
-    <t text="ガルーダ"    sync="アルテマウェポン starts using Unknown_2Cd3 on アルテマウェポン" notice="次、ガルーダ"    goto="ラストガルーダ"/>
-    <t text="タイタン"    sync="アルテマウェポン starts using Unknown_2Cd5 on アルテマウェポン" notice="次、タイタン"    goto="ラストタイタン"/>
+    <t text="ガルーダ"    sync="^14:2CD3:アルテマウェポン starts using" notice="次、ガルーダ"    goto="ラストガルーダ"/>
+    <t text="タイタン"    sync="^14:2CD5:アルテマウェポン starts using" notice="次、タイタン"    goto="ラストタイタン"/>
   </s>
 
   <!-- ラストタイタン -->
@@ -992,8 +1047,8 @@
       <v-notice icon="Avoid.png" text="12時に戻る" duration-visible="false" duration="5" />
     </t>
 
-    <t text="ガルーダ"    sync="アルテマウェポン starts using Unknown_2Cd3 on アルテマウェポン" notice="次はガルーダ"    goto="ラストガルーダ" />
-    <t text="イフリート"  sync="アルテマウェポン starts using Unknown_2Cd4 on アルテマウェポン" notice="次はイフリート"  goto="ラストイフリート" />
+    <t text="ガルーダ"    sync="^14:2CD3:アルテマウェポン starts using" notice="次、ガルーダ"    goto="ラストガルーダ"/>
+    <t text="イフリート"  sync="^14:2CD4:アルテマウェポン starts using" notice="次、イフリート"  goto="ラストイフリート"/>
   </s>
 
   <s name="最終フェーズ">

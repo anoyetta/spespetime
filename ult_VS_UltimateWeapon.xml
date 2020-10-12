@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev5.0"; }
+  @{ var rev = "rev6.2"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -39,6 +39,15 @@
 
     2020.10.08 rev5.0
     * 追撃のガルーダの位置の検知を追加した
+
+    2020.10.08 rev5.1
+    * 追撃のタイタンの位置に対する通知の間違いを修正した
+
+    2020.10.09 rev5.2
+    * 追撃の前半に対するv-notice表示の不具合を修正した
+
+    2020.10.12 rev6.0
+    * 追撃の前半について結論まで通知するようにした
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -677,7 +686,7 @@
     </t>
     <!-- psync ボムトリガー end -->
 
-    <a time="003" text="ジオクラッシュ1"       icon=""                   sync="starts using ジオクラッシュ"     notice="" />
+    <a time="003" text="ジオクラッシュ1"       icon=""                   sync="starts using ジオクラッシュ"     notice="ジオクラ" notice-o="1" />
     <a time="005" text="覚醒確認"              icon="覚醒.png"           sync=""                                notice="" />
     <a time="008" text="セリフ"                icon="Dialog.png"         sync="「大地の怒り」に砕け散れぇぇ"    notice="" />
     <a time="009" text="大地の怒り"            icon="HardAllRngAtk.png"  sync="「大地の怒り」の構え"            notice="次、大地の怒り" />
@@ -742,66 +751,143 @@
       <v-notice order="-1" duration="5" duration-visible="false" job-icon="true" />
     </t>
 
+    <!--
+      追撃の前半の逃げる方向について
+
+      ガルの出現位置によって → 2方向に限定される
+      タイタンの出現位置によって → 3方向に限定される
+
+      このうち、ガルからの意見とタイタンからの意見が2票以上入った方向が正解である。それを明示する。
+    -->
+
     <!-- ガル北東 -->
     <t name="toC/D" sync-count="1">
       <p-sync><combatant name="ガルーダ" X="23.56" Y="23.44" Z="0.00" tolerance="0.01" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="3" icon="C" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
-      <v-notice duration="30" duration-visible="false" order="4" icon="D" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toC" count="+1" />
+        <set name="toD" count="+1" />
+      </expressions>
     </t>
 
     <!-- ガル南東 -->
-    <t text="toA/D" sync-count="1">
+    <t name="toA/D" sync-count="1">
       <p-sync><combatant name="ガルーダ" X="23.56" Y="23.56" Z="0.00" tolerance="0.01" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
-      <v-notice duration="30" duration-visible="false" order="4" icon="D" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toA" count="+1" />
+        <set name="toD" count="+1" />
+      </expressions>
     </t>
 
     <!-- ガル南西 -->
-    <t text="toA/B" sync-count="1">
+    <t name="toA/B" sync-count="1">
       <p-sync><combatant name="ガルーダ" X="23.44" Y="23.56" Z="0.00" tolerance="0.01" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
-      <v-notice duration="30" duration-visible="false" order="2" icon="B" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toA" count="+1" />
+        <set name="toB" count="+1" />
+      </expressions>
     </t>
 
     <!-- ガル北西 -->
-    <t text="toB/C" sync-count="1">
+    <t name="toB/C" sync-count="1">
       <p-sync><combatant name="ガルーダ" X="23.44" Y="23.44" Z="0.00" tolerance="0.01" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="2" icon="B" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
-      <v-notice duration="30" duration-visible="false" order="3" icon="C" text="へ（対ガル）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toB" count="+1" />
+        <set name="toC" count="+1" />
+      </expressions>
     </t>
 
     <!-- タイタンA -->
-    <t text="toC" sync-count="1">
+    <t name="toBCD" sync-count="1">
       <p-sync><combatant name="タイタン" X="23.50" Y="23.16" Z="0.00" tolerance="0.06" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="3" icon="C" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toB" count="+1" />
+        <set name="toC" count="+1" />
+        <set name="toD" count="+1" />
+      </expressions>
     </t>
 
     <!-- タイタンB -->
-    <t text="toD" sync-count="1">
+    <t name="toACD" sync-count="1">
       <p-sync><combatant name="タイタン" X="23.84" Y="23.50" Z="0.00" tolerance="0.06" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="4" icon="D" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toA" count="+1" />
+        <set name="toC" count="+1" />
+        <set name="toD" count="+1" />
+      </expressions>
     </t>
 
     <!-- タイタンC -->
-    <t text="toA" sync-count="1">
+    <t name="toABD" sync-count="1">
       <p-sync><combatant name="タイタン" X="23.50" Y="23.84" Z="0.00" tolerance="0.06" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toA" count="+1" />
+        <set name="toB" count="+1" />
+        <set name="toD" count="+1" />
+      </expressions>
     </t>
 
     <!-- タイタンD -->
-    <t text="toB" sync-count="1">
+    <t name="toABC" sync-count="1">
       <p-sync><combatant name="タイタン" X="23.16" Y="23.50" Z="0.00" tolerance="0.06" /></p-sync>
-      <v-notice duration="30" duration-visible="false" order="2" icon="B" text="へ（対タイタン）" font-scale="0.9" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+      <expressions>
+        <set name="toA" count="+1" />
+        <set name="toB" count="+1" />
+        <set name="toC" count="+1" />
+      </expressions>
     </t>
 
-    <a time="001" text="追撃の究極幻想"        icon=""                   sync="starts using 追撃の究極幻想"      notice="" notice-o="0" />
+    <!-- Aへ決定 -->
+    <t no="1" name="toA" sync="decide_to_direction" notice="アルファえー">
+      <expressions>
+        <pre name="toA" count="2" />
+        <pre name="decided_direction" value="false" />
+        <set name="decided_direction" value="true" />
+      </expressions>
+      <v-notice duration="30" duration-visible="false" order="1" icon="A" text="Ａへ" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- Bへ決定 -->
+    <t no="2" name="toB" sync="decide_to_direction" notice="ブラボーえー">
+      <expressions>
+        <pre name="toB" count="2" />
+        <pre name="decided_direction" value="false" />
+        <set name="decided_direction" value="true" />
+      </expressions>
+      <v-notice duration="30" duration-visible="false" order="1" icon="B" text="Ｂへ" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- Cへ決定 -->
+    <t no="3" name="toC" sync="decide_to_direction" notice="チャーリーえー">
+      <expressions>
+        <pre name="toC" count="2" />
+        <pre name="decided_direction" value="false" />
+        <set name="decided_direction" value="true" />
+      </expressions>
+      <v-notice duration="30" duration-visible="false" order="1" icon="C" text="Ｃへ" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <!-- Dへ決定 -->
+    <t no="4" name="toD" sync="decide_to_direction" notice="デルタえー">
+      <expressions>
+        <pre name="toD" count="2" />
+        <pre name="decided_direction" value="false" />
+        <set name="decided_direction" value="true" />
+      </expressions>
+      <v-notice duration="30" duration-visible="false" order="1" icon="D" text="Ｄへ" sync-to-hide=":アルテマウェポン:2B7C:セルレアムベント:" />
+    </t>
+
+    <a time="001" text="追撃の究極幻想"        icon=""                   sync="アルテマウェポンは「追撃の究極幻想」の構え。" notice="" notice-o="0" />
+    <a time="007" name="追撃の究極幻想の発動"  icon=""                   sync="アルテマウェポンの「追撃の究極幻想」" notice="" />
+    <a time="009" text="行き先の確定">
+      <dump target="Log" log="decide_to_direction" />
+    </a>
     <a time="015" text="[イフ]突進+[ガル]嵐"   icon=""                   sync="starts using クリムゾンサイク"    notice="" />
     <a time="016" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
     <a time="018" text="不可視ランドスライド"  icon=""                   sync=""                                 notice="" />
     <a time="020" text="セルレアムベント"      icon=""                   sync=":アルテマウェポン:2B7C:セルレアムベント:" notice="フェザー注意、動くな" notice-o="0" />
-    <a time="023" text="フェザーレイン"        icon=""                   sync="starts using フェザーレイン"              notice="次、エラプ誘導、他はアルファえ" notice-o="1" />
+    <a time="023" text="フェザーレイン"        icon=""                   sync=""                                 notice="次、エラプ誘導、他はアルファえ" notice-o="1" />
     <a time="036" text="エラプション"          icon=""                   sync=""                                 notice="" />
-    <a time="046" text="光輝の炎柱"            icon=""                   sync="ポンは「光輝の炎柱」の構え。"     notice="次、サラミの際えー" />
+    <a time="046" text="光輝の炎柱"            icon=""                   sync="ポンは「光輝の炎柱」の構え。"     notice="次、サラミのきわえー" />
     <a time="051" text="ランドスライド"        icon=""                   sync=""                                 notice="" />
     <a time="053" text="不可視ランスラ"        icon=""                   sync=""                                 notice="" />
     <a time="058" text="激震"                  icon=""                   sync=""                                 notice="" />
@@ -850,7 +936,7 @@
     </t>
 
     <a time="001" text="爆撃の究極幻想"        icon=""                   sync="starts using 爆撃の究極幻想" />
-    <a time="012" text="大地の重み1"           icon=""                   sync=""                                 notice="次、重み、右、左" />
+    <a time="012" text="大地の重み1"           icon=""                   sync=""                                 notice="次、重み、右、左、前" />
     <a time="015" text="大地の重み2"           icon=""                   sync=""                                 notice="" />
     <a time="016" text="フレイムクラッシュ"    icon=""                   sync=""                                 notice="" />
     <a time="017" text="緑線"                  icon=""                   sync=""                                 notice="" />
@@ -879,13 +965,13 @@
       <v-notice text="バースト！" icon="True" duration="4" duration-visible="true" style="NOTICE_NORMAL_SMALL" />
     </a>
 
-    <a time="077" text="誘導レーザー2"         icon=""          sync="ポンは「誘導レーザー」の構え。"   notice="" sync-s="-5" sync-e="5" notice-o="-5"/>
+    <a time="077" text="誘導レーザー2"         icon=""          sync="ポンは「誘導レーザー」の構え。"            notice="次、ST大ダメージからバルカン" sync-s="-5" sync-e="5" notice-o="-3" />
 
-    <a time="082" text="バルカンバースト2"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" sync-s="-5" sync-e="5">
+    <a time="082" text="バルカンバースト2"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="" sync-s="-5" sync-e="5">
       <v-notice text="バルカン" order="2" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
     </a>
 
-    <a time="087" text="拡散レーザー"          icon=""                   sync="ウェポンの「拡散レーザー」"       notice="" sync-s="-5" sync-e="5" />
+    <a time="087" text="拡散レーザー"          icon=""                   sync="ウェポンの「拡散レーザー」"       notice="次、MT大ダメージ" sync-s="-5" sync-e="5" />
   </s>
 
   <s name="乱撃の究極幻想">

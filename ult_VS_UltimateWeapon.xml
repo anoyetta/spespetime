@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶アルテマウェポン破壊作戦 for 2nd KILL</name>
-  @{ var rev = "rev6.2"; }
+  @{ var rev = "rev6.8"; }
   <rev>@rev</rev>
   <description>
     2019年に挑んだ絶アルテマからもう一度リファインしたタイムラインです。
@@ -11,8 +11,9 @@
   <license>CC BY-SA</license>
   <zone>The Weapon's Refrain (Ultimate)</zone>
   <locale>JA</locale>
-  <entry>ガルーダフェーズ</entry>
   <start>0039:戦闘開始！</start>
+  <end>は、アルテマウェポンを倒した。</end>
+  <entry>ガルーダフェーズ</entry>
 
   <!--
     戦術はみんとっとさんの絶アルテマシリーズを採用する。
@@ -48,6 +49,9 @@
 
     2020.10.12 rev6.0
     * 追撃の前半について結論まで通知するようにした
+
+    2020.10.19 rev6.6
+    * 乱撃の最後の紫たまの処理をみんとっと方式に合わせた
   -->
 
   <default target-element="Activity" target-attr="notice-o" value="-3" />
@@ -878,7 +882,7 @@
 
     <a time="001" text="追撃の究極幻想"        icon=""                   sync="アルテマウェポンは「追撃の究極幻想」の構え。" notice="" notice-o="0" />
     <a time="007" name="追撃の究極幻想の発動"  icon=""                   sync="アルテマウェポンの「追撃の究極幻想」" notice="" />
-    <a time="009" text="行き先の確定">
+    <a time="010" text="行き先の確定">
       <dump target="Log" log="decide_to_direction" />
     </a>
     <a time="015" text="[イフ]突進+[ガル]嵐"   icon=""                   sync="starts using クリムゾンサイク"    notice="" />
@@ -905,36 +909,6 @@
       </expressions>
     </t>
 
-    <t text="タイタンB" notice="タイタン、ブラボー">
-      <expressions>
-        <pre name="in_bakugeki" value="true" />
-      </expressions>
-      <p-sync interval="60">
-        <combatant name="タイタン" X="23.77" Y="23.77" Z="0.00" tolerance="0.01" />
-      </p-sync>
-      <v-notice
-        order="10"
-        text="タイタンＢ"
-        duration="20"
-        duration-visible="false"
-        icon="B.png" />
-    </t>
-
-    <t text="タイタンD" notice="タイタン、デルタ">
-      <expressions>
-        <pre name="in_bakugeki" value="true" />
-      </expressions>
-      <p-sync interval="60">
-        <combatant name="タイタン" X="23.23" Y="23.77" Z="0.00" tolerance="0.01" />
-      </p-sync>
-      <v-notice
-        order="10"
-        text="タイタンＤ"
-        duration="20"
-        duration-visible="false"
-        icon="D.png" />
-    </t>
-
     <a time="001" text="爆撃の究極幻想"        icon=""                   sync="starts using 爆撃の究極幻想" />
     <a time="012" text="大地の重み1"           icon=""                   sync=""                                 notice="次、重み、右、左、前" />
     <a time="015" text="大地の重み2"           icon=""                   sync=""                                 notice="" />
@@ -953,11 +927,11 @@
     <a time="036" text="緑玉4"                 icon=""                   sync=""                                 notice="" />
     <a time="036" text="魔導フレア"            icon="HardAllRngAtk.png"  sync="アルテマウェポンの「魔導フレア」" notice="" notice-o="-6" />
     <a time="041" text="フェザーレイン"        icon=""                   sync="starts using フェザーレイン"      notice="フェザー！" />
-    <a time="054" text="誘導レーザー1"         icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="" notice-o="-4" />
-    <a time="064" text="光輝の炎柱"            icon=""                   sync="starts using 光輝の炎柱"          notice="" />
+    <a time="054" text="誘導レーザー"          icon=""                   sync="ポンは「誘導レーザー」の構え。"   notice="次、誘導レーザー" notice-o="-6" />
+    <a time="064" text="光輝の炎柱"            icon=""                   sync="starts using 光輝の炎柱"          notice="次、サラミ、拡散、バルカン" />
     <a time="069" text="拡散レーザー"          icon=""                   sync="ウェポンの「拡散レーザー」"       notice="" />
 
-    <a time="072" text="バルカンバースト1"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" notice-o="-5" sync-s="-5" sync-e="5">
+    <a time="072" text="バルカン"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="次、バルカン" notice-o="-5" sync-s="-5" sync-e="5">
       <v-notice text="バルカン" order="2" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
     </a>
 
@@ -965,9 +939,9 @@
       <v-notice text="バースト！" icon="True" duration="4" duration-visible="true" style="NOTICE_NORMAL_SMALL" />
     </a>
 
-    <a time="077" text="誘導レーザー2"         icon=""          sync="ポンは「誘導レーザー」の構え。"            notice="次、ST大ダメージからバルカン" sync-s="-5" sync-e="5" notice-o="-3" />
+    <a time="077" text="誘導レーザー"          icon=""          sync="ポンは「誘導レーザー」の構え。"            notice="次、ST大ダメージからバルカン" sync-s="-5" sync-e="5" notice-o="-3" />
 
-    <a time="082" text="バルカンバースト2"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="" sync-s="-5" sync-e="5">
+    <a time="082" text="バルカン"     icon="KnockBack.png"      sync="イフリートの「バルカン"           notice="" sync-s="-5" sync-e="5">
       <v-notice text="バルカン" order="2" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
     </a>
 
@@ -1014,30 +988,30 @@
     <a time="033" text="ランスラ＋頭割り"      icon=""                   sync=""                                                notice="" />
     <a time="040" text="フェザーレイン"        icon=""                   sync=""                                                notice="フェザー！" />
     <a time="041" text="魔導フレア"            icon=""                   sync="アルテマウェポンの「魔導フレア」"                notice="" />
-    <a time="054" text="アルテマ開始"          icon=""                   sync="アルテマウェポンは「アルテマ」の構え。"          notice="" notice-o="-6" />
-    <a time="058" text="エーテル波動"          icon=""                   sync=""                                                notice="次、フルバリア">
+    <a time="054" text="アルテマ開始"          icon=""                   sync="アルテマウェポンは「アルテマ」の構え。"          notice="次、フルバリア" notice-o="-6" />
+    <a time="058" text="エーテル波動"          icon=""                   sync="アルテマウェポンは「エーテル波動」の構え。"      notice="">
       <v-notice text="フルバリア" icon="True" duration="4" duration-visible="false" style="NOTICE_NORMAL_SMALL" />
     </a>
 
     @if (Model.Player.InJob("DRK")) {
-      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="右下えー">
-        <v-notice text="右下へ" icon="Arrow4" duration="5" duration-visible="false" />
-      </a>
-    }
-
-    @if (Model.Player.InJob("PLD")) {
       <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="右上えー">
         <v-notice text="右上へ" icon="Arrow2" duration="5" duration-visible="false" />
       </a>
     }
 
-    @if (Model.Player.InJob("SAM", "SMN", "BRD")) {
-      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="左上えー">
-        <v-notice text="左上へ" icon="Arrow8" duration="5" duration-visible="false" />
+    @if (Model.Player.InJob("PLD")) {
+      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="右下えー">
+        <v-notice text="右下へ" icon="Arrow4" duration="5" duration-visible="false" />
       </a>
     }
 
-    @if (Model.Player.InJob("BLM", "AST", "SCH")) {
+    <!--
+      <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="左上えー">
+        <v-notice text="左上へ" icon="Arrow8" duration="5" duration-visible="false" />
+      </a>
+    -->
+
+    @if (Model.Player.InRole("DPS", "HEALER")) {
       <a time="062" text="ノックバック" icon="Knockback.png" sync="" notice="左下えー">
         <v-notice text="左下へ" icon="Arrow6" duration="5" duration-visible="false" />
       </a>
@@ -1048,7 +1022,7 @@
       <v-notice text="12時へ" order="1" icon="Arrow1" duration="5" duration-visible="false" />
     </a>
 
-    <a time="083" text="吸着爆雷"              icon=""                   sync="ウェポンの「吸着爆雷」"                          notice="次、MT大ダメージ" />
+    <a time="083" text="吸着爆雷"              icon=""                   sync="ウェポンの「吸着爆雷」"                          notice="" />
 
     <t text="ガルーダ"    sync="^14:2CD3:アルテマウェポン starts using" notice="次、ガルーダ"    goto="ラストガルーダ"/>
     <t text="イフリート"  sync="^14:2CD4:アルテマウェポン starts using" notice="次、イフリート"  goto="ラストイフリート"/>
@@ -1113,7 +1087,7 @@
     <a time="007" text="大地の重み2"           icon="StackAOE.png"       sync=""                                                    notice="" />
     <a time="009" text="吸着爆雷起爆"          icon="DamageShare.png"    sync="の「吸着爆雷」が切れた。"                            notice="次、全体攻撃" notice-o="-3" />
     <a time="010" text="大地の重み3"           icon="StackAOE.png"       sync=""                                                    notice="" />
-    <a time="013" text="大地の怒り"            icon="HardAllRngAtk.png"  sync="starts using 大地の怒り on タイタン"                 notice="そのままの位置でー" notice-o="-1" />
+    <a time="013" text="大地の怒り"            icon="HardAllRngAtk.png"  sync="タイタン starts using 大地の怒り on タイタン"        notice="そのままの位置でー" notice-o="-1" />
 
     <a time="026" text="最終フェーズへ"        icon="Check.png"          goto="最終フェーズ" notice="" />
 

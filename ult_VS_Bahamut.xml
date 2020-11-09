@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <timeline>
+  <name>絶バハムート討滅戦</name>
+  @{ var rev = "ver 2.2"; }
+  <rev>@rev</rev>
+  <description>
+    絶バハムート討滅戦タイムライン
+    sheevaさんの整備したものをベースラインとして更に整備したもの
+  </description>
+  <author>anoyetta, sheeva, Aqua Cat, RINGS</author>
+  <license>CC BY-SA</license>
+  <zone>The Unending Coil Of Bahamut (Ultimate)</zone>
+  <locale>JA</locale>
+  <entry>P1 ツインタニア</entry>
+  <start>0039:戦闘開始！</start>
+  <end>バハムート・プライムを倒した。</end>
+
+  @*
+    2020.11.5 ver 1.2
+    * ツインタニアにhp-syncを搭載した
+
+    2020.11.6 ver 2.0
+    * ツインタニアフェーズの全体を整備した
+      - プラメットの通知時期を適正化した
+      - リキッドの通知を適正化した
+      - ファイアボールの通知を搭載した
+    * ネールフェーズのカータライズに対して完全な通知を搭載した
+
+    2020.11.9 ver 2.2
+    * リキッドの通知を毎回1発だけ通知する形に変更した
+    * ネールフェーズの通知の優先順位を整備した
+  *@
+
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+
+  <t sync=":フェニックス:26F2:転生の炎:" sync-count="1">
+    <load target="P10 FINAL" truncate="true" />
+  </t>
+
+  <!-- 玉優先度トリガ begin -->
+  @{
+    var tama_order = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
+  }
+
+  <t no="1" text="$1\n← 玉" sync="1B:........:@tama_order[0]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-29" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="2" text="$1\n← 玉" sync="1B:........:@tama_order[1]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-28" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="3" text="$1\n← 玉" sync="1B:........:@tama_order[2]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-27" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="4" text="$1\n← 玉" sync="1B:........:@tama_order[3]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-26" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="5" text="$1\n← 玉" sync="1B:........:@tama_order[4]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-25" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="6" text="$1\n← 玉" sync="1B:........:@tama_order[5]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-24" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="7" text="$1\n← 玉" sync="1B:........:@tama_order[6]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-23" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="8" text="$1\n← 玉" sync="1B:........:@tama_order[7]:0000:0000:0076:0000:0000:0000:">
+    <v-notice order="-22" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+  </t>
+
+  <t no="10" name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" />
+  <!-- 玉優先度トリガ end -->
+
+  <s name="P1 ツインタニア">
+    <a time="000" text="VS Bahamut" />
+    <a time="000" text="@rev" />
+
+    <t text="フェーズ移行待ち" sync="ツインタニアの「拘束装置」が切れた。" >
+      <load target="P2 ネール" truncate="true" />
+    </t>
+
+    <t name="拘束1解除へ" goto="拘束1解除" notice="第一拘束解除">
+      <hp-sync name="ツインタニア" hpp="75" />
+    </t>
+
+    <t name="拘束2解除へ" goto="拘束2解除" notice="第二拘束解除">
+      <hp-sync name="ツインタニア" hpp="45" />
+    </t>
+
+    <t text="デスセンテンス" sync="ツインタニアは「デスセンテンス」の構え。" notice="デスセンテンス">
+      <v-notice
+        order="-1"
+        icon="HardAttack.png"
+        duration="4"
+        duration-visible="false" />
+    </t>
+
+    <t text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="ツイスター">
+      <v-notice
+        order="-1"
+        icon="Twister.png"
+        duration="1.7"
+        duration-visible="true" />
+    </t>
+
+    <t name="ツイスターの通知" sync="ツインタニアは「ツイスター」の構え。" notice="避けろ" notice-o="1">
+      <v-notice
+        order="-4"
+        icon="Leave.png"
+        text="避けろ！"
+        delay="1"
+        duration="1"
+        duration-visible="false" />
+    </t>
+
+    <t text="自分にリキッド" sync="16:[id8]:ツインタニア:26AD:ヘルリキッド:[id8]:[mex]:" sync-interval="8" notice="自分にリキッド">
+      <v-notice order="-2" icon="Fire.png" duration="6" duration-visible="false" />
+    </t>
+
+    <t text="自分にファイアボール" sync="1B:[id8]:[mex]:0000:0000:0075:0000:0000:0000:" notice="自分にファイアボール">
+      <v-notice order="-3" icon="Fire.png" duration="6" duration-visible="false" />
+    </t>
+
+    @{ var plumet_notice =  Model.Player.InRole("TANK") ? "プラメット" : ""; }
+
+    <a time="006" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+    <a time="016" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="" icon="Twister.png" />
+    <a time="021" text="ファイアボール" icon="DamageShare.png" />
+    <a time="025" text="デスセンテンス" sync="ツインタニアは「デスセンテンス」の構え。" icon="Switch.png" />
+    <a time="028" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+    <a time="037" text="ツイスター" notice="次、ツイスター。" icon="Twister.png" />
+    <a time="042" text="ファイアボール" icon="DamageShare.png" />
+    <a time="049" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+
+    <!-- HP74%以下で移行 -->
+    <a time="080" name="拘束1解除" text="拘束具落下1" />
+    <a time="088" text="ヘルリキッド" sync="ツインタニアの「ヘルリキッド」" sync-s="-55" sync-e="10" icon="Targetaoe.png"/>
+    <a time="094" text="魔力錬成" sync="ツインタニアは「魔力錬成」の構え。" sync-s="-20" icon="" />
+    <a time="101" text="ヘルリキッド" icon="Targetaoe.png" />
+    <a time="108" text="デスセンテンス" sync="ツインタニアは「デスセンテンス」の構え。" icon="Switch.png" />
+    <a time="116" text="魔力錬成" icon="Explosion.png" notice="次、ツイスターから玉" />
+    <a time="120" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="次、ツイスター。" icon="Twister.png" />
+    <a time="126" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+    <a time="135" text="ヘルリキッド" icon="Targetaoe.png" />
+    <a time="141" text="魔力錬成" icon="Explosion.png" />
+    <a time="148" text="ヘルリキッド" icon="Targetaoe.png" />
+    <a time="155" text="デスセンテンス" sync="ツインタニアは「デスセンテンス」の構え。" icon="Switch.png" />
+
+    <!-- HP44%以下で移行 -->
+    <a time="200" name="拘束2解除" text="拘束具落下2" />
+    <a time="208" text="ヘルリキッド" sync="ツインタニアの「ヘルリキッド」" sync-s="-55" sync-e="10" icon="Targetaoe.png" />
+
+    <a time="213" text="魔力錬成x2" sync="ツインタニアは「魔力錬成」の構え。" icon="Explosion.png" notice="次、玉からランダムリキッド"/>
+    <a time="220" text="乱ヘルリキッド" icon="AOE.png" />
+    <a time="226" text="ファイアボール" icon="DamageShare.png" />
+
+    <a time="232" text="デスセンテンス" sync="ツインタニアは「デスセンテンス」の構え。" notice="" icon="Switch.png" />
+    <a time="239" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+    <a time="244" text="魔力錬成x2" icon="Explosion.png" notice="次、ツイスターから玉" />
+    <a time="248" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="次、ツイスター。" icon="Twister.png" />
+    <a time="255" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+    <a time="258" text="ヘルリキッド" icon="Targetaoe.png" />
+
+    <a time="264" text="魔力錬成x2" sync="" icon="Explosion.png" notice="次、玉からランダムリキッド" />
+    <a time="270" text="乱ヘルリキッド" icon="Targetaoe.png" />
+    <a time="270" text="ファイアボール" icon="DamageShare.png" />
+
+    <a time="282" text="デスセンテンス" sync="ツインタニアは「デスセンテンス」の構え。" icon="Switch.png" />
+    <a time="289" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
+    <a time="291" text="時間切れ" icon="Timeout.png" />
+  </s>
+
+  <s name="P2 ネール">
+    <!-- 死の宣告通知トリガー begin -->
+    <t text="死の宣告１番" sync="[mex] gains the effect of 死の宣告 from  for 6.00 Seconds" notice="死の宣告、いちばん。すぐに解除。" >
+      <v-notice
+        order="-6"
+        icon="Attention.png"
+        sync-to-hide="[mex] loses the effect of 死の宣告 from"
+        duration="6"
+        duration-visible="true" />
+    </t>
+
+    <t text="死の宣告２番" sync="[mex] gains the effect of 死の宣告 from  for 10.00 Seconds" notice="死の宣告、にばん" >
+      <v-notice
+        order="-6"
+        icon="Attention.png"
+        sync-to-hide="[mex] loses the effect of 死の宣告 from"
+        duration="10"
+        duration-visible="true" />
+    </t>
+
+    <t text="死の宣告３番" sync="[mex] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="死の宣告、さんばん" >
+      <v-notice
+        order="-6"
+        icon="Attention.png"
+        sync-to-hide="[mex] loses the effect of 死の宣告 from"
+        duration="16"
+        duration-visible="true" />
+    </t>
+
+    <t sync="[mex] gains the effect of 死の宣告 from  for 10.00 Seconds" notice="/wait 5,解除するー。" />
+    <t sync="[mex] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="/wait 10,解除するー。" />
+    <!-- 死の宣告通知トリガー end -->
+
+    <!-- サンダー begin -->
+    @{
+      var thunder_order = new string[] { "[GNB]", "[DRK]", "[AST]", "[WHM]", "[NIN]", "[DRG]", "[BRD]", "[SMN]" };
+    }
+    <t no="1" text="$1 ← 雷" sync="@thunder_order[0] gains the effect of サンダーウィング">
+      <v-notice order="-18" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="2" text="$1 ← 雷" sync="@thunder_order[1] gains the effect of サンダーウィング">
+      <v-notice order="-17" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="3" text="$1 ← 雷" sync="@thunder_order[2] gains the effect of サンダーウィング">
+      <v-notice order="-16" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="4" text="$1 ← 雷" sync="@thunder_order[3] gains the effect of サンダーウィング">
+      <v-notice order="-15" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="5" text="$1 ← 雷" sync="@thunder_order[4] gains the effect of サンダーウィング">
+      <v-notice order="-14" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="6" text="$1 ← 雷" sync="@thunder_order[5] gains the effect of サンダーウィング">
+      <v-notice order="-13" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="7" text="$1 ← 雷" sync="@thunder_order[6] gains the effect of サンダーウィング">
+      <v-notice order="-12" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="8" text="$1 ← 雷" sync="@thunder_order[7] gains the effect of サンダーウィング">
+      <v-notice order="-11" job-icon="true" duration="7" duration-visible="true" font-scale="0.9" />
+    </t>
+
+    <t no="9" name="自分に雷" sync="[mex] gains the effect of サンダーウィング" notice="自分にサンダー" />
+    <!-- サンダー end -->
+
+    <t text="自分にファイア" sync="23:[id8]:ファイアホーン:[id8]:[mex]:[id4]:0000:0005:[id8]:000F:" notice="自分にファイア" >
+      <v-notice
+        order="-10"
+        icon="Fire.png"
+        duration="6"
+        duration-visible="true" />
+    </t>
+
+    <t text="ファイア対象" sync="23:[id8]:ファイアホーン:[id8]:[nex]:[id4]:0000:0005:[id8]:000F:" >
+      <v-notice
+        order="-9"
+        job-icon="true"
+        duration="6"
+        duration-visible="true" />
+    </t>
+
+    <t name="ファイアデバフON" sync="[mex] gains the effect of ファイアホーン">
+      <expressions>
+        <set name="is_fire" value="true" />
+      </expressions>
+    </t>
+
+    <t name="ファイアデバフOFF" sync="[mex] loses the effect of ファイアホーン">
+      <expressions>
+        <set name="is_fire" value="false" />
+      </expressions>
+    </t>
+
+    <!-- セリフ分岐 begin -->
+    <t text="近寄る➜離れる" sync="月よ！ 鉄の覇道を照らせ！" notice="近寄る。そして、離れる。" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="12"
+        duration-visible="false" />
+    </t>
+
+    <t text="近寄る➜頭割り" sync="月よ！ 赤熱し、神敵を焼け！" notice="近寄る。そして、頭割り。" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="12"
+        duration-visible="false" />
+    </t>
+
+    <t text="頭割り➜離れる" sync="赤熱し、焼かれし道を 鉄の覇道と成す！" notice="頭割り。そして、離れる" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="12"
+        duration-visible="false" />
+    </t>
+
+    <t text="頭割り➜近寄る" sync="赤熱せし 月の祝福を！" notice="頭割り。そして、近寄る" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="12"
+        duration-visible="false" />
+    </t>
+
+    <t text="散開➜近寄る" sync="我、舞い降りて 月を仰がん！" notice="散開。そして、近寄る" >
+      <v-notice
+        order="-1"
+        icon="AOEOutside.png"
+        duration-visible="false"
+        duration="12" />
+    </t>
+
+    <t text="散開➜離れる" sync="我、舞い降りて 鉄の覇道を征く！" notice="散開。そして、離れる" >
+      <v-notice
+        order="-1"
+        icon="Leave.png"
+        duration-visible="false"
+        duration="12" />
+    </t>
+
+    <t text="MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" notice="タンクから離れる。そして、頭割り" >
+      <v-notice
+        order="-1"
+        icon="DamageShare.png"
+        duration-visible="false"
+        duration="12" />
+    </t>
+
+    <t text="散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" notice="散開。そして、タンクから離れる" >
+      <v-notice
+        order="-1"
+        icon="SpreadA.png"
+        duration-visible="false"
+        duration="12" />
+    </t>
+    <!-- セリフ分岐 end -->
+
+    <!-- カータライズ begin -->
+    <t no="1" name="カータライズ基本カウント" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:">
+      <expressions>
+        <set name="cauterize_count" count="+1" />
+      </expressions>
+    </t>
+
+    <t no="11" text="1 ${_pc}\n→ 東へ" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:">
+      <expressions>
+        <pre name="cauterize_count" count="1" />
+      </expressions>
+      <v-notice order="-9" job-icon="true" duration-visible="false" duration="30" font-scale="0.9" sync-to-hide=":ネール・デウス・ダーナス:26B5:バハムートクロウ:" />
+    </t>
+
+    <t no="12" text="2 ${_pc}\n→ 南へ" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:">
+      <expressions>
+        <pre name="cauterize_count" count="2" />
+      </expressions>
+      <v-notice order="-8" job-icon="true" duration-visible="false" duration="30" font-scale="0.9" sync-to-hide=":ネール・デウス・ダーナス:26B5:バハムートクロウ:" />
+    </t>
+
+    <t no="13" text="3 ${_pc}\n→ 西へ" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:">
+      <expressions>
+        <pre name="cauterize_count" count="3" />
+      </expressions>
+      <v-notice order="-7" job-icon="true" duration-visible="false" duration="30" font-scale="0.9" sync-to-hide=":ネール・デウス・ダーナス:26B5:バハムートクロウ:" />
+    </t>
+
+    <t no="21" name="自分にカータ1" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ、東えー">
+      <expressions>
+        <pre name="cauterize_count" count="1" />
+      </expressions>
+    </t>
+
+    <t no="22" text="自分にカータ2" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ、南えー">
+      <expressions>
+        <pre name="cauterize_count" count="2" />
+      </expressions>
+    </t>
+
+    <t no="23" text="自分にカータ3" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ、西えー">
+      <expressions>
+        <pre name="cauterize_count" count="3" />
+      </expressions>
+    </t>
+    <!-- カータライズ end -->
+
+    <a time="009" text="天地崩壊" icon="KnockBack.png"/>
+    <a time="014" text="メテオストリーム" icon="SpreadA.png" />
+    <a time="017" text="メテオストリーム" icon="SpreadA.png" />
+    <a time="020" text="ダラガブダイブ" sync="16:[id8]:ネール・デウス・ダーナス:26C1:ダラガブダイブ:" icon="Targetaoe.png" />
+    <a time="022" text="バハムートクロウ5連" sync="" notice="" icon="HardAttack.png" />
+    <a time="028" text="龍神の加護" sync="ネール・デウス・ダーナスは「龍神の加護」の構え。" notice="" icon="" />
+    <a time="030" name="龍の配置ダンプ">
+      <dump name="ネール外周の龍の配置" target="Position" />
+    </a>
+    <a time="038" text="サンダーウィング" icon="Thunder.png" />
+    <a time="039" text="セリフ" sync="ネール・デウス・ダーナス:月よ！" icon="Dialog.png" />
+    <a time="044" text="ルナダイナモ" sync="ネール・デウス・ダーナスの「ルナダイナモ」" icon="AOEOutside.png" />
+    <a time="048" text="離れるor頭割り" icon="AOEInside.png" />
+    <a time="049" text="死の宣告" icon="Attention.png" />
+    <a time="050" text="★ファイア1 (全員)" notice="次、全員でファイア" notice-o="-5" icon="Fire.png" />
+    <a time="051" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="055" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="059" text="バハムートクロウ5連" icon="HardAttack.png" />
+    <a time="064" text="サンダーウィング" notice="サンダー確認" icon="Thunder.png" />
+    <a time="065" text="★ファイア2 (対象だけ)" notice="次、ひとりでファイア" notice-o="-6" icon="Fire.png" />
+    <a time="067" text="セリフ" sync="(鉄の覇道と成す！|月の祝福を！)" icon="Dialog.png" />
+    <a time="073" text="サーミオニックビーム" icon="DamageShare.png" />
+    <a time="076" text="離れるorダイナモ" icon="Branch.png" />
+    <a time="077" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="078" text="死の宣告" icon="Attention.png" />
+    <a time="081" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="083" text="サンダーウィング" notice="サンダー確認" icon="Thunder.png" />
+    <a time="085" text="サルヴェーションウィング" icon="AOE.png" />
+
+    <a time="092" text="★ファイア3 (集合)" notice="次、集まってファイア" notice-o="-5" icon="Fire.png">
+      <expressions>
+        <pre name="is_fire" value="false" />
+      </expressions>
+      <v-notice
+        text="集まる！"
+        icon="Fire.png"
+        duration-visible="false"
+        duration="6" />
+    </a>
+
+    <a time="092" text="★ファイア3 (避ける)" notice="次、ファイアを避ける" notice-o="-5" icon="Fire.png">
+      <expressions>
+        <pre name="is_fire" value="true" />
+      </expressions>
+      <v-notice
+        text="離れる！"
+        icon="Fire.png"
+        duration-visible="false"
+        duration="6" />
+    </a>
+
+    <a time="095" text="バハムートクロウ5連" notice="5連クロウ" icon="HardAttack.png" />
+    <a time="100" text="セリフ" sync="(鉄の覇道を征く！|月を仰がん！)" notice="次、小さく散開。" icon="Dialog.png" />
+    <a time="106" text="レイヴンダイブ" icon="SpreadA.png" />
+    <a time="109" text="離れるorダイナモ" icon="Branch.png" />
+    <a time="113" text="★ファイア4 (全員)" notice="次、全員でファイア" notice-o="-5" icon="Fire.png" />
+    <a time="111" text="サンダーウィング" icon="Thunder.png" />
+    <a time="113" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="115" text="死の宣告" icon="Attention.png" />
+    <a time="117" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="121" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="130" text="レイヴェンズビーク" sync="ネール・デウス・ダーナス starts using レイヴェンズビーク" notice="次、タンクスイッチ" icon="Switch.png" />
+    <a time="139" text="セリフ" sync="(鉄の覇道を征く！|月を仰がん！)" icon="Dialog.png" />
+    <a time="145" text="スーパーノヴァ" icon="AOE.png" />
+    <a time="147" text="カータライズ１" icon="" />
+    <a time="148" text="スーパーノヴァ" icon="AOE.png" />
+    <a time="151" text="カータライズ２" icon="" />
+    <a time="154" text="ダラガブダイブ" icon="spreadA.png" />
+    <a time="155" text="カータライズ３" icon="" />
+    <a time="156" text="頭割りor散開" icon="Branch.png" />
+    <a time="161" text="バハムートクロウ5連" icon="HardAttack.png" />
+    <a time="173" text="セリフ" icon="Dialog.png" />
+    <a time="184" text="セリフ" icon="Dialog.png" />
+    <a time="197" text="レイヴェンズビーク" sync="「レイヴェンズビーク」の構え。" notice="次、タンクスイッチ" icon="Switch.png" />
+    <a time="204" text="バハムートクロウ5連" icon="HardAttack.png" />
+    <a time="213" text="メガフレア" notice="" icon="Timeout.png" />
+    <a time="226" text="バハムートへ" sync="16:[id8]:バハムート・プライム:26D1:第七霊災:" goto="P3 進軍の三重奏" sync-s="-50" />
+  </s>
+
+  <s name="P3 進軍の三重奏">
+    @if (Model.Player.InRole("DPS")) {
+    <t text="頭割り" sync="^1B:[id8]:[mex]:0000:[id4]:0027:0000:0000:0000:" >
+      <v-notice duration="6" icon="DamageShare.png" duration-visible="false" />
+    </t>
+    <t text="シェイカー担当" sync="^1B:[id8]:[nex]:0000:[id4]:0027:0000:0000:0000:" sync-count="3" >
+      <v-notice duration="6" icon="Leave.png" duration-visible="false" />
+    </t>
+    }
+
+    <a time="004" text="災いの炎x3" icon="AllRangeAttack.png" />
+    <a time="009" text="災いの焔" icon="AllRangeAttack.png" />
+    <a time="017" text="フレアブレス"  notice="フレアブレス" icon="Targetaoe03.png" />
+    <a time="021" text="フラッテン" sync="バハムート・プライムは「フラッテン」の構え。" sync-s="-20" icon="HardAttack.png" />
+    <a time="029" text="進軍の三重奏" sync="バハムート・プライムは「進軍の三重奏」の構え。" />
+    <a time="037" text="ツイスターダイブ" icon="Twister.png" />
+    <a time="045" text="メガフレア" icon="AOE.png" />
+    <a time="048" text="シェイカー" icon="AOE.png" />
+    <a time="048" text="テンペスト" icon="Twister.png" />
+    <a time="058" text="フレアブレス"  icon="Targetaoe03.png" />
+    <a time="061" text="フラッテン" sync="バハムート・プライムは「フラッテン」の構え" icon="HardAttack.png" />
+    <a time="070" text="黒炎の三重奏へ" sync="バハムート・プライムは「黒炎の三重奏」の構え" notice="" goto="P4 黒炎の三重奏" />
+    <a time="091" text="移行(予備トリガ)" sync="バハムート・プライムは「黒炎の三重奏」の構え" notice="" goto="P4 黒炎の三重奏" sync-s="-20" />
+  </s>
+
+  <s name="P4 黒炎の三重奏">
+    <t text="頭割り" sync="^1B:[id8]:[mex]:0000:[id4]:0027:0000:0000:0000:" >
+      <v-notice duration="6" icon="DamageShare.png" duration-visible="false" />
+    </t>
+    <t text="塔踏み" sync="^1B:[id8]:[nex]:0000:[id4]:0027:0000:0000:0000:" sync-count="4" >
+      <v-notice duration="6" icon="FallingObject.png" duration-visible="false" />
+    </t>
+
+    <a time="008" text="メガフレアダイブ" sync="バハムート・プライムは「メガフレアダイブ」の構え。" icon="AOEPlus.png" />
+    <a time="009" text="ヘルリキッド" notice="" />
+    <a time="012" text="サーミオニックビーム" notice="" />
+    <a time="015" text="メガフレア" notice="" />
+    <a time="019" text="スーパーノヴァx4" notice="" />
+    <a time="023" text="ギガフレア" sync="バハムート・プライムは「ギガフレア」の構え。" notice="" />
+    <a time="039" text="フレアブレス1" sync="バハムート・プライムの「フレアブレス」" notice="次、フレアブレス。" icon="Targetaoe03.png" />
+    <a time="041" text="フレアブレス2" icon="Targetaoe03.png" />
+    <a time="043" text="フレアブレス3" icon="Targetaoe03.png" />
+    <a time="051" text="厄災の三重奏" sync="バハムート・プライムは「厄災の三重奏」の構え。" notice="" />
+
+    <!-- ネールのセリフ分岐 -->
+    <a time="060" text="分岐待ち" icon="分岐.png" />
+
+    <!-- セリフによる移行先フェーズ分岐 begin -->
+    <t text="ダイナモ➜ダイブ" sync="我、月より舞い降りて" notice="次、ダイナモ。集まる。">
+      <load target="P5 厄災の三重奏ダイナモ" truncate="true" />
+      <v-notice
+        icon="AOEOutside.png"
+        duration-visible="false"
+        duration="7"
+        order="-1" />
+    </t>
+
+    <t text="ダイブ➜ダイナモ" sync="我、舞い降りて月を仰ぎ" notice="次、ダイブ。散開。">
+      <load target="P5 厄災の三重奏ダイブ" truncate="true" />
+      <v-notice
+        icon="SpreadA.png"
+        duration-visible="false"
+        duration="7"
+        order="-1" />
+    </t>
+    <!-- セリフによる移行先フェーズ分岐 end -->
+  </s>
+
+  <!-- 厄災ダイナモパターン -->
+  <s name="P5 厄災の三重奏ダイナモ">
+    <a time="006" text="ルナダイナモ" icon="AOEOutside.png" />
+    <a time="009" text="レイヴンダイブ" notice="散開。" icon="SpreadA.png" />
+    <a time="013" text="エーテリックP" notice="拘束具えー。" icon="AllRangeAttack.png"/>
+    <a time="014" text="ギガフレア" sync="バハムート・プライムは「ギガフレア」の構え。" notice="次、ギガフレア" sync-s="-20" icon="HardAllRangeAttack.png" />
+    <a time="016" text="メテオストリーム" notice="次、散開。" icon="SpreadA.png" />
+    <a time="025" text="フレアブレス" notice="フレアブレス" icon="Targetaoe03.png" />
+    <a time="030" text="フラッテン" sync="バハムート・プライムは「フラッテン」の構え" notice="フラッテン" sync-s="-20" icon="HardAttack.png" />
+    <a time="039" text="フレアブレス" notice="フレアブレス" icon="Targetaoe03.png" />
+    <a time="060" text="天地の三重奏へ" sync="バハムート・プライムは「天地の三重奏」の構え" notice="" goto="P6 天地の三重奏" sync-s="-30" />
+  </s>
+
+  <!-- 厄災ダイブパターン -->
+  <s name="P5 厄災の三重奏ダイブ">
+    <a time="006" text="レイヴンダイブ" icon="SpreadA.png" />
+    <a time="009" text="ルナダイナモ" notice="ダイナモ、集まる。" icon="AOEOutside.png" />
+    <a time="013" text="エーテリックP" notice="拘束具へー。" icon="AllRangeAttack.png" />
+    <a time="014" text="ギガフレア" sync="バハムート・プライムは「ギガフレア」の構え。" notice="次、ギガフレア" sync-s="-20" icon="HardAllRangeAttack.png" />
+    <a time="016" text="メテオストリーム" notice="次、散開。" icon="SpreadA.png" />
+    <a time="025" text="フレアブレス" notice="フレアブレス" icon="Targetaoe03.png" />
+    <a time="030" text="フラッテン" sync="バハムート・プライムは「フラッテン」の構え" notice="フラッテン" sync-s="-20" icon="HardAttack.png" />
+    <a time="039" text="フレアブレス" notice="フレアブレス" icon="Targetaoe03.png" />
+    <a time="060" text="天地の三重奏へ" sync="バハムート・プライムは「天地の三重奏」の構え" goto="P6 天地の三重奏" sync-s="-30" />
+  </s>
+
+  <s name="P6 天地の三重奏">
+    <a time="009" text="メガフレアダイブ" sync="バハムート・プライムは「メガフレアダイブ」の構え。" notice="" icon="AOEPlus.png" />
+    <a time="016" text="メガフレア" sync="バハムート・プライム starts using メガフレア" icon="AOE.png" />
+    <a time="016" text="天地崩壊" icon="KnockBack.png" />
+    <a time="025" text="連続バースト" sync="サーミオニックバースト" icon="AOEHorizontal.png" />
+    <a time="029" text="スーパーノヴァ" notice="スーパーノヴァ" icon="Targetaoe01.png" />
+    <a time="034" text="ギガフレア" sync="バハムート・プライムは「ギガフレア」の構え。" notice="次、ギガフレア。" icon="HardAllRangeAttack.png" />
+    <a time="050" text="フレアブレス1" sync="バハムート・プライムの「フレアブレス」" notice="フレアブレス3回。" icon="Targetaoe03.png" />
+    <a time="052" text="フレアブレス2" icon="Targetaoe03.png" />
+    <a time="054" text="フレアブレス3" icon="Targetaoe03.png" />
+    <a time="070" text="連撃の三重奏" sync="バハムート・プライムは「連撃の三重奏」の構え" goto="P7 連撃の三重奏" sync-s="-20" />
+  </s>
+
+  <s name="P7 連撃の三重奏">
+    <a time="009" text="魔力錬成" sync="ツインタニア starts using 魔力錬成" notice="" />
+    <a time="013" text="魔力錬成" notice="" />
+    <a time="015" text="8連メテオストリーム" notice="" />
+    <a time="026" text="アースシェイカー" notice="" />
+    <a time="031" text="アースシェイカー" notice="" />
+    <a time="032" text="ギガフレア" sync="バハムート・プライムは「ギガフレア」の構え。" notice="次、ギガフレア。" />
+    <a time="046" text="フラッテン" sync="バハムート・プライムは「フラッテン」の構え" notice="フラッテン" sync-s="-20" />
+    <a time="053" text="フレアブレス" sync="バハムート・プライムの「フレアブレス」" notice="フレアブレス" />
+    <a time="060" text="群竜の八重奏" sync="バハムート・プライムは「群竜の八重奏」の構え" notice="" goto="P8 群竜の八重奏" sync-s="-20" />
+  </s>
+
+  <s name="P8 群竜の八重奏">
+    <!-- ツインタニア誘導担当者判定 begin -->
+    <!-- トリガーにマッチしたらテーブルから名前を消す。-->
+    <t no="1" name="DeleteMarkerTarget" sync="^1B:[id8]:[pc]:0000:[id4]:(0077|0014|0029):">
+      <expressions>
+        <table>
+          { "method":"Delete", "table":"MarkerTarget", "cols" : [ { "name" : "name", "val" : "${_pc}", "key" : "true" }, ] }
+        </table>
+      </expressions>
+    </t>
+
+    <!-- 7回目のマーカーが付与された後、テーブルに名前が残っている人がタニア誘導担当 -->
+    <t no="10" name="タニア誘導担当者判定" sync="^1B:[id8]:[pc]:0000:[id4]:(0077|0014|0029):" sync-count="7" >
+      <v-notice
+        text="タニア誘導\nTABLE['MarkerTarget'][0]['name']"
+        duration="9"
+        duration-visible="false"
+      />
+    </t>
+    <!-- ツインタニア誘導担当者判定 end -->
+
+    <!-- 自分がツインタニア誘導だった場合の通知
+    <t no="11" name="自分がタニア誘導担当者" sync="^1B:[id8]:[pc]:0000:[id4]:(0077|0014|0029):" sync-count="7" notice="自分がタニア誘導担当。" >
+      <expressions>
+        <pre name="TABLE['MarkerTarget'][0]['name']" value="@Model.Player.Name" >
+      </expressions>
+    </t>
+    -->
+
+    <!-- バハムートPOP位置によるマラソン方向通知 begin -->
+    <t no="1" name="北にバハムート" sync-count="1" text="反時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.50" Y="21.02" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="N" />
+      </expressions>
+    </t>
+
+    <t no="2" name="北東にバハムート" sync-count="1" text="時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.83" Y="21.17" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="NE" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="3" name="東にバハムート" sync-count="1" text="反時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.98" Y="21.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="E" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="4" name="南東にバハムート" sync-count="1" text="時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.83" Y="21.83" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="SE" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="5" name="南にバハムート" sync-count="1" text="反時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.50" Y="21.98" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="S" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="6" name="南西にバハムート" sync-count="1" text="時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.17" Y="21.83" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="SW" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="7" name="西にバハムート" sync-count="1" text="反時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.02" Y="21.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="W" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="8" name="北西にバハムート" sync-count="1" text="時計回り" notice="" >
+      <p-sync interval="60">
+        <combatant name="バハムート・プライム" X="21.17" Y="21.17" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <set name="bahamut_position" value="NW" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+    <!-- バハムートPOP位置によるマラソン方向通知 end -->
+
+    <!-- バハムートの対面にネールがいる場合に通知 begin -->
+    <!-- バハムート位置を示すトリガーが有効になっている必要がある -->
+    <t no="11" name="南にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.50" Y="21.98" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="N" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="12" name="南西にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.17" Y="21.83" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="NE" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="13" name="西にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.02" Y="21.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="E" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="14" name="北西にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.17" Y="21.17" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="SE" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="15" name="北にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.50" Y="21.02" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="S" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="16" name="北東にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.83" Y="21.17" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="SW" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="17" name="東にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.98" Y="21.50" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="W" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+
+    <t no="18" name="南東にネール" sync-count="1" text="バハ対面ネール" notice="" >
+      <p-sync interval="60">
+        <combatant name="ネール・デウス・ダーナス" X="21.83" Y="21.83" Z="0.00" tolerance="0.01" />
+      </p-sync>
+      <expressions>
+        <pre name="bahamut_position" value="NW" />
+      </expressions>
+      <v-notice duration="10" duration-visible="false" />
+    </t>
+    <!-- バハムートの対面にネールがいる場合に通知 end -->
+
+    <!-- テーブルの初期化：PTメンバーの一覧をテーブルに格納する -->
+    @{
+      foreach (var member in Model.Party) {
+      <a time="000" name="Add @member.Name to Table">
+        <expressions>
+          <table>
+            { "method":"Insert", "table":"MarkerTarget", "cols" : [ { "name" : "name", "val" : "@member.Name" , "key" : "true" }, ] }
+          </table>
+        </expressions>
+      </a>
+      }
+    }
+
+    <!-- バハムートが外周に移動したタイミングで座標をダンプする -->
+    <a time="008" name="DumpPos" >
+      <dump target="Position" />
+    </a>
+    <a time="016" text="ルナダイブ" notice="" icon="AOEVertical.png" />
+    <a time="017" text="マラソン開始" notice="マラソン開始" icon="Avoid.png" />
+    <a time="024" text="カータライズ1" />
+    <a time="026" text="カータライズ2" />
+    <a time="028" text="カータライズ3" />
+    <a time="030" text="カータライズ4" />
+    <a time="032" text="カータライズ5" />
+    <a time="034" text="メガフレアダイブ" notice="" />
+    <a time="041" text="メガフレア頭割り" notice="" icon="Stack.png" />
+    <a time="042" text="メガフレア塔踏み" icon="FallingObject.png" />
+    <a time="043" text="ツイスターダイブ" notice="ツイスター。" icon="Twister.png" >
+      <v-notice
+        order="-1"
+        icon="Twister.png"
+        text="ツイスター！"
+        duration="3"
+        duration-visible="true" />
+    </a>
+    <a time="060" text="2体フェーズへ" sync="おぉ、バハムート！ その御力を得て、大いなる御業の成就のため刻をかせぎましょう！" goto="P9 トリニティ" sync-s="-10" />
+  </s>
+
+  <s name="P9 トリニティ">
+    <!-- セリフ分岐 begin -->
+    <t text="チャリオット➜ダイブ➜頭割り" sync="鉄よ、舞い降りし 我の刃となり赤熱せよ！" notice="チャリオット、散開、頭割り。" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="13"
+        duration-visible="true" />
+    </t>
+
+    <t text="チャリオット➜頭割り➜ダイブ" sync="鉄よ、赤熱せよ！ 舞い降りし我が刃となれ！" notice="チャリオット、頭割り、散開。" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="13"
+        duration-visible="true" />
+    </t>
+
+    <t text="ダイナモ➜チャリオット➜ダイブ" sync="我、月より鉄を備え 舞い降りん！" notice="ダイナモ、チャリオット、散開。" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="13"
+        duration-visible="true" />
+    </t>
+
+    <t text="ダイナモ➜ダイブ➜頭割り" sync="我、月より舞い降りて 赤熱せし地を歩まん！" notice="ダイナモ、散開、頭割り。" >
+      <v-notice
+        order="-1"
+        icon="Branch.png"
+        duration="13"
+        duration-visible="true" />
+    </t>
+    <!-- セリフ分岐 end -->
+
+    <t name="全滅判定OFF" sync="この消えゆく命を燃やし、">
+      <dump target="Log" log="/spespe reset-on-wipeout disable" />
+    </t>
+
+    <a time="014" text="クロウとプラメット" sync="ネール・デウス・ダーナスの「バハムートクロウ」" notice="次、クロウとプラメット" icon="HardAttack.png" />
+    <a time="018" text="【誘導】ヘルリキッド" sync="ツインタニアの「ヘルリキッド」" notice="次、リキッド誘導。" icon="Targetaoe.png" />
+    <a time="022" text="魔力錬成" sync="ツインタニアは「魔力錬成」の構え。" notice="次、魔力錬成。" icon="Explosion.png" />
+    <a time="027" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="次、ツイスター。" icon="Twister.png" >
+      <v-notice
+        order="-1"
+        icon="Twister.png"
+        duration="4"
+        duration-visible="true" />
+    </a>
+    <a time="038" text="セリフ技1" icon="Branch.png" />
+    <a time="041" text="セリフ技2" icon="Branch.png" />
+    <a time="044" text="セリフ技3" icon="Branch.png" />
+    <a time="045" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="次、ツイスター。" icon="Twister.png" >
+      <v-notice
+        order="-1"
+        icon="Twister.png"
+        duration="4"
+        duration-visible="true" />
+    </a>
+    <a time="053" text="メガフレア" sync="ネール・デウス・ダーナスは「メガフレア」を唱えた。" notice="次、メガフレア。" icon="AllRangeAttack.png" />
+    <a time="062" text="ビーク/デスセン" sync="ネール・デウス・ダーナスは「レイヴェンズビーク」の構え。" notice="次、ビークとデスセン" icon="Switch.png" />
+    <a time="071" text="クロウ/プラメット" sync="ネール・デウス・ダーナスの「バハムートクロウ」" notice="次、クロウとブラメット" icon="HardAttack.png" />
+    <a time="080" text="【誘導】ヘルリキッド" sync="ツインタニアの「ヘルリキッド」" notice="次、リキッド誘導。" icon="Targetaoe.png" />
+    <a time="085" text="魔力錬成" sync="ツインタニアは「魔力錬成」の構え。" notice="次、魔力錬成。" icon="Explosion.png" />
+    <a time="090" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="次、ツイスター。" icon="Twister.png" >
+      <v-notice
+        order="-1"
+        icon="Twister.png"
+        duration="4"
+        duration-visible="true" />
+    </a>
+    <a time="101" text="セリフ技1" icon="Branch.png" />
+    <a time="104" text="セリフ技2" icon="Branch.png" />
+    <a time="106" text="セリフ技3" icon="Branch.png" />
+    <a time="107" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="次、ツイスター。" icon="Twister.png" >
+      <v-notice
+        order="-1"
+        icon="Twister.png"
+        duration="4"
+        duration-visible="true" />
+    </a>
+    <a time="118" text="ビーク/デスセン" sync="ネール・デウス・ダーナスは「レイヴェンズビーク」の構え。" notice="次、ビークとデスセン" icon="Switch.png" />
+    <a time="130" text="メガフレア" sync="ネール・デウス・ダーナスは「メガフレア」を唱えた。" notice="次、メガフレア。" icon="AllRangeAttack.png" />
+    <a time="152" text="時間切れ" icon="Timeout.png" />
+    <a time="200" text="終了待ち" sync="絶望の淵に、不死鳥フェニックスの呼び声が響き渡る……！" sync-s="-60" />
+    <a time="214" text="転生の炎" sync="フェニックスの「転生の炎」" goto="P10 FINAL" sync-s="-60" />
+  </s>
+
+  <s name="P10 FINAL">
+    <a time="000" name="全滅判定ON">
+      <dump target="Log" log="/spespe reset-on-wipeout enable" />
+    </a>
+
+    <!-- v-notice はPT構成に合わせた軽減メモとして使ってください -->
+    <a time="020" text="モーン・アファー１" sync="バハムート・プライムは「モーン・アファー」の構え。" notice="モーンアファー。" icon="DamageShare.png" >
+      <v-notice
+        order="-1"
+        text="MTリプ ヴェール アドル\n陣 士気 イルミ"
+        duration="10" />
+    </a>
+    <a time="028" text="アク・モーン" sync="バハムート・プライムは「アク・モーン」の構え。" notice="次、タンク頭割り。" icon="TankShare.png" >
+      <v-notice
+        order="-1"
+        text="タンク二人受け"
+        duration="8" />
+    </a>
+    <a time="040" text="エクサフレア" sync="バハムート・プライムは「エクサフレア」の構え。" notice="次、エクサフレア。" icon="AOE.png" />
+    <a time="060" text="アク・モーン" sync="バハムート・プライムは「アク・モーン」の構え。" notice="" icon="TankShare.png" >
+      <v-notice
+        order="-1"
+        text="MT無敵受け"
+        duration="8" />
+    </a>
+    <a time="075" text="モーン・アファー２" sync="バハムート・プライムは「モーン・アファー」の構え。" notice="モーンアファー。" icon="DamageShare.png" >
+      <v-notice
+        order="-1"
+        text="ライト STリプ パッセ トルバ\n陣 士気"
+        duration="10" />
+    </a>
+    <a time="090" text="エクサフレア" sync="バハムート・プライムは「エクサフレア」の構え。" notice="次、エクサフレア。" icon="AOE.png" />
+    <a time="109" text="モーン・アファー３" sync="バハムート・プライムは「モーン・アファー」の構え。" notice="モーンアファー。" icon="DamageShare.png" >
+      <v-notice
+        order="-1"
+        text="MTリプ ヴェール STミンネ\n陣 鼓舞展開"
+        duration="10" />
+    </a>
+    <a time="123" text="アク・モーン" sync="バハムート・プライムは「アク・モーン」の構え。" notice="" icon="TankShare.png" >
+      <v-notice
+        order="-1"
+        text="ST無敵受け"
+        duration="8" />
+    </a>
+    <a time="140" text="エクサフレア" sync="バハムート・プライムは「エクサフレア」の構え。" notice="次、エクサフレア。" icon="AOE.png" />
+    <a time="159" text="モーン・アファー４" sync="バハムート・プライムは「モーン・アファー」の構え。" notice="モーンアファー。" icon="DamageShare.png" >
+      <v-notice
+        order="-1"
+        text="ライト STリプ アドル\n陣 士気 イルミ"
+        duration="10" />
+    </a>
+    <a time="174" text="アク・モーン" sync="バハムート・プライムは「アク・モーン」の構え。" notice="次、タンク頭割り。" icon="TankShare.png" >
+      <v-notice
+        order="-1"
+        text="タンク２人バフ受け"
+        duration="8" />
+    </a>
+    <a time="191" text="エクサフレア" sync="バハムート・プライムは「エクサフレア」の構え。" notice="次、エクサフレア。" icon="AOE.png" />
+    <a time="210" text="モーン・アファー５" sync="バハムート・プライムは「モーン・アファー」の構え。" notice="モーンアファー。" icon="DamageShare.png" >
+      <v-notice
+        order="-1"
+        text="MTリプ ヴェール パッセ トルバ アドル\n陣 士気"
+        duration="10" />
+    </a>
+    <a time="218" text="【時間切れ】モーン・アファー" notice="" />
+  </s>
+</timeline>

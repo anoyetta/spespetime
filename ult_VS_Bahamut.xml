@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶バハムート討滅戦</name>
-  @{ var rev = "ver 3.0"; }
+  @{ var rev = "ver 3.2"; }
   <rev>@rev</rev>
   <description>
     絶バハムート討滅戦タイムライン
@@ -231,7 +231,7 @@
 
     <t no="1" name="ファイアカウント" sync="23:[id8]:ファイアホーン:[id8]:[pc]:[id4]:0000:0005:[id8]:000F:">
       <expressions>
-        <pre name="fire_count" count="+1" />
+        <set name="fire_count" count="+1" />
       </expressions>
     </t>
 
@@ -246,7 +246,6 @@
     <t no="3" name="ファイア2一人で" text="${_mex} ← 炎\n離れる！" sync="23:[id8]:ファイアホーン:[id8]:[mex]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、離れるー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
-        <pre name="is_fire" value="false" />
         <pre name="fire_count" count="2" />
       </expressions>
     </t>
@@ -254,7 +253,6 @@
     <t no="4" name="ファイア2一人で（その他）" text="${_nex} ← 炎\n一人で" sync="23:[id8]:ファイアホーン:[id8]:[nex]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、一人だけー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
-        <pre name="is_fire" value="false" />
         <pre name="fire_count" count="2" />
       </expressions>
     </t>
@@ -278,7 +276,6 @@
     <t no="7" name="ファイア4集合" text="${_pc} ← 炎\n集合！" sync="23:[id8]:ファイアホーン:[id8]:[pc]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、集合するー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
-        <pre name="is_fire" value="false" />
         <pre name="fire_count" count="4" />
       </expressions>
     </t>
@@ -296,74 +293,76 @@
     </t>
 
     <!-- セリフ分岐 begin -->
+    @{ var second_gimmick_delay = 5.5d; }
+
     <!-- 近寄る→離れる -->
     <t text="近寄る➜離れる" sync="月よ！ 鉄の覇道を照らせ！" notice="近寄る、離れる。">
       <v-notice order="-1" icon="AOEOutside.png" duration="10" duration-visible="false" />
     </t>
-    <t name="近寄る➜離れる" sync="月よ！ 鉄の覇道を照らせ！" text="離れる！" notice="離れるー" notice-o="6">
-      <v-notice order="0" icon="AOEInside.png" duration="4" duration-visible="false" delay="6" />
+    <t name="近寄る➜離れる" sync="月よ！ 鉄の覇道を照らせ！" text="離れる！" notice="離れるー" notice-o="@second_gimmick_delay">
+      <v-notice order="0" icon="AOEInside.png" duration="4" duration-visible="false" delay="@second_gimmick_delay" />
     </t>
 
     <!-- 近寄る→頭割り -->
     <t text="近寄る➜頭割り" sync="月よ！ 赤熱し、神敵を焼け！" notice="近寄る、頭割り。">
       <v-notice order="-1" icon="AOEOutside.png" duration="10" duration-visible="false" />
     </t>
-    <t name="近寄る➜頭割り" sync="月よ！ 赤熱し、神敵を焼け！" text="頭割り！" notice="頭割りー" notice-o="6">
-      <v-notice order="0" icon="DamageShare.png" duration="4" duration-visible="false" delay="6" />
+    <t name="近寄る➜頭割り" sync="月よ！ 赤熱し、神敵を焼け！" text="頭割り！" notice="頭割りー" notice-o="@second_gimmick_delay">
+      <v-notice order="0" icon="DamageShare.png" duration="4" duration-visible="false" delay="@second_gimmick_delay" />
     </t>
 
     <!-- 頭割り→離れる -->
     <t text="頭割り➜離れる" sync="赤熱し、焼かれし道を 鉄の覇道と成す！" notice="頭割り、離れる">
       <v-notice order="-1" icon="DamageShare.png" duration="10" duration-visible="false" />
     </t>
-    <t name="頭割り➜離れる" sync="赤熱し、焼かれし道を 鉄の覇道と成す！" text="離れる！" notice="離れるー" notice-o="6">
-      <v-notice order="0" icon="AOEInside.png" duration="4" duration-visible="false" delay="6" />
+    <t name="頭割り➜離れる" sync="赤熱し、焼かれし道を 鉄の覇道と成す！" text="離れる！" notice="離れるー" notice-o="@second_gimmick_delay">
+      <v-notice order="0" icon="AOEInside.png" duration="4" duration-visible="false" delay="@second_gimmick_delay" />
     </t>
 
     <!-- 頭割り→近寄る -->
     <t text="頭割り➜近寄る" sync="赤熱せし 月の祝福を！" notice="頭割り、近寄る">
       <v-notice order="-1" icon="DamageShare.png" duration="10" duration-visible="false" />
     </t>
-    <t name="頭割り➜近寄る" sync="赤熱せし 月の祝福を！" text="近寄る！" notice="近寄るー" notice-o="6">
-      <v-notice order="0" icon="AOEOutside.png" duration="4" duration-visible="false" delay="6" />
+    <t name="頭割り➜近寄る" sync="赤熱せし 月の祝福を！" text="近寄る！" notice="近寄るー" notice-o="@second_gimmick_delay">
+      <v-notice order="0" icon="AOEOutside.png" duration="4" duration-visible="false" delay="@second_gimmick_delay" />
     </t>
 
     <!-- 散開→近寄る -->
     <t text="散開➜近寄る" sync="我、舞い降りて 月を仰がん！" notice="散開、近寄る">
       <v-notice order="-1" icon="SpreadB.png" duration="10" duration-visible="false" />
     </t>
-    <t name="散開➜近寄る" sync="我、舞い降りて 月を仰がん！" text="近寄る！" notice="近寄るー" notice-o="6">
-      <v-notice order="0" icon="AOEOutside.png" duration="4" duration-visible="false" delay="6" />
+    <t name="散開➜近寄る" sync="我、舞い降りて 月を仰がん！" text="近寄る！" notice="近寄るー" notice-o="@second_gimmick_delay">
+      <v-notice order="0" icon="AOEOutside.png" duration="4" duration-visible="false" delay="@second_gimmick_delay" />
     </t>
 
     <!-- 散開→離れる -->
     <t text="散開➜離れる" sync="我、舞い降りて 鉄の覇道を征く！" notice="散開、離れる">
       <v-notice order="-1" icon="SpreadB.png" duration="10" duration-visible="false" />
     </t>
-    <t name="散開➜離れる" sync="我、舞い降りて 鉄の覇道を征く！" text="離れる！" notice="離れるー" notice-o="6">
-      <v-notice order="0" icon="AOEInside.png" duration="4" duration-visible="false" delay="6" />
+    <t name="散開➜離れる" sync="我、舞い降りて 鉄の覇道を征く！" text="離れる！" notice="離れるー" notice-o="@second_gimmick_delay">
+      <v-notice order="0" icon="AOEInside.png" duration="4" duration-visible="false" delay="@second_gimmick_delay" />
     </t>
 
     <!-- 連続AOE→MTダイブ→頭割り -->
-    <t text="連続AOE→MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" notice="次、連続AOE">
+    <t text="AOE→MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" notice="次、連続AOE">
       <v-notice order="-1" icon="AOE.png" duration-visible="false" duration="19" />
     </t>
-    <t name="連続AOE→MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" text="MTへダイブ！" notice="次、MTへダイブ" notice-o="13">
+    <t name="AOE→MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" text="MTへダイブ！" notice="次、MTへダイブ" notice-o="13">
       <v-notice order="0" icon="StackBack.png" duration="2.8" duration-visible="false" delay="13" />
     </t>
-    <t name="連続AOE→MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" text="頭割り！" notice="頭割りー" notice-o="16">
-      <v-notice order="0" icon="DamageShare.png" duration="3" duration-visible="false" delay="16" />
+    <t name="AOE→MTダイブ➜頭割り" sync="超新星よ、輝きを増せ！ 紅月下の赤熱せし地を照らせ！" text="頭割り！" notice="頭割りー" notice-o="15">
+      <v-notice order="0" icon="DamageShare.png" duration="3" duration-visible="false" delay="15" />
     </t>
 
     <!-- 連続AOE→散開→MTダイブ -->
-    <t text="連続AOE→散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" notice="次、連続AOE">
+    <t text="AOE→散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" notice="次、連続AOE">
       <v-notice order="-1" icon="AOE.png" duration-visible="false" duration="19" />
     </t>
-    <t name="連続AOE→散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" text="散開！" notice="次、散開" notice-o="13">
+    <t name="AOE→散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" text="散開！" notice="次、散開" notice-o="13">
       <v-notice order="0" icon="SpreadB.png" duration="2.8" duration-visible="false" delay="13" />
     </t>
-    <t name="連続AOE→散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" text="MTへダイブ！" notice="MTへダイブ" notice-o="16">
-      <v-notice order="0" icon="StackBack.png" duration="3" duration-visible="false" delay="16" />
+    <t name="AOE→散開➜MTダイブ" sync="超新星よ、輝きを増せ！ 星降りの夜に、紅月を称えよ！" text="MTへダイブ！" notice="MTへダイブ" notice-o="15">
+      <v-notice order="0" icon="StackBack.png" duration="3" duration-visible="false" delay="15" />
     </t>
     <!-- セリフ分岐 end -->
 

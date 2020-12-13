@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：再生編4</name>
+  <rev>digest</rev>
+  <description>
+    希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>949,Eden's Promise: Eternity (Savage)</zone>
+  <locale>JA</locale>
+  <entry>PHASE1</entry>
+  <start>0039:戦闘開始！</start>
+
+  <s name="PHASE1">
+  </s>
+</timeline>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+	<name>VS 極エメラルドウェポン</name>
+	<rev>rev2</rev>
+	<description>
+		前半時間切れのログがなくて途中までになっています。
+	</description>
+	<author>anoyetta, htppp</author>
+	<license>CC BY-SA</license>
+	<zone>Castrum Marinum (Extreme)</zone>
+	<locale>JA</locale>
+	<entry>ENTRY</entry>
+	<start>0039:戦闘開始！</start>
+
+	<default target-element="Activity" target-attr="notice-d" value="Main" />
+	<default target-element="Activity" target-attr="notice-o" value="-3" />
+	<default target-element="Activity" target-attr="sync-s" value="-12" />
+	<default target-element="Activity" target-attr="sync-e" value="12" />
+
+	<s name="ENTRY">
+		<t sync="ガイウス・バエサル" goto="前半" />
+		<t sync="エメラルド" goto="後半" />
+		<t sync="エメラルドウェポンは「ディヴィデ・エト・インペラ" sync-count="1">
+			<load target="後半" truncate="true" />
+			<load target="インペラ1回目" truncate="true" />
+		</t>
+		<a time="10" text="前半後半の判別" icon="分岐" goto="後半" />
+	</s>
+
+	<s name="前半">
+		<a time="000" sync="ガイウス・バエサル:レックス、我らが戦う必要などないのだ！ 即刻、機体を降りて投降せよ！！" />
+		<a time="009" sync="レックスの声:たとえ義父上の命令だろうと……！ オレは、オレたちは……退くわけにはいかねえんだ！" />
+		<a time="012" text="エメラルドショット" sync="エメラルドウェポンは「エメラルドショット」の構え。" notice="次は、エメラルドショット。" />
+		<a time="017" text="エメラルドショット" sync="エメラルドウェポンの「エメラルドショット」" />
+		<a time="023" text="魔導アルテマ" sync="エメラルドウェポンは「魔導アルテマ」の構え。" notice="次は、魔導アルテマ。" />
+		<a time="030" sync="エメラルドウェポンの「魔導アルテマ」" />
+		<a time="035" text="爆雷生成" sync="エメラルドウェポンは「爆雷生成」の構え。" notice="次は、爆雷生成。" />
+		<a time="040" sync="エメラルドウェポンの「爆雷生成」" />
+		<a time="066" sync="ガイウス・バエサル:この基地ごと破壊する気か……！？" />
+		<a time="076" text="エメラルドビーム" sync="エメラルドウェポンの「エメラルドビーム」" notice="次は、エメラルドビーム。回転" notice-o="-6" icon="TurnL.png" />
+		<a time="088" text="魔導マグネット" sync="エメラルドウェポンは「魔導マグネット」の構え。" notice="次は、魔導マグネット。" />
+		<a time="093" sync="エメラルドウェポンの「魔導マグネット」" />
+		<a time="100" text="フォトンバースト" sync="エメラルドウェポンの「フォトンバースト」" notice="次は、フォトンバースト。ボスから離れる。" />
+		<a time="113" text="魔導マグネット" sync="エメラルドウェポンは「魔導マグネット」の構え。" notice="次は、魔導マグネット。マーカー付いたら捨てる" />
+		<a time="119" sync="エメラルドウェポンの「魔導マグネット」" />
+		<a time="133" text="エメラルドビーム" sync="エメラルドウェポンは「エメラルドビーム」の構え。" notice="次は、エメラルドビーム。回転" notice-o="-6" icon="TurnL.png" />
+		<a time="149" sync="エメラルドウェポンの「エメラルドビーム」" notice="次は、エメラルドビーム。" />
+		<a time="155" text="魔導アルテマ" sync="エメラルドウェポンは「魔導アルテマ」の構え。" notice="次は、魔導アルテマ。" />
+		<a time="162" sync="エメラルドウェポンの「魔導アルテマ」" />
+
+		<a time="172" text="アームビット：円形射撃" sync="エメラルドウェポンの「アームビット：円形射撃」" notice="次は、ボス足元え" icon="AOEOutside.png" notice-o="-8" />
+		<a time="174" text="インペラ" sync="エメラルドウェポンは「ディヴィデ・エト・インペラ」の構え。" notice="次は、インペラ。散会" />
+		<a time="180" text="インペラ 発動" sync="エメラルドウェポンの「ディヴィデ・エト・インペラ」" />
+
+		<a time="190" text="分離" sync="エメラルドウェポンは「分離」の構え。" notice="次は、分離" />
+		<a time="194" sync="エメラルドウェポンの「分離」" />
+		<a time="195" text="噴射" sync="エメラルドウェポンは「噴射」の構え。" notice="次は、噴射、ボスから離れる" />
+		<a time="199" text="噴射 発動" sync="エメラルドウェポンの「噴射」" />
+
+		<a time="233" text="フォトンサークル" sync="エメラルドウェポンの「フォトンサークル」" notice="次は、フォトンサークル、ボスから離れる" notice-o="-8" />
+		<a time="239" text="魔導マグネット" sync="エメラルドウェポンは「魔導マグネット」の構え。" notice="次は、魔導マグネット。" />
+		<a time="247" sync="エメラルドウェポンの「魔導マグネット」" />
+		<a time="256" text="波動レーザー" sync="エメラルドウェポンは「波動レーザー」の構え。" notice="次は、波動レーザー。" />
+		<a time="261" sync="エメラルドウェポンの「波動レーザー」" />
+		<a time="274" text="魔導アルテマ" sync="エメラルドウェポンは「魔導アルテマ」の構え。" notice="次は、魔導アルテマ。" />
+		<a time="281" sync="エメラルドウェポンの「魔導アルテマ」" />
+
+		<a time="293" text="アームビット：円形射撃" sync="エメラルドウェポンの「アームビット：円形射撃」" notice="次は、ボス足元え" icon="AOEOutside.png" notice-o="-8" />
+		<a time="295" text="ディヴィデ・エト・インペラ" sync="エメラルドウェポンは「ディヴィデ・エト・インペラ」の構え。" notice="次は、インペラ。散会" />
+		<a time="300" sync="エメラルドウェポンの「ディヴィデ・エト・インペラ」" />
+		<a time="307" sync="レックスの声:この……この戦闘データを使って、負けるわけにはいかねえんだ！" />
+		<a time="307" text="妨害思念" sync="エメラルドウェポンは「妨害思念」の構え。" notice="次は、妨害思念。" />
+		<a time="312" text="妨害思念 発動 スタン" sync="エメラルドウェポンの「妨害思念」" />
+
+		<t sync="エメラルドウェポンは「ディヴィデ・エト・インペラ" sync-count="1">
+			<load target="後半" truncate="true" />
+		</t>
+
+		<t text="直線AoE" sync="^1B:[id8]:[mex]:0000:0000:0017:0000:0000:0000:" notice="マーカー付いた。直線捨てる。" >
+			<v-notice
+				icon="AOEVertical.png"
+				duration="10"
+				duration-visible="false"
+				order="-1" />
+		</t>
+	</s>
+
+	<s name="後半">
+		<load target="インペラ1回目" truncate="true" />
+	</s>
+
+	<s name="インペラ1回目">
+		<a time="09" text="インペラ" sync="エメラルドウェポンは「ディヴィデ・エト・インペラ」の構え。" notice="次は、インペラ。散会" notice-o="-6" />
+		<a time="16" text="インペラ 発動" sync="エメラルドウェポンの「ディヴィデ・エト・インペラ」" />
+		<a time="22" sync="ガイウスの幻影:すべての始まりは、困難なれば…… ターミナス・エスト！" />
+		<a time="23" text="ウーヌス" sync="エメラルドウェポンは「ターミナス・エスト：ウーヌス」の構え。" notice="次は、矢印。外周へ。" />
+		<a time="31" text="ウーヌス 発動" sync="エメラルドウェポンの「ターミナス・エスト：ウーヌス」" />
+		<a time="41" text="トレース" sync="エメラルドウェポンは「ターミナス・エスト：トレース」の構え。" notice="次は、トレース。剣よける" />
+		<a time="50" text="ガイウス軍団1回目" goto="ガイウス軍団1回目" />
+  </s>
+  
+	<s name="ガイウス軍団1回目"><!-- +29 70s -->
+		<a time="10" sync="ガイウスの幻影:出でよ、我が兵、我が軍団！" />
+		<a time="10" text="レギオ・ファンタズマティス" sync="エメラルドウェポンは「レギオ・ファンタズマティス」の構え。" notice="次は、レギオ・ファンタズマティス。" />
+		<a time="16" text="レギオ・ファンタズマティス" sync="エメラルドウェポンの「レギオ・ファンタズマティス」" />
+		<a time="20" sync="ガイウスの幻影:魔導兵器を押し立てよ！" />
+		<a time="25" text="機動戦術" sync="ガイウスの幻影の「機動戦術」" />
+		<a time="37" text="No.IX" sync="ガイウスの幻影の「No.IX」" notice="次は、ナンバーフォー。" />
+		<a time="39" sync="ガイウスの幻影:飛行部隊に通信、空爆を実行せよ！" />
+		<a time="40" text="空爆命令" sync="ガイウスの幻影の「空爆命令」" notice="次は、空爆命令。" />
+		<a time="54" text="魔導カノン" sync="リーパーの幻影 starts using 魔導カノン" notice="次は、魔導カノン。中央へ。斜めにノックバック" icon="Leave.png" />
+		<a time="60" text="インペラ2回目" goto="インペラ2回目" />
+  </s>
+  
+	<s name="インペラ2回目"><!-- +30 130s -->
+		<a time="10" text="魔導アルテマ" sync="エメラルドウェポンは「魔導アルテマ」の構え。" notice="次は、魔導アルテマ。" />
+		<a time="17" text="魔導アルテマ" sync="エメラルドウェポンの「魔導アルテマ」" />
+		<a time="23" text="インペラ" sync="エメラルドウェポンは「ディヴィデ・エト・インペラ」の構え。" notice="次は、インペラ。" />
+		<a time="30" text="インペラ" sync="エメラルドウェポンの「ディヴィデ・エト・インペラ」" />
+		<a time="37" text="トレース" sync="エメラルドウェポンは「ターミナス・エスト：トレース」の構え。" notice="次は、トレース。剣よける" />
+		<a time="43" text="トレース" sync="エメラルドウェポンの「ターミナス・エスト：トレース」" />
+		<a time="45" text="分離1回目" goto="分離1回目" />
+  </s>
+  
+	<s name="分離1回目"><!-- +2 164s -->
+		<a time="10" text="分離" sync="エメラルドウェポンは「分離」の構え。" notice="次は、分離。" />
+		<a time="15" text="分離" sync="エメラルドウェポンの「分離」" />
+		<a time="16" text="噴射" sync="エメラルドウェポンは「噴射」の構え。" notice="次は、噴射。" />
+    <a time="46" text="ガイウス軍団2回目" goto="ガイウス軍団2回目" />
+    
+		<t text="噴射" sync="15:[id8]:エメラルドウェポン:55CF:分離" notice="噴射、ボスから離れる" >
+			<v-notice
+				icon="AOEInside.png"
+				duration="10"
+				duration-visible="false"
+				order="-1" />
+		</t>
+		<t text="側面掃射" sync="15:[id8]:エメラルドウェポン:55D3:分離" notice="側面掃射、肩が光ってない方へ、その後ノックバック" icon="Leave.png" >
+			<v-notice
+				icon="East.png"
+				duration="10"
+				duration-visible="false"
+				order="-1" />
+		</t>
+  </s>
+  
+	<s name="ガイウス軍団2回目"><!-- +26 201s -->
+		<a time="10" text="レギオ・ファンタズマティス" sync="エメラルドウェポンは「レギオ・ファンタズマティス」の構え。" notice="次は、レギオ・ファンタズマティス。" />
+		<a time="15" text="レギオ・ファンタズマティス" sync="エメラルドウェポンの「レギオ・ファンタズマティス」" />
+		<a time="20" sync="ガイウスの幻影:総力戦だ……全隊、戦闘配置に就け！" />
+		<a time="25" text="全軍集結" sync="ガイウスの幻影の「全軍集結」" />
+		<a time="36" text="全軍整列" sync="ガイウスの幻影の「全軍整列」" notice="次は、全軍整列。" />
+		<a time="41" sync="ガイウスの幻影:強者が弱者を導く先にこそ、未来がある…… 総攻撃を開始せよ！" />
+		<a time="42" text="全軍攻撃" sync="ガイウスの幻影の「全軍攻撃」" notice="次は、全軍攻撃。" />
+		<a time="46" text="一斉掃射1回目" sync="帝国兵の幻影 starts using 一斉掃射 on 帝国兵の幻影." notice="次は、一斉掃射。" />
+		<a time="48" text="一斉掃射2回目" sync="帝国兵の幻影 starts using 一斉掃射 on 帝国兵の幻影." notice="" />
+		<a time="50" text="一斉掃射3回目" sync="帝国兵の幻影 starts using 一斉掃射 on 帝国兵の幻影." notice="" />
+		<a time="53.1" text="魔導カノン" sync="リーパーの幻影 starts using 魔導カノン" notice="次は、魔導カノン。中央へ。斜めにノックバック" icon="Leave.png" />
+		<a time="71" text="剣捨て" goto="剣捨て" />
+  </s>
+  
+	<s name="剣捨て"><!-- +31 264s -->
+		<a time="14" text="ドゥオ" sync="エメラルドウェポンは「ターミナス・エスト：ドゥオ」の構え。" notice="次は、剣マーカー付与。外周に捨てる。" />
+		<a time="20" text="ドゥオ 発動" sync="エメラルドウェポンの「ターミナス・エスト：ドゥオ」" />
+		<a time="31" text="トレース" sync="エメラルドウェポンは「ターミナス・エスト：トレース」の構え。" notice="次は、トレース。剣よける" />
+		<a time="37" text="トレース 発動" sync="エメラルドウェポンの「ターミナス・エスト：トレース」" />
+		<a time="39" text="分離2回目" goto="分離2回目" />
+  </s>
+  
+	<s name="分離2回目"><!-- +2 289s -->
+		<a time="10" text="分離" sync="エメラルドウェポンは「分離」の構え。" notice="次は、分離。" />
+		<a time="15" text="分離" sync="エメラルドウェポンの「分離」" />
+		<a time="16" text="噴射 or 側面掃射" notice="次は、噴射か側面掃射。" />
+    <a time="29" text="最終フェーズ" goto="最終フェーズ" />
+    
+		<t text="噴射" sync="15:[id8]:エメラルドウェポン:55CF:分離" notice="噴射、ボスから離れる">
+			<v-notice
+				icon="AOEInside.png"
+				duration="10"
+				duration-visible="false"
+				order="-1" />
+		</t>
+		<t text="側面掃射" sync="15:[id8]:エメラルドウェポン:55D3:分離" notice="側面掃射、肩が光ってない方へ、その後ノックバック">
+			<v-notice
+				icon="East.png"
+				duration="10"
+				duration-visible="false"
+				order="-1" />
+		</t>
+  </s>
+  
+	<s name="最終フェーズ"><!-- +19 318s -->
+		<a time="10" text="ウーヌス" sync="エメラルドウェポンは「ターミナス・エスト：ウーヌス」の構え。" notice="次は、矢印。外周へ。" />
+		<a time="20" text="ウーヌス" sync="エメラルドウェポンの「ターミナス・エスト：ウーヌス」" />
+		<a time="20" text="インペラ" sync="エメラルドウェポンは「ディヴィデ・エト・インペラ」の構え。" notice="次は、インペラ。" />
+		<a time="36" text="インペラ" sync="エメラルドウェポンの「ディヴィデ・エト・インペラ」" />
+		<a time="46" sync="ガイウスの幻影:強者の支配に抗う者どもよ、ことごとく散るが良いッ！" />
+		<a time="46" text="魔導アルテマ：臨界出力" sync="エメラルドウェポンは「魔導アルテマ：臨界出力」の構え。" notice="次は、臨界出力。" />
+	</s>
+</timeline>

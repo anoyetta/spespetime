@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>絶バハムート討滅戦</name>
-  @{ var rev = "ver 3.2"; }
+  @{ var rev = "ver 5.1"; }
   <rev>@rev</rev>
   <description>
     絶バハムート討滅戦タイムライン
@@ -36,6 +36,12 @@
     2020.11.12 ver 3.0
     * ネールフェーズのファイアの通知を詳細化した
     * ネールフェーズのセリフギミックを詳細化した
+
+    2020.11.19 ver 4.0
+    * 連撃フェーズの玉とシェイカーの通知を追加した
+
+    2020.11.24 ver 5.0
+    * 黒炎の三重奏のネールの位置を検知するようにした
   *@
 
   @* 優先順位の定義 *@
@@ -45,6 +51,9 @@
 
     // ネールフェーズの雷の優先順位
     var thunder_order = new string[] { "[GNB]", "[DRK]", "[AST]", "[WHM]", "[NIN]", "[DRG]", "[BRD]", "[SMN]" };
+
+    // 連撃フェーズの玉とシェイカーの優先順位
+    var rengeki_order = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
   }
 
   <default target-element="Activity" target-attr="notice-d" value="Main" />
@@ -54,43 +63,43 @@
     <load target="P10 FINAL" truncate="true" />
   </t>
 
-  <!-- 玉優先度トリガ begin -->
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[0]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-29" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[1]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-28" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[2]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-27" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[3]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-26" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[4]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-25" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[5]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-24" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[6]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-23" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t text="$1\n← 玉" sync="1B:........:@tama_order[7]:0000:0000:0076:0000:0000:0000:">
-    <v-notice order="-22" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-  </t>
-
-  <t name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" />
-  <!-- 玉優先度トリガ end -->
-
   <s name="P1 ツインタニア">
+    <!-- 玉優先度トリガ begin -->
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[0]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-29" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[1]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-28" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[2]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-27" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[3]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-26" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[4]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-25" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[5]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-24" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[6]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-23" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t text="$1\n← 玉" sync="1B:........:@tama_order[7]:0000:0000:0076:0000:0000:0000:">
+      <v-notice order="-22" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+    </t>
+
+    <t name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" />
+    <!-- 玉優先度トリガ end -->
+
     <a time="000" text="VS Bahamut" />
     <a time="000" text="@rev" />
 
@@ -293,7 +302,7 @@
     </t>
 
     <!-- セリフ分岐 begin -->
-    @{ var second_gimmick_delay = 5.5d; }
+    @{ var second_gimmick_delay = 5.4d; }
 
     <!-- 近寄る→離れる -->
     <t text="近寄る➜離れる" sync="月よ！ 鉄の覇道を照らせ！" notice="近寄る、離れる。">
@@ -479,7 +488,8 @@
     <a time="197" text="レイヴェンズビーク" sync="「レイヴェンズビーク」の構え。" notice="次、タンクスイッチ" icon="Switch.png" />
     <a time="204" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
     <a time="213" text="メガフレア" notice="" icon="Timeout.png" />
-    <a time="226" text="バハムートへ" sync="16:[id8]:バハムート・プライム:26D1:第七霊災:" goto="P3 進軍の三重奏" sync-s="-50" />
+
+    <a time="226" text="バハムートへ" sync=":バハムート・プライム:26D1:第七霊災:" goto="P3 進軍の三重奏" sync-s="-100" />
   </s>
 
   <s name="P3 進軍の三重奏">
@@ -503,15 +513,43 @@
     <a time="048" text="テンペスト" icon="Twister.png" />
     <a time="058" text="フレアブレス" icon="Targetaoe03.png" />
     <a time="061" text="フラッテン" sync="バハムート・プライムは「フラッテン」の構え" icon="HardAttack.png" />
-    <a time="070" text="黒炎の三重奏へ" sync="バハムート・プライムは「黒炎の三重奏」の構え" notice="" goto="P4 黒炎の三重奏" />
-    <a time="091" text="移行(予備トリガ)" sync="バハムート・プライムは「黒炎の三重奏」の構え" notice="" goto="P4 黒炎の三重奏" sync-s="-20" />
+    <a time="070" text="黒炎の三重奏へ" sync="バハムート・プライムは「黒炎の三重奏」の構え" notice="" goto="P4 黒炎の三重奏" sync-s="-30" sync-e="30" />
   </s>
 
   <s name="P4 黒炎の三重奏">
-    <t text="頭割り" sync="^1B:[id8]:[mex]:0000:[id4]:0027:0000:0000:0000:">
+    <a time="008" name="ネールの位置ダンプ1">
+      <dump name="ネールの位置1" target="Position" />
+    </a>
+
+    @{
+      var nael_pos_list = new[] 
+      {
+        new { X="21.50", Y="21.02", icon="Arrow1.png", caption="Ａへ",   notice="アルファえー" },
+        new { X="21.83", Y="21.17", icon="Arrow2.png", caption="ＡＢへ", notice="アルファブラボーえー" },
+        new { X="21.98", Y="21.50", icon="Arrow3.png", caption="Ｂへ",   notice="ブラボーえー" },
+        new { X="21.83", Y="21.83", icon="Arrow4.png", caption="ＢＣへ", notice="ブラボーチャーリーえー" },
+        new { X="21.50", Y="21.98", icon="Arrow5.png", caption="Ｃへ",   notice="チャーリーえー" },
+        new { X="21.17", Y="21.83", icon="Arrow6.png", caption="ＣＤへ", notice="チャーリーデルタえー" },
+        new { X="21.02", Y="21.50", icon="Arrow7.png", caption="Ｄへ",   notice="デルタえー" },
+        new { X="21.17", Y="21.17", icon="Arrow8.png", caption="ＤＡへ", notice="デルタアルファえー" },
+      };
+    }
+
+    @{
+      foreach (var p in nael_pos_list) {
+        <t name="@p.caption" text="@p.caption" notice="@p.notice">
+          <p-sync interval="60">
+            <combatant name="ネール・デウス・ダーナス" X="@p.X" Y="@p.Y" tolerance="0.01" />
+          </p-sync>
+          <v-notice duration="10" duration-visible="false" icon="@p.icon" />
+        </t>
+      }
+    }
+
+    <t text="頭割り" sync="^1B:[id8]:[mex]:0000:[id4]:0027:0000:0000:0000:" notice="頭割りー">
       <v-notice duration="6" icon="DamageShare.png" duration-visible="false" />
     </t>
-    <t text="塔踏み" sync="^1B:[id8]:[nex]:0000:[id4]:0027:0000:0000:0000:" sync-count="4">
+    <t text="塔踏み" sync="^1B:[id8]:[nex]:0000:[id4]:0027:0000:0000:0000:" sync-count="4" notice="塔に入るー">
       <v-notice duration="6" icon="FallingObject.png" duration-visible="false" />
     </t>
 
@@ -524,18 +562,22 @@
     <a time="039" text="フレアブレス1" sync="バハムート・プライムの「フレアブレス」" notice="次、フレアブレス。" icon="Targetaoe03.png" />
     <a time="041" text="フレアブレス2" icon="Targetaoe03.png" />
     <a time="043" text="フレアブレス3" icon="Targetaoe03.png" />
-    <a time="051" text="厄災の三重奏" sync="バハムート・プライムは「厄災の三重奏」の構え。" notice="" />
+    <a time="051" text="厄災の三重奏" sync="バハムート・プライム starts using 厄災の三重奏" notice="" />
+
+    <a time="057.5" name="ネールの位置ダンプ2">
+      <dump name="ネールの位置2" target="Position" />
+    </a>
 
     <!-- ネールのセリフ分岐 -->
     <a time="060" text="分岐待ち" icon="分岐.png" />
 
     <!-- セリフによる移行先フェーズ分岐 begin -->
-    <t text="ダイナモ➜ダイブ" sync="我、月より舞い降りて" notice="次、ダイナモ。集まる。">
+    <t text="ダイナモ➜ダイブ" sync="我、月より舞い降りて" notice="次、ダイナモ。集まる。" sync-s="-30" sync-e="30">
       <load target="P5 厄災の三重奏ダイナモ" truncate="true" />
       <v-notice icon="AOEOutside.png" duration-visible="false" duration="7" order="-1" />
     </t>
 
-    <t text="ダイブ➜ダイナモ" sync="我、舞い降りて月を仰ぎ" notice="次、ダイブ。散開。">
+    <t text="ダイブ➜ダイナモ" sync="我、舞い降りて月を仰ぎ" notice="次、ダイブ。散開。" sync-s="-30" sync-e="30">
       <load target="P5 厄災の三重奏ダイブ" truncate="true" />
       <v-notice icon="SpreadA.png" duration-visible="false" duration="7" order="-1" />
     </t>
@@ -582,6 +624,26 @@
   </s>
 
   <s name="P7 連撃の三重奏">
+
+    @{
+      var i = 0;
+
+      foreach (var member in rengeki_order) {
+        <t text="$1\n← 玉" sync="1B:........:@member:0000:0000:0076:0000:0000:0000:">
+          <v-notice order="@i" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+        </t>
+
+        <t text="$1\n← アース" sync="1B:........:@member:0000:[id4]:0028:0000:0000:0000:">
+          <v-notice order="@i" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+        </t>
+
+        i++;
+      }
+    }
+
+    <t name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" />
+    <t name="自分にアース" sync="1B:[id8]:[mex]:0000:[id4]:0028:0000:0000:0000:" notice="自分にアース" />
+
     <a time="009" text="魔力錬成" sync="ツインタニア starts using 魔力錬成" notice="" />
     <a time="013" text="魔力錬成" notice="" />
     <a time="015" text="8連メテオストリーム" notice="" />

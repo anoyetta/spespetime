@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編1</name>
-  <rev>rev1</rev>
+  <rev>rev2</rev>
   <description>
     希望の園エデン零式： 再生編1 のスペスペたいむ定義です。
   </description>
@@ -73,7 +73,7 @@
       icon="Pair.png" />
   </t>
 
-  <!-- ID不定のため一旦封印 -->
+  <!-- 闇の戦技:二重/三重 ID不定のため一旦封印 begin -->
   <!--
   <t name="連続：右が安全" sync="^1B:[id8]:暗闇の雲:0000:[id4]:0177:0000:0000:0000:" notice="右側えー。" >
     <v-notice
@@ -111,7 +111,9 @@
       icon="SpreadB.png" />
   </t>
   -->
+  <!-- 闇の戦技:二重/三重 end -->
 
+  <!-- 闇の戦技:二重/三重 シンプルな注意勧告 begin -->
   <t no="0" name="闇の戦技 予兆クリア1" sync="暗闇の雲 starts using 闇の戦技：二重" notice="2連予兆">
     <expressions>
       <set name="shadow_skill_no" count="0" />
@@ -150,6 +152,7 @@
     </expressions>
     <v-notice text="予兆3 左／右" duration="5" duration-visible="false" order="-1" icon="Check.png" />
   </t>
+  <!-- 闇の戦技:二重/三重 シンプルな注意勧告 end -->
 
   <!-- 跳躍式波動砲 begin -->
   if (Model.Player.InRole("TANK")) {
@@ -169,6 +172,24 @@
         duration-visible="false"
         order="-1"
         icon="DamageShare.png" />
+    </t>
+  } else {
+    <t name="高射式" sync="「高射式 跳躍波動砲：零式」を唱えた。" notice="円形ＡＯＥ">
+      <v-notice
+        text="円形ＡＯＥ"
+        duration="10"
+        duration-visible="false"
+        order="-1"
+        icon="Targetaoe01.png" />
+    </t>
+  
+    <t name="広角式" sync="「広角式 跳躍波動砲：零式」を唱えた。" notice="ボスから扇形">
+      <v-notice
+        text="ボスから扇形"
+        duration="10"
+        duration-visible="false"
+        order="-1"
+        icon="Targetaoe03.png" />
     </t>
   }
   <!-- 跳躍式波動砲 begin -->

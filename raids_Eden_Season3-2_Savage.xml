@@ -1,17 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編2</name>
-  <rev>digest</rev>
+  <rev>rev1</rev>
   <description>
     希望の園エデン零式： 再生編2 のスペスペたいむ定義です。
   </description>
-  <author>anoyetta</author>
+  <author>anoyetta, sheeva</author>
   <license>CC BY-SA</license>
   <zone>947,Eden's Promise: Litany (Savage)</zone>
   <locale>JA</locale>
-  <entry>PHASE1</entry>
   <start>0039:戦闘開始！</start>
 
-  <s name="PHASE1">
-  </s>
+  <default target-element="Activity" target-attr="notice-o" value="-9" />
+
+  <t name="インプロージョン：前方攻撃" sync="^14:(56F0|56FC):影の王 starts using インプロージョン on 影の王." notice="影のある方えー。" >
+    <v-notice
+      text="影のある方へ"
+      duration="6"
+      order="-1"
+      icon="StackBack.png" />
+  </t>
+
+  <t name="インプロージョン：後方攻撃" sync="^14:(56F3|5700):影の王 starts using インプロージョン on 影の王." notice="影のない方えー。" >
+    <v-notice
+      text="影のない方へ"
+      duration="6"
+      order="-1"
+      icon="StackFront.png" />
+  </t>
+
+  <t name="シャドウアンリーシュ" sync="影の王は「シャドウアンリーシュ」の構え。" notice="頭割り" >
+    <v-notice
+      text="頭割り"
+      duration="6"
+      order="-1"
+      icon="DamageShare.png" />
+  </t>
+
+  <t name="シャドウスラッシュ" sync="影の王は「シャドウスラッシュ」の構え。" notice="直線範囲。" >
+    <v-notice
+      text="直線範囲"
+      duration="6"
+      order="-1"
+      icon="Targetaoe02.png" />
+  </t>
+
+  <t name="影：上向き" sync="^26:[id8]:[mex]:[id8]:.*:0973:" >
+    <expressions>
+      <set name="ShadowDirection" value="N" ttl="12" />
+    </expressions>
+    <v-notice
+      duration="12"
+      order="-1"
+      icon="Arrow1.png" />
+  </t>
+
+  <t name="影：下向き" sync="^26:[id8]:[mex]:[id8]:.*:0974:" >
+    <expressions>
+      <set name="ShadowDirection" value="S" ttl="12" />
+    </expressions>
+    <v-notice
+      duration="12"
+      order="-1"
+      icon="Arrow5.png" />
+  </t>
+
+  <t name="影：右向き" sync="^26:[id8]:[mex]:[id8]:.*:0975:" >
+    <expressions>
+      <set name="ShadowDirection" value="E" ttl="12" />
+    </expressions>
+    <v-notice
+      duration="12"
+      order="-1"
+      icon="Arrow3.png" />
+  </t>
+
+  <t name="影：左向き" sync="^26:[id8]:[mex]:[id8]:.*:0976:" >
+    <expressions>
+      <set name="ShadowDirection" value="W" ttl="12" />
+    </expressions>
+    <v-notice
+      duration="12"
+      order="-1"
+      icon="Arrow7.png" />
+  </t>
+
+  <t name="右スラッシュ：影上向き" sync="^14:5B2C:影の王 starts using ギガスラッシュ on 影の王." notice="右えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="N" />
+    </expressions>
+    <v-notice
+      text="ボス右へ"
+      duration="10"
+      order="-2"
+      icon="West.png" />
+  </t>
+
+  <t name="右スラッシュ：影下向き" sync="^14:5B2C:影の王 starts using ギガスラッシュ on 影の王." notice="左えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="S" />
+    </expressions>
+    <v-notice
+      text="ボス左へ"
+      duration="10"
+      order="-2"
+      icon="East.png" />
+  </t>
+
+  <t name="右スラッシュ：影右向き" sync="^14:5B2C:影の王 starts using ギガスラッシュ on 影の王." notice="背面えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="E" />
+    </expressions>
+    <v-notice
+      text="ボス背面へ"
+      duration="10"
+      order="-2"
+      icon="North.png" />
+  </t>
+
+  <t name="右スラッシュ：影左向き" sync="^14:5B2C:影の王 starts using ギガスラッシュ on 影の王." notice="正面えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="W" />
+    </expressions>
+    <v-notice
+      text="ボス正面へ"
+      duration="10"
+      order="-2"
+      icon="South.png" />
+  </t>
+
+  <t name="左スラッシュ：影上向き" sync="^14:5B2D:影の王 starts using ギガスラッシュ on 影の王." notice="左えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="N" />
+    </expressions>
+    <v-notice
+      text="ボス左へ"
+      duration="10"
+      order="-2"
+      icon="East.png" />
+  </t>
+
+  <t name="左スラッシュ：影下向き" sync="^14:5B2D:影の王 starts using ギガスラッシュ on 影の王." notice="右えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="S" />
+    </expressions>
+    <v-notice
+      text="ボス右へ"
+      duration="10"
+      order="-2"
+      icon="West.png" />
+  </t>
+
+  <t name="左スラッシュ：影右向き" sync="^14:5B2D:影の王 starts using ギガスラッシュ on 影の王." notice="正面えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="E" />
+    </expressions>
+    <v-notice
+      text="ボス正面へ"
+      duration="10"
+      order="-2"
+      icon="South.png" />
+  </t>
+
+  <t name="左スラッシュ：影左向き" sync="^14:5B2D:影の王 starts using ギガスラッシュ on 影の王." notice="背面えー。" >
+    <expressions>
+      <pre name="ShadowDirection" value="W" />
+    </expressions>
+    <v-notice
+      text="ボス背面へ"
+      duration="10"
+      order="-2"
+      icon="North.png" />
+  </t>
+
+  @if (Model.Player.InRole("TANK")) {
+    <t name="スマッシュクリア" sync="影の王は「アンブラスマッシュ」の構え。" notice="スマッシュ">
+      <expressions>
+        <set name="smash_count" count="0" />
+      </expressions>
+      <v-notice
+        text="スマッシュ"
+        duration="3.5"
+        duration-visible="false"
+        order="-2"
+        icon="HardAttack.png" />
+    </t>
+
+    <t no="1" name="スマッシュ++" sync="影の王の「アンブラスマッシュ」">
+      <expressions>
+        <set name="smash_count" count="+1" />
+      </expressions>
+    </t>
+
+    <t no="2" name="スマッシュスイッチ" sync="影の王の「アンブラスマッシュ」" notice="スイッチ">
+      <expressions>
+        <pre name="smash_count" count="4" />
+      </expressions>
+      <v-notice
+        text="スイッチ"
+        duration="2"
+        duration-visible="false"
+        order="-2"
+        icon="Switch.png" />
+    </t>
+  }
+
+  <a time="011.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="019.0" sync="影の王:我は「影の王」……！ その意味するところを知らねば、我が刃を避けられまいよ！" />
+  <a time="025.0" text="インプロージョン" sync="影の王の「インプロージョン」" />
+  <a time="032.0" text="影の王権（離れる）" notice="次は、離れるー。" />
+  <a time="042.0" text="ギガスラッシュ" sync="影の王の「ギガスラッシュ」" />
+  <a time="054.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
+  <a time="067.0" text="頭割りor前方範囲" sync="影の王の「シャドウ(アンリーシュ|スラッシュ)」" />
+  <a time="074.0" sync="影の王:お前たちの影を、我が配下としよう……！ 己が影と殺し合うがいい！" />
+  <a time="082.0" text="シャドウクリーヴ" sync="影の王の「シャドウクリーヴ」" notice="次は、離れて散開。" />
+  <a time="095.0" text="ダブルスペル" sync="影の王の「ダブルスペル」" />
+  <a time="096.0" text="頭割り１" notice="1回目" />
+  <a time="099.0" text="頭割り２" notice="2回目" />
+  <a time="102.0" text="頭割り３" notice="3回目" />
+  <a time="104.0" sync="影の王:影の疾さを知れ！ 英雄の影たちよ、背後に回るのだ……！" />
+  <a time="108.0" text="影の王命" sync="影の王の「影の王命」" />
+  <a time="121.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
+  <a time="135.0" text="頭割りor前方範囲" sync="影の王の「シャドウ(アンリーシュ|スラッシュ)」" />
+  <a time="142.0" sync="影の王:すべての影は、我が領土…… お前たちの影すら例外ではない！" />
+  <a time="146.0" text="影の従僕" sync="影の王の「影の従僕」" />
+  <a time="156.3" text="ギガスラッシュ" />
+  <a time="175.0" text="ギガスラッシュ" />
+  <a time="190.0" text="ノックバック"  notice="次は、ノックバック" />
+  <a time="209.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
+  <a time="217.0" text="オーブ着弾" />
+  <a time="226.0" text="スポーンシャドウ" sync="影の王の「スポーンシャドウ」" />
+  <a time="239.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
+  <a time="247.7" text="オーブ着弾" />
+  <a time="261.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="274.0" text="影潜り" sync="影の王の「影潜り」" />
+  <a time="286.0" text="インプロージョン" sync="影の王の「インプロージョン」" />
+  <a time="297.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="309.0" text="連続インプロージョン" />
+  <a time="329.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="340.3" text="影の王権（離れる）" notice="次は、離れるー。" />
+  <a time="352.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
+  <a time="362.0" text="頭割りor前方範囲" sync="影の王の「シャドウ(アンリーシュ|スラッシュ)」" />
+  <a time="369.0" sync="影の王:闇に沈みし我が故郷よ……！ 虚ろなる力を、我に注ぎ込め……！" />
+  <a time="374.0" text="ヴォイドゲート" sync="影の王の「ヴォイドゲート」" />
+  <a time="380.0" text="影の従僕" sync="影の王の「影の従僕」" />
+  <a time="391.4" text="床踏み+ギガスラ" />
+  <a time="399.0" text="影の従僕" />
+  <a time="404.5" text="床踏み" />
+  <a time="412.5" text="ギガスラッシュ" />
+  <a time="432.0" text="シャドウスワンプ" sync="影の王の「シャドウスワンプ」" />
+  <a time="438.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
+  <a time="445.5" text="ノックバック"  notice="次は、ノックバック" />
+  <a time="447.4" text="オーブ着弾" />
+  <a time="456.0" text="連続インプロージョン" sync="影の王の「インプロージョン」" />
+  <a time="471.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="484.0" text="離別の鎖" sync="影の王の「離別の鎖」" />
+  <a time="492.0" text="影潜り" sync="影の王の「影潜り」" />
+  <a time="500.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
+  <a time="522.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="532.2" text="影の王権（離れる）" notice="次は、離れるー。" />
+  <a time="545.0" text="シャドウスワンプ" sync="影の王の「シャドウスワンプ」" />
+  <a time="563.0" text="ギガスラッシュ" sync="影の王の「ギガスラッシュ」" />
+  <a time="570.0" text="ヴォイドゲート・アンプリファイア" sync="影の王の「ヴォイドゲート・アンプリファイア」" />
+  <a time="577.0" text="影の王命" sync="影の王の「影の王命」" />
+  <a time="585.3" text="塔踏み" />
+  <a time="589.5" text="エラプション" />
+  <a time="594.8" text="束縛の鎖" />
+  <a time="600.4" text="塔踏み" notice="塔踏み" />
+  <a time="612.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
+  <a time="622.0" text="頭割りor前方範囲" sync="影の王の「シャドウ(アンリーシュ|スラッシュ)」" />
+  <a time="629.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
+  <a time="631.8" text="ノックバック" sync="影の王 starts using 影の遠吠え on 影の王." notice="次は、ノックバック。" />
+  <a time="639.0" text="オーブ発動" />
+  <a time="649.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="661.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="672.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+  <a time="707.4" text="時間切れ" />
 </timeline>

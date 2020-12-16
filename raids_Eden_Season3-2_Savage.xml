@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編2</name>
-  <rev>rev1</rev>
+  <rev>rev2</rev>
   <description>
     希望の園エデン零式： 再生編2 のスペスペたいむ定義です。
   </description>
@@ -205,9 +205,28 @@
     </t>
   }
 
+  <t name="人モード" sync="影の王 starts using 影の王権" notice="離れるー">
+    <v-notice
+      text="離れる"
+      duration="6.2"
+      duration-visible="true"
+      order="-2"
+      icon="Leave.png" />
+  </t>
+
+  <t name="獣モード" sync="影の王 starts using 影の遠吠え" notice="ノックバック注意">
+    <v-notice
+      text="ノックバック注意"
+      duration="6.2"
+      duration-visible="true"
+      order="-2"
+      icon="KnockBack.png" />
+  </t>
+
   <a time="011.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
   <a time="019.0" sync="影の王:我は「影の王」……！ その意味するところを知らねば、我が刃を避けられまいよ！" />
   <a time="025.0" text="インプロージョン" sync="影の王の「インプロージョン」" />
+
   <a time="032.0" text="影の王権（離れる）" notice="次は、離れるー。" />
   <a time="042.0" text="ギガスラッシュ" sync="影の王の「ギガスラッシュ」" />
   <a time="054.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
@@ -238,6 +257,7 @@
   <a time="297.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
   <a time="309.0" text="連続インプロージョン" />
   <a time="329.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+
   <a time="340.3" text="影の王権（離れる）" notice="次は、離れるー。" />
   <a time="352.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
   <a time="362.0" text="頭割りor前方範囲" sync="影の王の「シャドウ(アンリーシュ|スラッシュ)」" />
@@ -258,6 +278,7 @@
   <a time="492.0" text="影潜り" sync="影の王の「影潜り」" />
   <a time="500.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
   <a time="522.0" text="Dシャドウノヴァ" notice="次は、全体攻撃。" />
+
   <a time="532.2" text="影の王権（離れる）" notice="次は、離れるー。" />
   <a time="545.0" text="シャドウスワンプ" sync="影の王の「シャドウスワンプ」" />
   <a time="563.0" text="ギガスラッシュ" sync="影の王の「ギガスラッシュ」" />

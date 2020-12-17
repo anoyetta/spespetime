@@ -1,17 +1,670 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>digest</rev>
+  <rev>rev1</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
   </description>
-  <author>anoyetta</author>
+  <author>anoyetta, sheeva</author>
   <license>CC BY-SA</license>
   <zone>949,Eden's Promise: Eternity (Savage)</zone>
   <locale>JA</locale>
-  <entry>PHASE1</entry>
+  <entry>ENTRY</entry>
   <start>0039:戦闘開始！</start>
 
-  <s name="PHASE1">
+  <default target-element="Activity" target-attr="notice-o" value="-9" />
+
+  <script name="detect_sign_init" event="OnLoad">
+    var global = DynamicObject.ZoneGlobal;
+
+    if (global.SignRegex == null)
+    {
+      global.SignRegex = new Regex(
+        "^1B:........:.+:0000:....:(?&lt;sign_id&gt;....):0000:0000:0000:",
+        RegexOptions.Compile);
+
+      global.PlayerSignRegex = new Regex(
+        "^1B:........:@Model.Player.Name:0000:....:(?&lt;sign_id&gt;....):0000:0000:0000:",
+        RegexOptions.Compile);
+
+      global.SignList = new List&lt;int&gt;();
+    }
+
+    if (global.SignList.Any())
+    {
+      global.SignOrigin = global.SignList.Min();
+
+      global.SignY = global.SignOrigin - 0x0021;
+      global.SignR = global.SignOrigin - 0x0020;
+      global.SignB = global.SignOrigin - 0x0019;
+
+      global.Dice1 = global.SignOrigin - 0x0049;
+      global.Dice2 = global.SignOrigin - 0x0048;
+      global.Dice3 = global.SignOrigin - 0x0047;
+      global.Dice4 = global.SignOrigin - 0x0046;
+      global.Dice5 = global.SignOrigin - 0x0045;
+      global.Dice6 = global.SignOrigin - 0x0044;
+      global.Dice7 = global.SignOrigin - 0x0043;
+      global.Dice8 = global.SignOrigin - 0x0042;
+    }
+  </script>
+
+  <script name="detect_sign" event="OnLogs">
+    var xivLogs = CurrentLogs;
+
+    foreach (var xivLog in xivLogs)
+    {
+      if (global.SignRegex != null)
+      {
+        var match = global.SignRegex.Match(xivLog.LogLine);
+        if (match.Success)
+        {
+          var sign = Convert.ToInt32(match.Groups["sign_id"].Value, 16);
+
+          if (!global.SignList.Contains(sign))
+          {
+            global.SignList.Add(sign);
+          }
+        }
+      }
+
+      if (global.PlayerSignRegex != null)
+      {
+        var match = global.PlayerSignRegex.Match(xivLog.LogLine);
+        if (match.Success)
+        {
+          var sign = Convert.ToInt32(match.Groups["sign_id"].Value, 16);
+
+          switch (sign)
+          {
+            case global.SignY:
+              ShowTicker("自分にイエロー");
+              TTS("自分にイエロー");
+              break;
+
+            case global.SignR:
+              ShowTicker("自分にレッド");
+              TTS("自分にレッド");
+              break;
+
+            case global.SignB:
+              ShowTicker("自分にブルー");
+              TTS("自分にブルー");
+              break;
+
+            case global.Dice1:
+              ShowTicker("自分に１番");
+              TTS("自分に１番");
+              break;
+
+            case global.Dice2:
+              ShowTicker("自分に２番");
+              TTS("自分に２番");
+              break;
+
+            case global.Dice3:
+              ShowTicker("自分に３番");
+              TTS("自分に３番");
+              break;
+
+            case global.Dice4:
+              ShowTicker("自分に４番");
+              TTS("自分に４番");
+              break;
+
+            case global.Dice5:
+              ShowTicker("自分に５番");
+              TTS("自分に５番");
+              break;
+
+            case global.Dice6:
+              ShowTicker("自分に６番");
+              TTS("自分に６番");
+              break;
+
+            case global.Dice7:
+              ShowTicker("自分に７番");
+              TTS("自分に７番");
+              break;
+
+            case global.Dice8:
+              ShowTicker("自分に８番");
+              TTS("自分に８番");
+              break;
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 前半/後半の識別用エントリフェーズ -->
+  <s name="ENTRY">
+  <!-- 前半/後半識別 -->
+    <t sync="プロミス・オブ・エデン:理想郷では我らこそが唯一の存在……。" sync-count="1" >
+      <load target="前半" truncate="true" />
+    </t>
+    <t sync="闇の巫女:闇の巫女が紡ぐは神の詞（ことば）…… 忌まわしき光の使徒を、祓ってくれようぞ……！" sync-count="1">
+      <load target="PHASE1 後半開幕" truncate="true" />
+    </t>
+    <a time="10" text="前半後半の判別" icon="分岐" />
+  </s>
+
+  <s name="前半" >
+    <t text="ジャンクション1：タイタン" sync="^14:5895:プロミス・オブ・エデン starts using ジャンクション：タイタン on プロミス・オブ・エデン." >
+      <expressions>
+        <pre name="first_branch" value="true" />
+        <set name="first_branch" value="false" />
+        <set name="current_junction" value="titan" />
+      </expressions>
+      <v-notice
+        text="タイタン：頭割り"
+        duration="27"
+        icon="DamageShare.png"
+        order="-10" />
+    </t>
+
+    <t text="ジャンクション1：シヴァ" sync="^14:5894:プロミス・オブ・エデン starts using ジャンクション：シヴァ on プロミス・オブ・エデン." >
+      <expressions>
+        <pre name="first_branch" value="true" />
+        <set name="first_branch" value="false" />
+        <set name="current_junction" value="shiva" />
+      </expressions>
+      <v-notice
+        text="シヴァ：散開"
+        duration="27"
+        icon="Leave.png"
+        order="-10" />
+    </t>
+
+    <t text="ジャンクション2：タイタン" sync="^14:5895:プロミス・オブ・エデン starts using ジャンクション：タイタン on プロミス・オブ・エデン." >
+      <expressions>
+        <pre name="second_branch" value="true" />
+        <set name="current_junction" value="titan" />
+      </expressions>
+      <v-notice
+        text="タイタン：頭割り"
+        sync-to-hide="^1A:[id8]:[pc] gains the effect of 土属性耐性低下［強］"
+        duration="16"
+        icon="DamageShare.png"
+        order="-10" />
+    </t>
+
+    <t text="ジャンクション2：シヴァ" sync="^14:5894:プロミス・オブ・エデン starts using ジャンクション：シヴァ on プロミス・オブ・エデン." >
+      <expressions>
+        <pre name="second_branch" value="true" />
+        <set name="current_junction" value="shiva" />
+      </expressions>
+      <v-notice
+        text="シヴァ：散開"
+        sync-to-hide="^1A:[id8]:[pc] gains the effect of 氷属性耐性低下［強］"
+        duration="16"
+        icon="Leave.png"
+        order="-10" />
+    </t>
+
+    <t no="1" name="ドロー：リヴァイアサン" sync="^14:4E44:プロミス・オブ・エデン starts using テンポラリーカレント on プロミス・オブ・エデン." >
+      <expressions>
+        <set name="draw_leviathan" value="true" ttl="5" />
+      </expressions>
+    </t>
+
+    <t no="2" name="ドロー：イフリート" sync="^14:4E45:プロミス・オブ・エデン starts using コンフラグレーションストライク on プロミス・オブ・エデン." >
+      <expressions>
+        <set name="draw_ifrit" value="true" ttl="5" />
+      </expressions>
+    </t>
+
+    <t no="3" name="ドロー：ガルーダ" sync="^14:4E46:プロミス・オブ・エデン starts using フィアスストーム on プロミス・オブ・エデン." >
+      <expressions>
+        <set name="draw_garuda" value="true" ttl="5" />
+      </expressions>
+    </t>
+
+    <t no="4" name="ドロー：ラムウ" sync="^14:4E47:プロミス・オブ・エデン starts using 裁きの界雷 on プロミス・オブ・エデン." >
+      <expressions>
+        <set name="draw_ramuh" value="true" ttl="5" />
+      </expressions>
+    </t>
+
+    <t no="10" name="はなつ/リリース1" sync="^14:(4E43|5893)" notice="斜めに近寄る。" >
+      <expressions>
+        <pre name="draw_leviathan" value="true" />
+        <pre name="draw_garuda" value="true" />
+      </expressions>
+      <v-notice
+        text="斜めに近寄る"
+        duration="9"
+        order="-1" />
+    </t>
+
+    <t no="11" name="はなつ/リリース2" sync="^14:(4E43|5893)" notice="斜めに離れる。" >
+      <expressions>
+        <pre name="draw_ramuh" value="true" />
+        <pre name="draw_garuda" value="true" />
+      </expressions>
+      <v-notice
+        text="斜めに離れる"
+        duration="9"
+        order="-1" />
+    </t>
+
+    <t no="12" name="はなつ/リリース3" sync="^14:(4E43|5893)" notice="左右に近寄る。" >
+      <expressions>
+        <pre name="draw_leviathan" value="true" />
+        <pre name="draw_ifrit" value="true" />
+      </expressions>
+      <v-notice
+        text="左右に近寄る"
+        duration="9"
+        order="-1" />
+    </t>
+
+    <t no="13" name="はなつ/リリース4" sync="^14:(4E43|5893)" notice="前後で離れる。" >
+      <expressions>
+        <pre name="draw_leviathan" value="true" />
+        <pre name="draw_ramuh" value="true" />
+      </expressions>
+      <v-notice
+        text="前後で離れる"
+        duration="9"
+        order="-1" />
+    </t>
+
+    <t no="14" name="はなつ/リリース5" sync="^14:(4E43|5893)" notice="左右で離れる。" >
+      <expressions>
+        <pre name="draw_ifrit" value="true" />
+        <pre name="draw_ramuh" value="true" />
+      </expressions>
+      <v-notice
+        text="左右で離れる"
+        duration="9"
+        order="-1" />
+    </t>
+
+    <a time="000" name="変数リセット" >
+      <expressions>
+        <set name="first_branch" value="true" />
+        <set name="second_branch" value="false" />
+        <set name="current_junction" value="false" />
+      </expressions>
+    </a>
+    <a time="005.0" sync="プロミス・オブ・エデン:過去も未来も棄て、今この刻を永遠となす……！" />
+    <a time="016.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="025.0" sync="プロミス・オブ・エデン:世界の記憶を解き放とう……！" />
+    <a time="033.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
+    <a time="040.0" text="悦楽の手" sync="プロミス・オブ・エデンの「悦楽の手」" />
+    <a time="043.0" text="頭割りor散開" />
+    <a time="046.0" sync="プロミス・オブ・エデン:記憶は誇張され、改変される！" />
+    <a time="053.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
+    <a time="057.0" text="頭割りor散開" />
+    <a time="069.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
+    <a time="071.0" text="天罰の波動２" />
+    <a time="082.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="096.0" text="ジャンクション：シヴァ" sync="プロミス・オブ・エデンの「ジャンクション：シヴァ」" />
+    <a time="101.0" sync="プロミス・オブ・エデン:氷の記憶を再生する……！" />
+    <a time="107.0" text="ダイアモンドダスト" sync="プロミス・オブ・エデンの「ダイアモンドダスト」" />
+    <a time="112.9" text="氷床" />
+    <a time="114.0" text="頭割り" />
+    <a time="119.9" text="アイシクルインパクト" />
+    <a time="125.0" text="アイシクルインパクト" />
+    <a time="126.0" text="氷柱" />
+    <a time="135.0" text="アイシクルインパクト" />
+    <a time="138.0" text="ノックバック" notice="次は、ノックバック。" />
+    <a time="140.0" text="アイシクルインパクト" />
+    <a time="142.0" text="氷柱激突" sync="氷柱の「激突」" />
+    <a time="155.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="169.0" text="ジャンクション：タイタン" sync="プロミス・オブ・エデンの「ジャンクション：タイタン」" />
+    <a time="174.0" sync="プロミス・オブ・エデン:大地の記憶を再生する……！" />
+    <a time="180.0" text="大地の怒り" sync="プロミス・オブ・エデンの「大地の怒り」" />
+    <a time="188.0" text="ボム＋マーカー付与１" />
+    <a time="193.6" text="マーカー着弾" />
+    <a time="201.1" text="ボム＋マーカー付与２" />
+    <a time="206.6" text="マーカー着弾" />
+    <a time="214.1" text="ボム＋マーカー付与３" />
+    <a time="219.7" text="マーカー着弾" />
+    <a time="229.0" sync="プロミス・オブ・エデン:なぜ、そっとしておいてくれない？" />
+    <a time="239.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="259.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
+    <a time="259.0" text="オブリタレーション" sync="ガーディアン・オブ・エデンの「オブリタレーション」" />
+    <a time="270.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="277.0" sync="プロミス・オブ・エデン:この理想郷に、おまえたちは必要ない。" />
+    <a time="283.0" text="ストック" sync="プロミス・オブ・エデンの「ストック」" />
+    <a time="288.0" text="巨兵創出" sync="創られた男の「巨兵創出」" />
+    <a time="299.0" text="悦楽の手" sync="プロミス・オブ・エデンの「悦楽の手」" />
+    <a time="302.0" text="巨兵の光炎" sync="創られた男の「巨兵の光炎」" />
+    <a time="305.0" text="巨兵の光炎" />
+    <a time="309.0" text="巨兵の光炎" />
+    <a time="310.0" text="拒絶の手" sync="ガーディアン・オブ・エデンの「拒絶の手」" />
+
+    <a time="317.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
+    <a time="328.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="336.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
+    <a time="338.0" text="天罰の波動２" />
+    <a time="347.0" sync="プロミス・オブ・エデン:その存在ごと、記憶の彼方に消し去ろう！" />
+    <a time="352.0" text="ストック" sync="プロミス・オブ・エデンの「ストック」" />
+    <a time="363.0" text="悦楽の手" sync="プロミス・オブ・エデンの「悦楽の手」" />
+    <a time="371.0" text="メーザーアイ" sync="ガーディアン・オブ・エデンの「メーザーアイ」" />
+    <a time="372.0" sync="プロミス・オブ・エデン:己の記憶に、苦しむがいい……！" />
+    <a time="375.0" text="獅子の業火" />
+    <a time="380.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
+    <a time="384.0" text="獅子の業火" />
+    <a time="389.0" text="悦楽の手" sync="プロミス・オブ・エデンの「悦楽の手」" />
+    <a time="402.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="410.0" sync="プロミス・オブ・エデン:思い出など、脆く儚いもの……。" />
+    <a time="415.0" text="ストック" sync="プロミス・オブ・エデンの「ストック」" >
+      <expressions>
+        <set name="second_branch" value="true" />
+      </expressions>
+    </a>
+    <a time="425.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
+    <a time="434.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
+    <a time="446.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+    <a time="453.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
+    <a time="455.0" sync="プロミス・オブ・エデン:すぐに形を失い、色褪せていく……。" />
+    <a time="463.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
+    <a time="479.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
+    <a time="481.0" text="天罰の波動２" />
+    <a time="490.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃2回。" />
+    <a time="499.0" text="マレフィキウム" />
+    <a time="506.0" sync="プロミス・オブ・エデン:今こそ、約束が果たされるとき……。" />
+    <a time="511.0" sync="プロミス・オブ・エデン:さようなら、光の使徒。" />
+    <a time="511.0" text="時間切れ" sync="プロミス・オブ・エデンの「パラダイスロスト」" />
+  </s>
+
+  <s name="PHASE1 後半開幕" >
+    <t name="エラプション" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 16.96 Seconds." >
+      <v-notice
+        text="散開"
+        duration="17"
+        icon="Leave.png"
+        order="-1" />
+    </t>
+
+    <t name="ウォタガ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークウォタガ from  for 11.96 Seconds." sync-count="2" >
+      <v-notice
+        text="頭割り"
+        duration="12"
+        icon="DamageShare.png"
+        order="-1" />
+    </t>
+
+    <a time="010.0" sync="闇の巫女:古の魔力よ！ 創造の泉より湧きて、世界に希望をもたらせ！" />
+    <a time="015.0" text="ヘル・ジャッジメント" sync="闇の巫女の「ヘル・ジャッジメント」" />
+    <a time="023.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
+    <a time="025.0" sync="闇の巫女:死の言霊よ…… 刹那を刻み、終末の到来を遅延させる……！" />
+    <a time="032.0" text="ディレイスペル" sync="闇の巫女の「ディレイスペル」" />
+    <a time="040.0" text="スペル確認1"  />
+    <a time="045.0" text="ディレイスペル" sync="闇の巫女の「ディレイスペル」" />
+    <a time="053.0" text="スペル確認2" />
+    <a time="065.0" text="暗夜の舞踏技１" sync="闇の巫女の「暗夜の舞踏技」" />
+    <a time="068.0" text="暗夜の舞踏技２" />
+    <a time="080.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE2 序" />
+  </s>
+
+  <s name="PHASE2 序" >
+    <!-- 時間圧縮・序トリガー begin -->
+    <t name="ファイガ先" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークファイガ from  for 14.96 Seconds." sync-count="1" >
+      <v-notice
+        text="ファイガ"
+        duration="15"
+        icon="Targetaoe01.png"
+        order="-3" />
+    </t>
+    <t name="ファイガ後" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークファイガ from  for 28.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜ファイガ"
+        duration="29"
+        icon="Targetaoe01.png"
+        order="-1" />
+    </t>
+
+    <t name="ブリザガ先" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークブリザガ from  for 14.96 Seconds." sync-count="1" >
+      <v-notice
+        text="ブリザガ"
+        duration="15"
+        icon="AOEOutside.png"
+        order="-3" />
+    </t>
+    <t name="ブリザガ後" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークブリザガ from  for 28.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜ブリザガ"
+        duration="29"
+        icon="AOEOutside.png"
+        order="-1" />
+    </t>
+
+    <t name="シャドウアイ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：シャドウアイ from  for 21.96 Seconds." sync-count="0" >
+      <v-notice
+        text="➜シャドウアイ"
+        duration="22"
+        job-icon="true"
+        order="-2" />
+    </t>
+    <!-- 時間圧縮・序トリガー end -->
+    <a time="011.0" sync="闇の巫女:過去……現在……未来……。" />
+    <a time="022.0" text="時間圧縮・序" sync="闇の巫女の「時間圧縮・序」" />
+    <a time="030.0" text="スピード" sync="闇の巫女の「スピード」" />
+    <a time="044.7" text="リターン" />
+    <a time="068.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
+    <a time="078.0" sync="闇の巫女:昏き深淵よ！ いやはてより来たりて、終末を切り裂け！" />
+    <a time="083.0" text="アポカリプス・シングル" sync="闇の巫女の「アポカリプス・シングル」" />
+    <a time="093.0" text="カタクリスム" sync="闇の巫女の「カタクリスム」" />
+    <a time="101.0" text="ブラックヘイロー" sync="闇の巫女の「ブラックヘイロー」" />
+    <a time="109.0" text="シェルクラッシャー" sync="闇の巫女の「シェルクラッシャー」" />
+    <a time="115.0" text="スピリットテイカー" sync="闇の巫女の「スピリットテイカー」" />
+    <a time="126.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE3 破" />
+  </s>
+
+  <s name="PHASE3 破">
+    <!-- 時間圧縮・破トリガー begin -->
+    <t name="エラプション1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 30.96 Seconds." >
+      <v-notice
+        text="エラプ散開"
+        duration="12"
+        icon="Leave.png"
+        order="-3" />
+    </t>
+
+    <t name="エラプション2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 26.96 Seconds." >
+      <v-notice
+        text="➜エラプ散開"
+        duration="17"
+        icon="Leave.png"
+        order="-2" />
+    </t>
+
+    <t name="エラプション3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 22.96 Seconds." >
+      <v-notice
+        text=" ➜エラプ散開"
+        duration="23"
+        icon="Leave.png"
+        order="-1" />
+    </t>
+
+    <t name="ホーリー1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 30.96 Seconds." sync-count="1" >
+      <v-notice
+        text="中央で頭割り"
+        duration="12"
+        icon="DamageShare.png"
+        order="-3" />
+    </t>
+
+    <t name="ホーリー2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 26.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜中央で頭割り"
+        duration="17"
+        icon="DamageShare.png"
+        order="-2" />
+    </t>
+
+    <t name="ホーリー3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 22.96 Seconds." sync-count="1" >
+      <v-notice
+        text=" ➜中央で頭割り"
+        duration="23"
+        icon="DamageShare.png"
+        order="-1" />
+    </t>
+
+    <t name="フレア1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 30.96 Seconds." sync-count="1" >
+      <v-notice
+        text="外周で距離減衰"
+        duration="12"
+        icon="Distance.png"
+        order="-3" />
+    </t>
+
+    <t name="フレア2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 26.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜外周で距離減衰"
+        duration="17"
+        icon="Distance.png"
+        order="-2" />
+    </t>
+
+    <t name="フレア3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 22.96 Seconds." sync-count="1" >
+      <v-notice
+        text=" ➜外周で距離減衰"
+        duration="23"
+        icon="Distance.png"
+        order="-1" />
+    </t>
+
+    <t name="シャドウアイ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 30.96 Seconds." sync-count="1" >
+      <v-notice
+        text="中央で視線"
+        duration="12"
+        icon="Eye.png"
+        order="-3" />
+    </t>
+
+    <t name="シャドウアイ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 26.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜中央で視線"
+        duration="17"
+        icon="Eye.png"
+        order="-2" />
+    </t>
+
+    <t name="シャドウアイ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 22.96 Seconds." sync-count="1" >
+      <v-notice
+        text=" ➜中央で視線"
+        duration="23"
+        icon="Eye.png"
+        order="-1" />
+    </t>
+
+    <t name="ブリザガ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 30.96 Seconds." sync-count="1" >
+      <v-notice
+        text="中央でドーナツ範囲"
+        duration="12"
+        icon="Ice.png"
+        order="-3" />
+    </t>
+
+    <t name="ブリザガ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 26.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜中央でドーナツ範囲"
+        duration="17"
+        icon="Ice.png"
+        order="-2" />
+    </t>
+
+    <t name="ブリザガ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 22.96 Seconds." sync-count="1" >
+      <v-notice
+        text=" ➜中央でドーナツ範囲"
+        duration="23"
+        icon="Ice.png"
+        order="-1" />
+    </t>
+
+    <t name="エアロガ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 30.96 Seconds." sync-count="1" >
+      <v-notice
+        text="四隅で範囲捨て"
+        duration="12"
+        icon="Twister.png"
+        order="-3" />
+    </t>
+
+    <t name="エアロガ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 26.96 Seconds." sync-count="1" >
+      <v-notice
+        text="➜四隅で範囲捨て"
+        duration="17"
+        icon="Twister.png"
+        order="-2" />
+    </t>
+
+    <t name="エアロガ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 22.96 Seconds." sync-count="1" >
+      <v-notice
+        text=" ➜四隅で範囲捨て"
+        duration="23"
+        icon="Twister.png"
+        order="-1" />
+    </t>
+    <!-- 時間圧縮・破トリガー end -->
+
+    <a time="012.0" sync="闇の巫女:苦しみは刹那、喜びは永遠……。" goto="PHASE3 破" />
+    <a time="017.0" sync="闇の巫女:我が意のままに、時は流れる！" />
+    <a time="023.0" text="時間圧縮・破" sync="闇の巫女の「時間圧縮・破」" />
+    <a time="035.7" text="リターン１" />
+    <a time="040.7" text="リターン２" />
+    <a time="047.7" text="リターン開始" />
+    <a time="064.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
+    <a time="074.0" sync="闇の巫女:虚ろなる大地よ！ 次元を超えて光を喰らい、無へと回帰せよ！" />
+    <a time="079.0" text="アポカリプス・ダブル" sync="闇の巫女の「アポカリプス・ダブル」" />
+    <a time="089.0" text="カタクリスム" sync="闇の巫女の「カタクリスム」" />
+    <a time="102.0" text="宵闇の舞踏技１" sync="闇の巫女の「宵闇の舞踏技」" />
+    <a time="105.0" text="宵闇の舞踏技２" />
+    <a time="116.0" text="シェルクラッシャー" sync="闇の巫女の「シェルクラッシャー」" />
+    <a time="132.0" text="スピリットテイカー" sync="闇の巫女の「スピリットテイカー」" />
+    <a time="140.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE4 最終" />
+  </s>
+
+  <s name="PHASE4 最終" >
+    <!-- 時間圧縮・急トリガー begin -->
+    <!-- 参考処理 http://kanatan.info/archives/25646717.html -->
+    <t name="ファイガ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 22.96 Seconds." sync-count="1" >
+      <v-notice
+        text="２外で頭割り\n➜３の外側\n➜ファイガ位置"
+        duration="31"
+        icon="Targetaoe01.png"
+        order="-1" />
+    </t>
+
+    <t name="シャドウアイ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 26.96 Seconds." sync-count="1" >
+      <v-notice
+        text="２外で頭割り\n➜３の外で内周寄り\n➜１の内側"
+        duration="31"
+        icon="Eye.png"
+        order="-1" />
+    </t>
+
+    <t name="エアロガ2個" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from 闇の巫女 for 30.96 Seconds." sync-count="1" >
+      <v-notice
+        text="１の外周\n➜１の外周\n➜１と２の間外周"
+        duration="31"
+        icon="Twister.png"
+        order="-1" />
+    </t>
+    <!-- 時間圧縮・急トリガー end -->
+
+    <a time="008.0" sync="闇の巫女:他者がいるから孤独を感じる……。" />
+    <a time="013.0" sync="闇の巫女:ならば、ひとりとなり幸福に浸ろう！" />
+    <a time="019.0" text="時間圧縮・急" sync="闇の巫女の「時間圧縮・急」" />
+    <a time="027.0" text="スピード" sync="闇の巫女の「スピード」" />
+    <a time="032.3" text="リターン１" />
+    <a time="037.2" text="リターン２" />
+    <a time="042.0" text="時計ビーム１" sync="悲しみの砂時計の「メイルシュトローム」" />
+    <a time="044.3" text="リターン開始" />
+    <a time="064.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
+    <a time="082.0" text="アポカリプス・トリプル" sync="闇の巫女の「アポカリプス・トリプル」" />
+    <a time="093.0" text="暗夜の舞踏技１" sync="闇の巫女の「暗夜の舞踏技」" />
+    <a time="095.0" text="暗夜の舞踏技２" />
+    <a time="108.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
+    <a time="117.0" text="ブラックヘイロー" sync="闇の巫女の「ブラックヘイロー」" />
+    <a time="140.0" text="時間圧縮・終" sync="闇の巫女の「時間圧縮・終」" />
+    <a time="155.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
+    <a time="169.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" />
+    <a time="182.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" />
+    <a time="191.9" text="時間切れ詠唱" sync="闇の巫女 starts using エンド・オブ・メモリーズ on 闇の巫女." />
   </s>
 </timeline>

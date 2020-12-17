@@ -17,7 +17,7 @@
 	<default target-element="Activity" target-attr="sync-s" value="-12" />
 	<default target-element="Activity" target-attr="sync-e" value="12" />
 
-	<s name="ENTRY">
+  <s name="ENTRY">
 		<t sync="ガイウス・バエサル" goto="前半" />
 		<t sync="エメラルド" goto="後半" />
 		<t sync="エメラルドウェポンは「ディヴィデ・エト・インペラ" sync-count="1">
@@ -28,6 +28,29 @@
 	</s>
 
 	<s name="前半">
+    <!-- 爆雷2222処理 -->
+    <t text="爆雷(北黃：時計)"      notice="左回り" >
+      <p-sync interval="30">
+        <combatant name="ニトロスフィア" X="23.5" Y="23.06" tolerance="0.01" />
+      </p-sync>
+      <v-notice
+        duration="10"
+        duration-visible="false"
+        style="NOTICE_NORMAL"
+        icon="Arrow7.png" />
+    </t>
+
+    <t text="爆雷(北青：反時計)"    notice="右回り" >
+      <p-sync interval="30">
+        <combatant name="セルリウムスフィア" X="23.5" Y="23.06" tolerance="0.01" />
+      </p-sync>
+      <v-notice
+        duration="10"
+        duration-visible="false"
+        style="NOTICE_NORMAL"
+        icon="Arrow3.png" />
+    </t>
+
 		<a time="000" sync="ガイウス・バエサル:レックス、我らが戦う必要などないのだ！ 即刻、機体を降りて投降せよ！！" />
 		<a time="009" sync="レックスの声:たとえ義父上の命令だろうと……！ オレは、オレたちは……退くわけにはいかねえんだ！" />
 		<a time="012" text="エメラルドショット" sync="エメラルドウェポンは「エメラルドショット」の構え。" notice="次は、エメラルドショット。" />

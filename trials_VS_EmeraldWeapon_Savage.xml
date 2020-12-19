@@ -29,7 +29,7 @@
 
 	<s name="前半">
     <!-- 爆雷2222処理 -->
-    <t text="爆雷(北黃：時計)"      notice="左回り" >
+    <t text="爆雷(北黃：時計)" notice="時計回り" >
       <p-sync interval="30">
         <combatant name="ニトロスフィア" X="23.5" Y="23.06" tolerance="0.01" />
       </p-sync>
@@ -40,7 +40,7 @@
         icon="Arrow7.png" />
     </t>
 
-    <t text="爆雷(北青：反時計)"    notice="右回り" >
+    <t text="爆雷(北青：反時計)" notice="反時計回り" >
       <p-sync interval="30">
         <combatant name="セルリウムスフィア" X="23.5" Y="23.06" tolerance="0.01" />
       </p-sync>

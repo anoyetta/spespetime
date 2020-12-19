@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編2</name>
-  <rev>rev3</rev>
+  <rev>rev4</rev>
   <description>
     希望の園エデン零式： 再生編2 のスペスペたいむ定義です。
   </description>
@@ -242,9 +242,9 @@
   <a time="074.0" sync="影の王:お前たちの影を、我が配下としよう……！ 己が影と殺し合うがいい！" />
   <a time="082.0" text="シャドウクリーヴ" sync="影の王の「シャドウクリーヴ」" notice="次は、離れて散開。" />
   <a time="095.0" text="ダブルスペル" sync="影の王の「ダブルスペル」" />
-  <a time="096.0" text="頭割り１" notice="1回目" />
-  <a time="099.0" text="頭割り２" notice="2回目" />
-  <a time="102.0" text="頭割り３" notice="3回目" />
+  <a time="096.0" text="頭割り１" notice="1回目" notice-o="0" />
+  <a time="099.0" text="頭割り２" notice="2回目" notice-o="0" />
+  <a time="102.0" text="頭割り３" notice="3回目" notice-o="0" />
   <a time="104.0" sync="影の王:影の疾さを知れ！ 英雄の影たちよ、背後に回るのだ……！" />
   <a time="108.0" text="影の王命" sync="影の王の「影の王命」" />
   <a time="121.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />

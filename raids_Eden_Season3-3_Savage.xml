@@ -5,7 +5,7 @@
   <description>
     希望の園エデン零式： 再生編3 のスペスペたいむ定義です。
   </description>
-  <author>anoyetta, sheeva</author>
+  <author>anoyetta</author>
   <license>CC BY-SA</license>
   <zone>948,Eden's Promise: Anamorphosis (Savage)</zone>
   <locale>JA</locale>
@@ -22,7 +22,7 @@
       icon="Pair.png" />
   </t>
 
-  <t name="エレメンタル：雷" sync="^14:5666:フェイトブレイカー starts using エレメンタルブレイク on フェイトブレイカー." notice="散開。" >
+  <t name="エレメンタル：雷" sync="^14:5666:フェイトブレイカー starts using エレメンタルブレイク on フェイトブレイカー." notice="八方散開。" >
     <v-notice
       text="雷：８方向散開\n➜ 散開"
       duration="9"
@@ -86,7 +86,7 @@
       icon="Stack.png" />
   </t>
 
-  <t name="ソイル：雷" sync="^14:565B:フェイトブレイカー starts using シンソイルスラスト on フェイトブレイカー." notice="雷。" >
+  <t name="ソイル：雷" sync="^14:565B:フェイトブレイカー starts using シンソイルスラスト on フェイトブレイカー." notice="扇範囲" >
     <v-notice
       text="雷：扇範囲"
       duration="9"
@@ -116,14 +116,14 @@
       order="-1" />
   </t>
 
-  <t name="四天召：赤" sync="^14:566E:フェイトブレイカー starts using 四天召 on フェイトブレイカー." notice="" >
+  <t name="四天召：赤" sync="^14:566E:フェイトブレイカー starts using 四天召 on フェイトブレイカー." notice="青が安全" >
     <v-notice
       text="青い方が安全"
       duration="12"
       order="-1" />
   </t>
 
-  <t name="四天召：青" sync="^14:566F:フェイトブレイカー starts using 四天召 on フェイトブレイカー." notice="" >
+  <t name="四天召：青" sync="^14:566F:フェイトブレイカー starts using 四天召 on フェイトブレイカー." notice="赤が安全" >
     <v-notice
       text="赤い方が安全"
       duration="12"
@@ -162,6 +162,15 @@
     <v-notice
       text="８方向➜３方向\n➜AOE重ね捨て\n➜対象者から離れる"
       duration="26"
+      order="-1" />
+  </t>
+
+  <t name="爆印刻" sync="フェイトブレイカーは「爆印刻」の構え。" notice="バクインコク">
+    <v-notice
+      text="爆印刻"
+      duration="5"
+      duration-visible="false"
+      icon="Explosion.png"
       order="-1" />
   </t>
 
@@ -231,7 +240,9 @@
 
   <a time="491.0" sync="フェイトブレイカー:この光は我が希望……。 すべての罪を、喰らい尽くす！" />
   <a time="495.0" text="プリズマチックインビジブル" sync="フェイトブレイカーの「プリズマチックインビジブル」" />
-  <a time="502.0" sync="リーンの声:光が強すぎて、気配を探れない……？ 周囲に気を配ってください……！" />
+  <a time="502.0" sync="リーンの声:光が強すぎて、気配を探れない……？ 周囲に気を配ってください……！">
+    <dump name="prismatic_invisible" target="Position" />
+  </a>
   <a time="515.0" text="ブラスティングゾーン１" />
   <a time="533.0" text="ブラスティングゾーン２" />
   <a time="550.0" text="光焔光背" sync="フェイトブレイカーの「光焔光背」" notice="次は、全体攻撃。" />

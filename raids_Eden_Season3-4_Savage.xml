@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev1</rev>
+  <rev>rev2</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
   </description>
@@ -202,84 +202,95 @@
         order="-10" />
     </t>
 
-    <t no="1" name="ドロー：リヴァイアサン" sync="^14:4E44:プロミス・オブ・エデン starts using テンポラリーカレント on プロミス・オブ・エデン." >
+    <!-- ドロー・ストック・リリースおよび "はなつ" の判定 begin -->
+    <t name="ドロー：リヴァイアサン" sync="^14:4E44:プロミス・オブ・エデン starts using テンポラリーカレント on プロミス・オブ・エデン." >
       <expressions>
-        <set name="draw_leviathan" value="true" ttl="5" />
+        <set name="draw_leviathan" count="+1" />
       </expressions>
     </t>
 
-    <t no="2" name="ドロー：イフリート" sync="^14:4E45:プロミス・オブ・エデン starts using コンフラグレーションストライク on プロミス・オブ・エデン." >
+    <t name="ドロー：イフリート" sync="^14:4E45:プロミス・オブ・エデン starts using コンフラグレーションストライク on プロミス・オブ・エデン." >
       <expressions>
-        <set name="draw_ifrit" value="true" ttl="5" />
+        <set name="draw_ifrit" count="+1" />
       </expressions>
     </t>
 
-    <t no="3" name="ドロー：ガルーダ" sync="^14:4E46:プロミス・オブ・エデン starts using フィアスストーム on プロミス・オブ・エデン." >
+    <t name="ドロー：ガルーダ" sync="^14:4E46:プロミス・オブ・エデン starts using フィアスストーム on プロミス・オブ・エデン." >
       <expressions>
-        <set name="draw_garuda" value="true" ttl="5" />
+        <set name="draw_garuda" count="+1" />
       </expressions>
     </t>
 
-    <t no="4" name="ドロー：ラムウ" sync="^14:4E47:プロミス・オブ・エデン starts using 裁きの界雷 on プロミス・オブ・エデン." >
+    <t name="ドロー：ラムウ" sync="^14:4E47:プロミス・オブ・エデン starts using 裁きの界雷 on プロミス・オブ・エデン." >
       <expressions>
-        <set name="draw_ramuh" value="true" ttl="5" />
+        <set name="draw_ramuh" count="+1" />
       </expressions>
     </t>
 
-    <t no="10" name="はなつ/リリース1" sync="^14:(4E43|5893)" notice="斜めに近寄る。" >
-      <expressions>
-        <pre name="draw_leviathan" value="true" />
-        <pre name="draw_garuda" value="true" />
-      </expressions>
-      <v-notice
-        text="斜めに近寄る"
-        duration="9"
-        order="-1" />
-    </t>
+    @{
+      // 定数の定義
+      var StockTakingNoticeNow = "stock_taking_notice_now";
+      var StockTakingNoticeDelay = "stock_taking_notice_delay";
+      var ClearStocks = "clear_stocks";
 
-    <t no="11" name="はなつ/リリース2" sync="^14:(4E43|5893)" notice="斜めに離れる。" >
-      <expressions>
-        <pre name="draw_ramuh" value="true" />
-        <pre name="draw_garuda" value="true" />
-      </expressions>
-      <v-notice
-        text="斜めに離れる"
-        duration="9"
-        order="-1" />
-    </t>
+      for (int i = 0; i < 2; i++) {
+        // 事前判定から通知までのディレイを設定する
+        var delay = i == 0 ? 0.0d : 36.4d;
 
-    <t no="12" name="はなつ/リリース3" sync="^14:(4E43|5893)" notice="左右に近寄る。" >
-      <expressions>
-        <pre name="draw_leviathan" value="true" />
-        <pre name="draw_ifrit" value="true" />
-      </expressions>
-      <v-notice
-        text="左右に近寄る"
-        duration="9"
-        order="-1" />
-    </t>
+        // 通常判定（その場で通知）と遅延通知のキーワードを設定する
+        var keyword = i == 0 ? StockTakingNoticeNow : StockTakingNoticeDelay;
+  
+        <t name="はなつ/リリース1" sync="@keyword" notice="斜めに近寄る。" notice-o="@delay">
+          <expressions>
+            <pre name="draw_leviathan" count="1" />
+            <pre name="draw_garuda" count="1" />
+          </expressions>
+          <v-notice text="斜めに近寄る" duration="9" order="-1" delay="@delay" />
+        </t>
+    
+        <t name="はなつ/リリース2" sync="@keyword" notice="斜めに離れる。" notice-o="@delay">
+          <expressions>
+            <pre name="draw_ramuh" count="1" />
+            <pre name="draw_garuda" count="1" />
+          </expressions>
+          <v-notice text="斜めに離れる" duration="9" order="-1" delay="@delay" />
+        </t>
+    
+        <t name="はなつ/リリース3" sync="@keyword" notice="左右に近寄る。" notice-o="@delay">
+          <expressions>
+            <pre name="draw_leviathan" count="1" />
+            <pre name="draw_ifrit" count="1" />
+          </expressions>
+          <v-notice text="左右に近寄る" duration="9" order="-1" delay="@delay" />
+        </t>
+    
+        <t name="はなつ/リリース4" sync="@keyword" notice="前後で離れる。" notice-o="@delay">
+          <expressions>
+            <pre name="draw_leviathan" count="1" />
+            <pre name="draw_ramuh" count="1" />
+          </expressions>
+          <v-notice text="前後で離れる" duration="9" order="-1" delay="@delay" />
+        </t>
+    
+        <t name="はなつ/リリース5" sync="@keyword" notice="左右で離れる。" notice-o="@delay">
+          <expressions>
+            <pre name="draw_ifrit" count="1" />
+            <pre name="draw_ramuh" count="1" />
+          </expressions>
+          <v-notice text="左右で離れる" duration="9" order="-1" delay="@delay" />
+        </t>
+      }
+    }
 
-    <t no="13" name="はなつ/リリース4" sync="^14:(4E43|5893)" notice="前後で離れる。" >
+    <t name="ストックをクリアする" sync="@ClearStocks">
       <expressions>
-        <pre name="draw_leviathan" value="true" />
-        <pre name="draw_ramuh" value="true" />
+        <set name="draw_leviathan" count="0" />
+        <set name="draw_ifrit" count="0" />
+        <set name="draw_garuda" count="0" />
+        <set name="draw_ramuh" count="0" />
       </expressions>
-      <v-notice
-        text="前後で離れる"
-        duration="9"
-        order="-1" />
     </t>
-
-    <t no="14" name="はなつ/リリース5" sync="^14:(4E43|5893)" notice="左右で離れる。" >
-      <expressions>
-        <pre name="draw_ifrit" value="true" />
-        <pre name="draw_ramuh" value="true" />
-      </expressions>
-      <v-notice
-        text="左右で離れる"
-        duration="9"
-        order="-1" />
-    </t>
+    <!-- ドロー・ストック・リリースおよび "はなつ" の判定 end -->
 
     <a time="000" name="変数リセット" >
       <expressions>
@@ -288,14 +299,25 @@
         <set name="current_junction" value="false" />
       </expressions>
     </a>
+
     <a time="005.0" sync="プロミス・オブ・エデン:過去も未来も棄て、今この刻を永遠となす……！" />
     <a time="016.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
     <a time="025.0" sync="プロミス・オブ・エデン:世界の記憶を解き放とう……！" />
     <a time="033.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
     <a time="040.0" text="悦楽の手" sync="プロミス・オブ・エデンの「悦楽の手」" />
     <a time="043.0" text="頭割りor散開" />
+
     <a time="046.0" sync="プロミス・オブ・エデン:記憶は誇張され、改変される！" />
+
+    <a time="046.3" name="はなつ開始" sync="プロミス・オブ・エデンは「はなつ」の構え。" />
+    <a time="046.8" name="棚卸し">
+      <dump target="Log" log="@StockTakingNoticeNow" />
+    </a>
     <a time="053.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
+    <a time="054.0" name="ストックをクリアする">
+      <dump target="Log" log="@ClearStocks" />
+    </a>
+
     <a time="057.0" text="頭割りor散開" />
     <a time="069.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
     <a time="071.0" text="天罰の波動２" />
@@ -324,7 +346,16 @@
     <a time="219.7" text="マーカー着弾" />
     <a time="229.0" sync="プロミス・オブ・エデン:なぜ、そっとしておいてくれない？" />
     <a time="239.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
+
+    <a time="252.3" name="はなつ開始" sync="プロミス・オブ・エデンは「はなつ」の構え。" />
+    <a time="252.8" name="棚卸し">
+      <dump target="Log" log="@StockTakingNoticeNow" />
+    </a>
     <a time="259.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
+    <a time="260.0" name="ストックをクリアする">
+      <dump target="Log" log="@ClearStocks" />
+    </a>
+
     <a time="259.0" text="オブリタレーション" sync="ガーディアン・オブ・エデンの「オブリタレーション」" />
     <a time="270.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
     <a time="277.0" sync="プロミス・オブ・エデン:この理想郷に、おまえたちは必要ない。" />
@@ -336,7 +367,15 @@
     <a time="309.0" text="巨兵の光炎" />
     <a time="310.0" text="拒絶の手" sync="ガーディアン・オブ・エデンの「拒絶の手」" />
 
+    <a time="310.3" name="リリース開始" sync="プロミス・オブ・エデンは「リリース」の構え。" />
+    <a time="310.8" name="棚卸し">
+      <dump target="Log" log="@StockTakingNoticeNow" />
+    </a>
     <a time="317.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
+    <a time="318.0" name="ストックをクリアする">
+      <dump target="Log" log="@ClearStocks" />
+    </a>
+
     <a time="328.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
     <a time="336.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
     <a time="338.0" text="天罰の波動２" />
@@ -346,7 +385,16 @@
     <a time="371.0" text="メーザーアイ" sync="ガーディアン・オブ・エデンの「メーザーアイ」" />
     <a time="372.0" sync="プロミス・オブ・エデン:己の記憶に、苦しむがいい……！" />
     <a time="375.0" text="獅子の業火" />
+
+    <a time="373.3" name="リリース開始" sync="プロミス・オブ・エデンは「リリース」の構え。" />
+    <a time="373.8" name="棚卸し">
+      <dump target="Log" log="@StockTakingNoticeNow" />
+    </a>
     <a time="380.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
+    <a time="381.0" name="ストックをクリアする">
+      <dump target="Log" log="@ClearStocks" />
+    </a>
+
     <a time="384.0" text="獅子の業火" />
     <a time="389.0" text="悦楽の手" sync="プロミス・オブ・エデンの「悦楽の手」" />
     <a time="402.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
@@ -356,12 +404,33 @@
         <set name="second_branch" value="true" />
       </expressions>
     </a>
+
+    <a time="420.0" name="リリース事前判定">
+      <dump target="Log" log="@StockTakingNoticeDelay" />
+    </a>
+    <a time="421.0" name="ストックをクリアする">
+      <dump target="Log" log="@ClearStocks" />
+    </a>
+
     <a time="425.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
+
+    <a time="427.3" name="はなつ開始" sync="プロミス・オブ・エデンは「はなつ」の構え。" />
+    <a time="427.8" name="棚卸し">
+      <dump target="Log" log="@StockTakingNoticeNow" />
+    </a>
     <a time="434.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
+    <a time="435.0" name="ストックをクリアする">
+      <dump target="Log" log="@ClearStocks" />
+    </a>
+
     <a time="446.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
     <a time="453.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
     <a time="455.0" sync="プロミス・オブ・エデン:すぐに形を失い、色褪せていく……。" />
+
+    <!-- ここのリリースは事前判定によって遅延通知される -->
+    <a time="456.3" name="リリース開始" sync="プロミス・オブ・エデンは「リリース」の構え。" />
     <a time="463.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
+    
     <a time="479.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
     <a time="481.0" text="天罰の波動２" />
     <a time="490.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃2回。" />

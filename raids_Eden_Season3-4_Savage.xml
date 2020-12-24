@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev3</rev>
+  <rev>rev4</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
   </description>
@@ -203,27 +203,27 @@
     </t>
 
     <!-- ドロー・ストック・リリースおよび "はなつ" の判定 begin -->
-    <t name="ドロー：リヴァイアサン" sync="^23:[id8]::[id8]:.+:.{4}:0000:008E:[id8]:.{4}:.{4}:" >
+    <t name="ドロー：リヴァイアサン" sync="^23:[id8]::[id8]:.+:.{4}:0000:008E:[id8]:.{4}:.{4}:">
       <expressions>
         <set name="draw_leviathan" count="+1" />
       </expressions>
     </t>
 
-    <t name="ドロー：イフリート" sync="^23:[id8]::[id8]:.+:.{4}:0000:008F:[id8]:.{4}:.{4}:" >
+    <t name="ドロー：イフリート" sync="^23:[id8]::[id8]:.+:.{4}:0000:008F:[id8]:.{4}:.{4}:">
       <expressions>
         <set name="draw_ifrit" count="+1" />
       </expressions>
     </t>
 
-    <t name="ドロー：ガルーダ" sync="^23:[id8]::[id8]:.+:.{4}:0000:0090:[id8]:.{4}:.{4}:" >
+    <t name="ドロー：ラムウ" sync="^23:[id8]::[id8]:.+:.{4}:0000:0090:[id8]:.{4}:.{4}:">
       <expressions>
-        <set name="draw_garuda" count="+1" />
+        <set name="draw_ramuh" count="+1" />
       </expressions>
     </t>
 
-    <t name="ドロー：ラムウ" sync="^23:[id8]::[id8]:.+:.{4}:0000:0091:[id8]:.{4}:.{4}:" >
+    <t name="ドロー：ガルーダ" sync="^23:[id8]::[id8]:.+:.{4}:0000:0091:[id8]:.{4}:.{4}:">
       <expressions>
-        <set name="draw_ramuh" count="+1" />
+        <set name="draw_garuda" count="+1" />
       </expressions>
     </t>
 

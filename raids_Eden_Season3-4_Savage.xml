@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev4</rev>
+  <rev>rev5</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
   </description>
@@ -235,7 +235,7 @@
 
       for (int i = 0; i < 2; i++) {
         // 事前判定から通知までのディレイを設定する
-        var delay = i == 0 ? 0.0d : 36.4d;
+        var delay = i == 0 ? 0.0d : 34.4d;
 
         // 通常判定（その場で通知）と遅延通知のキーワードを設定する
         var keyword = i == 0 ? StockTakingNoticeNow : StockTakingNoticeDelay;

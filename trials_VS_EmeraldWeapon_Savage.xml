@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
 	<name>VS 極エメラルドウェポン</name>
-	<rev>rev2</rev>
+	<rev>rev4</rev>
 	<description>
 		前半時間切れのログがなくて途中までになっています。
 	</description>
@@ -18,13 +18,15 @@
 	<default target-element="Activity" target-attr="sync-e" value="12" />
 
   <s name="ENTRY">
-		<t sync="ガイウス・バエサル" goto="前半" />
-		<t sync="エメラルド" goto="後半" />
+		<t sync="レックス、我らが戦う必要などないのだ！ 即刻、機体を降りて投降せよ！！" goto="前半" />
+		<t sync="たとえ義父上の命令だろうと……！ オレは、オレたちは……退くわけにはいかねえんだ！" goto="前半" />
+    
 		<t sync="エメラルドウェポンは「ディヴィデ・エト・インペラ" sync-count="1">
 			<load target="後半" truncate="true" />
 			<load target="インペラ1回目" truncate="true" />
-		</t>
-		<a time="10" text="前半後半の判別" icon="分岐" goto="後半" />
+    </t>
+    
+		<a time="20" text="前半後半の判別" icon="分岐" goto="後半" />
 	</s>
 
 	<s name="前半">
@@ -51,8 +53,8 @@
         icon="Arrow3.png" />
     </t>
 
-		<a time="000" sync="ガイウス・バエサル:レックス、我らが戦う必要などないのだ！ 即刻、機体を降りて投降せよ！！" />
-		<a time="009" sync="レックスの声:たとえ義父上の命令だろうと……！ オレは、オレたちは……退くわけにはいかねえんだ！" />
+		<a time="000" sync="レックス、我らが戦う必要などないのだ！ 即刻、機体を降りて投降せよ！！" />
+		<a time="009" sync="たとえ義父上の命令だろうと……！ オレは、オレたちは……退くわけにはいかねえんだ！" />
 		<a time="012" text="エメラルドショット" sync="エメラルドウェポンは「エメラルドショット」の構え。" notice="次は、エメラルドショット。" />
 		<a time="017" text="エメラルドショット" sync="エメラルドウェポンの「エメラルドショット」" />
 		<a time="023" text="魔導アルテマ" sync="エメラルドウェポンは「魔導アルテマ」の構え。" notice="次は、魔導アルテマ。" />

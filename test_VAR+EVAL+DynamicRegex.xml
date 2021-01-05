@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>VAR, EVAL, 正規表現の動的リコンパイルのテスト</name>
+  <rev>rev1</rev>
+  <description>
+    VAR, EVAL, 正規表現の動的リコンパイルを実施する代表的なテスト
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>TEST</zone>
+  <locale>JA</locale>
+  <start>0039:戦闘開始！</start>
+
+  <a time="005" text="変数セット1">
+    <expressions>
+      <set name="A" value="EVAL(4/2)" />
+      <set name="hoge" value="4" />
+      <set name="skill" value="闇の攻撃" />
+      <set name="hex" value="0x0F" />
+    </expressions>
+  </a>
+
+  <!-- 変数VAR[] と 演算EVAL() を組合せたテスト1 真となる演算 -->
+  <a time="015" text="変数評価A - EVAL false">
+    <expressions>
+      <pre name="A" value="EVAL(VAR['hoge']/2, N0)" />
+      <!-- 
+        EVAL(式, [書式]) 
+        第2引数の書式は省力しても良い。整数を16進数の文字列として出力したい場合などに使用する
+      -->
+    </expressions>
+  </a>
+
+  <!-- 変数VAR[] と 演算EVAL() を組合せたテスト2 偽となる演算 -->
+  <a time="015" text="変数評価B - EVAL true">
+    <expressions>
+      <pre name="A" value="EVAL(VAR['hoge']/4, N0)" />
+    </expressions>
+  </a>
+
+  @{
+    var offset = 0x01;
+  }
+
+  <!-- 
+    16進数を扱う場合はRazorの変数を経由する。
+    EVAL内の式では 0x 表記の16進数を扱えないため。
+  -->
+  <a time="016" text="変数評価C - offset by HEX">
+    <expressions>
+      <pre name="A" value="EVAL(1 + @offset, N0)" />
+    </expressions>
+  </a>
+
+  <a time="017" text="変数評価D - HEX">
+    <expressions>
+      <pre name="hex" value="15" />
+    </expressions>
+  </a>
+
+  <!-- これらのアクティビティは skill がセットされたときにリコンパイルされる -->
+  <a time="020" name="変数ありActivity1" text="動的正規表現1" sync="starts using VAR['skill']" />
+  <a time="025" name="変数ありActivity2" text="動的正規表現2" sync="starts using VAR['skill']" />
+
+  <a time="030" text="応用編へ" goto="応用編" />
+
+  <s name="応用編">
+    <!-- 
+      当該ゾーンの 1B Sign コードの最小値は VAR['1B_ORIGIN'] にint型で格納されている。
+      VAR['1B_ORIGIN'] と EVAL による演算の組合せによって動的な1B Signコードに対するトリガを実現する
+    -->
+    <t name="DEBUGサイン1" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 0, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン1" />
+    </t>
+
+    <t name="DEBUGサイン2" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 1, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン2" />
+    </t>
+
+    <t name="DEBUGサイン3" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 2, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン3" />
+    </t>
+
+    <t name="DEBUGサイン4" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 3, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン4" />
+    </t>
+
+    <t name="DEBUGサイン5" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 4, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン5" />
+    </t>
+
+    <t name="DEBUGサイン6" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 5, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン6" />
+    </t>
+
+    <t name="DEBUGサイン7" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 6, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン7" />
+    </t>
+
+    <t name="DEBUGサイン8" sync="1B:[id8]:.+:0000:[id4]:EVAL(VAR['1B_ORIGIN'] + 7, X4):">
+      <expressions>
+        <pre name="is_ready_sign" value="true" />
+      </expressions>
+      <v-notice text="サイン8" />
+    </t>
+
+    <t name="サインコードを変数に格納するサンプル" sync="1B:[id8]:.+:0000:[id4]:(?&lt;sign&gt;[0-9a-fA-F]{4}):">
+      <expressions>
+        <pre name="is_ready_sign" value="false" />
+        <set name="last_sign" value="0x${sign}" />
+      </expressions>
+    </t>
+
+    <a time="005" text="疑似1Bの発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F07:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F06:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F05:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F04:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F03:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F02:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F01:" />
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F00:" />
+    </a>
+
+    <a time="006" name="サイン判定の準備完了">
+      <expressions>
+        <set name="is_ready_sign" value="true" />
+      </expressions>
+    </a>
+
+    <a time="010" text="サイン1発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F00:" />
+    </a>
+
+    <a time="011" text="サイン2発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F01:" />
+    </a>
+
+    <a time="012" text="サイン3発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F02:" />
+    </a>
+
+    <a time="013" text="サイン4発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F03:" />
+    </a>
+
+    <a time="014" text="サイン5発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F04:" />
+    </a>
+
+    <a time="015" text="サイン6発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F05:" />
+    </a>
+
+    <a time="016" text="サイン7発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F06:" />
+    </a>
+
+    <a time="017" text="サイン8発生">
+      <dump target="Log" log="1B:12345678:Taro Yamada:0000:0000:1F07:" />
+    </a>
+  </s>
+</timeline>

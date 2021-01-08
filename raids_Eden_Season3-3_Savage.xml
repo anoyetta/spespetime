@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編3</name>
-  <rev>rev5</rev>
+  <rev>rev7</rev>
   <description>
     希望の園エデン零式： 再生編3 のスペスペたいむ定義です。
   </description>
@@ -70,11 +70,12 @@
 
   <t name="マーキング" sync="^1A:[id8]:[nex] gains the effect of マーキング from  for 9999.00 Seconds." >
     <v-notice
-      text="マーキング対象"
+      text="${_nex}\n←マーキング"
       duration="9"
       duration-visible="false"
-      order="0"
-      job-icon="True" />
+      order="-3"
+      job-icon="True"
+      font-scale="0.9" />
   </t>
 
   <t name="マーキング" sync="^1A:[id8]:[mex] gains the effect of マーキング from  for 9999.00 Seconds." notice="自分にマーカー" >
@@ -82,8 +83,9 @@
       text="自分にマーカー"
       duration="9"
       duration-visible="false"
-      order="0"
-      job-icon="True" />
+      order="-3"
+      job-icon="True"
+      font-scale="0.9" />
   </t>
 
   <t name="ソイル：炎" sync="^14:5658:フェイトブレイカー starts using シンソイルスラスト on フェイトブレイカー." notice="頭割り。" >
@@ -188,6 +190,8 @@
       order="-1" />
   </t>
 
+  <t name="連続剣：炎" sync="^14:568A:フェイトブレイカー starts using 魔装連続剣 on フェイトブレイカー." notice="南で頭割り" notice-o="12" />
+
   <t name="連続剣：雷" sync="^14:5692:フェイトブレイカー starts using 魔装連続剣 on フェイトブレイカー." notice="雷ー" >
     <v-notice
       text="雷\n８方向➜爆発\n➜離れる\n➜扇範囲誘導"
@@ -197,6 +201,8 @@
       order="-1" />
   </t>
 
+  <t name="連続剣：雷" sync="^14:5692:フェイトブレイカー starts using 魔装連続剣 on フェイトブレイカー." notice="北で扇範囲" notice-o="12" />
+
   <t name="連続剣：光" sync="^14:569A:フェイトブレイカー starts using 魔装連続剣 on フェイトブレイカー." notice="光ー" >
     <v-notice
       text="光\n８方向➜３方向\n➜AOE重ね捨て\n➜対象者から離れる"
@@ -205,6 +211,22 @@
       icon="Check.png"
       order="-1" />
   </t>
+
+  <t name="連続剣：光" sync="^14:569A:フェイトブレイカー starts using 魔装連続剣 on フェイトブレイカー." notice="北で爆発" notice-o="12" />
+
+  <!--
+  <t name="連続剣のバーンストライク警告" sync="^(15|16):[id8]:フェイトブレイカー:[id4]:シン.+:[id8]:[mex]:" notice="避けろ">
+    <expressions>
+      <pre name="renzokuken" value="true" />
+    </expressions>
+    <v-notice
+      text="避けろ！"
+      duration="2"
+      duration-visible="false"
+      icon="Leave.png"
+      order="-10" />
+  </t>
+  -->
 
   <t name="爆印刻" sync="フェイトブレイカーは「爆印刻」の構え。" notice="バクインコク">
     <v-notice
@@ -316,13 +338,19 @@
   </a>
   <a time="515.0" text="ブラスティングゾーン１" />
   <a time="533.0" text="ブラスティングゾーン２" />
+
   <a time="550.0" text="光焔光背" sync="フェイトブレイカーの「光焔光背」" notice="次、全体攻撃。" />
+  <a time="551.0" name="連続剣フェーズ開始">
+    <expressions>
+      <set name="renzokuken" value="true" />
+    </expressions>
+  </a>
 
   <a time="564.0" sync="リーンの声:この感じ、まさかガイアの連続剣……！？" notice-o="-3" notice="次、連続剣1回目" />
   <a time="565.4" text="マーキング付与" />
   <a time="571.0" text="魔装連続剣" sync="フェイトブレイカーの「魔装連続剣」" />
-  <a time="572.0" text="エレメンタルブレイク" sync="フェイトブレイカーの「エレメンタルブレイク」" />
-  <a time="576.4" text="バーンストライク" sync="フェイトブレイカーの「バーンストライク」" />
+  <a time="572.0" text="エレメンタルブレイク" />
+  <a time="576.4" text="バーンストライク" />
   <a time="584.0" text="シンソイルスラスト"  />
   <a time="598.0" text="光焔光背" sync="フェイトブレイカーの「光焔光背」" notice="次、全体攻撃。" />
 
@@ -330,15 +358,15 @@
   <a time="602.8" text="マーキング付与" />
   <a time="609.0" text="魔装連続剣" sync="フェイトブレイカーの「魔装連続剣」" />
   <a time="610.0" text="エレメンタルブレイク" />
-  <a time="614.0" text="バーンストライク" sync="フェイトブレイカーの「バーンストライク」" />
+  <a time="614.0" text="バーンストライク" />
   <a time="621.0" text="シンソイルスラスト" />
   <a time="635.0" text="光焔光背" sync="フェイトブレイカーの「光焔光背」" notice="次、全体攻撃。" />
 
   <a time="639.0" sync="フェイトブレイカー:持てる力、すべてを出しきる！" notice-o="-3" notice="次、連続剣3回目" />
   <a time="640.7" text="マーキング付与" />
   <a time="647.0" text="魔装連続剣" sync="フェイトブレイカーの「魔装連続剣」" />
-  <a time="648.0" text="エレメンタルブレイク" sync="フェイトブレイカーの「エレメンタルブレイク」" />
-  <a time="652.0" text="バーンストライク" sync="フェイトブレイカーの「バーンストライク」" />
+  <a time="648.0" text="エレメンタルブレイク" />
+  <a time="652.0" text="バーンストライク" />
   <a time="660.0" text="シンソイルスラスト" />
   <a time="675.0" text="光焔光背" sync="フェイトブレイカーの「光焔光背」" notice="次、全体攻撃。" />
   <a time="691.0" text="時間切れ" />

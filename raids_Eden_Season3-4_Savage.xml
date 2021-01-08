@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev5</rev>
+  <rev>rev7</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
   </description>
@@ -14,142 +14,48 @@
 
   <default target-element="Activity" target-attr="notice-o" value="-9" />
 
-  <script name="detect_sign_init" event="OnLoad">
-    var global = DynamicObject.ZoneGlobal;
-
-    if (global.SignRegex == null)
-    {
-      global.SignRegex = new Regex(
-        "^1B:........:.+:0000:....:(?&lt;sign_id&gt;....):0000:0000:0000:",
-        RegexOptions.Compile);
-
-      global.PlayerSignRegex = new Regex(
-        "^1B:........:@Model.Player.Name:0000:....:(?&lt;sign_id&gt;....):0000:0000:0000:",
-        RegexOptions.Compile);
-
-      global.SignList = new List&lt;int&gt;();
-    }
-
-    if (global.SignList.Any())
-    {
-      global.SignOrigin = global.SignList.Min();
-
-      global.SignY = global.SignOrigin - 0x0021;
-      global.SignR = global.SignOrigin - 0x0020;
-      global.SignB = global.SignOrigin - 0x0019;
-
-      global.Dice1 = global.SignOrigin - 0x0049;
-      global.Dice2 = global.SignOrigin - 0x0048;
-      global.Dice3 = global.SignOrigin - 0x0047;
-      global.Dice4 = global.SignOrigin - 0x0046;
-      global.Dice5 = global.SignOrigin - 0x0045;
-      global.Dice6 = global.SignOrigin - 0x0044;
-      global.Dice7 = global.SignOrigin - 0x0043;
-      global.Dice8 = global.SignOrigin - 0x0042;
-    }
-  </script>
-
-  <script name="detect_sign" event="OnLogs">
-    var xivLogs = CurrentLogs;
-
-    foreach (var xivLog in xivLogs)
-    {
-      if (global.SignRegex != null)
-      {
-        var match = global.SignRegex.Match(xivLog.LogLine);
-        if (match.Success)
-        {
-          var sign = Convert.ToInt32(match.Groups["sign_id"].Value, 16);
-
-          if (!global.SignList.Contains(sign))
-          {
-            global.SignList.Add(sign);
-          }
-        }
-      }
-
-      if (global.PlayerSignRegex != null)
-      {
-        var match = global.PlayerSignRegex.Match(xivLog.LogLine);
-        if (match.Success)
-        {
-          var sign = Convert.ToInt32(match.Groups["sign_id"].Value, 16);
-
-          switch (sign)
-          {
-            case global.SignY:
-              ShowTicker("自分にイエロー");
-              TTS("自分にイエロー");
-              break;
-
-            case global.SignR:
-              ShowTicker("自分にレッド");
-              TTS("自分にレッド");
-              break;
-
-            case global.SignB:
-              ShowTicker("自分にブルー");
-              TTS("自分にブルー");
-              break;
-
-            case global.Dice1:
-              ShowTicker("自分に１番");
-              TTS("自分に１番");
-              break;
-
-            case global.Dice2:
-              ShowTicker("自分に２番");
-              TTS("自分に２番");
-              break;
-
-            case global.Dice3:
-              ShowTicker("自分に３番");
-              TTS("自分に３番");
-              break;
-
-            case global.Dice4:
-              ShowTicker("自分に４番");
-              TTS("自分に４番");
-              break;
-
-            case global.Dice5:
-              ShowTicker("自分に５番");
-              TTS("自分に５番");
-              break;
-
-            case global.Dice6:
-              ShowTicker("自分に６番");
-              TTS("自分に６番");
-              break;
-
-            case global.Dice7:
-              ShowTicker("自分に７番");
-              TTS("自分に７番");
-              break;
-
-            case global.Dice8:
-              ShowTicker("自分に８番");
-              TTS("自分に８番");
-              break;
-          }
-        }
-      }
-    }
-  </script>
-
   <!-- 前半/後半の識別用エントリフェーズ -->
   <s name="ENTRY">
-  <!-- 前半/後半識別 -->
-    <t sync="プロミス・オブ・エデン:理想郷では我らこそが唯一の存在……。" sync-count="1" >
+    <!-- 前半/後半識別 -->
+    <t sync="プロミス・オブ・エデン:(理想郷では我らこそが唯一の存在……。|過去も未来も棄て、今この刻を永遠となす……！)" sync-count="1" >
       <load target="前半" truncate="true" />
     </t>
-    <t sync="闇の巫女:闇の巫女が紡ぐは神の詞（ことば）…… 忌まわしき光の使徒を、祓ってくれようぞ……！" sync-count="1">
+
+    <t sync="闇の巫女:(闇の巫女が紡ぐは神の詞（ことば）…… 忌まわしき光の使徒を、祓ってくれようぞ……！|古の魔力よ！ 創造の泉より湧きて、世界に希望をもたらせ！)" sync-count="1">
       <load target="PHASE1 後半開幕" truncate="true" />
     </t>
-    <a time="10" text="前半後半の判別" icon="分岐" />
+
+    <a time="20" text="前半後半の判別" icon="分岐" />
   </s>
 
   <s name="前半" >
+    <t name="悦楽の手 右サイド攻撃" sync="^14:(5877|58AD)" notice="左側えー">
+      <v-notice
+        text="左側へ"
+        duration="6"
+        duration-visible="false"
+        icon="Arrow7.png"
+        order="-20" />
+    </t>
+
+    <t name="悦楽の手 左サイド攻撃" sync="^14:(5878|58AE)" notice="右側えー">
+      <v-notice
+        text="右側へ"
+        duration="6"
+        duration-visible="false"
+        icon="Arrow3.png"
+        order="-20" />
+    </t>
+
+    <t name="天罰の波動" sync="プロミス・オブ・エデン starts using 天罰の波動" notice="天罰">
+      <v-notice
+        text="天罰"
+        duration="6"
+        duration-visible="false"
+        icon="HardAttack.png"
+        order="-20" />
+    </t>
+
     <t text="ジャンクション1：タイタン" sync="^14:5895:プロミス・オブ・エデン starts using ジャンクション：タイタン on プロミス・オブ・エデン." >
       <expressions>
         <pre name="first_branch" value="true" />
@@ -180,6 +86,7 @@
       <expressions>
         <pre name="second_branch" value="true" />
         <set name="current_junction" value="titan" />
+        <set name="bomb_phase" count="0" />
       </expressions>
       <v-notice
         text="タイタン：頭割り"
@@ -292,11 +199,249 @@
     </t>
     <!-- ドロー・ストック・リリースおよび "はなつ" の判定 end -->
 
+    <!-- 動的な1Bサインの判定 begin -->
+    <t name="天罰の波動のサインを覚える" sync="1B:[id8]:.+:0000:[id4]:(?&lt;sign&gt;[0-9a-fA-F]{4}):">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="false" />
+        <set name="sign_origin" value="0x${sign}" />
+      </expressions>
+    </t>
+
+    @{
+      var offsetY = 0x0021;
+      var offsetR = 0x0020;
+      var offsetB = 0x0019;
+
+      var offset1 = 0x0049;
+      var offset2 = 0x0048;
+      var offset3 = 0x0047;
+      var offset4 = 0x0046;
+      var offset5 = 0x0045;
+      var offset6 = 0x0044;
+      var offset7 = 0x0043;
+      var offset8 = 0x0042;
+    }
+
+    <t 
+      no="1" 
+      name="サイン色" 
+      sync="1B:[id8]:[mex]:0000:[id4]:(EVAL(VAR['sign_origin'] - @offsetY, X4)|EVAL(VAR['sign_origin'] - @offsetR, X4)|EVAL(VAR['sign_origin'] - @offsetB, X4)):">
+      <expressions>
+        <set name="bomb_phase" count="+1" />
+      </expressions>
+    </t>
+
+    @{
+      var y1 = "";
+      var r1 = "";
+      var b1 = "";
+      var y2 = "";
+      var r2 = "";
+      var b2 = "";
+      var y3 = "";
+      var r3 = "";
+      var b3 = "";
+
+      if (Model.Player.InRole("TANK")) {
+        y1 = "↑北";
+        r1 = "↖北西";
+        b1 = "";
+
+        y2 = "";
+        r2 = "↑北";
+        b2 = "";
+
+        y3 = "↖北西";
+        r3 = "↑北";
+        b3 = "↙南西";
+      }
+
+      if (Model.Player.InRole("HEALER")) {
+        y1 = "←西";
+        r1 = "↖北西";
+        b1 = "";
+
+        y2 = "";
+        r2 = "↑北";
+        b2 = "";
+
+        y3 = "↖北西";
+        r3 = "↑北";
+        b3 = "↙南西";
+      }
+
+      if (Model.Player.InRole("DPS")) {
+        y1 = "→東";
+        r1 = "↗北東";
+        b1 = "↓南";
+
+        y2 = "";
+        r2 = "↓南";
+        b2 = "";
+
+        y3 = "↗北東";
+        r3 = "↑北";
+        b3 = "↘南東";
+      }
+    }
+
+    <!-- ボム1回目 -->
+    <t no="2" name="サイン黄" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetY, X4):" notice="イエロー、@(y1)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="1" />
+      </expressions>
+      <v-notice text="黄：@(y1)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <t no="2" name="サイン橙" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r1)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="1" />
+      </expressions>
+      <v-notice text="橙：@(r1)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <t no="2" name="サイン青" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、@(b1)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="1" />
+      </expressions>
+      <v-notice text="青：@(b1)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <!-- ボム2回目 -->
+    <t no="2" name="サイン橙" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r2)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="2" />
+      </expressions>
+      <v-notice text="橙：@(r2)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <t no="2" name="サイン青" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、確認する">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="2" />
+      </expressions>
+      <v-notice text="青：要確認！" duration="5" duration-visible="false" icon="Chech.png" />
+    </t>
+
+    <!-- ボム3回目 -->
+    <t no="2" name="サイン黄" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetY, X4):" notice="イエロー、@(y3)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="3" />
+      </expressions>
+      <v-notice text="黄：@(y3)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <t no="2" name="サイン橙" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r3)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="3" />
+      </expressions>
+      <v-notice text="橙：@(r3)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <t no="2" name="サイン青" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、@(b3)えー">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+        <pre name="bomb_phase" count="3" />
+      </expressions>
+      <v-notice text="青：@(b3)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <!-- サイコロ -->
+    <t name="サインD1" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset1, X4):" notice="青の1番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="青１番" duration="20" duration-visible="false" icon="Dice1.png" />
+    </t>
+
+    <t name="サインD2" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset2, X4):" notice="青の2番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="青２番" duration="20" duration-visible="false" icon="Dice2.png" />
+    </t>
+
+    <t name="サインD3" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset3, X4):" notice="青の3番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="青３番" duration="20" duration-visible="false" icon="Dice3.png" />
+    </t>
+
+    <t name="サインD4" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset4, X4):" notice="青の4番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="青４番" duration="20" duration-visible="false" icon="Dice4.png" />
+    </t>
+
+    <t name="サインD5" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset5, X4):" notice="紫の1番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="紫１番" duration="20" duration-visible="false" icon="Dice1.png" />
+    </t>
+
+    <t name="サインD6" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset6, X4):" notice="紫の2番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="紫２番" duration="20" duration-visible="false" icon="Dice2.png" />
+    </t>
+
+    <t name="サインD7" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset7, X4):" notice="紫の3番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="紫３番" duration="20" duration-visible="false" icon="Dice3.png" />
+    </t>
+
+    <t name="サインD8" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset8, X4):" notice="紫の4番">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="紫４番" duration="20" duration-visible="false" icon="Dice4.png" />
+    </t>
+    <!-- 動的な1Bサインの判定 end -->
+
+    <t no="1" name="ライオン線" sync="23:[id8]:創られた獅子:[id8]:[mex]:" notice="自分に線" notice-sync="true">
+      <v-notice 
+        text="自分に線" 
+        duration="8" 
+        icon="Check.png"
+        order="-2" />
+    </t>
+
+    <t no="2" name="ライオン線-TH" sync="23:[id8]:創られた獅子:[id8]:([TANK]|[HEALER]):" sync-count="1" notice="タンク、ヒーラーに線" notice-sync="true">
+      <v-notice 
+        text="線：タンク＆ヒーラー" 
+        duration="8" 
+        icon="Check.png"
+        order="-1"
+        font-scale="0.9" />
+    </t>
+
+    <t no="2" name="ライオン線-DPS" sync="23:[id8]:創られた獅子:[id8]:[DPS]:" sync-count="1" notice="DPSに線。ヒーラー、ライオンえー" notice-sync="true">
+      <v-notice 
+        text="線：ＤＰＳ\nヒーラー → 大獅子" 
+        duration="8" 
+        icon="Check.png"
+        order="-1"
+        font-scale="0.9" />
+    </t>
+
     <a time="000" name="変数リセット" >
       <expressions>
         <set name="first_branch" value="true" />
         <set name="second_branch" value="false" />
         <set name="current_junction" value="false" />
+        <set name="is_ready_detect_sign" value="false" />
       </expressions>
     </a>
 
@@ -320,7 +465,12 @@
 
     <a time="057.0" text="頭割りor散開" />
     <a time="069.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
-    <a time="071.0" text="天罰の波動２" />
+    <a time="071.0" text="天罰の波動２">
+      <expression>
+        <set name="is_ready_detect_sign" value="true" />
+      </expression>
+    </a>
+
     <a time="082.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
     <a time="096.0" text="ジャンクション：シヴァ" sync="プロミス・オブ・エデンの「ジャンクション：シヴァ」" />
     <a time="101.0" sync="プロミス・オブ・エデン:氷の記憶を再生する……！" />
@@ -338,12 +488,16 @@
     <a time="169.0" text="ジャンクション：タイタン" sync="プロミス・オブ・エデンの「ジャンクション：タイタン」" />
     <a time="174.0" sync="プロミス・オブ・エデン:大地の記憶を再生する……！" />
     <a time="180.0" text="大地の怒り" sync="プロミス・オブ・エデンの「大地の怒り」" />
+
     <a time="188.0" text="ボム＋マーカー付与１" />
     <a time="193.6" text="マーカー着弾" />
+
     <a time="201.1" text="ボム＋マーカー付与２" />
     <a time="206.6" text="マーカー着弾" />
+
     <a time="214.1" text="ボム＋マーカー付与３" />
     <a time="219.7" text="マーカー着弾" />
+
     <a time="229.0" sync="プロミス・オブ・エデン:なぜ、そっとしておいてくれない？" />
     <a time="239.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
 

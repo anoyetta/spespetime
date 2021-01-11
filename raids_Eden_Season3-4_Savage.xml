@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev7</rev>
+  <rev>rev10</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
+    Hojoring v8.1.1 以降を使用してください。EVALおよび正規表現の動的更新が必要だからです。
   </description>
   <author>anoyetta, sheeva</author>
   <license>CC BY-SA</license>
@@ -152,7 +153,7 @@
             <pre name="draw_leviathan" count="1" />
             <pre name="draw_garuda" count="1" />
           </expressions>
-          <v-notice text="斜めに近寄る" duration="9" order="-1" delay="@delay" />
+          <v-notice text="斜め＋近寄る" duration="9" order="-1" delay="@delay" />
         </t>
     
         <t name="はなつ/リリース2" sync="@keyword" notice="斜めに離れる。" notice-o="@delay">
@@ -160,7 +161,7 @@
             <pre name="draw_ramuh" count="1" />
             <pre name="draw_garuda" count="1" />
           </expressions>
-          <v-notice text="斜めに離れる" duration="9" order="-1" delay="@delay" />
+          <v-notice text="斜め＋離れる" duration="9" order="-1" delay="@delay" />
         </t>
     
         <t name="はなつ/リリース3" sync="@keyword" notice="左右に近寄る。" notice-o="@delay">
@@ -168,7 +169,7 @@
             <pre name="draw_leviathan" count="1" />
             <pre name="draw_ifrit" count="1" />
           </expressions>
-          <v-notice text="左右に近寄る" duration="9" order="-1" delay="@delay" />
+          <v-notice text="左右＋近寄る" duration="9" order="-1" delay="@delay" />
         </t>
     
         <t name="はなつ/リリース4" sync="@keyword" notice="前後で離れる。" notice-o="@delay">
@@ -176,7 +177,7 @@
             <pre name="draw_leviathan" count="1" />
             <pre name="draw_ramuh" count="1" />
           </expressions>
-          <v-notice text="前後で離れる" duration="9" order="-1" delay="@delay" />
+          <v-notice text="前後＋離れる" duration="9" order="-1" delay="@delay" />
         </t>
     
         <t name="はなつ/リリース5" sync="@keyword" notice="左右で離れる。" notice-o="@delay">
@@ -184,7 +185,7 @@
             <pre name="draw_ifrit" count="1" />
             <pre name="draw_ramuh" count="1" />
           </expressions>
-          <v-notice text="左右で離れる" duration="9" order="-1" delay="@delay" />
+          <v-notice text="左右＋離れる" duration="9" order="-1" delay="@delay" />
         </t>
       }
     }
@@ -200,7 +201,7 @@
     <!-- ドロー・ストック・リリースおよび "はなつ" の判定 end -->
 
     <!-- 動的な1Bサインの判定 begin -->
-    <t name="天罰の波動のサインを覚える" sync="1B:[id8]:.+:0000:[id4]:(?&lt;sign&gt;[0-9a-fA-F]{4}):">
+    <t name="天罰の波動のサインを覚える" sync="^1B:[id8]:[pc]:0000:[id4]:(?&lt;sign&gt;[0-9a-fA-F]{4}):">
       <expressions>
         <pre name="is_ready_detect_sign" value="false" />
         <set name="sign_origin" value="0x${sign}" />
@@ -225,8 +226,9 @@
     <t 
       no="1" 
       name="サイン色" 
-      sync="1B:[id8]:[mex]:0000:[id4]:(EVAL(VAR['sign_origin'] - @offsetY, X4)|EVAL(VAR['sign_origin'] - @offsetR, X4)|EVAL(VAR['sign_origin'] - @offsetB, X4)):">
+      sync="^1B:[id8]:[mex]:0000:[id4]:(EVAL(VAR['sign_origin'] - @offsetY, X4)|EVAL(VAR['sign_origin'] - @offsetR, X4)|EVAL(VAR['sign_origin'] - @offsetB, X4)):">
       <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
         <set name="bomb_phase" count="+1" />
       </expressions>
     </t>
@@ -286,7 +288,7 @@
     }
 
     <!-- ボム1回目 -->
-    <t no="2" name="サイン黄" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetY, X4):" notice="イエロー、@(y1)えー">
+    <t no="2" name="サイン黄" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetY, X4):" notice="イエロー、@(y1)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="1" />
@@ -294,7 +296,7 @@
       <v-notice text="黄：@(y1)へ" duration="5" duration-visible="false" icon="Leave.png" />
     </t>
 
-    <t no="2" name="サイン橙" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r1)えー">
+    <t no="2" name="サイン橙" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r1)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="1" />
@@ -302,7 +304,7 @@
       <v-notice text="橙：@(r1)へ" duration="5" duration-visible="false" icon="Leave.png" />
     </t>
 
-    <t no="2" name="サイン青" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、@(b1)えー">
+    <t no="2" name="サイン青" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、@(b1)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="1" />
@@ -311,7 +313,7 @@
     </t>
 
     <!-- ボム2回目 -->
-    <t no="2" name="サイン橙" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r2)えー">
+    <t no="2" name="サイン橙" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r2)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="2" />
@@ -319,7 +321,7 @@
       <v-notice text="橙：@(r2)へ" duration="5" duration-visible="false" icon="Leave.png" />
     </t>
 
-    <t no="2" name="サイン青" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、確認する">
+    <t no="2" name="サイン青" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、確認する">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="2" />
@@ -328,7 +330,7 @@
     </t>
 
     <!-- ボム3回目 -->
-    <t no="2" name="サイン黄" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetY, X4):" notice="イエロー、@(y3)えー">
+    <t no="2" name="サイン黄" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetY, X4):" notice="イエロー、@(y3)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="3" />
@@ -336,7 +338,7 @@
       <v-notice text="黄：@(y3)へ" duration="5" duration-visible="false" icon="Leave.png" />
     </t>
 
-    <t no="2" name="サイン橙" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r3)えー">
+    <t no="2" name="サイン橙" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetR, X4):" notice="オレンジ、@(r3)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="3" />
@@ -344,7 +346,7 @@
       <v-notice text="橙：@(r3)へ" duration="5" duration-visible="false" icon="Leave.png" />
     </t>
 
-    <t no="2" name="サイン青" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、@(b3)えー">
+    <t no="2" name="サイン青" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):" notice="ブルー、@(b3)えー">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="3" />
@@ -353,56 +355,56 @@
     </t>
 
     <!-- サイコロ -->
-    <t name="サインD1" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset1, X4):" notice="青の1番">
+    <t name="サインD1" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset1, X4):" notice="青の1番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="青１番" duration="20" duration-visible="false" icon="Dice1.png" />
     </t>
 
-    <t name="サインD2" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset2, X4):" notice="青の2番">
+    <t name="サインD2" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset2, X4):" notice="青の2番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="青２番" duration="20" duration-visible="false" icon="Dice2.png" />
     </t>
 
-    <t name="サインD3" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset3, X4):" notice="青の3番">
+    <t name="サインD3" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset3, X4):" notice="青の3番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="青３番" duration="20" duration-visible="false" icon="Dice3.png" />
     </t>
 
-    <t name="サインD4" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset4, X4):" notice="青の4番">
+    <t name="サインD4" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset4, X4):" notice="青の4番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="青４番" duration="20" duration-visible="false" icon="Dice4.png" />
     </t>
 
-    <t name="サインD5" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset5, X4):" notice="紫の1番">
+    <t name="サインD5" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset5, X4):" notice="紫の1番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="紫１番" duration="20" duration-visible="false" icon="Dice1.png" />
     </t>
 
-    <t name="サインD6" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset6, X4):" notice="紫の2番">
+    <t name="サインD6" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset6, X4):" notice="紫の2番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="紫２番" duration="20" duration-visible="false" icon="Dice2.png" />
     </t>
 
-    <t name="サインD7" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset7, X4):" notice="紫の3番">
+    <t name="サインD7" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset7, X4):" notice="紫の3番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
       <v-notice text="紫３番" duration="20" duration-visible="false" icon="Dice3.png" />
     </t>
 
-    <t name="サインD8" sync="1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset8, X4):" notice="紫の4番">
+    <t name="サインD8" sync="^1B:[id8]:[mex]:0000:[id4]:EVAL(VAR['sign_origin'] - @offset8, X4):" notice="紫の4番">
       <expressions>
         <pre name="is_ready_detect_sign" value="true" />
       </expressions>
@@ -410,7 +412,7 @@
     </t>
     <!-- 動的な1Bサインの判定 end -->
 
-    <t no="1" name="ライオン線" sync="23:[id8]:創られた獅子:[id8]:[mex]:" notice="自分に線" notice-sync="true">
+    <t no="1" name="ライオン線" sync="^23:[id8]:創られた獅子:[id8]:[mex]:" notice="自分に線" notice-sync="true">
       <v-notice 
         text="自分に線" 
         duration="8" 
@@ -418,7 +420,7 @@
         order="-2" />
     </t>
 
-    <t no="2" name="ライオン線-TH" sync="23:[id8]:創られた獅子:[id8]:([TANK]|[HEALER]):" sync-count="1" notice="タンク、ヒーラーに線" notice-sync="true">
+    <t no="2" name="ライオン線-TH" sync="^23:[id8]:創られた獅子:[id8]:([TANK]|[HEALER]):" sync-count="1" notice="タンク、ヒーラーに線" notice-sync="true">
       <v-notice 
         text="線：タンク＆ヒーラー" 
         duration="8" 
@@ -427,7 +429,7 @@
         font-scale="0.9" />
     </t>
 
-    <t no="2" name="ライオン線-DPS" sync="23:[id8]:創られた獅子:[id8]:[DPS]:" sync-count="1" notice="DPSに線。ヒーラー、ライオンえー" notice-sync="true">
+    <t no="2" name="ライオン線-DPS" sync="^23:[id8]:創られた獅子:[id8]:[DPS]:" sync-count="1" notice="DPSに線。ヒーラー、ライオンえー" notice-sync="true">
       <v-notice 
         text="線：ＤＰＳ\nヒーラー → 大獅子" 
         duration="8" 
@@ -465,11 +467,12 @@
 
     <a time="057.0" text="頭割りor散開" />
     <a time="069.0" text="天罰の波動１" sync="プロミス・オブ・エデンの「天罰の波動」" notice="次は、タンクスイッチ。" />
-    <a time="071.0" text="天罰の波動２">
-      <expression>
+    <a time="069.0" name="天罰の波動キャプチャ完了">
+      <expressions>
         <set name="is_ready_detect_sign" value="true" />
-      </expression>
+      </expressions>
     </a>
+    <a time="071.0" text="天罰の波動２" />
 
     <a time="082.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
     <a time="096.0" text="ジャンクション：シヴァ" sync="プロミス・オブ・エデンの「ジャンクション：シヴァ」" />

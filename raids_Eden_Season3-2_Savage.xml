@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編2</name>
-  <rev>rev5</rev>
+  <rev>rev6</rev>
   <description>
     希望の園エデン零式： 再生編2 のスペスペたいむ定義です。
+    スペスペのオプションのログフィルタにて 0x26:NetworksStatusResultList のチェックを外してください。
+    0x26 のログを判定対象とするためです。
   </description>
   <author>anoyetta, sheeva</author>
   <license>CC BY-SA</license>
@@ -27,6 +29,22 @@
       duration="6"
       order="-1"
       icon="StackFront.png" />
+  </t>
+
+  <t text="右手上げ" sync="^14:(56F4|56EA):影の王 starts using ギガスラッシュ on 影の王." notice="影の左えー">
+    <v-notice
+      text="影の左へ"
+      duration="6"
+      order="-1"
+      icon="Arrow7.png" />
+  </t>
+
+  <t text="左手上げ" sync="^14:(56F8|56ED):影の王 starts using ギガスラッシュ on 影の王." notice="影の右えー">
+    <v-notice
+      text="影の右へ"
+      duration="6"
+      order="-1"
+      icon="Arrow3.png" />
   </t>
 
   <t name="シャドウアンリーシュ" sync="影の王は「シャドウアンリーシュ」の構え。" notice="頭割り" >
@@ -249,10 +267,12 @@
   <a time="108.0" text="影の王命" sync="影の王の「影の王命」" />
   <a time="121.0" text="アンブラスマッシュ" sync="影の王の「アンブラスマッシュ」" notice="次は、タンク強攻撃。" />
   <a time="135.0" text="頭割りor前方範囲" sync="影の王の「シャドウ(アンリーシュ|スラッシュ)」" />
+
   <a time="142.0" sync="影の王:すべての影は、我が領土…… お前たちの影すら例外ではない！" />
   <a time="146.0" text="影の従僕" sync="影の王の「影の従僕」" />
   <a time="156.3" text="ギガスラッシュ" />
   <a time="175.0" text="ギガスラッシュ" />
+
   <a time="190.0" text="ノックバック"  notice="次は、ノックバック" />
   <a time="209.0" text="アンブラルオーブ" sync="影の王の「アンブラルオーブ」" />
   <a time="217.0" text="オーブ着弾" />

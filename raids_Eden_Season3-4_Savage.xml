@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev7</rev>
+  <rev>rev8</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
   </description>
@@ -200,7 +200,7 @@
     <!-- ドロー・ストック・リリースおよび "はなつ" の判定 end -->
 
     <!-- 動的な1Bサインの判定 begin -->
-    <t name="天罰の波動のサインを覚える" sync="1B:[id8]:.+:0000:[id4]:(?&lt;sign&gt;[0-9a-fA-F]{4}):">
+    <t name="天罰の波動のサインを覚える" sync="1B:[id8]:[pc]:0000:[id4]:(?&lt;sign&gt;[0-9a-fA-F]{4}):">
       <expressions>
         <pre name="is_ready_detect_sign" value="false" />
         <set name="sign_origin" value="0x${sign}" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev10</rev>
+  <rev>rev11</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
     Hojoring v8.1.1 以降を使用してください。EVALおよび正規表現の動的更新が必要だからです。
@@ -211,7 +211,7 @@
     @{
       var offsetY = 0x0021;
       var offsetR = 0x0020;
-      var offsetB = 0x0019;
+      var offsetB = 0x001F;
 
       var offset1 = 0x0049;
       var offset2 = 0x0048;

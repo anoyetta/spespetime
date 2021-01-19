@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev12</rev>
+  <rev>rev15</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
     Hojoring v8.1.1 以降を使用してください。EVALおよび正規表現の動的更新が必要だからです。
@@ -30,22 +30,32 @@
   </s>
 
   <s name="前半" >
-    <t name="悦楽の手 右サイド攻撃" sync="^14:(5877|58AD)" notice="左側えー">
-      <v-notice
-        text="左側へ"
-        duration="6"
-        duration-visible="false"
-        icon="Arrow7.png"
-        order="-20" />
+    <t name="悦楽の手 右サイド攻撃" sync="^14:(5877|58AD)" notice="西側えー">
+      <expressions>
+        <pre name="in_kyojin" value="false" />
+      </expressions>
+      <v-notice text="西側へ" icon="Arrow7.png" duration="6" duration-visible="false" order="-20" />
     </t>
 
-    <t name="悦楽の手 左サイド攻撃" sync="^14:(5878|58AE)" notice="右側えー">
-      <v-notice
-        text="右側へ"
-        duration="6"
-        duration-visible="false"
-        icon="Arrow3.png"
-        order="-20" />
+    <t name="悦楽の手 左サイド攻撃" sync="^14:(5878|58AE)" notice="東側えー">
+      <expressions>
+        <pre name="in_kyojin" value="false" />
+      </expressions>
+      <v-notice text="東側へ" icon="Arrow3.png" duration="6" duration-visible="false" order="-20" />
+    </t>
+
+    <t name="悦楽の手 右サイド攻撃（南向き時）" sync="^14:(5877|58AD)" notice="東側えー">
+      <expressions>
+        <pre name="in_kyojin" value="true" />
+      </expressions>
+      <v-notice text="東側へ" icon="Arrow3.png" duration="6" duration-visible="false" order="-20" />
+    </t>
+
+    <t name="悦楽の手 左サイド攻撃（南向き時）" sync="^14:(5878|58AE)" notice="西側えー">
+      <expressions>
+        <pre name="in_kyojin" value="true" />
+      </expressions>
+      <v-notice text="西側へ" icon="Arrow7.png" duration="6" duration-visible="false" order="-20" />
     </t>
 
     <t name="天罰の波動" sync="プロミス・オブ・エデン starts using 天罰の波動" notice="天罰">
@@ -326,7 +336,7 @@
         <pre name="is_ready_detect_sign" value="true" />
         <pre name="bomb_phase" count="2" />
       </expressions>
-      <v-notice text="青：要確認！" duration="5" duration-visible="false" icon="Chech.png" />
+      <v-notice text="青：要確認！" duration="5" duration-visible="false" icon="Check.png" />
     </t>
 
     <!-- ボム3回目 -->
@@ -352,6 +362,13 @@
         <pre name="bomb_phase" count="3" />
       </expressions>
       <v-notice text="青：@(b3)へ" duration="5" duration-visible="false" icon="Leave.png" />
+    </t>
+
+    <t no="3" name="サイン青の表示" sync="^1B:[id8]:[pc]:0000:[id4]:EVAL(VAR['sign_origin'] - @offsetB, X4):">
+      <expressions>
+        <pre name="is_ready_detect_sign" value="true" />
+      </expressions>
+      <v-notice text="青：${_pc}" duration="5" duration-visible="false" job-icon="true" order="1" font-scale="0.9" />
     </t>
 
     <!-- サイコロ -->
@@ -412,6 +429,14 @@
     </t>
     <!-- 動的な1Bサインの判定 end -->
 
+    <t name="ノックバック右下から" sync="^14:58B4:ガーディアン・オブ・エデン starts using 拒絶の手" notice="右下えー">
+      <v-notice text="右下へ" duration="7.7" duration-visible="true" icon="Arrow4.png" />
+    </t>
+
+    <t name="ノックバック左下から" sync="^14:58B5:ガーディアン・オブ・エデン starts using 拒絶の手" notice="左下えー">
+      <v-notice text="左下へ" duration="7.7" duration-visible="true" icon="Arrow6.png" />
+    </t>
+
     <t no="1" name="ライオン線" sync="^23:[id8]:創られた獅子:[id8]:[mex]:" notice="自分に線" notice-sync="true">
       <v-notice 
         text="自分に線" 
@@ -457,7 +482,7 @@
     <a time="046.0" sync="プロミス・オブ・エデン:記憶は誇張され、改変される！" />
 
     <a time="046.3" name="はなつ開始" sync="プロミス・オブ・エデンは「はなつ」の構え。" />
-    <a time="046.8" name="棚卸し">
+    <a time="046.4" name="棚卸し">
       <dump target="Log" log="@StockTakingNoticeNow" />
     </a>
     <a time="053.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
@@ -505,7 +530,7 @@
     <a time="239.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
 
     <a time="252.3" name="はなつ開始" sync="プロミス・オブ・エデンは「はなつ」の構え。" />
-    <a time="252.8" name="棚卸し">
+    <a time="252.4" name="棚卸し">
       <dump target="Log" log="@StockTakingNoticeNow" />
     </a>
     <a time="259.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
@@ -515,7 +540,11 @@
 
     <a time="259.0" text="オブリタレーション" sync="ガーディアン・オブ・エデンの「オブリタレーション」" />
     <a time="270.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />
-    <a time="277.0" sync="プロミス・オブ・エデン:この理想郷に、おまえたちは必要ない。" />
+    <a time="277.0" sync="プロミス・オブ・エデン:この理想郷に、おまえたちは必要ない。">
+      <expressions>
+        <set name="in_kyojin" value="true" />
+      </expressions>
+    </a>
 
     <a time="283.0" text="ストック" sync="プロミス・オブ・エデンの「ストック」" />
     <a time="288.0" text="巨兵創出" sync="創られた男の「巨兵創出」" />
@@ -526,11 +555,14 @@
     <a time="310.0" text="拒絶の手" sync="ガーディアン・オブ・エデンの「拒絶の手」" />
 
     <a time="310.3" name="リリース開始" sync="プロミス・オブ・エデンは「リリース」の構え。" />
-    <a time="310.8" name="棚卸し">
+    <a time="310.4" name="棚卸し">
       <dump target="Log" log="@StockTakingNoticeNow" />
     </a>
     <a time="317.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
     <a time="318.0" name="ストックをクリアする">
+      <expressions>
+        <set name="in_kyojin" value="false" />
+      </expressions>
       <dump target="Log" log="@ClearStocks" />
     </a>
 
@@ -546,7 +578,7 @@
     <a time="375.0" text="獅子の業火" />
 
     <a time="373.3" name="リリース開始" sync="プロミス・オブ・エデンは「リリース」の構え。" />
-    <a time="373.8" name="棚卸し">
+    <a time="373.4" name="棚卸し">
       <dump target="Log" log="@StockTakingNoticeNow" />
     </a>
     <a time="380.0" text="リリース" sync="プロミス・オブ・エデンの「リリース」" />
@@ -575,7 +607,7 @@
     <a time="425.0" text="ジャンクション" sync="プロミス・オブ・エデンの「ジャンクション：" />
 
     <a time="427.3" name="はなつ開始" sync="プロミス・オブ・エデンは「はなつ」の構え。" />
-    <a time="427.8" name="棚卸し">
+    <a time="427.4" name="棚卸し">
       <dump target="Log" log="@StockTakingNoticeNow" />
     </a>
     <a time="434.0" text="はなつ" sync="プロミス・オブ・エデンの「はなつ」" />
@@ -670,6 +702,7 @@
         order="-2" />
     </t>
     <!-- 時間圧縮・序トリガー end -->
+
     <a time="011.0" sync="闇の巫女:過去……現在……未来……。" />
     <a time="022.0" text="時間圧縮・序" sync="闇の巫女の「時間圧縮・序」" />
     <a time="030.0" text="スピード" sync="闇の巫女の「スピード」" />

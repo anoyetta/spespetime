@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev16</rev>
+  <rev>rev17</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
     Hojoring v8.1.1 以降を使用してください。EVALおよび正規表現の動的更新が必要だからです。
@@ -437,7 +437,7 @@
       <v-notice text="左下へ" duration="7.7" duration-visible="true" icon="Arrow6.png" />
     </t>
 
-    <t no="1" name="ライオン線" sync="^23:[id8]:創られた獅子:[id8]:[mex]:" notice="自分に線" notice-sync="true">
+    <t no="1" name="ライオン線" sync="^23:[id8]:創られた獅子:[id8]:[mex]:" notice="自分に線">
       <v-notice 
         text="自分に線" 
         duration="8" 
@@ -445,24 +445,36 @@
         order="-2" />
     </t>
 
-    <t no="2" name="ライオン線-TH" sync="^23:[id8]:創られた獅子:[id8]:([TANK]|[HEALER]):" sync-count="1" notice="タンク、ヒーラーに線" notice-sync="true">
+    <t no="2" name="ライオン線-TH" sync="^23:[id8]:創られた獅子:[id8]:([TANK]|[HEALER]):" sync-count="1">
       <v-notice 
-        text="線：タンク＆ヒーラー" 
+        text="ＤＰＳ →大獅子" 
         duration="8" 
         icon="Check.png"
-        order="-1"
-        font-scale="0.9" />
+        order="-1" />
     </t>
 
-    <t no="2" name="ライオン線-DPS" sync="^23:[id8]:創られた獅子:[id8]:[DPS]:" sync-count="1" notice="DPSに線。ヒーラー、ライオンえー" notice-sync="true">
-      <v-notice 
-        text="線：ＤＰＳ\nヒーラー → 大獅子" 
-        duration="8" 
-        icon="Check.png"
-        order="-1"
-        font-scale="0.9" />
-    </t>
+    @if (Model.Player.InRole("TANK"))
+    {
+      <t no="2" name="ライオン線-DPS" sync="^23:[id8]:創られた獅子:[id8]:[DPS]:" sync-count="1">
+        <v-notice 
+          text="ヒーラ →大獅子" 
+          duration="8" 
+          icon="Check.png"
+          order="-1" />
+      </t>
+    }
 
+    @if (Model.Player.InRole("HEALER"))
+    {
+      <t no="2" name="ライオン線-DPS" sync="^23:[id8]:創られた獅子:[id8]:[DPS]:" sync-count="1">
+        <v-notice 
+          text="タンク →中央" 
+          duration="8" 
+          icon="Check.png"
+          order="-1" />
+      </t>
+    }
+    
     <a time="000" name="変数リセット" >
       <expressions>
         <set name="first_branch" value="true" />

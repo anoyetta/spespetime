@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev17</rev>
+  <rev>rev18</rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
     Hojoring v8.1.1 以降を使用してください。EVALおよび正規表現の動的更新が必要だからです。
@@ -655,7 +655,15 @@
   }
 
   <s name="PHASE1 後半開幕" >
-    <t name="エラプション" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 16.96 Seconds." >
+    <t name="先エラプション" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 11." >
+      <v-notice
+        text="散開"
+        duration="12"
+        icon="Leave.png"
+        order="-1" />
+    </t>
+
+    <t name="後エラプション" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 16." >
       <v-notice
         text="散開"
         duration="17"
@@ -663,10 +671,18 @@
         order="-1" />
     </t>
 
-    <t name="ウォタガ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークウォタガ from  for 11.96 Seconds." sync-count="2" >
+    <t name="先ウォタガ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークウォタガ from  for 11." sync-count="1" >
       <v-notice
         text="頭割り"
         duration="12"
+        icon="DamageShare.png"
+        order="-1" />
+    </t>
+
+    <t name="後ウォタガ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークウォタガ from  for 16." sync-count="1" >
+      <v-notice
+        text="頭割り"
+        duration="17"
         icon="DamageShare.png"
         order="-1" />
     </t>
@@ -680,229 +696,261 @@
     <a time="045.0" text="ディレイスペル" sync="闇の巫女の「ディレイスペル」" />
     <a time="053.0" text="スペル確認2" />
     <a time="065.0" text="暗夜の舞踏技１" sync="闇の巫女の「暗夜の舞踏技」" />
-    <a time="068.0" text="暗夜の舞踏技２" />
+    <a time="068.0" text="暗夜の舞踏技２" notice="次は、ノックバック。" />
     <a time="080.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE2 序" />
   </s>
 
   <s name="PHASE2 序" >
-    <!-- 時間圧縮・序トリガー begin -->
-    <t name="ファイガ先" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークファイガ from  for 14.96 Seconds." sync-count="1" >
+    <!-- TPS式 時間圧縮・序トリガー begin -->
+    <t name="ファイガ先" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 14." sync-count="1" notice="ファイガ。" >
       <v-notice
-        text="ファイガ"
+        text="先ファイガ"
         duration="15"
         icon="Targetaoe01.png"
         order="-3" />
     </t>
-    <t name="ファイガ後" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークファイガ from  for 28.96 Seconds." sync-count="1" >
+    <t name="ファイガ後" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 28." sync-count="1" notice="ファイガ。" >
       <v-notice
-        text="➜ファイガ"
+        text="後ファイガ"
         duration="29"
         icon="Targetaoe01.png"
         order="-1" />
     </t>
 
-    <t name="ブリザガ先" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークブリザガ from  for 14.96 Seconds." sync-count="1" >
+    <t name="ブリザガ先" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 14." sync-count="1" notice="ブリザガ、きいろの線えー。" >
       <v-notice
-        text="ブリザガ"
+        text="ブリザガ\n黄色の線➜中央"
         duration="15"
         icon="AOEOutside.png"
         order="-3" />
     </t>
-    <t name="ブリザガ後" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークブリザガ from  for 28.96 Seconds." sync-count="1" >
+    <t name="ブリザガ後" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 28." sync-count="1" notice="ブリザガ、きいろの線えー。" >
       <v-notice
-        text="➜ブリザガ"
+        text="ブリザガ\n黄色の線➜中央"
         duration="29"
         icon="AOEOutside.png"
         order="-1" />
     </t>
 
-    <t name="シャドウアイ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：シャドウアイ from  for 21.96 Seconds." sync-count="0" >
+    <t name="シャドウアイ" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：シャドウアイ from  for 21." sync-count="1" >
       <v-notice
         text="➜シャドウアイ"
         duration="22"
         job-icon="true"
         order="-2" />
     </t>
-    <!-- 時間圧縮・序トリガー end -->
+    <!-- TPS式 時間圧縮・序トリガー end -->
+
+    <t name="ブラックヘイローカウント" sync="^14:58C2:闇の巫女 starts using カタクリスム on Unknown." >
+      <v-notice
+        text="➜正面タンク頭割り"
+        duration="14"
+        icon="StackFront.png"
+        order="-3" />
+    </t>
+
+    <t name="シェルクラッシャーカウント" sync="^14:58C2:闇の巫女 starts using カタクリスム on Unknown." >
+      <v-notice
+        text="➜全員で頭割り"
+        duration="22"
+        icon="DamageShare.png"
+        order="-2" />
+    </t>
+
+    <t name="スピリットテイカーカウント" sync="^14:58C2:闇の巫女 starts using カタクリスム on Unknown." >
+      <v-notice
+        text="➜散開"
+        duration="28"
+        icon="Leave.png"
+        order="-1" />
+    </t>
 
     <a time="011.0" sync="闇の巫女:過去……現在……未来……。" />
     <a time="022.0" text="時間圧縮・序" sync="闇の巫女の「時間圧縮・序」" />
     <a time="030.0" text="スピード" sync="闇の巫女の「スピード」" />
     <a time="044.7" text="リターン" />
+    <a time="056.0" text="ノックバック" />
+    <a time="059.0" text="頭割りx2" notice="次は、頭割り。" />
     <a time="068.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
     <a time="078.0" sync="闇の巫女:昏き深淵よ！ いやはてより来たりて、終末を切り裂け！" />
     <a time="083.0" text="アポカリプス・シングル" sync="闇の巫女の「アポカリプス・シングル」" />
     <a time="093.0" text="カタクリスム" sync="闇の巫女の「カタクリスム」" />
-    <a time="101.0" text="ブラックヘイロー" sync="闇の巫女の「ブラックヘイロー」" notice="次、ヘイロー" />
-    <a time="109.0" text="シェルクラッシャー" sync="闇の巫女の「シェルクラッシャー」" />
-    <a time="115.0" text="スピリットテイカー" sync="闇の巫女の「スピリットテイカー」" />
+    <a time="101.0" text="ブラックヘイロー" sync="闇の巫女の「ブラックヘイロー」" />
+    <a time="109.0" text="シェルクラッシャー" sync="闇の巫女の「シェルクラッシャー」" notice="次は、頭割り。" notice-o="-6" />
+    <a time="115.0" text="スピリットテイカー" sync="闇の巫女の「スピリットテイカー」" notice="次は、散開。" notice-o="-6" />
     <a time="126.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE3 破" />
   </s>
 
   <s name="PHASE3 破">
     <!-- 時間圧縮・破トリガー begin -->
-    <t name="エラプション1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 30.96 Seconds." >
+    <t name="エラプション1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 30." notice="最初は散開。" >
       <v-notice
-        text="１：外周（エラプ）"
+        text="エラプ散開"
         duration="12"
         icon="Leave.png"
-        font-scale="0.9"
         order="-3" />
     </t>
 
-    <t name="エラプション2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 26.96 Seconds." >
+    <t name="エラプション2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 26." sync-count="1" notice="/wait 11, 次は、散開。" >
       <v-notice
-        text="２：外周（エラプ）"
+        text="➜エラプ散開"
         duration="17"
         icon="Leave.png"
-        font-scale="0.9"
         order="-2" />
     </t>
 
-    <t name="エラプション3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 22.96 Seconds." >
+    <t name="エラプション3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエラプション from  for 22." sync-count="1" notice="/wait 16, 次は、散開。">
       <v-notice
-        text="３：外周（エラプ）"
+        text=" ➜エラプ散開"
         duration="23"
         icon="Leave.png"
-        font-scale="0.9"
         order="-1" />
     </t>
 
-    <t name="ホーリー1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 30.96 Seconds." sync-count="1" >
+    <t name="ホーリー1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 30." sync-count="1" notice="最初は頭割り。" >
       <v-notice
-        text="１：中央（頭割り）"
+        text="中央で頭割り"
         duration="12"
         icon="DamageShare.png"
-        font-scale="0.9"
         order="-3" />
     </t>
 
-    <t name="ホーリー2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 26.96 Seconds." sync-count="1" >
+    <t name="ホーリー2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 26." sync-count="1" notice="/wait 11, 次は、頭割り。" >
       <v-notice
-        text="２：中央（頭割り）"
+        text="➜中央で頭割り"
         duration="17"
         icon="DamageShare.png"
-        font-scale="0.9"
         order="-2" />
     </t>
 
-    <t name="ホーリー3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 22.96 Seconds." sync-count="1" >
+    <t name="ホーリー3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークホーリー from  for 22." sync-count="1" notice="/wait 16, 次は、頭割り。" >
       <v-notice
-        text="３：中央（頭割り）"
+        text=" ➜中央で頭割り"
         duration="23"
         icon="DamageShare.png"
-        font-scale="0.9"
         order="-1" />
     </t>
 
-    <t name="フレア1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 30.96 Seconds." sync-count="1" >
+    <t name="フレア1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 30." sync-count="1" notice="最初は外周。" >
       <v-notice
-        text="１：外周（フレア）"
+        text="外周で距離減衰"
         duration="12"
         icon="Distance.png"
-        font-scale="0.9"
         order="-3" />
     </t>
 
-    <t name="フレア2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 26.96 Seconds." sync-count="1" >
+    <t name="フレア2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 26." sync-count="1" notice="/wait 11, 次は、外周えー。" >
       <v-notice
-        text="２：外周（フレア）"
+        text="➜外周で距離減衰"
         duration="17"
         icon="Distance.png"
-        font-scale="0.9"
         order="-2" />
     </t>
 
-    <t name="フレア3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 22.96 Seconds." sync-count="1" >
+    <t name="フレア3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：フレア from  for 22." sync-count="1" notice="/wait 16, 次は、外周えー。" >
       <v-notice
-        text="３：外周（フレア）"
+        text=" ➜外周で距離減衰"
         duration="23"
         icon="Distance.png"
-        font-scale="0.9"
         order="-1" />
     </t>
 
-    <t name="シャドウアイ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 30.96 Seconds." sync-count="1" >
+    <t name="シャドウアイ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 30." sync-count="1" notice="最初は視線。" >
       <v-notice
-        text="１：中央（目玉）"
+        text="中央で視線"
         duration="12"
         icon="Eye.png"
-        font-scale="0.9"
         order="-3" />
     </t>
 
-    <t name="シャドウアイ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 26.96 Seconds." sync-count="1" >
+    <t name="シャドウアイ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 26." sync-count="1" notice="/wait 11, 次は、視線。" >
       <v-notice
-        text="２：中央（目玉）"
+        text="➜中央で視線"
         duration="17"
         icon="Eye.png"
-        font-scale="0.9"
         order="-2" />
     </t>
 
-    <t name="シャドウアイ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 22.96 Seconds." sync-count="1" >
+    <t name="シャドウアイ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 22." sync-count="1" notice="/wait 16, 次は、視線。" >
       <v-notice
-        text="３：中央（目玉）"
+        text=" ➜中央で視線"
         duration="23"
         icon="Eye.png"
-        font-scale="0.9"
         order="-1" />
     </t>
 
-    <t name="ブリザガ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 30.96 Seconds." sync-count="1" >
+    <t name="ブリザガ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 30." sync-count="1" notice="最初は中央。" >
       <v-notice
-        text="１：中央（ドーナツ）"
+        text="中央でドーナツ範囲"
         duration="12"
         icon="Ice.png"
-        font-scale="0.9"
         order="-3" />
     </t>
 
-    <t name="ブリザガ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 26.96 Seconds." sync-count="1" >
+    <t name="ブリザガ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 26." sync-count="1" notice="/wait 11, 次は、中央えー。" >
       <v-notice
-        text="２：中央（ドーナツ）"
+        text="➜中央でドーナツ範囲"
         duration="17"
         icon="Ice.png"
-        font-scale="0.9"
         order="-2" />
     </t>
 
-    <t name="ブリザガ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 22.96 Seconds." sync-count="1" >
+    <t name="ブリザガ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークブリザガ from  for 22." sync-count="1" notice="/wait 16, 次は、中央えー。" >
       <v-notice
-        text="３：中央（ドーナツ）"
+        text=" ➜中央でドーナツ範囲"
         duration="23"
         icon="Ice.png"
-        font-scale="0.9"
         order="-1" />
     </t>
 
-    <t name="エアロガ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 30.96 Seconds." sync-count="1" >
+    <t name="エアロガ1" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 30." sync-count="1" notice="最初は四隅。" >
       <v-notice
-        text="１：大外（エアロガ）"
+        text="四隅で範囲捨て"
         duration="12"
         icon="Twister.png"
-        font-scale="0.9"
         order="-3" />
     </t>
 
-    <t name="エアロガ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 26.96 Seconds." sync-count="1" >
+    <t name="エアロガ2" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 26." sync-count="1" notice="/wait 11, 次は、四隅えー。" >
       <v-notice
-        text="２：大外（エアロガ）"
+        text="➜四隅で範囲捨て"
         duration="17"
         icon="Twister.png"
-        font-scale="0.9"
         order="-2" />
     </t>
 
-    <t name="エアロガ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 22.96 Seconds." sync-count="1" >
+    <t name="エアロガ3" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from  for 22." sync-count="1" notice="/wait 16, 次は、四隅えー。" >
       <v-notice
-        text="３：大外（エアロガ）"
+        text=" ➜四隅で範囲捨て"
         duration="23"
         icon="Twister.png"
-        font-scale="0.9"
         order="-1" />
     </t>
     <!-- 時間圧縮・破トリガー end -->
+
+    <t name="宵闇の舞踏技カウント" sync="^14:58C2:闇の巫女 starts using カタクリスム on Unknown." >
+      <v-notice
+        text="➜宵闇MT/ST誘導"
+        duration="14"
+        icon="StackFront.png"
+        order="-3" />
+    </t>
+
+    <t name="シェルクラッシャーカウント" sync="^14:58C2:闇の巫女 starts using カタクリスム on Unknown." >
+      <v-notice
+        text="➜全員で頭割り"
+        duration="32"
+        icon="DamageShare.png"
+        order="-2" />
+    </t>
+
+    <t name="スピリットテイカーカウント" sync="^14:58C2:闇の巫女 starts using カタクリスム on Unknown." >
+      <v-notice
+        text="➜散開"
+        duration="38"
+        icon="Leave.png"
+        order="-1" />
+    </t>
 
     <a time="012.0" sync="闇の巫女:苦しみは刹那、喜びは永遠……。" />
     <a time="017.0" sync="闇の巫女:我が意のままに、時は流れる！" />
@@ -916,64 +964,37 @@
     <a time="089.0" text="カタクリスム" sync="闇の巫女の「カタクリスム」" />
     <a time="102.0" text="宵闇の舞踏技１" sync="闇の巫女の「宵闇の舞踏技」" />
     <a time="105.0" text="宵闇の舞踏技２" />
-    <a time="116.0" text="シェルクラッシャー" sync="闇の巫女の「シェルクラッシャー」" />
-    <a time="132.0" text="スピリットテイカー" sync="闇の巫女の「スピリットテイカー」" />
-    <a time="140.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE4 最終" />
+    <a time="116.0" text="シェルクラッシャー" sync="闇の巫女の「シェルクラッシャー」" notice="次は、頭割り。" notice-o="-6"  />
+    <a time="120.0" text="スピリットテイカー" sync="闇の巫女の「スピリットテイカー」" notice="次は、散開。" notice-o="-6" />
+    <a time="128.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" goto="PHASE4 最終" />
   </s>
 
   <s name="PHASE4 最終" >
-    <!-- 時間圧縮・急トリガー begin -->
-    @if (Model.Player.InRole("TANK")) {
-      <t name="ファイガ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 22.96 Seconds." sync-count="1" notice="ファイガ、やや外えー" >
-        <v-notice
-          text="ファイガ\n１：やや外\n２：右回りに設置\n３：中央に設置"
-          duration="31"
-          icon="Targetaoe01.png"
-          order="-1"
-          font-scale="0.9" />
-      </t>
-    }
-
-    @if (Model.Player.InRole("HEALER")) {
-      <t name="ファイガ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 22.96 Seconds." sync-count="1" notice="ファイガ、やや外えー">
-        <v-notice
-          text="ファイガ\n１：やや外\n２：右回りに設置\n３：右回り(大)に設置"
-          duration="31"
-          icon="Targetaoe01.png"
-          order="-1"
-          font-scale="0.9" />
-      </t>
-    }
-
-    @if (Model.Player.InRole("DPS")) {
-      <t name="ファイガ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 22.96 Seconds." sync-count="1" notice="ファイガ、やや外えー">
-        <v-notice
-          text="ファイガ\n１：やや外\n２：右回りに設置\n３：中央or右回り(大)に設置"
-          duration="31"
-          icon="Targetaoe01.png"
-          order="-1"
-          font-scale="0.9" />
-      </t>
-    }
-
-    <t name="シャドウアイ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 26.96 Seconds." sync-count="1" notice="シャドウアイ、やや外えー">
+    <!-- TPS式 時間圧縮・急トリガー begin -->
+    <t name="ファイガ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークファイガ from  for 22." sync-count="1" >
       <v-notice
-        text="シャドウアイ\n１：やや外\n２：右回りに設置\n３：更に右に設置"
+        text="黄色線、内側\n➜左の外周へ\n➜ファイガ位置"
+        duration="31"
+        icon="Targetaoe01.png"
+        order="-1" />
+    </t>
+
+    <t name="シャドウアイ" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：シャドウアイ from  for 26." sync-count="1" >
+      <v-notice
+        text="黄色線、内側\n➜右の外周へ\n➜外周を右へ"
         duration="31"
         icon="Eye.png"
-        order="-1"
-        font-scale="0.9" />
-      </t>
+        order="-1" />
+    </t>
 
-    <t name="エアロガ2個" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from 闇の巫女 for 30.96 Seconds." sync-count="1" notice="エアロガ、大外えー">
+    <t name="エアロガ2個" sync="^1A:[id8]:[mex] gains the effect of ディレイスペル：ダークエアロガ from 闇の巫女 for 30." sync-count="1" >
       <v-notice
-        text="エアロガx2\n１：大外\n２：左回りに設置\n３：更に左に設置"
+        text="黄色線、外側\n➜左の外周へ\n➜外周を左へ"
         duration="31"
         icon="Twister.png"
-        order="-1"
-        font-scale="0.9" />
-      </t>
-    <!-- 時間圧縮・急トリガー end -->
+        order="-1" />
+    </t>
+    <!-- TPS式 時間圧縮・急トリガー end -->
 
     <a time="008.0" sync="闇の巫女:他者がいるから孤独を感じる……。" />
     <a time="013.0" sync="闇の巫女:ならば、ひとりとなり幸福に浸ろう！" />
@@ -988,11 +1009,38 @@
     <a time="093.0" text="暗夜の舞踏技１" sync="闇の巫女の「暗夜の舞踏技」" />
     <a time="095.0" text="暗夜の舞踏技２" />
     <a time="108.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
-    <a time="117.0" text="ブラックヘイロー" sync="闇の巫女の「ブラックヘイロー」" notice="次、ヘイロー" />
-    <a time="140.0" text="時間圧縮・終" sync="闇の巫女の「時間圧縮・終」" />
-    <a time="155.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" notice="次は、全体攻撃。" />
-    <a time="169.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" />
-    <a time="182.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" />
+    <a time="117.0" text="ブラックヘイロー" sync="闇の巫女の「ブラックヘイロー」" />
+
+    <!-- v-notice内のtextを編集して軽減メモとしてご利用ください -->
+    <a time="140.0" text="時間圧縮・終" sync="闇の巫女の「時間圧縮・終」" >
+      <v-notice
+        order="-1"
+        text=""
+        duration="10" />
+    </a>
+
+    <a time="155.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」"  >
+      <v-notice
+        order="-1"
+        text=""
+        duration="10" />
+    </a>
+
+    <a time="169.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" >
+      <v-notice
+        order="-1"
+        text=""
+        duration="10" />
+    </a>
+
+    <a time="182.0" text="ショックウェーブ・パルサー" sync="闇の巫女の「ショックウェーブ・パルサー」" >
+      <v-notice
+        order="-1"
+        text=""
+        duration="10" />
+    </a>
+
     <a time="191.9" text="時間切れ詠唱" sync="闇の巫女 starts using エンド・オブ・メモリーズ on 闇の巫女." />
+    <a time="200.9" text="時間切れ" />
   </s>
 </timeline>

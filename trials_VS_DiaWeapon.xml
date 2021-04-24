@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極ダイヤウェポン捕獲作戦</name>
+  <rev>3</rev>
+  <description>
+    極ダイヤウェポン捕獲作戦 スペスペたいむ用タイムラインです。
+  </description>
+  <author>anoyetta, sheeva</author>
+  <license>CC BY-SA</license>
+  <zone>The Cloud Deck (Extreme)</zone>
+  <locale>JA</locale>
+  <start>0039:戦闘開始！</start>
+
+  <!--
+    2020.04.24 rev3 anoyetta
+    サイコロのコードの間違い、動作しない不具合を修正した
+  -->
+
+  <default target-element="Activity" target-attr="notice-o" value="-6" />
+
+  <t text="頭割り" sync="^14:(5FA5|5FA4):ダイヤウェポン starts using 装甲展開 on ダイヤウェポン." notice="/wait 7, 次は、頭割り。" >
+    <v-notice
+      duration="19"
+      icon="Stack.png"
+      order="-1" />
+  </t>
+
+  <t text="散開" sync="^14:(5FA2|5FA3):ダイヤウェポン starts using 装甲展開 on ダイヤウェポン." notice="/wait 7, 次は、散開。" >
+    <v-notice
+      duration="19"
+      icon="SpreadB.png"
+      order="-1" />
+  </t>
+
+  <t text="強攻撃\n➜ ${_pc}" sync="^14:5FBD:ダイヤウェポン starts using アウリドゥーム on [pc]" >
+    <v-notice
+      duration="5"
+      order="-1"
+      job-icon="true" />
+  </t>
+
+  <!-- 頭上マーカ識別用トリガ begin -->
+  <t no="1" name="InsertDiceMarker" sync="^1B:[id8]:[pc]:0000:....:(?&lt;mark_code&gt;[0-9a-fA-F]{4}):" >
+    <expressions>
+      <pre name="isDiceTableEnable" value="true" />
+      <table>
+      {
+          "method":"Insert",
+          "table":"DiceTable",
+          "cols" : [
+            {
+              "name" : "marker",
+              "val" : "${mark_code}",
+              "key" : "true"
+            },
+            {
+              "name":"target",
+              "val":"${_pc}"
+            },
+          ]
+      }
+      </table>
+    </expressions>
+  </t>
+
+  <t no="2" text="マーカー1番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="いちばん、左前えー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][0]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー１番\n➜ 左：前方"
+      duration="13"
+      icon="Dice1.png" />
+  </t>
+
+  <t no="3" text="マーカー2番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="にばん、右前えー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][1]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー２番\n➜ 右：前方"
+      duration="15"
+      icon="Dice2.png" />
+  </t>
+
+  <t no="4" text="マーカー3番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="さんばん、左後ろえー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][2]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー３番\n➜ 左：後方"
+      duration="16"
+      icon="Dice3.png" />
+  </t>
+
+  <t no="5" text="マーカー4番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="よんばん、右後ろえー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][3]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー４番\n➜ 右：後方"
+      duration="18"
+      icon="Dice4.png" />
+  </t>
+
+  <t no="6" text="マーカー5番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="ごばん、左えー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][4]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー５番\左中央待機 ➜ 前方"
+      duration="19"
+      icon="Dice5.png" />
+  </t>
+
+  <t no="7" text="マーカー6番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="ろくばん、右えー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][5]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー６番\n右中央待機 ➜ 前方"
+      duration="21"
+      icon="Dice6.png" />
+  </t>
+
+  <t no="8" text="マーカー7番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="ななばん、左えー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][6]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー７番\n左中央待機 ➜ 後方"
+      duration="22"
+      icon="Dice7.png" />
+  </t>
+
+  <t no="9" text="マーカー8番" sync="14:5FA6:ダイヤウェポン starts using フラッドレイ on ダイヤウェポン." notice="はちばん、右えー。" >
+    <expressions>
+      <pre name="TABLE['DiceTable'][7]['target']" value="@Model.Player.Name" />
+    </expressions>
+    <v-notice
+      text="マーカー８番\n右中央待機 ➜ 後方"
+      duration="24"
+      icon="Dice8.png" />
+  </t>
+  <!-- 頭上マーカ識別用トリガ end -->
+
+  <!-- 前半 -->
+  <a time="000.0" sync="聞き覚えのある青年の声:戦闘開始……我が妹を傷つけさせはしないッ！" />
+  <a time="020.0" text="ダイヤレイン" sync="ダイヤウェポンの「ダイヤレイン」" icon="AllRangeAttack.png" />
+  <a time="031.0" sync="聞き覚えのある青年の声:エメラルドメモリー解放、ビームユニット展開……！ レックス、頼りにしてるぞッ！" />
+  <a time="036.0" text="装甲展開１" sync="ダイヤウェポンの「装甲展開」" icon="Branch.png" />
+  <a time="046.0" text="クロースラッシュ" sync="ダイヤウェポンの「クロースラッシュ」" icon="East.png" />
+  <a time="049.0" text="散開or頭割り" icon="Branch.png" />
+  <a time="066.0" text="タンク距離減衰" sync="ダイヤウェポンの「フォトンバースト」" notice="次は、距離減衰。" icon="Distance.png" />
+  <a time="078.0" sync="聞き覚えのある青年の声:ルビーメモリー解放、クロー展開……！ ミリサンディア、力を借してくれッ！" />
+  <a time="084.0" text="装甲展開２" sync="ダイヤウェポンの「装甲展開」" icon="Branch.png"  />
+  <a time="093.0" text="クロースラッシュ" sync="ダイヤウェポンの「クロースラッシュ」" />
+  <a time="104.0" text="ダイヤレイン" sync="ダイヤウェポンの「ダイヤレイン」" icon="AllRangeAttack.png" />
+  <a time="115.0" sync="聞き覚えのある青年の声:サファイアメモリー解放、胸部装甲開放……！ リコン、お前の決意を私にッ！" />
+  <a time="120.0" text="装甲展開３" sync="ダイヤウェポンの「装甲展開」" icon="Branch.png"  />
+  <a time="129.0" text="クロースラッシュ" sync="ダイヤウェポンの「クロースラッシュ」" icon="East.png"  />
+  <a time="133.0" text="散開or頭割り" icon="Branch.png" />
+  <a time="151.0" text="タンク距離減衰" sync="ダイヤウェポンの「フォトンバースト」" notice="次は、距離減衰。" icon="Distance.png" />
+  <a time="156.0" sync="聞き覚えのある青年の声:一筋縄ではいかない相手ということか……ならば！" />
+  <a time="170.0" text="コード666" sync="ダイヤウェポンの「コード666」" icon="Dialog.png" />
+
+  <!-- 獣人モード -->
+  <a time="176.0" sync="ガイウス・バエサル:これがダイヤウェポンの本来の姿だというのか……！？" />
+  <a time="182.0" text="大ノックバック" sync="ダイヤウェポンの「アウリサイクロン」" notice="次は、ノックバック。" icon="KnockBack.png" />
+  <a time="187.0" sync="シド:気をつけろ！ さっきまでと機動力が段違いだ！" />
+  <a time="193.0" sync="ガイウス・バエサル:1号機の損傷率増大！ 修復のため一時離脱する！" />
+  <a time="209.0" text="アウトレイジ１" sync="ダイヤウェポンの「アウトレイジ」" notice="次は、全体攻撃。" icon="AllRangeAttack.png" />
+  <a time="217.0" text="アウトレイジ２" sync="ダイヤウェポンの「アウトレイジ」" icon="AllRangeAttack.png" />
+  <a time="220.0" sync="聞き覚えのある青年の声:魔導フィールドを、壁代わりに使ってやる！ 駆けろ、ダイヤウェポン！" />
+  <a time="228.0" text="アウリアーツ" sync="ダイヤウェポンの「アウリアーツ」" icon="AOECross.png" />
+  <a time="235.0" text="アウリアーツ" sync="ダイヤウェポンの「アウリアーツ」" icon="AOEVertical.png" />
+  <a time="249.0" text="アウトレイジ" sync="ダイヤウェポンの「アウトレイジ」" notice="次は、全体攻撃。" icon="AllRangeAttack.png" />
+  <a time="257.0" text="アウリドゥーム" sync="ダイヤウェポンの「アウリドゥーム」" notice="次は、タンクスイッチ。" icon="Targetaoe01.png" />
+  <a time="270.0" text="アウリアーツ" sync="ダイヤウェポンの「アウリアーツ」" notice="次は、突進。" icon="AOEVertical.png" />
+  <a time="278.6" text="ノックバック" notice="次は、ノックバック。" icon="KnockBack.png" />
+  <a time="291.0" text="アウトレイジ" sync="ダイヤウェポンの「アウトレイジ」" notice="次は、全体攻撃。" icon="AllRangeAttack.png" />
+  <a time="312.0" text="アウリアーツ" sync="ダイヤウェポンの「アウリアーツ」" notice="次は、突進。ビットに注意。" icon="AOECross.png" />
+  <a time="319.0" text="アーツ＋ビット攻撃" sync="ダイヤウェポンの「アウリアーツ」" icon="AOEVertical.png" />
+  <a time="333.0" text="アウトレイジ" sync="ダイヤウェポンの「アウトレイジ」" notice="次は、全体攻撃。" icon="AllRangeAttack.png" />
+  <a time="340.0" text="アウリドゥーム" sync="ダイヤウェポンの「アウリドゥーム」" notice="次は、タンクスイッチ。" icon="Targetaoe01.png" />
+  <a time="352.0" text="ビット射出" sync="ダイヤウェポンの「アームビット」" icon="Attention.png" />
+  <a time="361.0" text="アウリアーツ" sync="ダイヤウェポンの「アウリアーツ」" notice="次は、突進。" icon="AOEVertical.png" />
+  <a time="368.0" text="ノックバック＋ビット攻撃" sync="ダイヤウェポンの「バーチカルクリーヴ」" notice="次は、ノックバック。" icon="KnockBack.png" />
+  <a time="381.7" text="アウトレイジ" sync="ダイヤウェポンの「アウトレイジ」" notice="次は、全体攻撃。" icon="AllRangeAttack.png"  />
+  <a time="382.0" sync="聞き覚えのある青年の声:機体の温度上昇、これ以上は危険か……。 装甲を再装備するッ！" />
+
+  <!-- 後半 -->
+  <a time="406.0" sync="ガイウス・バエサル:拘束装置、再展開！ 1号機、戦線に復帰する！" >
+    <expressions>
+      <set name="isDiceTableEnable" value="true" ttl="10" />
+    </expressions>
+  </a>
+  <a time="409.0" text="サイコロ付与" sync="ダイヤウェポンは「フラッドレイ」の構え。" icon="Attention.png" />
+  <a time="422.0" text="フラッドレイ１" icon="Targetaoe03" />
+  <a time="423.5" text="フラッドレイ２" icon="Targetaoe03" />
+  <a time="425.0" text="フラッドレイ３" icon="Targetaoe03" />
+  <a time="426.5" text="フラッドレイ４" icon="Targetaoe03" />
+  <a time="428.0" text="フラッドレイ５" icon="Targetaoe03" />
+  <a time="429.5" text="フラッドレイ６" icon="Targetaoe03" />
+  <a time="431.0" text="フラッドレイ７" icon="Targetaoe03" />
+  <a time="432.5" text="フラッドレイ８" icon="Targetaoe03" />
+  <a time="452.0" text="タンク距離減衰" sync="ダイヤウェポンの「フォトンバースト」" notice="次は、距離減衰。" icon="Distance.png" />
+  <a time="471.0" text="ビット射出" sync="ダイヤウェポンの「アームビット」" icon="Attention.png" />
+  <a time="479.0" text="装甲展開" sync="ダイヤウェポンの「装甲展開」" icon="Branch.png" />
+  <a time="487.0" text="クロースラッシュ" sync="ダイヤウェポンの「クロースラッシュ」" icon="East.png"  />
+  <a time="491.2" text="散開or頭割り＋ビット攻撃" icon="Branch.png" />
+  <a time="503.0" text="ダイヤレイン" sync="ダイヤウェポンの「ダイヤレイン」" icon="AllRangeAttack.png" />
+  <a time="518.0" text="ビット射出" sync="ダイヤウェポンの「アームビット」" icon="Attention.png" />
+  <a time="525.0" text="追尾AoE捨て" sync="ダイヤウェポンの「ダイヤバースト」" notice="次は、集まる。" icon="StackAoE.png" />
+  <a time="529.7" text="ビット攻撃"  icon="AOEHorizontal.png" />
+  <a time="538.8" text="ビット攻撃" icon="AOEHorizontal.png" />
+  <a time="543.2" text="床踏み" icon="Nail.png" />
+  <a time="548.0" text="タンク距離減衰" sync="ダイヤウェポンの「フォトンバースト」" notice="次は、距離減衰。" icon="Distance.png" />
+  <a time="567.7" text="ビット射出" sync="ダイヤウェポンの「アームビット」" icon="Attention.png" />
+  <a time="575.0" text="装甲展開" sync="ダイヤウェポンの「装甲展開」" icon="Branch.png" />
+  <a time="585.0" text="クロースラッシュ" sync="ダイヤウェポンの「クロースラッシュ」" icon="East.png"  />
+  <a time="588.0" text="散開or頭割り＋ビット攻撃" icon="Branch.png" />
+  <a time="599.0" text="ダイヤレイン" sync="ダイヤウェポンの「ダイヤレイン」" icon="AllRangeAttack.png" />
+  <a time="605.0" >
+    <expressions>
+      <set name="isDiceTableEnable" value="true" ttl="10" />
+    </expressions>
+  </a>
+  <a time="610.7" text="サイコロ付与" icon="Attention.png" />
+  <a time="622.8" text="フラッドレイ１" icon="Targetaoe03" />
+  <a time="624.4" text="フラッドレイ２" icon="Targetaoe03" />
+  <a time="625.9" text="フラッドレイ３" icon="Targetaoe03" />
+  <a time="627.4" text="フラッドレイ４" icon="Targetaoe03" />
+  <a time="628.9" text="フラッドレイ５" icon="Targetaoe03" />
+  <a time="630.4" text="フラッドレイ６" icon="Targetaoe03" />
+  <a time="631.9" text="フラッドレイ７" icon="Targetaoe03" />
+  <a time="633.4" text="フラッドレイ８" icon="Targetaoe03" />
+  <!-- 時間切れ未確認 -->
+</timeline>

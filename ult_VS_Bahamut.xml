@@ -70,7 +70,7 @@
     };
 
     // 連撃フェーズの玉とシェイカーの優先順位
-    var rengeki_order = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
+    var rengeki_order = tama_order;
   }
 
   <default target-element="Activity" target-attr="notice-d" value="Main" />

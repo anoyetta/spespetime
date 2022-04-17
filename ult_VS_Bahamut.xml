@@ -46,6 +46,9 @@
 
   @* 優先順位の定義 *@
   @{
+    // 使い回すインデックス
+    var i = 0;
+
     // タニアフェーズの玉の優先順位
     var tama_order    = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
 
@@ -626,7 +629,7 @@
   <s name="P7 連撃の三重奏">
 
     @{
-      var i = 0;
+      i = 0;
 
       foreach (var member in rengeki_order) {
         <t text="$1\n← 玉" sync="1B:........:@member:0000:0000:0076:0000:0000:0000:">

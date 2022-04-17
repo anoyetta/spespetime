@@ -50,7 +50,14 @@
     var i = 0;
 
     // タニアフェーズの玉の優先順位
-    var tama_order    = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
+    // ナ戦暗ガ 白学占賢 モ竜忍侍リ 詩機踊 黒召赤
+    var tama_order = new string[] {
+      "[PLD]", "[WAR]", "[DRK]", "[GNB]",
+      "[WHM]", "[SCH]", "[AST]", "[SGE]",
+      "[MNK]", "[DRG]", "[NIN]", "[SAM]", "[RPR]",
+      "[BRD]", "[MCH]", "[DNC]",
+      "[BLM]", "[SMN]", "[RDM]"
+    };
 
     // ネールフェーズの雷の優先順位
     var thunder_order = new string[] { "[GNB]", "[DRK]", "[AST]", "[WHM]", "[NIN]", "[DRG]", "[BRD]", "[SMN]" };
@@ -68,37 +75,17 @@
 
   <s name="P1 ツインタニア">
     <!-- 玉優先度トリガ begin -->
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[0]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-29" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
+    @{
+      i = -89;
 
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[1]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-28" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
+      foreach (var member in tama_order) {
+        <t text="$1\n← 玉" sync="1B:........:@member:0000:0000:0076:0000:0000:0000:">
+          <v-notice order="@i" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+        </t>
 
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[2]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-27" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[3]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-26" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[4]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-25" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[5]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-24" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[6]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-23" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[7]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-22" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
+        i++;
+      }
+    }
 
     <t name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" />
     <!-- 玉優先度トリガ end -->

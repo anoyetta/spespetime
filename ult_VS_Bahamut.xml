@@ -434,31 +434,39 @@
     <a time="009" text="天地崩壊" icon="KnockBack.png" />
     <a time="014" text="メテオストリーム" icon="SpreadA.png" />
     <a time="017" text="メテオストリーム" icon="SpreadA.png" />
+    <a time="017" notice="まもなく5連クロウ" />
     <a time="020" text="ダラガブダイブ" sync="16:[id8]:ネール・デウス・ダーナス:26C1:ダラガブダイブ:" icon="Targetaoe.png" />
-    <a time="022" text="バハムートクロウ5連" sync="" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="022" text="バハムートクロウ5連" sync="" icon="HardAttack.png" />
     <a time="028" text="龍神の加護" sync="ネール・デウス・ダーナスは「龍神の加護」の構え。" notice="" icon="" />
     <a time="030" name="龍の配置ダンプ">
       <dump name="ネール外周の龍の配置" target="Position" />
     </a>
+    <a time="035" notice="サンダーくるよ" />
     <a time="038" text="サンダーウィング" icon="Thunder.png" />
     <a time="039" text="セリフ" sync="ネール・デウス・ダーナス:月よ！" icon="Dialog.png" />
+    <a time="041" notice="スプリントー" />
     <a time="044" text="ルナダイナモ" sync="ネール・デウス・ダーナスの「ルナダイナモ」" icon="AOEOutside.png" />
     <a time="048" text="離れるor頭割り" icon="AOEInside.png" />
+    <a time="048" notice="サルヴェーションウィングくるよ" />
     <a time="049" text="死の宣告" icon="Attention.png" />
     <a time="050" text="★ファイア1 (全員)" notice="次、全員でファイア" notice-o="-5" icon="Fire.png" />
     <a time="051" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="054" notice="まもなく5連クロウ" />
     <a time="055" text="サルヴェーションウィング" icon="AOE.png" />
-    <a time="059" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="059" text="バハムートクロウ5連" icon="HardAttack.png" />
+    <a time="061" notice="サンダーくるよ" />
     <a time="064" text="サンダーウィング" notice="" icon="Thunder.png" />
     <a time="065" text="★ファイア2 (対象だけ)" notice="次、ひとりでファイア" notice-o="-6" icon="Fire.png" />
     <a time="067" text="セリフ" sync="(鉄の覇道と成す！|月の祝福を！)" icon="Dialog.png" />
     <a time="073" text="サーミオニックビーム" icon="DamageShare.png" />
+    <a time="074" notice="サルヴェーションウィングくるよ" />
     <a time="076" text="離れるorダイナモ" icon="Branch.png" />
     <a time="077" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="078" text="死の宣告" icon="Attention.png" />
     <a time="081" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="083" text="サンダーウィング" notice="" icon="Thunder.png" />
     <a time="085" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="090" notice="まもなく5連クロウ" />
 
     <a time="092" text="★ファイア3 (集合)" notice="次、集まってファイア" notice-o="-5" icon="Fire.png">
       <expressions>
@@ -472,16 +480,19 @@
       </expressions>
     </a>
 
-    <a time="095" text="バハムートクロウ5連" notice="次、5連クロウ" icon="HardAttack.png" />
+    <a time="095" text="バハムートクロウ5連" icon="HardAttack.png" />
     <a time="100" text="セリフ" sync="(鉄の覇道を征く！|月を仰がん！)" notice="" icon="Dialog.png" />
     <a time="106" text="レイヴンダイブ" icon="SpreadA.png" />
+    <a time="108" notice="サンダーくるよ" />
     <a time="109" text="離れるorダイナモ" icon="Branch.png" />
     <a time="113" text="★ファイア4 (全員)" notice="次、全員でファイア" notice-o="-5" icon="Fire.png" />
+    <a time="110" notice="サルヴェーションウィングくるよ" />
     <a time="111" text="サンダーウィング" icon="Thunder.png" />
     <a time="113" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="115" text="死の宣告" icon="Attention.png" />
     <a time="117" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="121" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="125" notice="まもなくビーク" />
     <a time="130" text="レイヴェンズビーク" sync="ネール・デウス・ダーナス starts using レイヴェンズビーク" notice="次、タンクスイッチ" icon="Switch.png" />
     <a time="139" text="セリフ" sync="(鉄の覇道を征く！|月を仰がん！)" icon="Dialog.png" />
     <a time="145" text="スーパーノヴァ" icon="AOE.png" />
@@ -491,11 +502,13 @@
     <a time="154" text="ダラガブダイブ" icon="spreadA.png" />
     <a time="155" text="カータライズ３" icon="" />
     <a time="156" text="頭割りor散開" icon="Branch.png" />
-    <a time="161" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="156" notice="まもなく5連クロウ" />
+    <a time="161" text="バハムートクロウ5連" icon="HardAttack.png" />
     <a time="173" text="セリフ" icon="Dialog.png" />
     <a time="184" text="セリフ" icon="Dialog.png" />
     <a time="197" text="レイヴェンズビーク" sync="「レイヴェンズビーク」の構え。" notice="次、タンクスイッチ" icon="Switch.png" />
-    <a time="204" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="199" notice="まもなく5連クロウ" />
+    <a time="204" text="バハムートクロウ5連" icon="HardAttack.png" />
     <a time="213" text="メガフレア" notice="" icon="Timeout.png" />
 
     <a time="226" text="バハムートへ" sync=":バハムート・プライム:26D1:第七霊災:" goto="P3 進軍の三重奏" sync-s="-100" />

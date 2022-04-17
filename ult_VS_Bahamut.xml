@@ -60,7 +60,14 @@
     };
 
     // ネールフェーズの雷の優先順位
-    var thunder_order = new string[] { "[GNB]", "[DRK]", "[AST]", "[WHM]", "[NIN]", "[DRG]", "[BRD]", "[SMN]" };
+    // ガ暗戦ナ 賢占学白 リ侍忍竜モ 踊機詩 赤召黒
+    var thunder_order = new string[] {
+      "[GNB]", "[DRK]", "[WAR]", "[PLD]",
+      "[SGE]", "[AST]", "[SCH]", "[WHM]",
+      "[RPR]", "[SAM]", "[NIN]", "[DRG]", "[MNK]",
+      "[DNC]", "[MCH]", "[BRD]",
+      "[RDM]", "[SMN]", "[BLM]"
+    };
 
     // 連撃フェーズの玉とシェイカーの優先順位
     var rengeki_order = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
@@ -193,37 +200,17 @@
     <!-- 死の宣告通知トリガー end -->
 
     <!-- サンダー begin -->
-    <t text="$1 ← 雷" sync="@thunder_order[0] gains the effect of サンダーウィング">
-      <v-notice order="-18" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
+    @{
+      i = -59;
 
-    <t text="$1 ← 雷" sync="@thunder_order[1] gains the effect of サンダーウィング">
-      <v-notice order="-17" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
+      foreach (var member in thunder_order) {
+        <t text="$1 ← 雷" sync="@member gains the effect of サンダーウィング">
+          <v-notice order="@i" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
+        </t>
 
-    <t text="$1 ← 雷" sync="@thunder_order[2] gains the effect of サンダーウィング">
-      <v-notice order="-16" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[3] gains the effect of サンダーウィング">
-      <v-notice order="-15" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[4] gains the effect of サンダーウィング">
-      <v-notice order="-14" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[5] gains the effect of サンダーウィング">
-      <v-notice order="-13" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[6] gains the effect of サンダーウィング">
-      <v-notice order="-12" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[7] gains the effect of サンダーウィング">
-      <v-notice order="-11" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
+        i++;
+      }
+    }
 
     <t name="自分に雷" sync="[mex] gains the effect of サンダーウィング" notice="自分にサンダー" />
     <!-- サンダー end -->

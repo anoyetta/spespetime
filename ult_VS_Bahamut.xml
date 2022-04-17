@@ -244,6 +244,7 @@
       </expressions>
     </t>
 
+    <!--
     <t no="3" name="ファイア2一人で" text="${_mex} ← 炎\n離れる！" sync="23:[id8]:ファイアホーン:[id8]:[mex]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、離れるー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
@@ -252,6 +253,13 @@
     </t>
 
     <t no="4" name="ファイア2一人で（その他）" text="${_nex} ← 炎\n一人で" sync="23:[id8]:ファイアホーン:[id8]:[nex]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、一人だけー">
+      <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
+      <expressions>
+        <pre name="fire_count" count="2" />
+      </expressions>
+    </t>
+    -->
+    <t no="3" name="ファイア2一人で" text="${_pc} ← 炎\n離れる！" sync="23:[id8]:ファイアホーン:[id8]:[pc]:[id4]:0000:0005:[id8]:000F:" notice="離れるファイアー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
         <pre name="fire_count" count="2" />
@@ -395,19 +403,28 @@
       <v-notice order="-7" job-icon="true" duration-visible="false" duration="30" font-scale="0.9" sync-to-hide=":ネール・デウス・ダーナス:26B5:バハムートクロウ:" />
     </t>
 
+    <!--
     <t no="21" name="自分にカータ1" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ1番、東えー">
+    -->
+    <t no="21" name="カータ1" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:" notice="カータ1番、東えー">
       <expressions>
         <pre name="cauterize_count" count="1" />
       </expressions>
     </t>
 
+    <!--
     <t no="22" text="自分にカータ2" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ2番、南えー">
+    -->
+    <t no="22" text="カータ2" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:" notice="カータ2番、南えー">
       <expressions>
         <pre name="cauterize_count" count="2" />
       </expressions>
     </t>
 
+    <!--
     <t no="23" text="自分にカータ3" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ3番、西えー">
+    -->
+    <t no="23" text="カータ3" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:" notice="カータ3番、西えー">
       <expressions>
         <pre name="cauterize_count" count="3" />
       </expressions>

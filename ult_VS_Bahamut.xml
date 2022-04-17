@@ -222,7 +222,10 @@
       }
     }
 
+    <!--
     <t name="自分に雷" sync="[mex] gains the effect of サンダーウィング" notice="自分にサンダー" />
+    -->
+    <t name="サンダー" sync="[pc] gains the effect of サンダーウィング" notice="サンダー確認" />
     <!-- サンダー end -->
 
     <t no="1" name="ファイアカウント" sync="23:[id8]:ファイアホーン:[id8]:[pc]:[id4]:0000:0005:[id8]:000F:">

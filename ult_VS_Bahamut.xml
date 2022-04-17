@@ -12,7 +12,6 @@
   <zone>The Unending Coil Of Bahamut (Ultimate)</zone>
   <locale>JA</locale>
   <entry>P1 ツインタニア</entry>
-  <start>0039:戦闘開始！</start>
   <end>バハムート・プライムを倒した。</end>
 
   @*
@@ -46,14 +45,31 @@
 
   @* 優先順位の定義 *@
   @{
+    // 使い回すインデックス
+    var i = 0;
+
     // タニアフェーズの玉の優先順位
-    var tama_order    = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
+    // ナ戦暗ガ 白学占賢 モ竜忍侍リ 詩機踊 黒召赤
+    var tama_order = new string[] {
+      "[PLD]", "[WAR]", "[DRK]", "[GNB]",
+      "[WHM]", "[SCH]", "[AST]", "[SGE]",
+      "[MNK]", "[DRG]", "[NIN]", "[SAM]", "[RPR]",
+      "[BRD]", "[MCH]", "[DNC]",
+      "[BLM]", "[SMN]", "[RDM]"
+    };
 
     // ネールフェーズの雷の優先順位
-    var thunder_order = new string[] { "[GNB]", "[DRK]", "[AST]", "[WHM]", "[NIN]", "[DRG]", "[BRD]", "[SMN]" };
+    // ガ暗戦ナ 賢占学白 リ侍忍竜モ 踊機詩 赤召黒
+    var thunder_order = new string[] {
+      "[GNB]", "[DRK]", "[WAR]", "[PLD]",
+      "[SGE]", "[AST]", "[SCH]", "[WHM]",
+      "[RPR]", "[SAM]", "[NIN]", "[DRG]", "[MNK]",
+      "[DNC]", "[MCH]", "[BRD]",
+      "[RDM]", "[SMN]", "[BLM]"
+    };
 
     // 連撃フェーズの玉とシェイカーの優先順位
-    var rengeki_order = new string[] { "[DRK]", "[GNB]", "[WHM]", "[AST]", "[DRG]", "[NIN]", "[BRD]", "[SMN]" };
+    var rengeki_order = tama_order;
   }
 
   <default target-element="Activity" target-attr="notice-d" value="Main" />
@@ -65,39 +81,20 @@
 
   <s name="P1 ツインタニア">
     <!-- 玉優先度トリガ begin -->
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[0]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-29" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
+    @{
+      i = -89;
 
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[1]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-28" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
+      foreach (var member in tama_order) {
+        <t text="$1\n← 玉" sync="1B:........:@member:0000:0000:0076:0000:0000:0000:">
+          <v-notice order="@i" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
+        </t>
 
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[2]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-27" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
+        i++;
+      }
+    }
 
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[3]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-26" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[4]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-25" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[5]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-24" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[6]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-23" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t text="$1\n← 玉" sync="1B:........:@tama_order[7]:0000:0000:0076:0000:0000:0000:">
-      <v-notice order="-22" job-icon="true" duration="6" duration-visible="false" font-scale="0.9" />
-    </t>
-
-    <t name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" />
+    <!-- t name="自分に玉" sync="1B:[id8]:[mex]:0000:0000:0076:0000:0000:0000:" notice="自分に玉" / -->
+    <t name="玉" sync="1B:[id8]:[pc]:0000:0000:0076:0000:0000:0000:" notice="玉ポップ" />
     <!-- 玉優先度トリガ end -->
 
     <a time="000" text="VS Bahamut" />
@@ -127,6 +124,7 @@
       <v-notice order="-4" icon="Leave.png" text="避けろ！" delay="1" duration="1" duration-visible="false" />
     </t>
 
+    <!--
     <t text="自分にリキッド" sync="16:[id8]:ツインタニア:26AD:ヘルリキッド:[id8]:[mex]:" sync-interval="8" notice="自分にリキッド">
       <v-notice order="-2" icon="Fire.png" duration="6" duration-visible="false" />
     </t>
@@ -134,8 +132,10 @@
     <t text="自分にファイアボール" sync="1B:[id8]:[mex]:0000:0000:0075:0000:0000:0000:" notice="自分にファイアボール">
       <v-notice order="-3" icon="Fire.png" duration="6" duration-visible="false" />
     </t>
+    -->
 
-    @{ var plumet_notice =  Model.Player.InRole("TANK") ? "プラメット" : ""; }
+    <!-- @{ var plumet_notice =  Model.Player.InRole("TANK") ? "プラメット" : ""; } -->
+    @{ var plumet_notice =  "プラメット"; }
 
     <a time="007" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
     <a time="010" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="" icon="Twister.png" />
@@ -186,6 +186,7 @@
 
   <s name="P2 ネール">
     <!-- 死の宣告通知トリガー begin -->
+    <!--
     <t text="死の宣告１番" sync="[mex] gains the effect of 死の宣告 from  for 6.00 Seconds" notice="死の宣告、いちばん。すぐに解除。">
       <v-notice order="-6" icon="Timer.png" sync-to-hide="[mex] loses the effect of 死の宣告 from" duration="6" duration-visible="true" />
     </t>
@@ -197,45 +198,36 @@
     <t text="死の宣告３番" sync="[mex] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="死の宣告、さんばん">
       <v-notice order="-6" icon="Timer.png" sync-to-hide="[mex] loses the effect of 死の宣告 from" duration="16" duration-visible="true" />
     </t>
+    -->
+    <t text="死の宣告" sync="[pc] gains the effect of 死の宣告 from  for 6.00 Seconds" notice="死の宣告、6秒の人はすぐに解除">
+      <v-notice order="-6" icon="Timer.png" duration="16" duration-visible="true" />
+    </t>
 
+    <!--
     <t sync="[mex] gains the effect of 死の宣告 from  for 10.00 Seconds" notice="/wait 5,解除するー。" />
     <t sync="[mex] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="/wait 10,解除するー。" />
+    -->
+    <t sync="[pc] gains the effect of 死の宣告 from  for 10.00 Seconds" notice="/wait 5,解除するー。" />
+    <t sync="[pc] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="/wait 10,解除するー。" />
     <!-- 死の宣告通知トリガー end -->
 
     <!-- サンダー begin -->
-    <t text="$1 ← 雷" sync="@thunder_order[0] gains the effect of サンダーウィング">
-      <v-notice order="-18" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
+    @{
+      i = -59;
 
-    <t text="$1 ← 雷" sync="@thunder_order[1] gains the effect of サンダーウィング">
-      <v-notice order="-17" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
+      foreach (var member in thunder_order) {
+        <t text="$1 ← 雷" sync="@member gains the effect of サンダーウィング">
+          <v-notice order="@i" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
+        </t>
 
-    <t text="$1 ← 雷" sync="@thunder_order[2] gains the effect of サンダーウィング">
-      <v-notice order="-16" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
+        i++;
+      }
+    }
 
-    <t text="$1 ← 雷" sync="@thunder_order[3] gains the effect of サンダーウィング">
-      <v-notice order="-15" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[4] gains the effect of サンダーウィング">
-      <v-notice order="-14" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[5] gains the effect of サンダーウィング">
-      <v-notice order="-13" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[6] gains the effect of サンダーウィング">
-      <v-notice order="-12" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
-    <t text="$1 ← 雷" sync="@thunder_order[7] gains the effect of サンダーウィング">
-      <v-notice order="-11" job-icon="true" duration="5" duration-visible="true" font-scale="0.9" />
-    </t>
-
+    <!--
     <t name="自分に雷" sync="[mex] gains the effect of サンダーウィング" notice="自分にサンダー" />
+    -->
+    <t name="サンダー" sync="[pc] gains the effect of サンダーウィング" notice="サンダー確認" />
     <!-- サンダー end -->
 
     <t no="1" name="ファイアカウント" sync="23:[id8]:ファイアホーン:[id8]:[pc]:[id4]:0000:0005:[id8]:000F:">
@@ -252,6 +244,7 @@
       </expressions>
     </t>
 
+    <!--
     <t no="3" name="ファイア2一人で" text="${_mex} ← 炎\n離れる！" sync="23:[id8]:ファイアホーン:[id8]:[mex]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、離れるー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
@@ -260,6 +253,13 @@
     </t>
 
     <t no="4" name="ファイア2一人で（その他）" text="${_nex} ← 炎\n一人で" sync="23:[id8]:ファイアホーン:[id8]:[nex]:[id4]:0000:0005:[id8]:000F:" notice="ファイア、一人だけー">
+      <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
+      <expressions>
+        <pre name="fire_count" count="2" />
+      </expressions>
+    </t>
+    -->
+    <t no="3" name="ファイア2一人で" text="${_pc} ← 炎\n離れる！" sync="23:[id8]:ファイアホーン:[id8]:[pc]:[id4]:0000:0005:[id8]:000F:" notice="離れるファイアー">
       <v-notice order="-9" icon="Fire.png" duration="6" duration-visible="true" font-scale="0.9" />
       <expressions>
         <pre name="fire_count" count="2" />
@@ -403,19 +403,28 @@
       <v-notice order="-7" job-icon="true" duration-visible="false" duration="30" font-scale="0.9" sync-to-hide=":ネール・デウス・ダーナス:26B5:バハムートクロウ:" />
     </t>
 
+    <!--
     <t no="21" name="自分にカータ1" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ1番、東えー">
+    -->
+    <t no="21" name="カータ1" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:" notice="カータ1番、東えー">
       <expressions>
         <pre name="cauterize_count" count="1" />
       </expressions>
     </t>
 
+    <!--
     <t no="22" text="自分にカータ2" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ2番、南えー">
+    -->
+    <t no="22" text="カータ2" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:" notice="カータ2番、南えー">
       <expressions>
         <pre name="cauterize_count" count="2" />
       </expressions>
     </t>
 
+    <!--
     <t no="23" text="自分にカータ3" sync="1B:[id8]:[mex]:0000:[id4]:0014:0000:0000:0000:" notice="自分にカータ3番、西えー">
+    -->
+    <t no="23" text="カータ3" sync="1B:[id8]:[pc]:0000:[id4]:0014:0000:0000:0000:" notice="カータ3番、西えー">
       <expressions>
         <pre name="cauterize_count" count="3" />
       </expressions>
@@ -425,31 +434,39 @@
     <a time="009" text="天地崩壊" icon="KnockBack.png" />
     <a time="014" text="メテオストリーム" icon="SpreadA.png" />
     <a time="017" text="メテオストリーム" icon="SpreadA.png" />
+    <a time="017" notice="まもなく5連クロウ" />
     <a time="020" text="ダラガブダイブ" sync="16:[id8]:ネール・デウス・ダーナス:26C1:ダラガブダイブ:" icon="Targetaoe.png" />
-    <a time="022" text="バハムートクロウ5連" sync="" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="022" text="バハムートクロウ5連" sync="" icon="HardAttack.png" />
     <a time="028" text="龍神の加護" sync="ネール・デウス・ダーナスは「龍神の加護」の構え。" notice="" icon="" />
     <a time="030" name="龍の配置ダンプ">
       <dump name="ネール外周の龍の配置" target="Position" />
     </a>
+    <a time="035" notice="サンダーくるよ" />
     <a time="038" text="サンダーウィング" icon="Thunder.png" />
     <a time="039" text="セリフ" sync="ネール・デウス・ダーナス:月よ！" icon="Dialog.png" />
+    <a time="041" notice="スプリントー" />
     <a time="044" text="ルナダイナモ" sync="ネール・デウス・ダーナスの「ルナダイナモ」" icon="AOEOutside.png" />
     <a time="048" text="離れるor頭割り" icon="AOEInside.png" />
+    <a time="048" notice="サルヴェーションウィングくるよ" />
     <a time="049" text="死の宣告" icon="Attention.png" />
     <a time="050" text="★ファイア1 (全員)" notice="次、全員でファイア" notice-o="-5" icon="Fire.png" />
     <a time="051" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="054" notice="まもなく5連クロウ" />
     <a time="055" text="サルヴェーションウィング" icon="AOE.png" />
-    <a time="059" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="059" text="バハムートクロウ5連" icon="HardAttack.png" />
+    <a time="061" notice="サンダーくるよ" />
     <a time="064" text="サンダーウィング" notice="" icon="Thunder.png" />
     <a time="065" text="★ファイア2 (対象だけ)" notice="次、ひとりでファイア" notice-o="-6" icon="Fire.png" />
     <a time="067" text="セリフ" sync="(鉄の覇道と成す！|月の祝福を！)" icon="Dialog.png" />
     <a time="073" text="サーミオニックビーム" icon="DamageShare.png" />
+    <a time="074" notice="サルヴェーションウィングくるよ" />
     <a time="076" text="離れるorダイナモ" icon="Branch.png" />
     <a time="077" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="078" text="死の宣告" icon="Attention.png" />
     <a time="081" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="083" text="サンダーウィング" notice="" icon="Thunder.png" />
     <a time="085" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="090" notice="まもなく5連クロウ" />
 
     <a time="092" text="★ファイア3 (集合)" notice="次、集まってファイア" notice-o="-5" icon="Fire.png">
       <expressions>
@@ -463,16 +480,19 @@
       </expressions>
     </a>
 
-    <a time="095" text="バハムートクロウ5連" notice="次、5連クロウ" icon="HardAttack.png" />
+    <a time="095" text="バハムートクロウ5連" icon="HardAttack.png" />
     <a time="100" text="セリフ" sync="(鉄の覇道を征く！|月を仰がん！)" notice="" icon="Dialog.png" />
     <a time="106" text="レイヴンダイブ" icon="SpreadA.png" />
+    <a time="108" notice="サンダーくるよ" />
     <a time="109" text="離れるorダイナモ" icon="Branch.png" />
     <a time="113" text="★ファイア4 (全員)" notice="次、全員でファイア" notice-o="-5" icon="Fire.png" />
+    <a time="110" notice="サルヴェーションウィングくるよ" />
     <a time="111" text="サンダーウィング" icon="Thunder.png" />
     <a time="113" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="115" text="死の宣告" icon="Attention.png" />
     <a time="117" text="サルヴェーションウィング" icon="AOE.png" />
     <a time="121" text="サルヴェーションウィング" icon="AOE.png" />
+    <a time="125" notice="まもなくビーク" />
     <a time="130" text="レイヴェンズビーク" sync="ネール・デウス・ダーナス starts using レイヴェンズビーク" notice="次、タンクスイッチ" icon="Switch.png" />
     <a time="139" text="セリフ" sync="(鉄の覇道を征く！|月を仰がん！)" icon="Dialog.png" />
     <a time="145" text="スーパーノヴァ" icon="AOE.png" />
@@ -482,11 +502,13 @@
     <a time="154" text="ダラガブダイブ" icon="spreadA.png" />
     <a time="155" text="カータライズ３" icon="" />
     <a time="156" text="頭割りor散開" icon="Branch.png" />
-    <a time="161" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="156" notice="まもなく5連クロウ" />
+    <a time="161" text="バハムートクロウ5連" icon="HardAttack.png" />
     <a time="173" text="セリフ" icon="Dialog.png" />
     <a time="184" text="セリフ" icon="Dialog.png" />
     <a time="197" text="レイヴェンズビーク" sync="「レイヴェンズビーク」の構え。" notice="次、タンクスイッチ" icon="Switch.png" />
-    <a time="204" text="バハムートクロウ5連" icon="HardAttack.png" notice="次、5連クロウ" />
+    <a time="199" notice="まもなく5連クロウ" />
+    <a time="204" text="バハムートクロウ5連" icon="HardAttack.png" />
     <a time="213" text="メガフレア" notice="" icon="Timeout.png" />
 
     <a time="226" text="バハムートへ" sync=":バハムート・プライム:26D1:第七霊災:" goto="P3 進軍の三重奏" sync-s="-100" />
@@ -626,7 +648,7 @@
   <s name="P7 連撃の三重奏">
 
     @{
-      var i = 0;
+      i = 0;
 
       foreach (var member in rengeki_order) {
         <t text="$1\n← 玉" sync="1B:........:@member:0000:0000:0076:0000:0000:0000:">

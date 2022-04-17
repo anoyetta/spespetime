@@ -197,7 +197,7 @@
       <v-notice order="-6" icon="Timer.png" sync-to-hide="[mex] loses the effect of 死の宣告 from" duration="16" duration-visible="true" />
     </t>
     -->
-    <t text="死の宣告" sync="[pc] gains the effect of 死の宣告 from" notice="死の宣告、6秒の人はすぐに解除">
+    <t text="死の宣告" sync="[pc] gains the effect of 死の宣告 from  for 6.00 Seconds" notice="死の宣告、6秒の人はすぐに解除">
       <v-notice order="-6" icon="Timer.png" duration="16" duration-visible="true" />
     </t>
 

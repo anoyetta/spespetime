@@ -184,6 +184,7 @@
 
   <s name="P2 ネール">
     <!-- 死の宣告通知トリガー begin -->
+    <!--
     <t text="死の宣告１番" sync="[mex] gains the effect of 死の宣告 from  for 6.00 Seconds" notice="死の宣告、いちばん。すぐに解除。">
       <v-notice order="-6" icon="Timer.png" sync-to-hide="[mex] loses the effect of 死の宣告 from" duration="6" duration-visible="true" />
     </t>
@@ -195,9 +196,17 @@
     <t text="死の宣告３番" sync="[mex] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="死の宣告、さんばん">
       <v-notice order="-6" icon="Timer.png" sync-to-hide="[mex] loses the effect of 死の宣告 from" duration="16" duration-visible="true" />
     </t>
+    -->
+    <t text="死の宣告" sync="[pc] gains the effect of 死の宣告 from" notice="死の宣告、6秒の人はすぐに解除">
+      <v-notice order="-6" icon="Timer.png" duration="16" duration-visible="true" />
+    </t>
 
+    <!--
     <t sync="[mex] gains the effect of 死の宣告 from  for 10.00 Seconds" notice="/wait 5,解除するー。" />
     <t sync="[mex] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="/wait 10,解除するー。" />
+    -->
+    <t sync="[pc] gains the effect of 死の宣告 from  for 10.00 Seconds" notice="/wait 5,解除するー。" />
+    <t sync="[pc] gains the effect of 死の宣告 from  for 16.00 Seconds" notice="/wait 10,解除するー。" />
     <!-- 死の宣告通知トリガー end -->
 
     <!-- サンダー begin -->

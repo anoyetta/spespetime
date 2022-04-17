@@ -132,7 +132,8 @@
       <v-notice order="-3" icon="Fire.png" duration="6" duration-visible="false" />
     </t>
 
-    @{ var plumet_notice =  Model.Player.InRole("TANK") ? "プラメット" : ""; }
+    <!-- @{ var plumet_notice =  Model.Player.InRole("TANK") ? "プラメット" : ""; } -->
+    @{ var plumet_notice =  "プラメット"; }
 
     <a time="007" text="プラメット" sync="ツインタニアの「プラメット」" icon="Targetaoe01.png" notice="@plumet_notice" />
     <a time="010" text="ツイスター" sync="ツインタニアは「ツイスター」の構え。" notice="" icon="Twister.png" />

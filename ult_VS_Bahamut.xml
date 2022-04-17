@@ -124,6 +124,7 @@
       <v-notice order="-4" icon="Leave.png" text="避けろ！" delay="1" duration="1" duration-visible="false" />
     </t>
 
+    <!--
     <t text="自分にリキッド" sync="16:[id8]:ツインタニア:26AD:ヘルリキッド:[id8]:[mex]:" sync-interval="8" notice="自分にリキッド">
       <v-notice order="-2" icon="Fire.png" duration="6" duration-visible="false" />
     </t>
@@ -131,6 +132,7 @@
     <t text="自分にファイアボール" sync="1B:[id8]:[mex]:0000:0000:0075:0000:0000:0000:" notice="自分にファイアボール">
       <v-notice order="-3" icon="Fire.png" duration="6" duration-visible="false" />
     </t>
+    -->
 
     <!-- @{ var plumet_notice =  Model.Player.InRole("TANK") ? "プラメット" : ""; } -->
     @{ var plumet_notice =  "プラメット"; }
